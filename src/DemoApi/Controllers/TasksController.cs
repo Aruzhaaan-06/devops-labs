@@ -40,9 +40,9 @@ public sealed class TasksController(TaskService tasks) : ControllerBase
     }
 
     /// <summary>Создать задачу в проекте</summary>
-    /// <remarks>Новая задача всегда в статусе Todo.</remarks>
+    /// <remarks>Новая задача всегда в статусе Todo. Срок необязателен; при создании он не может быть раньше текущей даты UTC.</remarks>
     /// <response code="201">Задача создана; её адрес — в заголовке Location</response>
-    /// <response code="400">Пустое название или неверные данные</response>
+    /// <response code="400">Пустое название, срок в прошлом или неверные данные</response>
     /// <response code="404">Проекта с таким id нет</response>
     [HttpPost]
     [ProducesResponseType<TaskItem>(StatusCodes.Status201Created)]
@@ -50,6 +50,12 @@ public sealed class TasksController(TaskService tasks) : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<TaskItem>> Create(CreateTaskRequest request, CancellationToken ct)
     {
+        if (request.DueDate < DateOnly.FromDateTime(DateTime.UtcNow))
+        {
+            ModelState.AddModelError(nameof(CreateTaskRequest.DueDate), "Срок новой задачи не может быть в прошлом (дата UTC).");
+            return ValidationProblem(ModelState);
+        }
+
         var task = await tasks.CreateAsync(request.ProjectId, request.Title, request.Description, request.DueDate, ct);
         if (task is null)
         {
@@ -137,7 +143,7 @@ public sealed class TasksController(TaskService tasks) : ControllerBase
 /// <param name="ProjectId">Проект, в котором создаётся задача</param>
 /// <param name="Title">Название, до 200 символов</param>
 /// <param name="Description">Описание, до 2000 символов</param>
-/// <param name="DueDate">Срок, например 2026-12-31</param>
+/// <param name="DueDate">Необязательный срок: не раньше текущей даты UTC, например 2026-12-31</param>
 public sealed record CreateTaskRequest(
     [Range(1, int.MaxValue)] int ProjectId,
     [Required, StringLength(200)] string Title,

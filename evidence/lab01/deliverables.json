@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-22",
+  "reportsStatus": "Technical results documented; required desktop UI evidence remains outstanding.",
+  "files": [
+    {
+      "path": "reports/lab01-part1-report.pdf",
+      "bytes": 210018,
+      "sha256": "0fc6d5f30944a37eb5cb8decce23dbd94796b43098f52339cc4fa213cbef3020"
+    },
+    {
+      "path": "reports/lab01-part2-report.pdf",
+      "bytes": 220224,
+      "sha256": "78aeebefdde46777bc06baf20f176379abc1355f3dda10476773d1ace1fcc9f4"
+    },
+    {
+      "path": "reports/lab01-source.zip",
+      "bytes": 136502,
+      "sha256": "10b653bffe81725ca3751ab958a5b2e02d3ace76ad88a03ef9d4a9d0a53db768"
+    }
+  ]
+}

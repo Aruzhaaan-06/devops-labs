@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
 using DemoApi.Domain;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace DemoApi.Tests.Integration;
@@ -39,6 +40,46 @@ public class TasksApiTests(WebApplicationFactory<Program> factory)
         var response = await _client.PostAsJsonAsync("/api/tasks", new { projectId = project.Id, title = "" });
 
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task Create_PastDueDate_ReturnsBadRequestWithoutCreatingTask()
+    {
+        var project = await _client.CreateProjectAsync();
+        var response = await _client.PostAsJsonAsync("/api/tasks", new
+        {
+            projectId = project.Id,
+            title = "Задача со сроком в прошлом",
+            dueDate = DateOnly.FromDateTime(DateTime.UtcNow).AddDays(-1),
+        });
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        var problem = await response.Content.ReadFromJsonAsync<ValidationProblemDetails>(TestApi.Json);
+        Assert.NotNull(problem);
+        Assert.True(problem.Errors.ContainsKey("DueDate"));
+        var tasks = await _client.GetFromJsonAsync<List<TaskItem>>($"/api/tasks?projectId={project.Id}", TestApi.Json);
+        Assert.NotNull(tasks);
+        Assert.Empty(tasks);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData(0)]
+    [InlineData(1)]
+    public async Task Create_ValidDueDate_ReturnsCreatedAndPreservesDate(int? dayOffset)
+    {
+        var project = await _client.CreateProjectAsync();
+        DateOnly? dueDate = dayOffset is null ? null : DateOnly.FromDateTime(DateTime.UtcNow).AddDays(dayOffset.Value);
+        var response = await _client.PostAsJsonAsync("/api/tasks", new { projectId = project.Id, title = "Допустимый срок", dueDate });
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        var created = await response.Content.ReadFromJsonAsync<TaskItem>(TestApi.Json);
+        Assert.NotNull(created);
+        var persisted = await _client.GetFromJsonAsync<TaskItem>($"/api/tasks/{created.Id}", TestApi.Json);
+        Assert.NotNull(persisted);
+        Assert.Equal(project.Id, persisted.ProjectId);
+        Assert.Equal(dueDate, persisted.DueDate);
+        Assert.Equal(TaskItemStatus.Todo, persisted.Status);
     }
 
     [Fact]

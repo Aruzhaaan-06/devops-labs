@@ -1,0 +1,67 @@
+{
+  "checkedAtUtc": "2026-10-21T19:48:04.8335130+00:00",
+  "path": "/api/projects/{id}/stats",
+  "summary": "Статистика задач проекта",
+  "description": "Просрочены задачи со сроком раньше текущей даты UTC и статусом не Done. Для пустого проекта все счётчики равны нулю.",
+  "responses": [
+    "200",
+    "404"
+  ],
+  "properties": {
+    "projectId": {
+      "pattern": "^-?(?:0|[1-9]\\d*)$",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "Идентификатор проекта",
+      "format": "int32"
+    },
+    "total": {
+      "pattern": "^-?(?:0|[1-9]\\d*)$",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "Всего задач",
+      "format": "int32"
+    },
+    "todo": {
+      "pattern": "^-?(?:0|[1-9]\\d*)$",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "Задачи в статусе Todo",
+      "format": "int32"
+    },
+    "inProgress": {
+      "pattern": "^-?(?:0|[1-9]\\d*)$",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "Задачи в статусе InProgress",
+      "format": "int32"
+    },
+    "done": {
+      "pattern": "^-?(?:0|[1-9]\\d*)$",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "Задачи в статусе Done",
+      "format": "int32"
+    },
+    "overdue": {
+      "pattern": "^-?(?:0|[1-9]\\d*)$",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "Незавершённые задачи со сроком раньше текущей даты UTC",
+      "format": "int32"
+    }
+  },
+  "passed": true
+}

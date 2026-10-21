@@ -1,0 +1,8 @@
+{
+  "timestampUtc": "2026-10-21T19:40:46.5961132+00:00",
+  "baseUrl": "http://localhost:8088",
+  "statusCode": 200,
+  "bodyText": "[]",
+  "passed": true,
+  "description": "The process was stopped and started; four prior projects are absent."
+}
