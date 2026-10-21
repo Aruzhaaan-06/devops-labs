@@ -1,0 +1,141 @@
+{
+  "sourceFormat": "Visual Studio TRX",
+  "environment": "InMemory",
+  "counts": {
+    "total": 22,
+    "executed": 22,
+    "passed": 22,
+    "failed": 0,
+    "error": 0,
+    "timeout": 0,
+    "aborted": 0,
+    "inconclusive": 0,
+    "passedButRunAborted": 0,
+    "notRunnable": 0,
+    "notExecuted": 0,
+    "disconnected": 0,
+    "warning": 0,
+    "completed": 0,
+    "inProgress": 0,
+    "pending": 0
+  },
+  "times": {
+    "creation": "2026-10-22T00:15:12.1738143+05:00",
+    "queuing": "2026-10-22T00:15:12.1738147+05:00",
+    "start": "2026-10-22T00:15:10.0878225+05:00",
+    "finish": "2026-10-22T00:15:12.4093768+05:00"
+  },
+  "tests": [
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Create_ReturnsCreatedWithLocation",
+      "outcome": "Passed",
+      "duration": "00:00:00.0019429"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.ChangeStatus_TodoInProgressDone_Succeeds",
+      "outcome": "Passed",
+      "duration": "00:00:00.0199678"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_InUnknownProject_ReturnsNotFound",
+      "outcome": "Passed",
+      "duration": "00:00:00.0051114"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Todo, to: Done, expected: False)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0876884"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.HealthEndpoints_ReturnOk(url: \"/health/live\")",
+      "outcome": "Passed",
+      "duration": "00:00:00.0054244"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_EmptyTitle_ReturnsBadRequest",
+      "outcome": "Passed",
+      "duration": "00:00:00.8802726"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Delete_ThenGet_ReturnsNotFound",
+      "outcome": "Passed",
+      "duration": "00:00:00.0157676"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Todo, to: Todo, expected: True)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0000058"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Todo, to: InProgress, expected: True)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0000031"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: InProgress, to: Todo, expected: True)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0000027"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_InExistingProject_ReturnsCreatedTodoTask",
+      "outcome": "Passed",
+      "duration": "00:00:00.0307596"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.ChangeStatus_TodoToDone_ReturnsConflict",
+      "outcome": "Passed",
+      "duration": "00:00:00.0044750"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.Chaos_WhenDisabled_ReturnsNotFound",
+      "outcome": "Passed",
+      "duration": "00:00:00.0644337"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Done, to: InProgress, expected: True)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0002576"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: InProgress, to: Done, expected: True)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0000093"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Create_EmptyName_ReturnsBadRequest",
+      "outcome": "Passed",
+      "duration": "00:00:00.0017979"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Get_Unknown_ReturnsNotFound",
+      "outcome": "Passed",
+      "duration": "00:00:00.0065712"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.Metrics_AreExposed",
+      "outcome": "Passed",
+      "duration": "00:00:00.0581116"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Done, to: Todo, expected: False)",
+      "outcome": "Passed",
+      "duration": "00:00:00.0000013"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Create_DuplicateName_ReturnsConflict",
+      "outcome": "Passed",
+      "duration": "00:00:00.0027900"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.HealthEndpoints_ReturnOk(url: \"/health/ready\")",
+      "outcome": "Passed",
+      "duration": "00:00:00.0013536"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.List_FiltersByProjectAndStatus",
+      "outcome": "Passed",
+      "duration": "00:00:00.0167392"
+    }
+  ],
+  "note": "Local machine and user metadata omitted. Original TRX retained locally."
+}

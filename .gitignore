@@ -6,6 +6,9 @@
 # dotenv files
 .env
 
+# Test runner metadata contains local machine and user paths; publish summaries instead.
+evidence/**/*.trx
+
 # User-specific files
 *.rsuser
 *.suo

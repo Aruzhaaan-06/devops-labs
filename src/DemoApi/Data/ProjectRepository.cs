@@ -8,6 +8,8 @@ public interface IProjectRepository
 {
     Task<IReadOnlyList<Project>> ListAsync(CancellationToken ct);
     Task<Project?> GetAsync(int id, CancellationToken ct);
+    /// <summary>Статистика задач проекта. Существование проекта проверяет вызывающий код; граница просрочки — дата UTC.</summary>
+    Task<ProjectStats> GetStatsAsync(int projectId, CancellationToken ct);
     Task<bool> NameExistsAsync(string name, CancellationToken ct);
     Task<Project> CreateAsync(string name, CancellationToken ct);
     Task<bool> DeleteAsync(int id, CancellationToken ct);
@@ -35,6 +37,26 @@ public sealed class ProjectRepository(NpgsqlDataSource db) : IProjectRepository
         cmd.Parameters.Add(Sql.Param(id, NpgsqlDbType.Integer));
         await using var reader = await cmd.ExecuteReaderAsync(ct);
         return await reader.ReadAsync(ct) ? Map(reader) : null;
+    }
+
+    public async Task<ProjectStats> GetStatsAsync(int projectId, CancellationToken ct)
+    {
+        await using var cmd = db.CreateCommand("""
+            SELECT COUNT(*),
+                   COUNT(*) FILTER (WHERE status = 'todo'),
+                   COUNT(*) FILTER (WHERE status = 'in_progress'),
+                   COUNT(*) FILTER (WHERE status = 'done'),
+                   COUNT(*) FILTER (WHERE due_date < $2 AND status <> 'done')
+            FROM tasks
+            WHERE project_id = $1
+            """);
+        cmd.Parameters.Add(Sql.Param(projectId, NpgsqlDbType.Integer));
+        // Передаём дату UTC явно: результат не зависит от часового пояса сессии PostgreSQL.
+        cmd.Parameters.Add(Sql.Param(DateOnly.FromDateTime(DateTime.UtcNow), NpgsqlDbType.Date));
+        await using var reader = await cmd.ExecuteReaderAsync(ct);
+        await reader.ReadAsync(ct);
+        return new ProjectStats(projectId, checked((int)reader.GetInt64(0)), checked((int)reader.GetInt64(1)),
+            checked((int)reader.GetInt64(2)), checked((int)reader.GetInt64(3)), checked((int)reader.GetInt64(4)));
     }
 
     public async Task<bool> NameExistsAsync(string name, CancellationToken ct)

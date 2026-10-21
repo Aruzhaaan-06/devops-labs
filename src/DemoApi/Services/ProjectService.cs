@@ -10,6 +10,8 @@ public sealed class ProjectService(IProjectRepository projects, ILogger<ProjectS
 
     public Task<Project?> GetAsync(int id, CancellationToken ct) => projects.GetAsync(id, ct);
 
+    public Task<ProjectStats> GetStatsAsync(int projectId, CancellationToken ct) => projects.GetStatsAsync(projectId, ct);
+
     public Task<bool> NameExistsAsync(string name, CancellationToken ct) => projects.NameExistsAsync(name, ct);
 
     public async Task<Project> CreateAsync(string name, CancellationToken ct)

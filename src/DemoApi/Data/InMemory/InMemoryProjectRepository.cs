@@ -21,6 +21,21 @@ public sealed class InMemoryProjectRepository(InMemoryStore store) : IProjectRep
         }
     }
 
+    public Task<ProjectStats> GetStatsAsync(int projectId, CancellationToken ct)
+    {
+        lock (store.Sync)
+        {
+            var tasks = store.Tasks.Where(t => t.ProjectId == projectId).ToList();
+            var today = DateOnly.FromDateTime(DateTime.UtcNow);
+            ProjectStats stats = new(projectId, tasks.Count,
+                tasks.Count(t => t.Status == TaskItemStatus.Todo),
+                tasks.Count(t => t.Status == TaskItemStatus.InProgress),
+                tasks.Count(t => t.Status == TaskItemStatus.Done),
+                tasks.Count(t => t.DueDate < today && t.Status != TaskItemStatus.Done));
+            return Task.FromResult(stats);
+        }
+    }
+
     public Task<bool> NameExistsAsync(string name, CancellationToken ct)
     {
         lock (store.Sync)

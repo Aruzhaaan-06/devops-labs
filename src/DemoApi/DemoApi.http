@@ -1,4 +1,4 @@
-@host = http://localhost:8080
+@host = http://localhost:8088
 
 GET {{host}}/
 
@@ -12,10 +12,13 @@ Content-Type: application/json
 GET {{host}}/api/projects
 
 ###
+GET {{host}}/api/projects/1/stats
+
+###
 POST {{host}}/api/tasks
 Content-Type: application/json
 
-{ "projectId": 1, "title": "Написать Dockerfile", "dueDate": "2026-10-01" }
+{ "projectId": 1, "title": "Написать Dockerfile" }
 
 ###
 GET {{host}}/api/tasks?projectId=1&status=Todo

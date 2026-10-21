@@ -1,0 +1,1054 @@
+{
+  "info": {
+    "name": "demo-api",
+    "description": "Лабораторная 1: проекты, задачи, ошибки и статистика. Импортируйте JSON в Postman. До реализации статистики запускайте только папку «Часть 1». После реализации — «Часть 2», которая сама создаёт независимый набор из трёх задач. Дополнительную папку запускайте отдельно только после реализации запрета прошлой даты при создании. Имена проектов уникальны для повторного запуска; идентификаторы автоматически сохраняются в переменные коллекции. Созданные проекты остаются в сервисе для просмотра; перезапуск InMemory очищает их. Коллекция не запускает и не перезапускает сервис и не доказывает работу отладчика или Visual Studio. В файле отсутствуют результаты фактических запусков и учётные данные.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8088",
+      "type": "string"
+    },
+    {
+      "key": "projectId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "conflictTaskId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "projectName",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "statsProjectId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "statsProjectName",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "statsTodoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "statsInProgressId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "statsOverdueId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "optionalProjectId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "optionalProjectName",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "pastDueDate",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "missingId",
+      "value": "2147483647",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Часть 1 — базовый API",
+      "description": "Самостоятельный сценарий до добавления статистики. Запускайте всю папку сверху вниз.",
+      "item": [
+        {
+          "name": "01. Список проектов",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"JSON-массив\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Создать отдельный проект",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{projectName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const uniqueName = \"lab01-part1-\" + pm.variables.replaceIn(\"{{$guid}}\");",
+                  "pm.collectionVariables.set(\"projectName\", uniqueName);",
+                  "pm.variables.set(\"projectName\", uniqueName);",
+                  "pm.collectionVariables.unset(\"projectId\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID проекта сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"projectId\", body.id); pm.variables.set(\"projectId\", body.id); });",
+                  "pm.test(\"Location указывает на проект\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/projects/\" + pm.collectionVariables.get(\"projectId\") + \"$\")); });",
+                  "pm.test(\"Название проекта сохранено\", function () { pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"projectName\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03. Создать задачу Todo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": {{projectId}},\n  \"title\": \"Написать Dockerfile\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID задачи сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"taskId\", body.id); pm.variables.set(\"taskId\", body.id); });",
+                  "pm.test(\"status = Todo\", function () { pm.expect(pm.response.json().status).to.eql(\"Todo\"); });",
+                  "pm.test(\"Проект задачи\", function () { pm.expect(pm.response.json().projectId).to.eql(Number(pm.collectionVariables.get(\"projectId\"))); });",
+                  "pm.test(\"Location указывает на задачу\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/tasks/\" + pm.collectionVariables.get(\"taskId\") + \"$\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04. Задачи проекта",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks?projectId={{projectId}}",
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Одна созданная задача\", function () { const tasks = pm.response.json(); pm.expect(tasks).to.have.lengthOf(1); pm.expect(tasks[0].id).to.eql(Number(pm.collectionVariables.get(\"taskId\"))); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05. Todo → InProgress",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{taskId}}/status",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"InProgress\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"status = InProgress\", function () { pm.expect(pm.response.json().status).to.eql(\"InProgress\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06. Получить проект",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{projectId}}",
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Идентификатор проекта\", function () { pm.expect(pm.response.json().id).to.eql(Number(pm.collectionVariables.get(\"projectId\"))); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07. Пустое имя → 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Есть ошибки полей\", function () { pm.expect(pm.response.json().errors).to.be.an(\"object\"); pm.expect(Object.keys(pm.response.json().errors)).not.to.be.empty; });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08. Повторное имя → 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{projectName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Есть объяснение detail\", function () { pm.expect(pm.response.json().detail).to.be.a(\"string\").and.not.empty; });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09. Новая задача для запрещённого перехода",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": {{projectId}},\n  \"title\": \"Проверка запрета Todo → Done\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID задачи сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"conflictTaskId\", body.id); pm.variables.set(\"conflictTaskId\", body.id); });",
+                  "pm.test(\"status = Todo\", function () { pm.expect(pm.response.json().status).to.eql(\"Todo\"); });",
+                  "pm.test(\"Проект задачи\", function () { pm.expect(pm.response.json().projectId).to.eql(Number(pm.collectionVariables.get(\"projectId\"))); });",
+                  "pm.test(\"Location указывает на задачу\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/tasks/\" + pm.collectionVariables.get(\"conflictTaskId\") + \"$\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10. Todo → Done → 409",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{conflictTaskId}}/status",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Done\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", function () { pm.response.to.have.status(409); });",
+                  "pm.test(\"Есть объяснение detail\", function () { pm.expect(pm.response.json().detail).to.be.a(\"string\").and.not.empty; });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11. Неизвестная задача → 404",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{missingId}}",
+            "description": "Используется int.MaxValue вместо жёсткого ID 999, который может уже существовать на повторно используемом стенде."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12. Изменить задачу",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{taskId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Dockerfile подготовлен\",\n  \"description\": \"Проверка PUT в лабораторной 1\",\n  \"dueDate\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"title = Dockerfile подготовлен\", function () { pm.expect(pm.response.json().title).to.eql(\"Dockerfile \\u043f\\u043e\\u0434\\u0433\\u043e\\u0442\\u043e\\u0432\\u043b\\u0435\\u043d\"); });",
+                  "pm.test(\"status = InProgress\", function () { pm.expect(pm.response.json().status).to.eql(\"InProgress\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13. InProgress → Done",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{taskId}}/status",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Done\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"status = Done\", function () { pm.expect(pm.response.json().status).to.eql(\"Done\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "14. Получить завершённую задачу",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{taskId}}",
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"status = Done\", function () { pm.expect(pm.response.json().status).to.eql(\"Done\"); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Часть 2 — статистика проекта",
+      "description": "Самостоятельный сценарий после реализации /stats. Ожидается total=3, todo=2, inProgress=1, done=0, overdue=1. Просроченная дата назначается через PUT.",
+      "item": [
+        {
+          "name": "Создать отдельный проект",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{statsProjectName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const uniqueName = \"lab01-stats-\" + pm.variables.replaceIn(\"{{$guid}}\");",
+                  "pm.collectionVariables.set(\"statsProjectName\", uniqueName);",
+                  "pm.variables.set(\"statsProjectName\", uniqueName);",
+                  "pm.collectionVariables.unset(\"statsProjectId\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID проекта сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"statsProjectId\", body.id); pm.variables.set(\"statsProjectId\", body.id); });",
+                  "pm.test(\"Location указывает на проект\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/projects/\" + pm.collectionVariables.get(\"statsProjectId\") + \"$\")); });",
+                  "pm.test(\"Название проекта сохранено\", function () { pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"statsProjectName\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02. Задача Todo без срока",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": {{statsProjectId}},\n  \"title\": \"Todo без срока\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID задачи сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"statsTodoId\", body.id); pm.variables.set(\"statsTodoId\", body.id); });",
+                  "pm.test(\"status = Todo\", function () { pm.expect(pm.response.json().status).to.eql(\"Todo\"); });",
+                  "pm.test(\"Проект задачи\", function () { pm.expect(pm.response.json().projectId).to.eql(Number(pm.collectionVariables.get(\"statsProjectId\"))); });",
+                  "pm.test(\"Location указывает на задачу\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/tasks/\" + pm.collectionVariables.get(\"statsTodoId\") + \"$\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03. Задача для InProgress",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": {{statsProjectId}},\n  \"title\": \"Задача в работе\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID задачи сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"statsInProgressId\", body.id); pm.variables.set(\"statsInProgressId\", body.id); });",
+                  "pm.test(\"status = Todo\", function () { pm.expect(pm.response.json().status).to.eql(\"Todo\"); });",
+                  "pm.test(\"Проект задачи\", function () { pm.expect(pm.response.json().projectId).to.eql(Number(pm.collectionVariables.get(\"statsProjectId\"))); });",
+                  "pm.test(\"Location указывает на задачу\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/tasks/\" + pm.collectionVariables.get(\"statsInProgressId\") + \"$\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04. Подготовить InProgress",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{statsInProgressId}}/status",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"InProgress\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"status = InProgress\", function () { pm.expect(pm.response.json().status).to.eql(\"InProgress\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05. Создать будущую просроченную задачу",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": {{statsProjectId}},\n  \"title\": \"Просроченная Todo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID задачи сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"statsOverdueId\", body.id); pm.variables.set(\"statsOverdueId\", body.id); });",
+                  "pm.test(\"status = Todo\", function () { pm.expect(pm.response.json().status).to.eql(\"Todo\"); });",
+                  "pm.test(\"Проект задачи\", function () { pm.expect(pm.response.json().projectId).to.eql(Number(pm.collectionVariables.get(\"statsProjectId\"))); });",
+                  "pm.test(\"Location указывает на задачу\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/tasks/\" + pm.collectionVariables.get(\"statsOverdueId\") + \"$\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06. Назначить срок позавчера через PUT",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks/{{statsOverdueId}}",
+            "description": "Создание не использует прошлую дату: это совместимо с дополнительным правилом, запрещающим её только при POST.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Просроченная Todo\",\n  \"description\": \"UTC: позавчера\",\n  \"dueDate\": \"{{pastDueDate}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const past = new Date(); past.setUTCDate(past.getUTCDate() - 2);",
+                  "pm.collectionVariables.set(\"pastDueDate\", past.toISOString().slice(0, 10));",
+                  "pm.variables.set(\"pastDueDate\", pm.collectionVariables.get(\"pastDueDate\"));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"status = Todo\", function () { pm.expect(pm.response.json().status).to.eql(\"Todo\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07. Статистика проекта → 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{statsProjectId}}/stats",
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"projectId соответствует запросу\", function () { pm.expect(pm.response.json().projectId).to.eql(Number(pm.collectionVariables.get(\"statsProjectId\"))); });",
+                  "pm.test(\"total = 3\", function () { pm.expect(pm.response.json().total).to.eql(3); });",
+                  "pm.test(\"todo = 2\", function () { pm.expect(pm.response.json().todo).to.eql(2); });",
+                  "pm.test(\"inProgress = 1\", function () { pm.expect(pm.response.json().inProgress).to.eql(1); });",
+                  "pm.test(\"done = 0\", function () { pm.expect(pm.response.json().done).to.eql(0); });",
+                  "pm.test(\"overdue = 1\", function () { pm.expect(pm.response.json().overdue).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08. Статистика неизвестного проекта → 404",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{missingId}}/stats",
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Дополнительно — запрет прошлой даты",
+      "description": "Не входит в обязательный запуск базовой лабораторной. Запускайте только после реализации дополнительного правила.",
+      "item": [
+        {
+          "name": "Создать отдельный проект",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{optionalProjectName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const uniqueName = \"lab01-optional-\" + pm.variables.replaceIn(\"{{$guid}}\");",
+                  "pm.collectionVariables.set(\"optionalProjectName\", uniqueName);",
+                  "pm.variables.set(\"optionalProjectName\", uniqueName);",
+                  "pm.collectionVariables.unset(\"optionalProjectId\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.test(\"ID проекта сохранён\", function () { const body = pm.response.json(); pm.expect(body.id).to.be.a(\"number\").above(0); pm.collectionVariables.set(\"optionalProjectId\", body.id); pm.variables.set(\"optionalProjectId\", body.id); });",
+                  "pm.test(\"Location указывает на проект\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(new RegExp(\"/api/projects/\" + pm.collectionVariables.get(\"optionalProjectId\") + \"$\")); });",
+                  "pm.test(\"Название проекта сохранено\", function () { pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"optionalProjectName\")); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Создание задачи со сроком в прошлом → 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/tasks",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": {{optionalProjectId}},\n  \"title\": \"Прошлая дата запрещена\",\n  \"dueDate\": \"{{pastDueDate}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const past = new Date(); past.setUTCDate(past.getUTCDate() - 2);",
+                  "pm.collectionVariables.set(\"pastDueDate\", past.toISOString().slice(0, 10));",
+                  "pm.variables.set(\"pastDueDate\", pm.collectionVariables.get(\"pastDueDate\"));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Ошибка описана JSON-объектом\", function () { pm.expect(pm.response.json()).to.be.an(\"object\"); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

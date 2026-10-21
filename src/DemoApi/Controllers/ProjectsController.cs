@@ -34,6 +34,24 @@ public sealed class ProjectsController(ProjectService projects) : ControllerBase
         return project;
     }
 
+    /// <summary>Статистика задач проекта</summary>
+    /// <remarks>Просрочены задачи со сроком раньше текущей даты UTC и статусом не Done. Для пустого проекта все счётчики равны нулю.</remarks>
+    /// <param name="id">Идентификатор проекта</param>
+    /// <response code="200">Статистика проекта</response>
+    /// <response code="404">Проекта с таким id нет</response>
+    [HttpGet("{id:int}/stats")]
+    [ProducesResponseType<ProjectStats>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ProjectStats>> GetStats(int id, CancellationToken ct)
+    {
+        var project = await projects.GetAsync(id, ct);
+        if (project is null)
+        {
+            return NotFound();
+        }
+        return await projects.GetStatsAsync(id, ct);
+    }
+
     /// <summary>Создать проект</summary>
     /// <response code="201">Проект создан; его адрес — в заголовке Location</response>
     /// <response code="400">Название пустое или длиннее 100 символов</response>

@@ -1,0 +1,1151 @@
+{
+  "schemaVersion": 1,
+  "runId": "20261021T192942693Z-all-2e4aa0e5",
+  "phase": "All",
+  "baseUrl": "http://localhost:8088",
+  "startedAtUtc": "2026-10-21T19:29:42.7098595+00:00",
+  "finishedAtUtc": "2026-10-21T19:29:43.1640411+00:00",
+  "passed": true,
+  "failure": null,
+  "optionalPastDueValidation": false,
+  "keptData": true,
+  "createdProjectIds": [
+    1,
+    2
+  ],
+  "cleanupFailures": [],
+  "exchanges": [
+    {
+      "sequence": 1,
+      "name": "List projects",
+      "timestampUtc": "2026-10-21T19:29:42.7195766+00:00",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8088/api/projects",
+        "headers": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": [],
+        "bodyText": "[]"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "JSON array",
+          "passed": true,
+          "details": "The project list must be a JSON array."
+        }
+      ],
+      "durationMs": 171
+    },
+    {
+      "sequence": 2,
+      "name": "Create part1 project",
+      "timestampUtc": "2026-10-21T19:29:42.9465730+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/projects",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "name": "lab01-20261021T192942693Z-all-2e4aa0e5-part1"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/projects/1",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 1,
+          "name": "lab01-20261021T192942693Z-all-2e4aa0e5-part1",
+          "createdAt": "2026-10-22T00:29:42.9683664+05:00"
+        },
+        "bodyText": "{\"id\":1,\"name\":\"lab01-20261021T192942693Z-all-2e4aa0e5-part1\",\"createdAt\":\"2026-10-21T19:29:42.9683664+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Project ID captured",
+          "passed": true,
+          "details": "A positive project ID is required."
+        },
+        {
+          "name": "Project name",
+          "passed": true,
+          "details": "The server must preserve the submitted name."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created project."
+        }
+      ],
+      "durationMs": 35
+    },
+    {
+      "sequence": 3,
+      "name": "Create task: Write Dockerfile",
+      "timestampUtc": "2026-10-21T19:29:42.9953500+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/tasks",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "projectId": 1,
+          "title": "Write Dockerfile"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/tasks/1",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 1,
+          "projectId": 1,
+          "title": "Write Dockerfile",
+          "description": null,
+          "status": "Todo",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.0105721+05:00",
+          "updatedAt": "2026-10-22T00:29:43.0105721+05:00"
+        },
+        "bodyText": "{\"id\":1,\"projectId\":1,\"title\":\"Write Dockerfile\",\"description\":null,\"status\":\"Todo\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.0105721+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.0105721+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Task ID captured",
+          "passed": true,
+          "details": "A positive task ID is required."
+        },
+        {
+          "name": "Task project",
+          "passed": true,
+          "details": "Expected project 1."
+        },
+        {
+          "name": "Initial status",
+          "passed": true,
+          "details": "A new task must be Todo."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created task."
+        }
+      ],
+      "durationMs": 25
+    },
+    {
+      "sequence": 4,
+      "name": "List project tasks",
+      "timestampUtc": "2026-10-21T19:29:43.0246463+00:00",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8088/api/tasks?projectId=1",
+        "headers": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": [
+          {
+            "id": 1,
+            "projectId": 1,
+            "title": "Write Dockerfile",
+            "description": null,
+            "status": "Todo",
+            "dueDate": null,
+            "createdAt": "2026-10-22T00:29:43.0105721+05:00",
+            "updatedAt": "2026-10-22T00:29:43.0105721+05:00"
+          }
+        ],
+        "bodyText": "[{\"id\":1,\"projectId\":1,\"title\":\"Write Dockerfile\",\"description\":null,\"status\":\"Todo\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.0105721+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.0105721+00:00\"}]"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "Only own task",
+          "passed": true,
+          "details": "A fresh project must contain the one created task."
+        }
+      ],
+      "durationMs": 17
+    },
+    {
+      "sequence": 5,
+      "name": "Todo to InProgress",
+      "timestampUtc": "2026-10-21T19:29:43.0461506+00:00",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8088/api/tasks/1/status",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "status": "InProgress"
+        }
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 1,
+          "projectId": 1,
+          "title": "Write Dockerfile",
+          "description": null,
+          "status": "InProgress",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.0105721+05:00",
+          "updatedAt": "2026-10-22T00:29:43.0625078+05:00"
+        },
+        "bodyText": "{\"id\":1,\"projectId\":1,\"title\":\"Write Dockerfile\",\"description\":null,\"status\":\"InProgress\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.0105721+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.0625078+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "InProgress status",
+          "passed": true,
+          "details": "The task must move to InProgress."
+        }
+      ],
+      "durationMs": 17
+    },
+    {
+      "sequence": 6,
+      "name": "Get created project",
+      "timestampUtc": "2026-10-21T19:29:43.0639549+00:00",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8088/api/projects/1",
+        "headers": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 1,
+          "name": "lab01-20261021T192942693Z-all-2e4aa0e5-part1",
+          "createdAt": "2026-10-22T00:29:42.9683664+05:00"
+        },
+        "bodyText": "{\"id\":1,\"name\":\"lab01-20261021T192942693Z-all-2e4aa0e5-part1\",\"createdAt\":\"2026-10-21T19:29:42.9683664+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "Requested project",
+          "passed": true,
+          "details": "The response must identify the requested project."
+        }
+      ],
+      "durationMs": 7
+    },
+    {
+      "sequence": 7,
+      "name": "Reject empty project name",
+      "timestampUtc": "2026-10-21T19:29:43.0717792+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/projects",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "name": ""
+        }
+      },
+      "expectedStatus": 400,
+      "Response": {
+        "statusCode": 400,
+        "reason": "BadRequest",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+          "title": "One or more validation errors occurred.",
+          "status": 400,
+          "errors": {
+            "Name": [
+              "The Name field is required."
+            ]
+          },
+          "traceId": "00-d03ab71baea6835fe57937ffad1eed9e-e4c6721e019df3b0-00"
+        },
+        "bodyText": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\"title\":\"One or more validation errors occurred.\",\"status\":400,\"errors\":{\"Name\":[\"The Name field is required.\"]},\"traceId\":\"00-d03ab71baea6835fe57937ffad1eed9e-e4c6721e019df3b0-00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 400, received 400."
+        },
+        {
+          "name": "Validation errors",
+          "passed": true,
+          "details": "The response must contain field validation errors."
+        }
+      ],
+      "durationMs": 15
+    },
+    {
+      "sequence": 8,
+      "name": "Reject duplicate project name",
+      "timestampUtc": "2026-10-21T19:29:43.0891527+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/projects",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "name": "lab01-20261021T192942693Z-all-2e4aa0e5-part1"
+        }
+      },
+      "expectedStatus": 409,
+      "Response": {
+        "statusCode": 409,
+        "reason": "Conflict",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.10",
+          "title": "Conflict",
+          "status": 409,
+          "detail": "Проект «lab01-20261021T192942693Z-all-2e4aa0e5-part1» уже существует",
+          "traceId": "00-3b586f6caba37b63ce435cdb61eff080-f17c0254b9bc5278-00"
+        },
+        "bodyText": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.10\",\"title\":\"Conflict\",\"status\":409,\"detail\":\"Проект «lab01-20261021T192942693Z-all-2e4aa0e5-part1» уже существует\",\"traceId\":\"00-3b586f6caba37b63ce435cdb61eff080-f17c0254b9bc5278-00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 409, received 409."
+        },
+        {
+          "name": "Conflict detail",
+          "passed": true,
+          "details": "The conflict must explain its cause in detail."
+        }
+      ],
+      "durationMs": 3
+    },
+    {
+      "sequence": 9,
+      "name": "Create task: Forbidden direct transition",
+      "timestampUtc": "2026-10-21T19:29:43.0944109+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/tasks",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "projectId": 1,
+          "title": "Forbidden direct transition"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/tasks/2",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 2,
+          "projectId": 1,
+          "title": "Forbidden direct transition",
+          "description": null,
+          "status": "Todo",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.0964515+05:00",
+          "updatedAt": "2026-10-22T00:29:43.0964515+05:00"
+        },
+        "bodyText": "{\"id\":2,\"projectId\":1,\"title\":\"Forbidden direct transition\",\"description\":null,\"status\":\"Todo\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.0964515+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.0964515+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Task ID captured",
+          "passed": true,
+          "details": "A positive task ID is required."
+        },
+        {
+          "name": "Task project",
+          "passed": true,
+          "details": "Expected project 1."
+        },
+        {
+          "name": "Initial status",
+          "passed": true,
+          "details": "A new task must be Todo."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created task."
+        }
+      ],
+      "durationMs": 5
+    },
+    {
+      "sequence": 10,
+      "name": "Reject Todo to Done",
+      "timestampUtc": "2026-10-21T19:29:43.1001708+00:00",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8088/api/tasks/2/status",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "status": "Done"
+        }
+      },
+      "expectedStatus": 409,
+      "Response": {
+        "statusCode": 409,
+        "reason": "Conflict",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.10",
+          "title": "Conflict",
+          "status": 409,
+          "detail": "Нельзя перевести задачу 2 из Todo в Done",
+          "traceId": "00-8741f64596dc15798ddda9bc4b44c717-eb26b2af54dda533-00"
+        },
+        "bodyText": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.10\",\"title\":\"Conflict\",\"status\":409,\"detail\":\"Нельзя перевести задачу 2 из Todo в Done\",\"traceId\":\"00-8741f64596dc15798ddda9bc4b44c717-eb26b2af54dda533-00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 409, received 409."
+        },
+        {
+          "name": "Transition detail",
+          "passed": true,
+          "details": "The response must explain the forbidden transition."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "sequence": 11,
+      "name": "Missing task",
+      "timestampUtc": "2026-10-21T19:29:43.1036283+00:00",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8088/api/tasks/2147483647",
+        "headers": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "expectedStatus": 404,
+      "Response": {
+        "statusCode": 404,
+        "reason": "NotFound",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+          "title": "Not Found",
+          "status": 404,
+          "traceId": "00-016c1ab7e1db00392c4ba77944926dfc-570225e5646b19a1-00"
+        },
+        "bodyText": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.5\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-016c1ab7e1db00392c4ba77944926dfc-570225e5646b19a1-00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 404, received 404."
+        }
+      ],
+      "durationMs": 6
+    },
+    {
+      "sequence": 12,
+      "name": "Update task",
+      "timestampUtc": "2026-10-21T19:29:43.1152788+00:00",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8088/api/tasks/1",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "description": "Lab 1 replay",
+          "dueDate": "2026-10-28",
+          "title": "Dockerfile prepared"
+        }
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 1,
+          "projectId": 1,
+          "title": "Dockerfile prepared",
+          "description": "Lab 1 replay",
+          "status": "InProgress",
+          "dueDate": "2026-10-28",
+          "createdAt": "2026-10-22T00:29:43.0105721+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1244922+05:00"
+        },
+        "bodyText": "{\"id\":1,\"projectId\":1,\"title\":\"Dockerfile prepared\",\"description\":\"Lab 1 replay\",\"status\":\"InProgress\",\"dueDate\":\"2026-10-28\",\"createdAt\":\"2026-10-21T19:29:43.0105721+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1244922+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "Updated title",
+          "passed": true,
+          "details": "The update must be visible in the response."
+        }
+      ],
+      "durationMs": 10
+    },
+    {
+      "sequence": 13,
+      "name": "InProgress to Done",
+      "timestampUtc": "2026-10-21T19:29:43.1270615+00:00",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8088/api/tasks/1/status",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "status": "Done"
+        }
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 1,
+          "projectId": 1,
+          "title": "Dockerfile prepared",
+          "description": "Lab 1 replay",
+          "status": "Done",
+          "dueDate": "2026-10-28",
+          "createdAt": "2026-10-22T00:29:43.0105721+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1291659+05:00"
+        },
+        "bodyText": "{\"id\":1,\"projectId\":1,\"title\":\"Dockerfile prepared\",\"description\":\"Lab 1 replay\",\"status\":\"Done\",\"dueDate\":\"2026-10-28\",\"createdAt\":\"2026-10-21T19:29:43.0105721+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1291659+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "Done status",
+          "passed": true,
+          "details": "The allowed transition must finish the task."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "sequence": 14,
+      "name": "Create stats project",
+      "timestampUtc": "2026-10-21T19:29:43.1305455+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/projects",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "name": "lab01-20261021T192942693Z-all-2e4aa0e5-stats"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/projects/2",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 2,
+          "name": "lab01-20261021T192942693Z-all-2e4aa0e5-stats",
+          "createdAt": "2026-10-22T00:29:43.1321427+05:00"
+        },
+        "bodyText": "{\"id\":2,\"name\":\"lab01-20261021T192942693Z-all-2e4aa0e5-stats\",\"createdAt\":\"2026-10-21T19:29:43.1321427+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Project ID captured",
+          "passed": true,
+          "details": "A positive project ID is required."
+        },
+        {
+          "name": "Project name",
+          "passed": true,
+          "details": "The server must preserve the submitted name."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created project."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "sequence": 15,
+      "name": "Create task: Todo without a due date",
+      "timestampUtc": "2026-10-21T19:29:43.1336075+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/tasks",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "projectId": 2,
+          "title": "Todo without a due date"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/tasks/3",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 3,
+          "projectId": 2,
+          "title": "Todo without a due date",
+          "description": null,
+          "status": "Todo",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.1351206+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1351206+05:00"
+        },
+        "bodyText": "{\"id\":3,\"projectId\":2,\"title\":\"Todo without a due date\",\"description\":null,\"status\":\"Todo\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.1351206+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1351206+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Task ID captured",
+          "passed": true,
+          "details": "A positive task ID is required."
+        },
+        {
+          "name": "Task project",
+          "passed": true,
+          "details": "Expected project 2."
+        },
+        {
+          "name": "Initial status",
+          "passed": true,
+          "details": "A new task must be Todo."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created task."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "sequence": 16,
+      "name": "Create task: Task in progress",
+      "timestampUtc": "2026-10-21T19:29:43.1365852+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/tasks",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "projectId": 2,
+          "title": "Task in progress"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/tasks/4",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 4,
+          "projectId": 2,
+          "title": "Task in progress",
+          "description": null,
+          "status": "Todo",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.1380667+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1380667+05:00"
+        },
+        "bodyText": "{\"id\":4,\"projectId\":2,\"title\":\"Task in progress\",\"description\":null,\"status\":\"Todo\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.1380667+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1380667+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Task ID captured",
+          "passed": true,
+          "details": "A positive task ID is required."
+        },
+        {
+          "name": "Task project",
+          "passed": true,
+          "details": "Expected project 2."
+        },
+        {
+          "name": "Initial status",
+          "passed": true,
+          "details": "A new task must be Todo."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created task."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "sequence": 17,
+      "name": "Prepare statistics InProgress task",
+      "timestampUtc": "2026-10-21T19:29:43.1392340+00:00",
+      "request": {
+        "method": "PATCH",
+        "url": "http://localhost:8088/api/tasks/4/status",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "status": "InProgress"
+        }
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 4,
+          "projectId": 2,
+          "title": "Task in progress",
+          "description": null,
+          "status": "InProgress",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.1380667+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1404822+05:00"
+        },
+        "bodyText": "{\"id\":4,\"projectId\":2,\"title\":\"Task in progress\",\"description\":null,\"status\":\"InProgress\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.1380667+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1404822+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        }
+      ],
+      "durationMs": 1
+    },
+    {
+      "sequence": 18,
+      "name": "Create task: Overdue Todo task",
+      "timestampUtc": "2026-10-21T19:29:43.1414045+00:00",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8088/api/tasks",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "projectId": 2,
+          "title": "Overdue Todo task"
+        }
+      },
+      "expectedStatus": 201,
+      "Response": {
+        "statusCode": 201,
+        "reason": "Created",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Location": "http://localhost:8088/api/tasks/5",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 5,
+          "projectId": 2,
+          "title": "Overdue Todo task",
+          "description": null,
+          "status": "Todo",
+          "dueDate": null,
+          "createdAt": "2026-10-22T00:29:43.1426246+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1426246+05:00"
+        },
+        "bodyText": "{\"id\":5,\"projectId\":2,\"title\":\"Overdue Todo task\",\"description\":null,\"status\":\"Todo\",\"dueDate\":null,\"createdAt\":\"2026-10-21T19:29:43.1426246+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1426246+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 201, received 201."
+        },
+        {
+          "name": "Task ID captured",
+          "passed": true,
+          "details": "A positive task ID is required."
+        },
+        {
+          "name": "Task project",
+          "passed": true,
+          "details": "Expected project 2."
+        },
+        {
+          "name": "Initial status",
+          "passed": true,
+          "details": "A new task must be Todo."
+        },
+        {
+          "name": "Location",
+          "passed": true,
+          "details": "Location must identify the created task."
+        }
+      ],
+      "durationMs": 1
+    },
+    {
+      "sequence": 19,
+      "name": "Prepare overdue task",
+      "timestampUtc": "2026-10-21T19:29:43.1438033+00:00",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8088/api/tasks/5",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Accept": "application/json"
+        },
+        "body": {
+          "description": "UTC date minus two days",
+          "dueDate": "2026-10-19",
+          "title": "Overdue Todo task"
+        }
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "id": 5,
+          "projectId": 2,
+          "title": "Overdue Todo task",
+          "description": "UTC date minus two days",
+          "status": "Todo",
+          "dueDate": "2026-10-19",
+          "createdAt": "2026-10-22T00:29:43.1426246+05:00",
+          "updatedAt": "2026-10-22T00:29:43.1455455+05:00"
+        },
+        "bodyText": "{\"id\":5,\"projectId\":2,\"title\":\"Overdue Todo task\",\"description\":\"UTC date minus two days\",\"status\":\"Todo\",\"dueDate\":\"2026-10-19\",\"createdAt\":\"2026-10-21T19:29:43.1426246+00:00\",\"updatedAt\":\"2026-10-21T19:29:43.1455455+00:00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "sequence": 20,
+      "name": "Project statistics",
+      "timestampUtc": "2026-10-21T19:29:43.1463273+00:00",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8088/api/projects/2/stats",
+        "headers": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "expectedStatus": 200,
+      "Response": {
+        "statusCode": 200,
+        "reason": "OK",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "projectId": 2,
+          "total": 3,
+          "todo": 2,
+          "inProgress": 1,
+          "done": 0,
+          "overdue": 1
+        },
+        "bodyText": "{\"projectId\":2,\"total\":3,\"todo\":2,\"inProgress\":1,\"done\":0,\"overdue\":1}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 200, received 200."
+        },
+        {
+          "name": "Statistics: projectId",
+          "passed": true,
+          "details": "Expected 2, received 2."
+        },
+        {
+          "name": "Statistics: total",
+          "passed": true,
+          "details": "Expected 3, received 3."
+        },
+        {
+          "name": "Statistics: todo",
+          "passed": true,
+          "details": "Expected 2, received 2."
+        },
+        {
+          "name": "Statistics: inProgress",
+          "passed": true,
+          "details": "Expected 1, received 1."
+        },
+        {
+          "name": "Statistics: done",
+          "passed": true,
+          "details": "Expected 0, received 0."
+        },
+        {
+          "name": "Statistics: overdue",
+          "passed": true,
+          "details": "Expected 1, received 1."
+        }
+      ],
+      "durationMs": 8
+    },
+    {
+      "sequence": 21,
+      "name": "Statistics of missing project",
+      "timestampUtc": "2026-10-21T19:29:43.1595111+00:00",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8088/api/projects/2147483647/stats",
+        "headers": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "expectedStatus": 404,
+      "Response": {
+        "statusCode": 404,
+        "reason": "NotFound",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Wed, 21 Oct 2026 19:29:42 GMT",
+          "Server": "Kestrel"
+        },
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+          "title": "Not Found",
+          "status": 404,
+          "traceId": "00-00a949887b3ff9c07c07f35cfe5e98e2-81b9591e203624e0-00"
+        },
+        "bodyText": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.5\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-00a949887b3ff9c07c07f35cfe5e98e2-81b9591e203624e0-00\"}"
+      },
+      "transportError": null,
+      "assertions": [
+        {
+          "name": "HTTP status",
+          "passed": true,
+          "details": "Expected 404, received 404."
+        }
+      ],
+      "durationMs": 2
+    }
+  ]
+}
