@@ -1,0 +1,7 @@
+ Container devops-labs-db-1 Running
+ Container devops-labs-adminer-1 Creating
+ Container devops-labs-adminer-1 Created
+ Container devops-labs-db-1 Waiting
+ Container devops-labs-db-1 Healthy
+ Container devops-labs-adminer-1 Starting
+ Container devops-labs-adminer-1 Started

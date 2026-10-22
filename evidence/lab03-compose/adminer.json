@@ -1,0 +1,13 @@
+{
+  "versionObservedInUI": "6.1.2",
+  "image": "adminer:latest",
+  "digest": [
+    "adminer@sha256:4e3a6514c26c625de2020c549d1eb24ddd2515f18311aa4bf32c823713c2f6fe"
+  ],
+  "driver": "PostgreSQL",
+  "server": "db",
+  "database": "demo",
+  "projectsRowsObserved": 5,
+  "tasksRowsObserved": 9,
+  "note": "Includes 3 projects and 5 tasks left by the Postman collection after the lifecycle experiment."
+}

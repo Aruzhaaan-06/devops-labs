@@ -1,0 +1,25 @@
+{
+  "/health/live": {
+    "url": "http://localhost:8088/health/live",
+    "method": "GET",
+    "status": 200,
+    "body": "Healthy"
+  },
+  "/health/ready": {
+    "url": "http://localhost:8088/health/ready",
+    "method": "GET",
+    "status": 503,
+    "body": "Unhealthy"
+  },
+  "/api/tasks": {
+    "url": "http://localhost:8088/api/tasks",
+    "method": "GET",
+    "status": 500,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+      "title": "An error occurred while processing your request.",
+      "status": 500,
+      "traceId": "00-eb16722aaae28c0c45f3c552c1a157b8-575b276f7418c161-00"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+ Container devops-labs-db-1 Stopping
+ Container devops-labs-db-1 Stopped

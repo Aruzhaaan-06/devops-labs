@@ -1,0 +1,11 @@
+{
+  "report": "reports/lab03-compose-report.pdf",
+  "pages": 7,
+  "bytes": 390844,
+  "sha256": "b91626f4520c4fe47ef96359f703ecd9a767614c986d8382f440cd6a10f43a24",
+  "visualReview": "All 7 rendered pages inspected; no clipped text or orphan pages.",
+  "technicalChecksPassed": 14,
+  "pending": [
+    "Visual Studio console screenshot and Test Explorer screenshot from cumulative lab 3 checklist"
+  ]
+}

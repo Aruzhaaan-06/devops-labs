@@ -1,0 +1,42 @@
+{
+  "name": "devops-labs",
+  "memoryBytes": 268435456,
+  "memorySwapBytes": 268435456,
+  "nanoCpus": 1000000000,
+  "restartPolicy": {
+    "Name": "unless-stopped",
+    "MaximumRetryCount": 0
+  },
+  "logging": {
+    "Type": "json-file",
+    "Config": {
+      "max-file": "3",
+      "max-size": "10m"
+    }
+  },
+  "user": "1654",
+  "apiHealthcheck": {
+    "Test": [
+      "CMD-SHELL",
+      "curl -fsS http://localhost:8080/health/live || exit 1"
+    ],
+    "Interval": 10000000000,
+    "Timeout": 3000000000,
+    "StartPeriod": 15000000000,
+    "Retries": 3
+  },
+  "dependsOn": {
+    "db": {
+      "condition": "service_healthy",
+      "required": true
+    }
+  },
+  "publishedApiPorts": {
+    "8080/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "8088"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "Service": "adminer",
+    "State": "running",
+    "Health": "",
+    "Image": "adminer:latest",
+    "Ports": "127.0.0.1:8083->8080/tcp"
+  },
+  {
+    "Service": "api",
+    "State": "running",
+    "Health": "healthy",
+    "Image": "devops-labs-demo-api:lab03-compose",
+    "Ports": "127.0.0.1:8088->8080/tcp"
+  },
+  {
+    "Service": "db",
+    "State": "running",
+    "Health": "healthy",
+    "Image": "postgres:18-alpine",
+    "Ports": "127.0.0.1:15432->5432/tcp"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "url": "http://localhost:8088/api/projects",
+  "method": "GET",
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "name": "Курс DevOps",
+      "createdAt": "2026-10-22T13:40:35.382145+00:00"
+    },
+    {
+      "id": 2,
+      "name": "Домашние дела",
+      "createdAt": "2026-10-22T13:40:35.382145+00:00"
+    },
+    {
+      "id": 3,
+      "name": "Compose",
+      "createdAt": "2026-10-22T13:42:30.798995+00:00"
+    }
+  ]
+}

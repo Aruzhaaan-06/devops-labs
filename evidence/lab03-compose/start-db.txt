@@ -1,0 +1,2 @@
+ Container devops-labs-db-1 Starting
+ Container devops-labs-db-1 Started

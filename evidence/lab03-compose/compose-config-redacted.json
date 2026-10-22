@@ -1,0 +1,122 @@
+{
+  "name": "devops-labs",
+  "networks": {
+    "default": {
+      "name": "devops-labs_default",
+      "ipam": {
+        "config": [
+          {
+            "subnet": "10.254.54.0/24"
+          }
+        ]
+      }
+    }
+  },
+  "services": {
+    "api": {
+      "build": {
+        "context": "[REPO]",
+        "dockerfile": "Dockerfile",
+        "args": {
+          "APP_VERSION": "lab03-compose"
+        }
+      },
+      "command": null,
+      "depends_on": {
+        "db": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "deploy": {
+        "resources": {
+          "limits": {
+            "cpus": 1,
+            "memory": "268435456"
+          }
+        },
+        "placement": {}
+      },
+      "entrypoint": null,
+      "environment": {
+        "Chaos__Enabled": "true",
+        "ConnectionStrings__Db": "Host=db;Database=demo;Username=demo;Password=[REDACTED]",
+        "Storage": "Postgres"
+      },
+      "image": "devops-labs-demo-api:lab03-compose",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-file": "3",
+          "max-size": "10m"
+        }
+      },
+      "memswap_limit": "268435456",
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 8080,
+          "published": "8088",
+          "protocol": "tcp"
+        }
+      ],
+      "restart": "unless-stopped"
+    },
+    "db": {
+      "command": null,
+      "entrypoint": null,
+      "environment": {
+        "POSTGRES_DB": "demo",
+        "POSTGRES_PASSWORD": "[REDACTED]",
+        "POSTGRES_USER": "demo"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U demo -d demo"
+        ],
+        "timeout": "3s",
+        "interval": "5s",
+        "retries": 10
+      },
+      "image": "postgres:18-alpine",
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 5432,
+          "published": "15432",
+          "protocol": "tcp"
+        }
+      ],
+      "restart": "unless-stopped",
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "pgdata",
+          "target": "/var/lib/postgresql",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "[REPO]\\db",
+          "target": "/docker-entrypoint-initdb.d",
+          "read_only": true,
+          "bind": {}
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "pgdata": {
+      "name": "devops-labs_pgdata"
+    }
+  }
+}

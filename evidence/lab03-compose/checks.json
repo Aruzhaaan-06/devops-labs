@@ -1,0 +1,78 @@
+{
+  "startedAtUtc": "2026-10-22T13:42:30.592595+00:00",
+  "passed": true,
+  "assertions": [
+    {
+      "name": "Бэкап и восстановление",
+      "passed": true,
+      "detail": "pg_dump -Fc восстановлен в demo_restore; все 3 проекта на месте"
+    },
+    {
+      "name": "Обычный down",
+      "passed": true,
+      "detail": "Контейнеры и сеть пересозданы; том сохранил все 3 проекта"
+    },
+    {
+      "name": "down -v",
+      "passed": true,
+      "detail": "Новый том: seed.sql снова создал 2 проекта, пользовательский Compose исчез"
+    },
+    {
+      "name": "Коды при остановленной БД",
+      "passed": true,
+      "detail": "live=200, ready=503, /api/tasks=500"
+    },
+    {
+      "name": "Liveness при отказе БД",
+      "passed": true,
+      "detail": "Новая проверка /health/live после остановки БД успешна; API остается healthy"
+    },
+    {
+      "name": "Восстановление БД",
+      "passed": true,
+      "detail": "Запросы снова дают 200 без перезапуска API; depends_on не наблюдает за БД постоянно"
+    },
+    {
+      "name": "Ресурсы и ротация",
+      "passed": true,
+      "detail": "1 CPU, 256 МиБ RAM без дополнительного swap, json-file 10m × 3"
+    },
+    {
+      "name": "Разработка с БД Compose",
+      "passed": true,
+      "detail": "API Windows на том же порту 8088 работает с Compose PostgreSQL через 15432"
+    },
+    {
+      "name": "Обязательные тесты",
+      "passed": true,
+      "detail": "24/24 на PostgreSQL, 4 дополнительных случая исключены фильтром"
+    },
+    {
+      "name": "Полный набор тестов",
+      "passed": true,
+      "detail": "28/28 на PostgreSQL; 0 failed и skipped"
+    },
+    {
+      "name": "HTTP-сценарии",
+      "passed": true,
+      "detail": "26 успешных запросов, включая 3 удаления тестовых проектов"
+    },
+    {
+      "name": "Postman CLI",
+      "passed": true,
+      "detail": "24 запроса, 73 проверки, 0 ошибок"
+    },
+    {
+      "name": "Adminer",
+      "passed": true,
+      "detail": "Вход в PostgreSQL db/demo; таблицы projects и tasks просмотрены в UI; сохранены 2 снимка"
+    },
+    {
+      "name": "Секреты Git",
+      "passed": true,
+      "detail": ".env найден в .gitignore и не отслеживается; опубликованный config обезличен"
+    }
+  ],
+  "httpRunId": "20261022T134617368Z-all-d2305b12",
+  "desktopEvidence": "Windows API verified via dotnet. Visual Studio F5 and Test Explorer screenshots remain outstanding from the cumulative lab checklist."
+}

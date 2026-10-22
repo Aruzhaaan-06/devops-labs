@@ -14,6 +14,7 @@
 | Лабораторная 1, часть 2 | Статистика проекта, тесты, ответы по коду; дополнительно — проверка срока новой задачи | [PDF · 12 страниц](reports/lab01-part2-report.pdf) |
 | Лабораторная 2, часть 1 · материал 03 | Multi-stage Dockerfile, кэш restore и проверка Linux-контейнера; нужен скриншот WSL 2 | [PDF · 6 страниц](reports/lab02-part1-report.pdf) |
 | Лабораторная 3, части 1–2 · материал 05 | PostgreSQL, сохранение данных, две ошибки подключения и SQL-тесты; нужны скриншоты консоли Visual Studio и Test Explorer | [PDF · 7 страниц](reports/lab03-postgres-report.pdf) |
+| Лабораторная 3, часть 3 · материал 06 | Docker Compose, 3 → 3 → 2, отказ БД, Windows-разработка и Adminer | [PDF · 7 страниц](reports/lab03-compose-report.pdf) |
 
 Код и проверки первой лабораторной подготовлены. Для полного комплекта сдачи остаются скриншоты коллекции Postman и Test Explorer, а также ручная пошаговая отладка с Locals и Call Stack. Подробности — в [чек-листе сдачи](docs/lab01.md#что-приложить-к-двум-отчётам). SQL-реализация проверена на настоящей PostgreSQL в [лабораторной 3](docs/lab03-postgres.md).
 
@@ -49,6 +50,8 @@ dotnet run --project src/DemoApi/DemoApi.csproj --launch-profile http
 Запуск в Docker и результаты лабораторной 2: [инструкции](docs/lab02.md), [сборки и проверки контейнера](evidence/lab02/README.md).
 
 PostgreSQL, сохраненный том и команды повторного запуска: [лабораторная 3](docs/lab03-postgres.md), [результаты SQL-проверок](evidence/lab03/README.md). Пароль хранится только в игнорируемом `.env`; [.env.example](.env.example) содержит пустой шаблон.
+
+Весь стек через Docker Compose: [команды и ответы материала 06](docs/lab03-compose.md), [14 технических проверок и Adminer](evidence/lab03-compose/README.md). При первом запуске скопируйте `.env.example` в `.env`, задайте DB_PASSWORD и выполните `docker compose up -d --build --wait`. API: localhost:8088; PostgreSQL: localhost:15432. Adminer включается профилем `tools` на localhost:8083. Обычный запуск сохраняет именованный том.
 
 Остановите отладку приложения перед пересборкой, затем из корня репозитория:
 
@@ -90,6 +93,6 @@ pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -I
 | `postman`, `scripts` | Коллекция запросов и повторяемая HTTP-проверка |
 | `docs` | Навигация по работам и пояснения |
 | `reports` | PDF-отчеты и архив исходников для сдачи |
-| `evidence/lab01`, `evidence/lab02`, `evidence/lab03` | Сохраненные результаты проверок и скриншоты |
+| `evidence/lab01`, `evidence/lab02`, `evidence/lab03`, `evidence/lab03-compose` | Сохраненные результаты проверок и скриншоты |
 
-Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL в контейнере, том и общая сеть проверены. Compose, CI/CD и инфраструктура мониторинга относятся к следующим работам и пока не настроены.
+Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. CI/CD и инфраструктура мониторинга относятся к следующим работам и пока не настроены.

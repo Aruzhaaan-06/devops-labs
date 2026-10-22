@@ -1,0 +1,25 @@
+{
+  "finishedAtUtc": "2026-10-22T13:56:11.921332+00:00",
+  "adminerLoggedOut": true,
+  "services": [
+    {
+      "Service": "adminer",
+      "State": "exited",
+      "Image": "adminer:latest"
+    },
+    {
+      "Service": "api",
+      "State": "exited",
+      "Image": "devops-labs-demo-api:lab03-compose"
+    },
+    {
+      "Service": "db",
+      "State": "exited",
+      "Image": "postgres:18-alpine"
+    }
+  ],
+  "retainedVolumes": [
+    "devops-labs_pgdata",
+    "devops-labs-lab03-pgdata"
+  ]
+}

@@ -1,0 +1,10 @@
+  Определение проектов для восстановления...
+  Все проекты обновлены для восстановления.
+  DemoApi -> [REPO]\src\DemoApi\bin\Release\net10.0\DemoApi.dll
+  DemoApi.Tests -> [REPO]\tests\DemoApi.Tests\bin\Release\net10.0\DemoApi.Tests.dll
+
+Сборка успешно завершена.
+    Предупреждений: 0
+    Ошибок: 0
+
+Прошло времени 00:00:09.34

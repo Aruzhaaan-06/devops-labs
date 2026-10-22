@@ -1,0 +1,2 @@
+ Container devops-labs-api-1 Stopping
+ Container devops-labs-api-1 Stopped

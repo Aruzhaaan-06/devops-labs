@@ -1,0 +1,5 @@
+Тестовый запуск для [REPO]\tests\DemoApi.Tests\bin\Release\net10.0\DemoApi.Tests.dll (.NETCoreApp,Version=v10.0)
+Общее количество тестовых файлов (1), соответствующих указанному шаблону.
+Файл результатов: [REPO]\evidence\lab03-compose\full-28\full-28.trx
+
+Пройден!   : не пройдено     0, пройдено    28, пропущено     0, всего    28, длительность 1 s. - DemoApi.Tests.dll (net10.0)
