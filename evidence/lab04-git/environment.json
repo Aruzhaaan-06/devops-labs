@@ -1,0 +1,9 @@
+{
+  "git": "git version 2.54.0.windows.1",
+  "powershell": "7.6.5",
+  "dotnetSdk": "10.0.401",
+  "kitGitHubDirectoryExists": true,
+  "repository": "https://github.com/Aruzhaaan-06/devops-labs",
+  "visibility": "public",
+  "capturedAtUtc": "2026-10-22T14:25:12.607066+00:00"
+}

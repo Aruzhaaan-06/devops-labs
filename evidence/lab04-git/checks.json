@@ -1,0 +1,64 @@
+{
+  "technicalChecksPassed": 13,
+  "assertions": [
+    {
+      "name": "Публичный репозиторий",
+      "passed": true
+    },
+    {
+      "name": "Игнорирование секретов и результатов сборки",
+      "passed": true
+    },
+    {
+      "name": "Активный main ruleset без bypass",
+      "passed": true
+    },
+    {
+      "name": "Один Approve, запрет удаления и force-push",
+      "passed": true
+    },
+    {
+      "name": "Прямой push отклонен GH013",
+      "passed": true
+    },
+    {
+      "name": "Одобрение workflow всех внешних участников",
+      "passed": true
+    },
+    {
+      "name": "Второй аккаунт имеет write",
+      "passed": true
+    },
+    {
+      "name": "Три issue и доска Board",
+      "passed": true
+    },
+    {
+      "name": "README: комментарий, отдельное исправление, Approve и squash",
+      "passed": true
+    },
+    {
+      "name": "Issue #1 закрыт, Item closed перевел в Done при повторной проверке",
+      "passed": true
+    },
+    {
+      "name": "Настоящий конфликт README",
+      "passed": true
+    },
+    {
+      "name": "Коммит разрешения с двумя родителями сохранен в main",
+      "passed": true
+    },
+    {
+      "name": "Сборка: 0 ошибок и предупреждений",
+      "passed": true
+    }
+  ],
+  "formalCompletion": false,
+  "limitations": [
+    "Оба аккаунта принадлежат одному владельцу; работа с одногруппником и этап в отдельном репозитории B не подтверждены.",
+    "Преподаватель не приглашен: GitHub-ник пока не предоставлен.",
+    "Отклоненный push сохранен точным текстом; отдельного снимка окна терминала нет.",
+    "Visual Studio F5 в этой работе не проверялся."
+  ]
+}

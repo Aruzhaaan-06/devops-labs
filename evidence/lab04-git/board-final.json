@@ -1,0 +1,27 @@
+{
+  "url": "https://github.com/users/Aruzhaaan-06/projects/1",
+  "title": "DevOps Labs — лабораторная 4",
+  "visibility": "public",
+  "layout": "Board",
+  "items": [
+    {
+      "issue": 1,
+      "state": "closed",
+      "status": "Done"
+    },
+    {
+      "issue": 2,
+      "state": "open",
+      "status": "Todo"
+    },
+    {
+      "issue": 3,
+      "state": "open",
+      "status": "Todo"
+    }
+  ],
+  "itemClosedWorkflowEnabled": true,
+  "doneVerifiedInBrowser": true,
+  "statusWasNotEditedManually": true,
+  "workflowRecheck": "After squash merge issue #1 closed automatically but remained In Progress. Reopening and closing it triggered Done; exact root cause of the initial status delay is not established."
+}

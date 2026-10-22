@@ -1,0 +1,9 @@
+{
+  "number": 4,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/4",
+  "state": "open",
+  "title": "docs: инструкции Compose и разработки в Visual Studio",
+  "body": "README теперь описывает запуск API и PostgreSQL через Docker Compose, локальный .env, разработку с F5 в Visual Studio и возврат к InMemory. Добавлен UserSecretsId, чтобы пароль для Visual Studio сохранялся вне репозитория.\r\n\r\nПроверка: dotnet build DemoApi.slnx --no-restore --nologo — успешно, 0 предупреждений и 0 ошибок. Код маршрутов и бизнес-логика не изменялись. Инструкция F5 подготовлена; запуск через F5 в этом PR не заявляется проверенным.\r\n\r\nДля лабораторной 4 нужен комментарий второго аккаунта к строке, исправление отдельным коммитом и Approve перед Squash and merge. Участник сценария — temirkhanerbolatovich-coder, второй аккаунт владельца; это не подтверждение работы с одногруппником.\r\n\r\nCloses #1\r\n",
+  "created_at": "2026-10-22T14:12:15Z",
+  "snapshot": "Initial creation before review; final state is pr-4-final.json"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "number": 1,
+    "title": "docs: README с инструкцией запуска",
+    "state": "open",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/1",
+    "node_id": "I_kwDOVSp68c8AAAABZH32YA"
+  },
+  {
+    "number": 2,
+    "title": "chore: шаблон Pull Request и Dependabot",
+    "state": "open",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/2",
+    "node_id": "I_kwDOVSp68c8AAAABZH33-w"
+  },
+  {
+    "number": 3,
+    "title": "feat: переименование проекта",
+    "state": "open",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/3",
+    "node_id": "I_kwDOVSp68c8AAAABZH35Uw"
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/4#discussion_r4349438594",
+    "body": "Предупреждение о сохранении существующего .env есть ниже, но эта команда при копировании блока перезапишет файл. Добавь Test-Path перед Copy-Item, чтобы повторный запуск инструкции сохранял текущий пароль БД.",
+    "path": "README.md",
+    "line": null,
+    "original_line": 53,
+    "commit_id": "e1742a01b56d3d58a53180a154e5a33402f4ee82",
+    "created_at": "2026-10-22T14:16:32Z"
+  }
+]

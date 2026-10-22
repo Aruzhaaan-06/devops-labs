@@ -1,0 +1,7 @@
+{
+  "reason": "Issue closed automatically after squash merge, but board remained In Progress after reload. Reopened and closed the same issue to verify Item closed workflow; no manual Status edit.",
+  "before": "closed",
+  "reopened": "open",
+  "closed": "closed",
+  "closedAt": "2026-10-22T14:22:50Z"
+}

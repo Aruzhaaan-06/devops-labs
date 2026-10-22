@@ -1,0 +1,8 @@
+{
+  "command": "dotnet build DemoApi.slnx --no-restore --nologo",
+  "exitCode": 0,
+  "warnings": 0,
+  "errors": 0,
+  "change": "README instructions and non-secret UserSecretsId for local development configuration",
+  "dotenvCommandPreservesExistingFile": true
+}
