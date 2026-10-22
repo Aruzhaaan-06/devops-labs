@@ -5,6 +5,8 @@
 
 # dotenv files
 .env
+.env.*
+!.env.example
 
 # Test runner metadata contains local machine and user paths; publish summaries instead.
 evidence/**/*.trx

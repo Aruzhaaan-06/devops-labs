@@ -1,0 +1,95 @@
+{
+  "startedAtUtc": "2026-10-22T00:51:15.785660+00:00",
+  "passed": true,
+  "assertions": [
+    {
+      "name": "БД без именованного тома",
+      "passed": true,
+      "detail": "После пересоздания SELECT notes завершился ошибкой: таблицы нет"
+    },
+    {
+      "name": "Учебные данные seed.sql",
+      "passed": true,
+      "detail": "При первом старте выполнен seed.sql: 2 проекта, 4 задачи"
+    },
+    {
+      "name": "Именованный том после пересоздания",
+      "passed": true,
+      "detail": "Новый контейнер видит все 5 задач, включая добавленную вручную"
+    },
+    {
+      "name": "Повторная инициализация",
+      "passed": true,
+      "detail": "Непустой PGDATA: Skipping initialization; seed.sql повторно не выполнялся"
+    },
+    {
+      "name": "Сервис Windows → PostgreSQL",
+      "passed": true,
+      "detail": "Проект с Windows сохранился после завершения и повторного запуска процесса API"
+    },
+    {
+      "name": "Фактический режим хранилища",
+      "passed": true,
+      "detail": "В журнале нового процесса: Хранилище: PostgreSQL"
+    },
+    {
+      "name": "Ошибка: missing",
+      "passed": true,
+      "detail": "Ожидаемое падение: Не задана строка подключения ConnectionStrings:Db"
+    },
+    {
+      "name": "Ошибка: localhost",
+      "passed": true,
+      "detail": "Ожидаемое падение: Failed to connect"
+    },
+    {
+      "name": "Общая Docker-сеть",
+      "passed": true,
+      "detail": "API healthy; PostgreSQL доступен по DNS-имени контейнера"
+    },
+    {
+      "name": "Общие данные Windows и контейнера",
+      "passed": true,
+      "detail": "Контейнер API видит проект, созданный сервисом Windows"
+    },
+    {
+      "name": "Перезапуск API-контейнера",
+      "passed": true,
+      "detail": "Проект из контейнера сохранился после docker stop/start"
+    },
+    {
+      "name": "Обязательные тесты PostgreSQL",
+      "passed": true,
+      "detail": "24/24, включая два теста статистики; четыре дополнительных случая исключены фильтром"
+    },
+    {
+      "name": "Полный набор PostgreSQL",
+      "passed": true,
+      "detail": "28/28, 0 failed и skipped; отдельная база demo_tests"
+    },
+    {
+      "name": "HTTP-сценарии PostgreSQL",
+      "passed": true,
+      "detail": "26 запросов: 23 сценария и 3 удаления тестовых проектов"
+    },
+    {
+      "name": "Postman на PostgreSQL",
+      "passed": true,
+      "detail": "24 запроса, 73 проверки, 0 ошибок; exit code 0"
+    }
+  ],
+  "hostConsoleEncoding": "CP866 decoded to UTF-8; content and storage marker verified from original console bytes.",
+  "httpRunId": "20261022T005458521Z-all-3eba0a05",
+  "desktopEvidence": {
+    "swaggerScreenshot": "screenshots/swagger-postgres-projects.jpg",
+    "visualStudioConsoleScreenshot": false,
+    "testExplorerScreenshot": false,
+    "hostExecution": "Actual Windows dotnet process; Visual Studio F5 interaction was not verified."
+  },
+  "finalState": {
+    "hostApiStopped": true,
+    "apiContainerStopped": true,
+    "databaseContainerStopped": true,
+    "namedVolumeRetained": "devops-labs-lab03-pgdata"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "query": "SELECT p.name, t.title, t.status FROM tasks t JOIN projects p ON p.id=t.project_id ORDER BY t.id;",
+  "exitCode": 0,
+  "output": "Курс DevOps|Установить Docker Desktop|done\nКурс DevOps|Запустить БД в контейнере|in_progress\nКурс DevOps|Написать Dockerfile|todo\nДомашние дела|Купить продукты|todo"
+}

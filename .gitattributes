@@ -1,0 +1,6 @@
+# Preserve report and image bytes across Windows/Linux checkouts.
+*.pdf binary
+*.zip binary
+*.jpg binary
+*.jpeg binary
+*.png binary

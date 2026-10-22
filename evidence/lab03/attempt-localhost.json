@@ -1,0 +1,8 @@
+{
+  "running": false,
+  "exitCode": 139,
+  "errorLines": [
+    "Unhandled exception. Npgsql.NpgsqlException (0x80004005): Failed to connect to 127.0.0.1:5432",
+    " ---> System.Net.Sockets.SocketException (111): Connection refused"
+  ]
+}

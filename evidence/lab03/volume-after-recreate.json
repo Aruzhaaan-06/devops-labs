@@ -1,0 +1,9 @@
+{
+  "firstContainerId": "a296326bcb94c07f7169fc9c0ddad4242aafe725da0aa502f6e28c9b070c0578",
+  "secondContainerId": "eb592a6c3c348d7f9ac8fd384a980d49bc51b17981445e3e3dd9cea4828afd9d",
+  "rows": {
+    "query": "SELECT id,title FROM tasks ORDER BY id;",
+    "exitCode": 0,
+    "output": "1|Установить Docker Desktop\n2|Запустить БД в контейнере\n3|Написать Dockerfile\n4|Купить продукты\n5|Задача из лабы 3"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "query": "INSERT INTO tasks (project_id,title) VALUES (1,'Задача из лабы 3') RETURNING id,title;",
+  "exitCode": 0,
+  "output": "5|Задача из лабы 3\nINSERT 0 1"
+}

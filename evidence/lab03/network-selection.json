@@ -1,0 +1,7 @@
+{
+  "reason": "Default Docker address pools exhausted; selected an explicit non-overlapping subnet.",
+  "subnet": "10.254.53.0/24",
+  "dockerSubnetsChecked": 32,
+  "hostRoutesChecked": 33,
+  "overlapFound": false
+}

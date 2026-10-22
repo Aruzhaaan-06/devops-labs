@@ -1,0 +1,38 @@
+{
+  "firstContainerId": "c1742ca4e210c6f5044ff82ba96803912ac536843b95a3e3c3a871e01df9d113",
+  "secondContainerId": "79581621b5278de547060bb43228dc503ca8586f6bfbd6dcda6d374c0f5592ca",
+  "firstMounts": [
+    {
+      "Type": "volume",
+      "Name": "781a0fed6c45bdc733d02a11a2e267f8eb7ce9deea421f32ac0b58b795c1d618",
+      "Source": "/var/lib/docker/volumes/781a0fed6c45bdc733d02a11a2e267f8eb7ce9deea421f32ac0b58b795c1d618/_data",
+      "Destination": "/var/lib/postgresql",
+      "Driver": "local",
+      "Mode": "",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "secondMounts": [
+    {
+      "Type": "volume",
+      "Name": "3410f73c5f12e7328bc91f77254e0f1f350d1b7ce8c5de4fe01d2a3c0138c70e",
+      "Source": "/var/lib/docker/volumes/3410f73c5f12e7328bc91f77254e0f1f350d1b7ce8c5de4fe01d2a3c0138c70e/_data",
+      "Destination": "/var/lib/postgresql",
+      "Driver": "local",
+      "Mode": "",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "create": {
+    "query": "CREATE TABLE notes (text text); INSERT INTO notes VALUES ('check'); SELECT * FROM notes;",
+    "exitCode": 0,
+    "output": "CREATE TABLE\nINSERT 0 1\ncheck"
+  },
+  "afterRecreate": {
+    "query": "SELECT * FROM notes;",
+    "exitCode": 1,
+    "output": "ERROR:  relation \"notes\" does not exist\nLINE 1: SELECT * FROM notes;\n                      ^"
+  }
+}

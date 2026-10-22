@@ -1,0 +1,6 @@
+{
+  "kitExtracted": true,
+  "environmentTemplatePresent": true,
+  "templateSha256": "1bd212122c4f15889d93f2a91e31d107bd14914d199cc94f42827018ab574f28",
+  "note": "Template is kept outside the repository. Runtime credentials will be generated locally and not published."
+}

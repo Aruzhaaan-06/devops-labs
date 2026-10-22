@@ -1,0 +1,7 @@
+{
+  "running": false,
+  "exitCode": 139,
+  "errorLines": [
+    "Unhandled exception. System.InvalidOperationException: Не задана строка подключения ConnectionStrings:Db"
+  ]
+}

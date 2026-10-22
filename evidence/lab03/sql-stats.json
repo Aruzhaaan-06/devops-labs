@@ -1,0 +1,12 @@
+{
+  "url": "http://localhost:8092/api/projects/1/stats",
+  "status": 200,
+  "body": {
+    "projectId": 1,
+    "total": 4,
+    "todo": 2,
+    "inProgress": 1,
+    "done": 1,
+    "overdue": 0
+  }
+}

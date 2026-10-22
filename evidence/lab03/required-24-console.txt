@@ -1,0 +1,5 @@
+Тестовый запуск для [REPO]\tests\DemoApi.Tests\bin\Release\net10.0\DemoApi.Tests.dll (.NETCoreApp,Version=v10.0)
+Общее количество тестовых файлов (1), соответствующих указанному шаблону.
+Файл результатов: [REPO]\evidence\lab03\required-24\required-24.trx
+
+Пройден!   : не пройдено     0, пройдено    24, пропущено     0, всего    24, длительность 965 ms. - DemoApi.Tests.dll (net10.0)

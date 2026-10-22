@@ -1,0 +1,5 @@
+{
+  "url": "http://localhost:8092/health/ready",
+  "status": 200,
+  "body": "Healthy"
+}
