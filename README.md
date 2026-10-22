@@ -50,7 +50,7 @@ dotnet run --project src/DemoApi/DemoApi.csproj --launch-profile http
 Нужны Docker Desktop с Linux-контейнерами и Docker Compose v2+. Из корня репозитория при первом запуске:
 
 ```powershell
-Copy-Item .env.example .env
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 # Задайте DB_PASSWORD в .env, затем:
 docker compose config --quiet
 docker compose up -d --build --wait
