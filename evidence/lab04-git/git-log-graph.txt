@@ -1,0 +1,18 @@
+$ git log --oneline --graph -16
+*   0715252 Merge pull request #6: resolve README title conflict
+|\
+| *   02d593b docs: resolve title conflict
+| |\
+| |/
+|/|
+* | a35874e docs: update README title, variant A (#5)
+| * 2fa73ab docs: update README title, variant B
+|/
+* b80b32f docs: инструкции Compose и разработки в Visual Studio (#4)
+* c057d5d feat: add verified Docker Compose laboratory and report
+* ee2ac68 docs: publish verified PostgreSQL laboratory 3 and report
+* ac16542 feat: containerize DemoApi and document laboratory 2 verification
+* 0a79d5d docs: organize lab reports, evidence and repository navigation
+* 5235623 feat: validate task deadlines and publish laboratory 1 reports
+* f93b123 feat: complete required laboratory 1 API statistics and checks
+* 8ad6b5d chore: import DevOps course starter

@@ -15,6 +15,7 @@
 | Лабораторная 2, часть 1 · материал 03 | Multi-stage Dockerfile, кэш restore и проверка Linux-контейнера; нужен скриншот WSL 2 | [PDF · 6 страниц](reports/lab02-part1-report.pdf) |
 | Лабораторная 3, части 1–2 · материал 05 | PostgreSQL, сохранение данных, две ошибки подключения и SQL-тесты; нужны скриншоты консоли Visual Studio и Test Explorer | [PDF · 7 страниц](reports/lab03-postgres-report.pdf) |
 | Лабораторная 3, часть 3 · материал 06 | Docker Compose, 3 → 3 → 2, отказ БД, Windows-разработка и Adminer | [PDF · 7 страниц](reports/lab03-compose-report.pdf) |
+| Лабораторная 4, часть 1 · материал 07 | Защита main, Board, ревью README и конфликт; два аккаунта одного владельца, преподаватель пока не добавлен | [PDF · 7 страниц](reports/lab04-git-report.pdf) |
 
 Код и проверки первой лабораторной подготовлены. Для полного комплекта сдачи остаются скриншоты коллекции Postman и Test Explorer, а также ручная пошаговая отладка с Locals и Call Stack. Подробности — в [чек-листе сдачи](docs/lab01.md#что-приложить-к-двум-отчётам). SQL-реализация проверена на настоящей PostgreSQL в [лабораторной 3](docs/lab03-postgres.md).
 
@@ -129,4 +130,4 @@ pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -I
 | `reports` | PDF-отчеты и архив исходников для сдачи |
 | `evidence/lab01`, `evidence/lab02`, `evidence/lab03`, `evidence/lab03-compose` | Сохраненные результаты проверок и скриншоты |
 
-Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. CI/CD и инфраструктура мониторинга относятся к следующим работам и пока не настроены.
+Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD и инфраструктура мониторинга относятся к следующим работам и пока не настроены.

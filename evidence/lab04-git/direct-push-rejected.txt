@@ -1,0 +1,10 @@
+# Empty commit created by git commit-tree HEAD^{tree} -p HEAD with message test: direct push.
+$ git push origin bd42e87dae0872ddbc9596af9b8885bde6f369c6:refs/heads/main
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: Review all repository rules at https://github.com/Aruzhaaan-06/devops-labs/rules?ref=refs%2Fheads%2Fmain
+remote:
+remote: - Changes must be made through a pull request.
+remote:
+To https://github.com/Aruzhaaan-06/devops-labs.git
+ ! [remote rejected] bd42e87dae0872ddbc9596af9b8885bde6f369c6 -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/Aruzhaaan-06/devops-labs.git'

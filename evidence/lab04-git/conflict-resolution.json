@@ -1,0 +1,11 @@
+{
+  "commit": "02d593ba15faae9877268668387704075367f843",
+  "parents": [
+    "2fa73ab5a88dd46488aa7b01b08c214c7e39d549",
+    "a35874eca6d22dfe944d4019903567a7ce66ac36"
+  ],
+  "message": "docs: resolve title conflict",
+  "author": "temirkhanerbolatovich-coder",
+  "file": "README.md",
+  "resolvedTitle": "# DevOps Labs — DemoApi: проекты и задачи"
+}

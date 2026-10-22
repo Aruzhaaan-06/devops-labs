@@ -1,0 +1,18 @@
+{
+  "number": 6,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/6",
+  "state": "closed",
+  "merged": true,
+  "merged_at": "2026-10-22T14:21:37Z",
+  "merge_commit_sha": "0715252615967d6061eadd1207f3dd10671e8a0c",
+  "title": "docs: заголовок README, вариант B и разрешение конфликта",
+  "author": "temirkhanerbolatovich-coder",
+  "reviews": [
+    {
+      "user": "Aruzhaaan-06",
+      "state": "APPROVED",
+      "commit_id": "02d593ba15faae9877268668387704075367f843",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/6#pullrequestreview-5615745004"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "number": 5,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/5",
+  "state": "closed",
+  "merged": true,
+  "merged_at": "2026-10-22T14:19:36Z",
+  "merge_commit_sha": "a35874eca6d22dfe944d4019903567a7ce66ac36",
+  "title": "docs: заголовок README, вариант A",
+  "author": "Aruzhaaan-06",
+  "reviews": [
+    {
+      "user": "temirkhanerbolatovich-coder",
+      "state": "APPROVED",
+      "commit_id": "3bc4500dbeead1775cf0964cbfa04389df9b9b0f",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/5#pullrequestreview-5615711347"
+    }
+  ]
+}

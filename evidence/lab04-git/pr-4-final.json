@@ -1,0 +1,24 @@
+{
+  "number": 4,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/4",
+  "state": "closed",
+  "merged": true,
+  "merged_at": "2026-10-22T14:17:24Z",
+  "merge_commit_sha": "b80b32ffcab752385708bfaee8189020133613a6",
+  "title": "docs: инструкции Compose и разработки в Visual Studio",
+  "author": "Aruzhaaan-06",
+  "reviews": [
+    {
+      "user": "temirkhanerbolatovich-coder",
+      "state": "COMMENTED",
+      "commit_id": "e1742a01b56d3d58a53180a154e5a33402f4ee82",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/4#pullrequestreview-5615661203"
+    },
+    {
+      "user": "temirkhanerbolatovich-coder",
+      "state": "APPROVED",
+      "commit_id": "c1e3b46125c55d07d05797a1e31b74a21ce1e28d",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/4#pullrequestreview-5615674286"
+    }
+  ]
+}

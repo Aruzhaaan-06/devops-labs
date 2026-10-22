@@ -1,0 +1,9 @@
+{
+  "baseCommit": "c057d5df6d905cc1d7dcbf75f816990e3b8b6adc",
+  "testCommit": "bd42e87dae0872ddbc9596af9b8885bde6f369c6",
+  "sameTree": "902a2bff86c3bd28143964617033cdbca0f30d2f",
+  "exitCode": 1,
+  "rejected": true,
+  "mainUnchanged": true,
+  "localBranchUnchanged": true
+}
