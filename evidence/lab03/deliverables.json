@@ -5,8 +5,17 @@
     {
       "path": "reports/lab03-postgres-report.pdf",
       "pages": 7,
-      "bytes": 192482,
-      "sha256": "e25f6aa9ec7d7f3c6283eb1de1b6b1d5d708f87612f4ef4d577bfc4adac01ad8"
+      "bytes": 195299,
+      "sha256": "8f4a693b9e2f30a566bdb46bffd9ad3c864c424d7cbceb0df400774250962715",
+      "previousRussianVersion": {
+        "bytes": 192482,
+        "sha256": "e25f6aa9ec7d7f3c6283eb1de1b6b1d5d708f87612f4ef4d577bfc4adac01ad8",
+        "pages": 7
+      },
+      "language": "kk",
+      "institution": "ВКТУ",
+      "author": "Есімханова Аружан Түсіпханқызы",
+      "translationOnly": true
     }
   ]
 }

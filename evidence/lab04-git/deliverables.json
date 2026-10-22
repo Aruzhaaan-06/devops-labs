@@ -1,10 +1,20 @@
 {
   "report": "reports/lab04-git-report.pdf",
   "pages": 7,
-  "bytes": 368401,
-  "sha256": "297e8e2985aab95c269b091012c8c9b41f42229f4c6743ed3b825e261cd48d05",
+  "bytes": 370095,
+  "sha256": "513eb7e6bcf96ca732383eb2c7946acebb704c9290f8b39f469c95ae8b46b30a",
   "visualReview": "All 7 rendered pages inspected: no clipping or orphan pages.",
   "technicalChecksPassed": 13,
   "formalCompletion": false,
-  "fixedVersion": "lab04-git"
+  "fixedVersion": "reports-kk",
+  "previousRussianVersion": {
+    "bytes": 368401,
+    "sha256": "297e8e2985aab95c269b091012c8c9b41f42229f4c6743ed3b825e261cd48d05",
+    "pages": 7,
+    "fixedVersion": "lab04-git"
+  },
+  "language": "kk",
+  "institution": "ВКТУ",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "translationOnly": true
 }

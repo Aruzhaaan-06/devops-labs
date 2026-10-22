@@ -5,8 +5,17 @@
     {
       "path": "reports/lab02-part1-report.pdf",
       "pages": 6,
-      "bytes": 130128,
-      "sha256": "a70ffd8ce6ecb09383cadc05b59f0c7b3d8fbed51c9bdc892ab10b01ec12613f"
+      "bytes": 133217,
+      "sha256": "ceb6bb1e6b681f7269a3a7d0077075c491e1dc6fa7dd592b975d9c6a38328f66",
+      "previousRussianVersion": {
+        "bytes": 130128,
+        "sha256": "a70ffd8ce6ecb09383cadc05b59f0c7b3d8fbed51c9bdc892ab10b01ec12613f",
+        "pages": 6
+      },
+      "language": "kk",
+      "institution": "ВКТУ",
+      "author": "Есімханова Аружан Түсіпханқызы",
+      "translationOnly": true
     }
   ]
 }
