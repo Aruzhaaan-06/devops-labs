@@ -1,0 +1,14 @@
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+8af87eba5e7c   8 hours ago   COPY /dotnet /usr/share/dotnet # buildkit       27.4MB    buildkit.dockerfile.v0
+<missing>      8 hours ago   ENV ASPNET_VERSION=10.0.13                      0B        buildkit.dockerfile.v0
+<missing>      8 hours ago   RUN /bin/sh -c ln -s /usr/share/dotnet/dotne…   12.3kB    buildkit.dockerfile.v0
+<missing>      8 hours ago   COPY /dotnet /usr/share/dotnet # buildkit       83.2MB    buildkit.dockerfile.v0
+<missing>      8 hours ago   ENV DOTNET_VERSION=10.0.13                      0B        buildkit.dockerfile.v0
+<missing>      8 hours ago   RUN /bin/sh -c groupadd         --gid=$APP_U…   77.8kB    buildkit.dockerfile.v0
+<missing>      8 hours ago   RUN /bin/sh -c apt-get update     && apt-get…   45.8MB    buildkit.dockerfile.v0
+<missing>      8 hours ago   ENV APP_UID=1654 ASPNETCORE_HTTP_PORTS=8080 …   0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago   /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B
+<missing>      2 weeks ago   /bin/sh -c #(nop) ADD file:7121eb4a5ba391efb…   87.6MB
+<missing>      2 weeks ago   /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
+<missing>      2 weeks ago   /bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH     0B
+<missing>      2 weeks ago   /bin/sh -c #(nop)  ARG RELEASE                  0B

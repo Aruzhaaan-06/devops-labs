@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "url": "http://localhost:8089/api/projects",
+  "requestBody": null,
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "name": "Lab02 restart evidence",
+      "createdAt": "2026-10-22T00:40:16.4761498+00:00"
+    }
+  ]
+}

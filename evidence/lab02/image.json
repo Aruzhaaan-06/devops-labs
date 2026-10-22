@@ -1,0 +1,25 @@
+{
+  "tag": "devops-labs-demo-api:lab02-1.1",
+  "id": "sha256:e988fa6fa68416bfcdbdbd0916ca063d65f3e3649d86eb79b71aa48d44bcbdea",
+  "sizeBytes": 354253942,
+  "os": "linux",
+  "architecture": "amd64",
+  "user": "1654",
+  "entrypoint": [
+    "dotnet",
+    "DemoApi.dll"
+  ],
+  "healthcheck": {
+    "Test": [
+      "CMD-SHELL",
+      "curl -fsS http://localhost:8080/health/live || exit 1"
+    ],
+    "Interval": 10000000000,
+    "Timeout": 3000000000,
+    "StartPeriod": 15000000000,
+    "Retries": 3
+  },
+  "exposedPorts": {
+    "8080/tcp": {}
+  }
+}

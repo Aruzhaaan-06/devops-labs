@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://localhost:8090/api/chaos/error",
+  "requestBody": null,
+  "status": 404,
+  "body": {
+    "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+    "title": "Not Found",
+    "status": 404,
+    "traceId": "00-cfc5043439fbf8f15783eea04891188c-ec22e6d784dec833-00"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-22",
+  "reportStatus": "Technical work verified; required Docker Desktop WSL 2 screenshot remains outstanding.",
+  "files": [
+    {
+      "path": "reports/lab02-part1-report.pdf",
+      "pages": 6,
+      "bytes": 130128,
+      "sha256": "a70ffd8ce6ecb09383cadc05b59f0c7b3d8fbed51c9bdc892ab10b01ec12613f"
+    }
+  ]
+}

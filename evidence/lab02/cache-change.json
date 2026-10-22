@@ -1,0 +1,7 @@
+{
+  "oldMessage": "Создана задача {TaskId} в проекте {ProjectId}",
+  "newMessage": "Создана новая задача {TaskId} в проекте {ProjectId}",
+  "sourceBeforeSha256": "97d8ff4fcef7606a3afb72e5aae401ee6b69c2d40a322b47fea5f48abeed0343",
+  "sourceAfterSha256": "f8238abd28d1422ace90ab4842a47d1456e0ccae2d2ecaf62ebe450b36c9aa27",
+  "projectSha256": "7c96347d674c4d333de4e491da7a618a1886fadc89672fd4cf1d3c00a04ba201"
+}

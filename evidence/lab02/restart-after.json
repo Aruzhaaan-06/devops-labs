@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "url": "http://localhost:8089/api/projects",
+  "requestBody": null,
+  "status": 200,
+  "body": []
+}

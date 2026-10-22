@@ -1,0 +1,493 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 766B 0.0s done
+#1 DONE 0.1s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 ...
+
+#3 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 3.8s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#4 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.0s done
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0B / 14.28MB 0.2s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 1.05MB / 14.28MB 2.9s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 2.10MB / 14.28MB 4.4s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 3.15MB / 14.28MB 6.3s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 4.19MB / 14.28MB 7.8s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 5.24MB / 14.28MB 9.6s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 6.29MB / 14.28MB 11.7s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 7.34MB / 14.28MB 14.3s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 8.39MB / 14.28MB 16.2s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 9.44MB / 14.28MB 17.4s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 10.49MB / 14.28MB 18.5s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 11.53MB / 14.28MB 19.8s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 12.58MB / 14.28MB 22.5s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 13.63MB / 14.28MB 23.2s
+#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 14.28MB / 14.28MB 23.7s done
+#4 extracting sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0.1s done
+#4 DONE 23.9s
+
+#5 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#5 DONE 3.1s
+
+#6 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#6 DONE 3.1s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 262B done
+#7 DONE 0.0s
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2 0.0s done
+#8 ...
+
+#9 [internal] load build context
+#9 transferring context: 47.65kB 0.0s done
+#9 DONE 0.1s
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca 0.0s done
+#10 DONE 0.3s
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 DONE 0.5s
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 0B / 12.75MB 0.3s
+#10 sha256:2aa13cb6e98641bbfcc67a90c97c29e7696b21ffae339ccb6a110378191c88a7 0B / 155B 0.2s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 0B / 36.63MB 0.2s
+#10 sha256:e271a0d133c8cba0b3c0724d39498bb64a46bafa24fa9856ad549b09094e58e8 0B / 3.56kB 0.2s
+#10 sha256:2aa13cb6e98641bbfcc67a90c97c29e7696b21ffae339ccb6a110378191c88a7 155B / 155B 1.2s done
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 0B / 16.78MB 0.2s
+#10 sha256:e271a0d133c8cba0b3c0724d39498bb64a46bafa24fa9856ad549b09094e58e8 3.56kB / 3.56kB 1.8s done
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 0B / 29.77MB 0.2s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 0B / 12.75MB 5.4s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 0B / 36.63MB 5.2s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 0B / 16.78MB 5.2s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 0B / 29.77MB 5.3s
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 0B / 12.75MB 10.5s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 0B / 36.63MB 10.4s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 0B / 16.78MB 10.3s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 0B / 29.77MB 10.4s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 0B / 12.75MB 15.6s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 0B / 36.63MB 15.5s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 1.05MB / 16.78MB 15.3s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 0B / 29.77MB 15.5s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 1.05MB / 12.75MB 19.4s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 0B / 36.63MB 20.5s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 1.05MB / 16.78MB 20.4s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 1.05MB / 29.77MB 20.5s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 1.05MB / 12.75MB 24.4s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 2.10MB / 16.78MB 23.2s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 1.05MB / 36.63MB 25.6s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 2.10MB / 12.75MB 27.6s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 1.05MB / 29.77MB 25.6s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 2.10MB / 16.78MB 28.3s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 1.05MB / 36.63MB 30.7s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 2.10MB / 12.75MB 32.7s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 2.10MB / 29.77MB 30.7s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 2.10MB / 16.78MB 33.4s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 2.10MB / 36.63MB 35.8s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 2.10MB / 12.75MB 37.8s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 2.10MB / 29.77MB 35.8s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 2.10MB / 16.78MB 38.5s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 3.15MB / 12.75MB 40.1s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 2.10MB / 36.63MB 40.9s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 2.10MB / 29.77MB 40.9s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 4.19MB / 12.75MB 44.2s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 2.10MB / 16.78MB 43.6s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 3.15MB / 36.63MB 46.0s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 3.15MB / 16.78MB 45.1s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 3.15MB / 29.77MB 46.0s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 4.19MB / 12.75MB 49.3s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 5.24MB / 12.75MB 50.7s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 3.15MB / 36.63MB 51.1s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 3.15MB / 16.78MB 50.2s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 3.15MB / 29.77MB 51.1s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 5.24MB / 12.75MB 55.8s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 4.19MB / 36.63MB 56.2s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 4.19MB / 16.78MB 55.2s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 4.19MB / 29.77MB 56.2s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 5.24MB / 12.75MB 60.9s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 4.19MB / 36.63MB 61.3s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 4.19MB / 16.78MB 60.3s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 4.19MB / 29.77MB 61.3s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 5.24MB / 12.75MB 66.0s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 6.29MB / 12.75MB 66.6s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 4.19MB / 36.63MB 66.4s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 4.19MB / 16.78MB 65.4s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 4.19MB / 29.77MB 66.4s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 6.29MB / 12.75MB 71.7s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 4.19MB / 36.63MB 71.5s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 4.19MB / 16.78MB 70.5s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 4.19MB / 29.77MB 71.5s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 6.29MB / 29.77MB 73.6s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 6.29MB / 12.75MB 76.8s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 5.24MB / 36.63MB 76.6s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 4.19MB / 16.78MB 75.6s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 5.24MB / 16.78MB 76.2s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 8.39MB / 29.77MB 75.7s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 7.34MB / 12.75MB 78.6s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 10.49MB / 29.77MB 77.7s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 8.39MB / 12.75MB 79.9s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 7.34MB / 36.63MB 80.5s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 9.44MB / 12.75MB 80.8s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 10.49MB / 12.75MB 81.4s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 11.53MB / 12.75MB 82.0s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 6.29MB / 16.78MB 80.7s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 12.58MB / 29.77MB 80.1s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 12.58MB / 12.75MB 82.6s
+#10 sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 12.75MB / 12.75MB 82.7s done
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 9.44MB / 36.63MB 84.1s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 14.68MB / 29.77MB 82.3s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 7.34MB / 16.78MB 83.1s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 8.39MB / 16.78MB 85.6s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 11.53MB / 36.63MB 88.5s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 15.73MB / 29.77MB 87.4s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 9.44MB / 16.78MB 88.3s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 13.63MB / 36.63MB 92.5s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 10.49MB / 16.78MB 91.3s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 17.83MB / 29.77MB 90.7s
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:d890623d20224ca4dbbfdc9bc97511c4d84227dcf584c3cdeafe0a164d224bdb 11.53MB / 20.57MB 10.1s
+#8 sha256:d890623d20224ca4dbbfdc9bc97511c4d84227dcf584c3cdeafe0a164d224bdb 12.58MB / 20.57MB 10.2s
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 11.53MB / 16.78MB 94.2s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 14.68MB / 36.63MB 97.6s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 18.87MB / 29.77MB 95.8s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 16.78MB / 36.63MB 99.6s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 11.53MB / 16.78MB 99.3s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 12.58MB / 16.78MB 99.7s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 20.97MB / 29.77MB 100.2s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 18.87MB / 36.63MB 102.6s
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:d890623d20224ca4dbbfdc9bc97511c4d84227dcf584c3cdeafe0a164d224bdb 18.87MB / 20.57MB 20.3s
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 13.63MB / 16.78MB 102.1s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 23.07MB / 29.77MB 102.6s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 20.97MB / 36.63MB 104.7s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 14.68MB / 16.78MB 103.5s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 15.73MB / 16.78MB 107.7s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 24.12MB / 29.77MB 107.7s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 23.07MB / 36.63MB 109.8s
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:d890623d20224ca4dbbfdc9bc97511c4d84227dcf584c3cdeafe0a164d224bdb 20.57MB / 20.57MB 21.6s done
+#8 sha256:aa348bf96432f6cbe8a2cc3c647b7bc555ab7b44febdba507ccd524ce8040218 531B / 531B 0.3s done
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 2.10MB / 21.03MB 8.9s
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 15.73MB / 16.78MB 112.8s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 25.17MB / 29.77MB 112.8s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 24.12MB / 36.63MB 114.9s
+#10 sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 16.78MB / 16.78MB 114.3s done
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 27.26MB / 29.77MB 115.8s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 26.21MB / 36.63MB 117.9s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 28.31MB / 29.77MB 120.9s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 27.26MB / 36.63MB 123.0s
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 6.29MB / 21.03MB 19.2s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 5.24MB / 189.68MB 8.1s
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 29.36MB / 29.77MB 126.0s
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 28.31MB / 36.63MB 128.1s
+#10 sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 29.77MB / 29.77MB 127.1s done
+#10 extracting sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b
+#10 extracting sha256:f2b4ef06ff01a67d4bed7657a4ae379a7d07934b7c3e743454a22a0d5275fb2b 0.6s done
+#10 extracting sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a
+#10 extracting sha256:809fe014b8c9ea3822f20ea868f467405ed02e146e942a0bf6910d93dfdd2e7a 0.3s done
+#10 extracting sha256:e271a0d133c8cba0b3c0724d39498bb64a46bafa24fa9856ad549b09094e58e8 0.0s done
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 8.39MB / 21.03MB 27.9s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 6.29MB / 189.68MB 16.8s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 5.24MB / 23.84MB 3.3s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 7.34MB / 23.84MB 3.8s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 9.44MB / 23.84MB 4.7s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 11.53MB / 23.84MB 5.7s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 13.63MB / 23.84MB 6.6s
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 10.49MB / 21.03MB 31.4s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 15.73MB / 23.84MB 7.7s
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 12.58MB / 21.03MB 32.9s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 8.39MB / 189.68MB 21.9s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 17.83MB / 23.84MB 8.9s
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 14.68MB / 21.03MB 34.1s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 19.92MB / 23.84MB 9.9s
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 16.78MB / 21.03MB 35.4s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 22.02MB / 23.84MB 11.3s
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 18.87MB / 21.03MB 36.9s
+#8 sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 23.84MB / 23.84MB 12.4s done
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 32.51MB / 36.63MB 142.3s
+#10 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 21.03MB / 21.03MB 38.1s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 10.49MB / 189.68MB 27.0s
+#8 sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 21.03MB / 21.03MB 38.1s done
+#8 ...
+
+#10 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#10 sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 36.63MB / 36.63MB 145.9s done
+#10 extracting sha256:4ce2187f4e63680885b76b67d07b33a4b39e2404d2741d8bcdb5512f637492ae 0.4s done
+#10 extracting sha256:2aa13cb6e98641bbfcc67a90c97c29e7696b21ffae339ccb6a110378191c88a7 0.0s done
+#10 extracting sha256:9b660e3f3a1a97d9bf64bb18f8e17b89cc78e7fb667a5b62264e13f565ad233f 0.1s done
+#10 DONE 146.9s
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 extracting sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 20.97MB / 189.68MB 31.6s
+#8 extracting sha256:933395b9676f2bd4f45d1f049e28c55605f225e9c6eb18095e112a4e0bdc053d 0.5s done
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 29.36MB / 189.68MB 36.7s
+#8 ...
+
+#11 [runtime 2/4] RUN apt-get update     && apt-get install -y --no-install-recommends curl     && rm -rf /var/lib/apt/lists/*
+#11 0.490 Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#11 0.493 Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#11 1.152 Get:3 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+#11 1.340 Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#11 1.361 Get:5 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2122 kB]
+#11 1.603 Get:6 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#11 1.865 Get:7 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#11 2.304 Get:8 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#11 2.994 Get:9 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#11 3.404 Get:10 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1411 kB]
+#11 3.492 Get:11 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1549 kB]
+#11 4.019 Get:12 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#11 ...
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 31.46MB / 189.68MB 41.8s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 33.55MB / 189.68MB 46.9s
+#8 ...
+
+#11 [runtime 2/4] RUN apt-get update     && apt-get install -y --no-install-recommends curl     && rm -rf /var/lib/apt/lists/*
+#11 10.78 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2231 kB]
+#11 11.24 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [61.7 kB]
+#11 11.25 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1733 kB]
+#11 11.61 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2171 kB]
+#11 12.26 Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#11 12.26 Get:18 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#11 12.27 Get:19 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [669 B]
+#11 12.34 Fetched 33.6 MB in 12s (2767 kB/s)
+#11 12.34 Reading package lists...
+#11 13.08 Reading package lists...
+#11 13.79 Building dependency tree...
+#11 13.95 Reading state information...
+#11 14.15 The following additional packages will be installed:
+#11 14.15   libbrotli1 libcurl4t64 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+#11 14.15   libkrb5support0 libldap2 libnghttp2-14 libpsl5t64 librtmp1 libsasl2-2
+#11 14.15   libsasl2-modules-db libssh-4
+#11 14.15 Suggested packages:
+#11 14.15   krb5-doc krb5-user
+#11 14.15 Recommended packages:
+#11 14.15   krb5-locales libldap-common publicsuffix libsasl2-modules
+#11 14.18 The following NEW packages will be installed:
+#11 14.18   curl libbrotli1 libcurl4t64 libgssapi-krb5-2 libk5crypto3 libkeyutils1
+#11 14.18   libkrb5-3 libkrb5support0 libldap2 libnghttp2-14 libpsl5t64 librtmp1
+#11 14.18   libsasl2-2 libsasl2-modules-db libssh-4
+#11 14.79 0 upgraded, 15 newly installed, 0 to remove and 3 not upgraded.
+#11 14.79 Need to get 2169 kB of archives.
+#11 14.79 After this operation, 6011 kB of additional disk space will be used.
+#11 14.79 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5support0 amd64 1.20.1-6ubuntu2.10 [34.9 kB]
+#11 15.23 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libk5crypto3 amd64 1.20.1-6ubuntu2.10 [81.9 kB]
+#11 15.53 Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 libkeyutils1 amd64 1.6.3-3build1 [9490 B]
+#11 15.55 Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5-3 amd64 1.20.1-6ubuntu2.10 [348 kB]
+#11 16.04 Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgssapi-krb5-2 amd64 1.20.1-6ubuntu2.10 [143 kB]
+#11 16.10 Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnghttp2-14 amd64 1.59.0-1ubuntu0.4 [74.6 kB]
+#11 16.13 Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 libpsl5t64 amd64 0.21.2-1.1build1 [57.1 kB]
+#11 16.16 Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 libbrotli1 amd64 1.1.0-2build2 [331 kB]
+#11 16.29 Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-5ubuntu3.1 [20.4 kB]
+#11 16.29 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-5ubuntu3.1 [53.2 kB]
+#11 16.31 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap2 amd64 2.6.10+dfsg-0ubuntu0.24.04.1 [198 kB]
+#11 16.37 Get:12 http://archive.ubuntu.com/ubuntu noble/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2build7 [56.3 kB]
+#11 16.38 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssh-4 amd64 0.10.6-2ubuntu0.5 [191 kB]
+#11 16.42 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+#11 16.51 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.16 [226 kB]
+#11 17.04 debconf: delaying package configuration, since apt-utils is not installed
+#11 17.08 Fetched 2169 kB in 3s (792 kB/s)
+#11 17.11 Selecting previously unselected package libkrb5support0:amd64.
+#11 17.11 (Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6110 files and directories currently installed.)
+#11 17.12 Preparing to unpack .../00-libkrb5support0_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 17.13 Unpacking libkrb5support0:amd64 (1.20.1-6ubuntu2.10) ...
+#11 17.18 Selecting previously unselected package libk5crypto3:amd64.
+#11 17.18 Preparing to unpack .../01-libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 17.19 Unpacking libk5crypto3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 17.24 Selecting previously unselected package libkeyutils1:amd64.
+#11 17.24 Preparing to unpack .../02-libkeyutils1_1.6.3-3build1_amd64.deb ...
+#11 17.25 Unpacking libkeyutils1:amd64 (1.6.3-3build1) ...
+#11 17.29 Selecting previously unselected package libkrb5-3:amd64.
+#11 17.29 Preparing to unpack .../03-libkrb5-3_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 17.30 Unpacking libkrb5-3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 17.36 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#11 17.36 Preparing to unpack .../04-libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 17.36 Unpacking libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.10) ...
+#11 17.41 Selecting previously unselected package libnghttp2-14:amd64.
+#11 17.41 Preparing to unpack .../05-libnghttp2-14_1.59.0-1ubuntu0.4_amd64.deb ...
+#11 17.42 Unpacking libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#11 17.47 Selecting previously unselected package libpsl5t64:amd64.
+#11 17.47 Preparing to unpack .../06-libpsl5t64_0.21.2-1.1build1_amd64.deb ...
+#11 17.48 Unpacking libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#11 17.53 Selecting previously unselected package libbrotli1:amd64.
+#11 17.53 Preparing to unpack .../07-libbrotli1_1.1.0-2build2_amd64.deb ...
+#11 17.54 Unpacking libbrotli1:amd64 (1.1.0-2build2) ...
+#11 17.58 Selecting previously unselected package libsasl2-modules-db:amd64.
+#11 17.58 Preparing to unpack .../08-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+#11 17.58 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#11 17.63 Selecting previously unselected package libsasl2-2:amd64.
+#11 17.63 Preparing to unpack .../09-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+#11 17.64 Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#11 17.68 Selecting previously unselected package libldap2:amd64.
+#11 17.68 Preparing to unpack .../10-libldap2_2.6.10+dfsg-0ubuntu0.24.04.1_amd64.deb ...
+#11 17.69 Unpacking libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#11 17.74 Selecting previously unselected package librtmp1:amd64.
+#11 17.74 Preparing to unpack .../11-librtmp1_2.4+20151223.gitfa8646d.1-2build7_amd64.deb ...
+#11 17.75 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#11 17.79 Selecting previously unselected package libssh-4:amd64.
+#11 17.79 Preparing to unpack .../12-libssh-4_0.10.6-2ubuntu0.5_amd64.deb ...
+#11 17.80 Unpacking libssh-4:amd64 (0.10.6-2ubuntu0.5) ...
+#11 17.85 Selecting previously unselected package libcurl4t64:amd64.
+#11 17.85 Preparing to unpack .../13-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+#11 17.86 Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#11 17.91 Selecting previously unselected package curl.
+#11 17.91 Preparing to unpack .../14-curl_8.5.0-2ubuntu10.16_amd64.deb ...
+#11 17.92 Unpacking curl (8.5.0-2ubuntu10.16) ...
+#11 17.97 Setting up libkeyutils1:amd64 (1.6.3-3build1) ...
+#11 18.00 Setting up libbrotli1:amd64 (1.1.0-2build2) ...
+#11 18.02 Setting up libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#11 18.04 Setting up libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#11 18.05 Setting up libkrb5support0:amd64 (1.20.1-6ubuntu2.10) ...
+#11 18.08 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#11 18.10 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#11 18.11 Setting up libk5crypto3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 18.13 Setting up libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#11 18.15 Setting up libkrb5-3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 18.17 Setting up libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#11 18.19 Setting up libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.10) ...
+#11 18.22 Setting up libssh-4:amd64 (0.10.6-2ubuntu0.5) ...
+#11 18.24 Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#11 18.26 Setting up curl (8.5.0-2ubuntu10.16) ...
+#11 18.28 Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+#11 DONE 18.4s
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 ...
+
+#12 [runtime 3/4] WORKDIR /app
+#12 DONE 0.1s
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 37.75MB / 189.68MB 52.0s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 48.23MB / 189.68MB 56.1s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 58.72MB / 189.68MB 61.2s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 65.01MB / 189.68MB 66.3s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 75.50MB / 189.68MB 71.2s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 85.98MB / 189.68MB 75.7s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 91.23MB / 189.68MB 80.8s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 96.47MB / 189.68MB 85.9s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 102.76MB / 189.68MB 91.0s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 111.15MB / 189.68MB 96.1s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 121.63MB / 189.68MB 100.6s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 132.12MB / 189.68MB 103.9s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 142.61MB / 189.68MB 108.7s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 152.04MB / 189.68MB 113.8s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 162.53MB / 189.68MB 118.3s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 171.97MB / 189.68MB 123.4s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 182.45MB / 189.68MB 128.1s
+#8 sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 189.68MB / 189.68MB 132.4s done
+#8 extracting sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0
+#8 extracting sha256:dcb1426b01f7a2198ac710d5ef2a902bc7e978128cf6d05b52f2ca5e1965c4e0 2.2s done
+#8 DONE 250.5s
+
+#8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#8 extracting sha256:e26e39803a84be4b990ab9a6f42d531dcbbd8fb2fd65dd1a1e4ef8ad417acba9 0.1s done
+#8 extracting sha256:aa348bf96432f6cbe8a2cc3c647b7bc555ab7b44febdba507ccd524ce8040218 0.0s done
+#8 extracting sha256:d890623d20224ca4dbbfdc9bc97511c4d84227dcf584c3cdeafe0a164d224bdb
+#8 extracting sha256:d890623d20224ca4dbbfdc9bc97511c4d84227dcf584c3cdeafe0a164d224bdb 0.3s done
+#8 DONE 250.9s
+
+#13 [build 2/6] WORKDIR /src
+#13 DONE 0.3s
+
+#14 [build 3/6] COPY src/DemoApi/DemoApi.csproj src/DemoApi/
+#14 DONE 0.1s
+
+#15 [build 4/6] RUN dotnet restore src/DemoApi/DemoApi.csproj
+#15 0.716   Determining projects to restore...
+#15 8.823   Restored /src/src/DemoApi/DemoApi.csproj (in 7.84 sec).
+#15 DONE 8.9s
+
+#16 [build 5/6] COPY src/ src/
+#16 DONE 0.1s
+
+#17 [build 6/6] RUN dotnet publish src/DemoApi/DemoApi.csproj -c Release -o /app --no-restore
+#17 3.764   DemoApi -> /src/src/DemoApi/bin/Release/net10.0/DemoApi.dll
+#17 3.823   DemoApi -> /app/
+#17 DONE 3.9s
+
+#18 [runtime 4/4] COPY --from=build /app .
+#18 DONE 0.1s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.3s done
+#19 exporting manifest sha256:0b33d10ffa20920e1f6b526f3b41d084e546348ff1ba46541746c7f32aa04223 0.0s done
+#19 exporting config sha256:c8329ddc94c5fb060ee21708e378d66705c5bd6307b8e4a9643d640d72e45f76 0.0s done
+#19 exporting attestation manifest sha256:30a586d84a24000ddf9c7f86466e1e88acd731fda61c6a3ead773a0d3353d4ac 0.0s done
+#19 exporting manifest list sha256:df64acabf18914a1cfa102c52a3c526bba0038da058080f82f843733f861f3df 0.0s done
+#19 naming to docker.io/library/devops-labs-demo-api:lab02-1.0
+#19 naming to docker.io/library/devops-labs-demo-api:lab02-1.0 done
+#19 unpacking to docker.io/library/devops-labs-demo-api:lab02-1.0 0.1s done
+#19 DONE 0.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kqa8kehrp843nh66npdgtbryh

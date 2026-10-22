@@ -1,0 +1,1037 @@
+{
+  "method": "GET",
+  "url": "http://localhost:8090/openapi/v1.json",
+  "requestBody": null,
+  "status": 200,
+  "body": {
+    "openapi": "3.1.1",
+    "info": {
+      "title": "Сервис задач",
+      "description": "Учебный сервис курса «DevOps-инструменты»: проекты и задачи со статусами Todo → InProgress → Done.",
+      "version": "v1"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8090/"
+      }
+    ],
+    "paths": {
+      "/api/chaos/error": {
+        "get": {
+          "tags": [
+            "Учебные сбои"
+          ],
+          "summary": "Ошибка в запросе: необработанное исключение → 500",
+          "description": "Процесс продолжает работать, ошибка пишется в лог с уровнем Error.",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/chaos/slow": {
+        "get": {
+          "tags": [
+            "Учебные сбои"
+          ],
+          "summary": "Медленный ответ",
+          "parameters": [
+            {
+              "name": "ms",
+              "in": "query",
+              "description": "Задержка в миллисекундах",
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "format": "int32",
+                "default": 2000
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/chaos/crash": {
+        "post": {
+          "tags": [
+            "Учебные сбои"
+          ],
+          "summary": "Аварийно завершить процесс сервиса (exit code 1)",
+          "description": "Контейнер остановится; при restart: unless-stopped Docker запустит его снова.",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/chaos/leak": {
+        "post": {
+          "tags": [
+            "Учебные сбои"
+          ],
+          "summary": "Утечка неуправляемой памяти",
+          "description": "Память не освобождается. При лимите контейнера ядро убьёт процесс: OOM, exit code 137.",
+          "parameters": [
+            {
+              "name": "mb",
+              "in": "query",
+              "description": "Сколько мегабайт занять",
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "format": "int32",
+                "default": 50
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/": {
+        "get": {
+          "tags": [
+            "Сервис"
+          ],
+          "summary": "Какая версия сервиса запущена и на каком контейнере",
+          "description": "Версия — sha коммита, из которого собран образ (тема 5). Host — имя контейнера.",
+          "responses": {
+            "200": {
+              "description": "Версия и хост",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InfoResponse"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InfoResponse"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InfoResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/projects": {
+        "get": {
+          "tags": [
+            "Проекты"
+          ],
+          "summary": "Список проектов",
+          "responses": {
+            "200": {
+              "description": "Все проекты по порядку создания",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Project"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Проекты"
+          ],
+          "summary": "Создать проект",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProjectRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProjectRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProjectRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Проект создан; его адрес — в заголовке Location",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Название пустое или длиннее 100 символов",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "Проект с таким названием уже есть",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/projects/{id}": {
+        "get": {
+          "tags": [
+            "Проекты"
+          ],
+          "summary": "Проект по идентификатору",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор проекта",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Проект найден",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Проекта с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Проекты"
+          ],
+          "summary": "Удалить проект вместе с его задачами",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор проекта",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Проект удалён",
+              "content": {
+                "application/json": {}
+              }
+            },
+            "404": {
+              "description": "Проекта с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/projects/{id}/stats": {
+        "get": {
+          "tags": [
+            "Проекты"
+          ],
+          "summary": "Статистика задач проекта",
+          "description": "Просрочены задачи со сроком раньше текущей даты UTC и статусом не Done. Для пустого проекта все счётчики равны нулю.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор проекта",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Статистика проекта",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProjectStats"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Проекта с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/tasks": {
+        "get": {
+          "tags": [
+            "Задачи"
+          ],
+          "summary": "Список задач с фильтрами",
+          "description": "Пример: `GET /api/tasks?projectId=1&amp;status=InProgress`. Без фильтров — все задачи.",
+          "parameters": [
+            {
+              "name": "projectId",
+              "in": "query",
+              "description": "Только задачи этого проекта",
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "format": "int32"
+              }
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "description": "Только задачи в этом статусе: Todo, InProgress, Done",
+              "schema": {
+                "$ref": "#/components/schemas/TaskItemStatus"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Задачи по порядку создания",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TaskItem"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Задачи"
+          ],
+          "summary": "Создать задачу в проекте",
+          "description": "Новая задача всегда в статусе Todo. Срок необязателен; при создании он не может быть раньше текущей даты UTC.",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTaskRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTaskRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTaskRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Задача создана; её адрес — в заголовке Location",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TaskItem"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Пустое название, срок в прошлом или неверные данные",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Проекта с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/tasks/{id}": {
+        "get": {
+          "tags": [
+            "Задачи"
+          ],
+          "summary": "Задача по идентификатору",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор задачи",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Задача найдена",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TaskItem"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Задачи с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Задачи"
+          ],
+          "summary": "Изменить название, описание и срок задачи",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор задачи",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Новые значения",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTaskRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTaskRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTaskRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Задача изменена",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TaskItem"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Пустое название или неверные данные",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Задачи с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Задачи"
+          ],
+          "summary": "Удалить задачу",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор задачи",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Задача удалена",
+              "content": {
+                "application/json": {}
+              }
+            },
+            "404": {
+              "description": "Задачи с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/tasks/{id}/status": {
+        "patch": {
+          "tags": [
+            "Задачи"
+          ],
+          "summary": "Сменить статус задачи",
+          "description": "Разрешены переходы Todo → InProgress → Done и на шаг назад. Todo → Done сразу нельзя.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Идентификатор задачи",
+              "required": true,
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Новый статус",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeStatusRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeStatusRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeStatusRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Статус изменён",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TaskItem"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Статус не передан или неизвестен",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Задачи с таким id нет",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "Такой переход статуса запрещён",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ChangeStatusRequest": {
+          "required": [
+            "status"
+          ],
+          "type": "object",
+          "properties": {
+            "status": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "description": "Новый статус: Todo, InProgress, Done",
+                  "$ref": "#/components/schemas/TaskItemStatus"
+                }
+              ]
+            }
+          },
+          "description": "Смена статуса"
+        },
+        "CreateProjectRequest": {
+          "required": [
+            "name"
+          ],
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Название проекта: уникальное, до 100 символов"
+            }
+          },
+          "description": "Создание проекта"
+        },
+        "CreateTaskRequest": {
+          "required": [
+            "projectId",
+            "title",
+            "description",
+            "dueDate"
+          ],
+          "type": "object",
+          "properties": {
+            "projectId": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Проект, в котором создаётся задача",
+              "format": "int32"
+            },
+            "title": {
+              "type": "string",
+              "description": "Название, до 200 символов"
+            },
+            "description": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Описание, до 2000 символов"
+            },
+            "dueDate": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Необязательный срок: не раньше текущей даты UTC, например 2026-12-31",
+              "format": "date"
+            }
+          },
+          "description": "Создание задачи"
+        },
+        "InfoResponse": {
+          "required": [
+            "service",
+            "version",
+            "host"
+          ],
+          "type": "object",
+          "properties": {
+            "service": {
+              "type": "string",
+              "description": "Имя сервиса"
+            },
+            "version": {
+              "type": "string",
+              "description": "Версия: sha коммита, из которого собран образ, или dev"
+            },
+            "host": {
+              "type": "string",
+              "description": "Имя хоста — в контейнере это его id"
+            }
+          },
+          "description": "Информация о запущенном сервисе"
+        },
+        "ProblemDetails": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "title": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "status": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "null",
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            },
+            "detail": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "instance": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "Project": {
+          "required": [
+            "id",
+            "name",
+            "createdAt"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Идентификатор",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "description": "Название, уникальное"
+            },
+            "createdAt": {
+              "type": "string",
+              "description": "Когда создан",
+              "format": "date-time"
+            }
+          },
+          "description": "Проект"
+        },
+        "ProjectStats": {
+          "required": [
+            "projectId",
+            "total",
+            "todo",
+            "inProgress",
+            "done",
+            "overdue"
+          ],
+          "type": "object",
+          "properties": {
+            "projectId": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Идентификатор проекта",
+              "format": "int32"
+            },
+            "total": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Всего задач",
+              "format": "int32"
+            },
+            "todo": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Задачи в статусе Todo",
+              "format": "int32"
+            },
+            "inProgress": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Задачи в статусе InProgress",
+              "format": "int32"
+            },
+            "done": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Задачи в статусе Done",
+              "format": "int32"
+            },
+            "overdue": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Незавершённые задачи со сроком раньше текущей даты UTC",
+              "format": "int32"
+            }
+          },
+          "description": "Количество задач проекта по статусам и срокам."
+        },
+        "TaskItem": {
+          "required": [
+            "id",
+            "projectId",
+            "title",
+            "description",
+            "status",
+            "dueDate",
+            "createdAt",
+            "updatedAt"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Идентификатор",
+              "format": "int32"
+            },
+            "projectId": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "description": "Проект, к которому относится задача",
+              "format": "int32"
+            },
+            "title": {
+              "type": "string",
+              "description": "Название"
+            },
+            "description": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Описание"
+            },
+            "status": {
+              "description": "Статус: Todo, InProgress, Done",
+              "$ref": "#/components/schemas/TaskItemStatus"
+            },
+            "dueDate": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Срок",
+              "format": "date"
+            },
+            "createdAt": {
+              "type": "string",
+              "description": "Когда создана",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "description": "Когда последний раз изменена",
+              "format": "date-time"
+            }
+          },
+          "description": "Задача"
+        },
+        "TaskItemStatus": {
+          "type": "integer",
+          "description": "Статус задачи"
+        },
+        "UpdateTaskRequest": {
+          "required": [
+            "title",
+            "description",
+            "dueDate"
+          ],
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Название, до 200 символов"
+            },
+            "description": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Описание, до 2000 символов"
+            },
+            "dueDate": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Срок, например 2026-12-31",
+              "format": "date"
+            }
+          },
+          "description": "Изменение задачи"
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Учебные сбои"
+      },
+      {
+        "name": "Сервис"
+      },
+      {
+        "name": "Проекты"
+      },
+      {
+        "name": "Задачи"
+      }
+    ]
+  }
+}

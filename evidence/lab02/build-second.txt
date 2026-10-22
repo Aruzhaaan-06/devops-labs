@@ -1,0 +1,83 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 766B done
+#1 DONE 0.0s
+
+#2 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#3 DONE 1.3s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#4 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.0s done
+#4 CACHED
+
+#5 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#5 ...
+
+#6 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#6 DONE 1.1s
+
+#5 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#5 DONE 1.1s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 262B done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 DONE 0.0s
+
+#9 [runtime 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#9 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca 0.0s done
+#9 DONE 0.0s
+
+#10 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#10 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2 0.0s done
+#10 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 3.41kB 0.0s done
+#8 DONE 0.0s
+
+#11 [build 2/6] WORKDIR /src
+#11 CACHED
+
+#12 [build 3/6] COPY src/DemoApi/DemoApi.csproj src/DemoApi/
+#12 CACHED
+
+#13 [build 4/6] RUN dotnet restore src/DemoApi/DemoApi.csproj
+#13 CACHED
+
+#14 [build 5/6] COPY src/ src/
+#14 DONE 0.0s
+
+#15 [build 6/6] RUN dotnet publish src/DemoApi/DemoApi.csproj -c Release -o /app --no-restore
+#15 3.234   DemoApi -> /src/src/DemoApi/bin/Release/net10.0/DemoApi.dll
+#15 3.289   DemoApi -> /app/
+#15 DONE 3.4s
+
+#16 [runtime 2/4] RUN apt-get update     && apt-get install -y --no-install-recommends curl     && rm -rf /var/lib/apt/lists/*
+#16 CACHED
+
+#17 [runtime 3/4] WORKDIR /app
+#17 CACHED
+
+#18 [runtime 4/4] COPY --from=build /app .
+#18 DONE 0.1s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.2s done
+#19 exporting manifest sha256:10775a00f9cb8fc347dea36404bdb5ed0d8fc7d53a62214d9f97aba2b17c656a 0.0s done
+#19 exporting config sha256:15091b9ce7aa60395bac3949cb9da3e4a3b0726908f379d3b7520762933c9b2e 0.0s done
+#19 exporting attestation manifest sha256:39f8122c2ae9c680dc2f4aaa6575c77ad7593e6367481c28cbcf7b0550d16957 0.0s done
+#19 exporting manifest list sha256:e988fa6fa68416bfcdbdbd0916ca063d65f3e3649d86eb79b71aa48d44bcbdea 0.0s done
+#19 naming to docker.io/library/devops-labs-demo-api:lab02-1.1
+#19 naming to docker.io/library/devops-labs-demo-api:lab02-1.1 done
+#19 unpacking to docker.io/library/devops-labs-demo-api:lab02-1.1 0.0s done
+#19 DONE 0.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/oi0bfp3opk68ra0315va25gsj

@@ -1,0 +1,16 @@
+[
+  {
+    "method": "GET",
+    "url": "http://localhost:8089/health/live",
+    "requestBody": null,
+    "status": 200,
+    "body": "Healthy"
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8089/health/ready",
+    "requestBody": null,
+    "status": 200,
+    "body": "Healthy"
+  }
+]

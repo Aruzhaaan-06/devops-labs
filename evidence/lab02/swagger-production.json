@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "url": "http://localhost:8089/swagger/index.html",
+  "requestBody": null,
+  "status": 404,
+  "body": ""
+}

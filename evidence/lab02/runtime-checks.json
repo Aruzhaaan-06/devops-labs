@@ -1,0 +1,88 @@
+{
+  "capturedAtUtc": "2026-10-22T00:40:10.000866+00:00",
+  "image": "devops-labs-demo-api:lab02-1.1",
+  "passed": true,
+  "assertions": [
+    {
+      "name": "Здоровье контейнера",
+      "passed": true,
+      "detail": "healthy; /health/live выполняется из контейнера"
+    },
+    {
+      "name": "Версия приложения",
+      "passed": true,
+      "detail": "GET / → 200, version=lab02-1.1"
+    },
+    {
+      "name": "Пользователь процесса",
+      "passed": true,
+      "detail": "uid=1654(app) gid=1654(app) groups=1654(app)"
+    },
+    {
+      "name": "SDK в итоговом образе",
+      "passed": true,
+      "detail": "dotnet --list-sdks: пустой вывод"
+    },
+    {
+      "name": "Исходники и тесты в образе",
+      "passed": true,
+      "detail": "В /app нет C#-исходников, csproj и решения"
+    },
+    {
+      "name": "Live и ready",
+      "passed": true,
+      "detail": "Оба маршрута → 200"
+    },
+    {
+      "name": "Swagger в Production",
+      "passed": true,
+      "detail": "GET /swagger/index.html → 404"
+    },
+    {
+      "name": "Перезапуск InMemory",
+      "passed": true,
+      "detail": "Тот же контейнер: 1 проект до stop/start, 0 после"
+    },
+    {
+      "name": "Swagger без пересборки",
+      "passed": true,
+      "detail": "Тот же образ в Development: /swagger/index.html → 200"
+    },
+    {
+      "name": "OpenAPI в Development",
+      "passed": true,
+      "detail": "GET /openapi/v1.json → 200, stats присутствует"
+    },
+    {
+      "name": "Учебные сбои отключены",
+      "passed": true,
+      "detail": "Chaos__Enabled=false, /api/chaos/error → 404"
+    },
+    {
+      "name": "HTTP-сценарии API",
+      "passed": true,
+      "detail": "26 запросов: 23 сценария и 3 удаления тестовых проектов"
+    },
+    {
+      "name": "Коллекция Postman CLI",
+      "passed": true,
+      "detail": "24 запроса, 73 проверки, 0 ошибок; exit code 0"
+    },
+    {
+      "name": "Регрессия .NET Release",
+      "passed": true,
+      "detail": "28/28 тестов, 0 failed, 0 skipped; InMemory"
+    }
+  ],
+  "rootResponse": {
+    "service": "DemoApi",
+    "version": "lab02-1.1",
+    "host": "e7ee83006c4d"
+  },
+  "identity": "uid=1654(app) gid=1654(app) groups=1654(app)",
+  "sdks": "",
+  "httpRunId": "20261022T004046371Z-all-346370bd",
+  "postmanRequests": 24,
+  "postmanAssertions": 73,
+  "dotnetTests": 28
+}

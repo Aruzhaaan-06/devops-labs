@@ -1,0 +1,14 @@
+{
+  "capturedAtUtc": "2026-10-22T00:35:30.1279942+00:00",
+  "serverVersion": "29.8.0",
+  "operatingSystem": "Docker Desktop",
+  "osType": "linux",
+  "architecture": "x86_64",
+  "cpus": 12,
+  "memoryBytes": 8181657600,
+  "memoryGiB": 7.62,
+  "wslEngineEnabled": true,
+  "powershellVersion": "7.6.5",
+  "screenshotCaptured": false,
+  "screenshotError": "FrameArrived timed out; Docker Desktop window was minimized on retry."
+}
