@@ -45,6 +45,40 @@ dotnet run --project src/DemoApi/DemoApi.csproj --launch-profile http
 
 Для Postman импортируйте [готовую коллекцию](postman/demo-api.postman_collection.json). Переменная `baseUrl` равна `http://localhost:8088`; при последовательном запуске коллекция сохраняет идентификаторы созданных объектов. Запросы также есть в [DemoApi.http](src/DemoApi/DemoApi.http).
 
+## Запуск сервиса и БД через Compose
+
+Нужны Docker Desktop с Linux-контейнерами и Docker Compose v2+. Из корня репозитория при первом запуске:
+
+```powershell
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+# Задайте DB_PASSWORD в .env, затем:
+docker compose config --quiet
+docker compose up -d --build --wait
+curl.exe http://localhost:8088/health/ready
+```
+
+Существующий `.env` повторно не перезаписывайте: пароль должен соответствовать сохраненному тому PostgreSQL. `.env` исключен из Git; полный вывод `docker compose config` содержит пароль и не предназначен для публикации. API доступен на localhost:8088, БД — localhost:15432. Обычная остановка `docker compose stop` сохраняет данные. Полная инструкция — [материал 06](docs/lab03-compose.md).
+
+## Разработка с PostgreSQL в Visual Studio
+
+Остановите API-контейнер, чтобы освободить порт 8088, и оставьте БД запущенной:
+
+```powershell
+docker compose stop api
+docker compose up -d --wait db
+dotnet user-secrets set "Storage" "Postgres" --project src/DemoApi/DemoApi.csproj
+dotnet user-secrets set "ConnectionStrings:Db" "Host=localhost;Port=15432;Database=demo;Username=demo;Password=<пароль из .env>" --project src/DemoApi/DemoApi.csproj
+```
+
+Введите собственный пароль вместо примера. Секреты сохраняются локально вне репозитория. Затем откройте `DemoApi.slnx` в Visual Studio 2026, выберите DemoApi и профиль `http`, нажмите F5. В Development доступен Swagger. После завершения отладки остановите процесс и верните контейнер командой `docker compose up -d --wait`.
+
+При возвращении к InMemory удалите обе локальные настройки:
+
+```powershell
+dotnet user-secrets remove "Storage" --project src/DemoApi/DemoApi.csproj
+dotnet user-secrets remove "ConnectionStrings:Db" --project src/DemoApi/DemoApi.csproj
+```
+
 ## Проверка
 
 Запуск в Docker и результаты лабораторной 2: [инструкции](docs/lab02.md), [сборки и проверки контейнера](evidence/lab02/README.md).
