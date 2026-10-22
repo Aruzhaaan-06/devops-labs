@@ -4,13 +4,31 @@
   "files": [
     {
       "path": "reports/lab01-part1-report.pdf",
-      "bytes": 210018,
-      "sha256": "0fc6d5f30944a37eb5cb8decce23dbd94796b43098f52339cc4fa213cbef3020"
+      "bytes": 211343,
+      "sha256": "15fe4633e516c282ac6f4966099e2038db636751513e2b4f7b46635e33c1e023",
+      "previousRussianVersion": {
+        "bytes": 210018,
+        "sha256": "0fc6d5f30944a37eb5cb8decce23dbd94796b43098f52339cc4fa213cbef3020"
+      },
+      "pages": 8,
+      "language": "kk",
+      "institution": "ВКТУ",
+      "author": "Есімханова Аружан Түсіпханқызы",
+      "translationOnly": true
     },
     {
       "path": "reports/lab01-part2-report.pdf",
-      "bytes": 220224,
-      "sha256": "78aeebefdde46777bc06baf20f176379abc1355f3dda10476773d1ace1fcc9f4"
+      "bytes": 222227,
+      "sha256": "eaf0e519f0fb1fa745d369f047732e3899178014e3d250f9a5a62254c960ea0c",
+      "previousRussianVersion": {
+        "bytes": 220224,
+        "sha256": "78aeebefdde46777bc06baf20f176379abc1355f3dda10476773d1ace1fcc9f4"
+      },
+      "pages": 12,
+      "language": "kk",
+      "institution": "ВКТУ",
+      "author": "Есімханова Аружан Түсіпханқызы",
+      "translationOnly": true
     },
     {
       "path": "reports/lab01-source.zip",

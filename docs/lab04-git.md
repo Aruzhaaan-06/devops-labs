@@ -1,6 +1,6 @@
 # Лабораторная 4, часть 1 · материал 07 · Git и GitHub
 
-**Есімханова Аружан · 25-ИСТК-2о · 22 октября 2026 года.**
+**Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о · 22 октября 2026 года.**
 
 [Репозиторий](https://github.com/Aruzhaaan-06/devops-labs) · [Доска](https://github.com/users/Aruzhaaan-06/projects/1) · [Отчет](../reports/lab04-git-report.pdf) · [Доказательства](../evidence/lab04-git/README.md).
 

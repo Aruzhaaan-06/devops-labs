@@ -1,11 +1,20 @@
 {
   "report": "reports/lab03-compose-report.pdf",
   "pages": 7,
-  "bytes": 390844,
-  "sha256": "b91626f4520c4fe47ef96359f703ecd9a767614c986d8382f440cd6a10f43a24",
+  "bytes": 392899,
+  "sha256": "c68d632deecb0ed73ece9dd7384a2da333731f0e5f6f934d6aacdbecf69c5f59",
   "visualReview": "All 7 rendered pages inspected; no clipped text or orphan pages.",
   "technicalChecksPassed": 14,
   "pending": [
     "Visual Studio console screenshot and Test Explorer screenshot from cumulative lab 3 checklist"
-  ]
+  ],
+  "previousRussianVersion": {
+    "bytes": 390844,
+    "sha256": "b91626f4520c4fe47ef96359f703ecd9a767614c986d8382f440cd6a10f43a24",
+    "pages": 7
+  },
+  "language": "kk",
+  "institution": "ВКТУ",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "translationOnly": true
 }
