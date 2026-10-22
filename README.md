@@ -1,4 +1,4 @@
-# DevOps Labs — DemoApi: сервис задач
+# DevOps Labs — DemoApi: проекты и задачи
 
 Учебные работы по DevOps на базе DemoApi — REST API на ASP.NET Core / .NET 10. Проекты, задачи, переходы статусов и статистика; хранение в памяти или PostgreSQL.
 
