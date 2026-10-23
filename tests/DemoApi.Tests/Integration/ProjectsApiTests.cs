@@ -27,7 +27,7 @@ public class ProjectsApiTests(WebApplicationFactory<Program> factory)
 
         var response = await _client.PostAsJsonAsync("/api/projects", new { name });
 
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);
     }
 
     [Fact]
