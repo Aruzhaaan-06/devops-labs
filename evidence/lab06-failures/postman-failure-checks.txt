@@ -1,0 +1,56 @@
+No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+Lab 6 part 1 - request failure and availability
+
+Root Service remains available
+
+  GET http://localhost:8088/ [200 OK, 246 B, 52 ms]
+  Pass  Service
+  Pass  Expected local version
+
+Root Handled request failure
+
+  GET http://localhost:8088/api/chaos/error [500 Internal Server Error, 441 B, 33 ms]
+  Pass  HTTP 500
+  Pass  Problem status 500
+  Pass  No exception details
+  Pass  No internal Chaos message
+
+Root Liveness after request error
+
+  GET http://localhost:8088/health/live [200 OK, 227 B, 5 ms]
+  Pass  HTTP 200
+  Pass  Healthy
+
+Root Readiness after request error
+
+  GET http://localhost:8088/health/ready [200 OK, 227 B, 7 ms]
+  Pass  HTTP 200
+  Pass  Healthy
+
+---------------------------------------------------------------------
+|                         |           executed |             failed |
+--------------------------+--------------------+---------------------
+|              iterations |                  1 |                  0 |
+--------------------------+--------------------+---------------------
+|                requests |                  4 |                  0 |
+--------------------------+--------------------+---------------------
+|            test-scripts |                  4 |                  0 |
+--------------------------+--------------------+---------------------
+|      prerequest-scripts |                  0 |                  0 |
+--------------------------+--------------------+---------------------
+|              assertions |                 10 |                  0 |
+---------------------------------------------------------------------
+| total run duration: 464 ms                                        |
+---------------------------------------------------------------------
+| total data received: 313 B (approx)                               |
+---------------------------------------------------------------------
+| average response time: 24 ms [min: 5 ms, max: 52 ms, s.d.: 19 ms] |
+---------------------------------------------------------------------
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+

@@ -1,0 +1,74 @@
+{
+  "utc": "2026-10-23T09:22:13.404514+00:00",
+  "id": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+  "state": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 42020,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-23T09:20:31.240502884Z",
+    "FinishedAt": "0001-01-01T00:00:00Z",
+    "Health": {
+      "Status": "healthy",
+      "FailingStreak": 0,
+      "Log": [
+        {
+          "Start": "2026-10-23T09:21:26.844634768Z",
+          "End": "2026-10-23T09:21:26.895773353Z",
+          "ExitCode": 0,
+          "Output": "Healthy"
+        },
+        {
+          "Start": "2026-10-23T09:21:36.894859564Z",
+          "End": "2026-10-23T09:21:36.999486493Z",
+          "ExitCode": 0,
+          "Output": "Healthy"
+        },
+        {
+          "Start": "2026-10-23T09:21:47.000829975Z",
+          "End": "2026-10-23T09:21:47.074663526Z",
+          "ExitCode": 0,
+          "Output": "Healthy"
+        },
+        {
+          "Start": "2026-10-23T09:21:57.076072246Z",
+          "End": "2026-10-23T09:21:57.136759609Z",
+          "ExitCode": 0,
+          "Output": "Healthy"
+        },
+        {
+          "Start": "2026-10-23T09:22:07.135706793Z",
+          "End": "2026-10-23T09:22:07.240278596Z",
+          "ExitCode": 0,
+          "Output": "Healthy"
+        }
+      ]
+    }
+  },
+  "restartCount": 0,
+  "image": "devops-labs-demo-api:lab11-89a0e2b",
+  "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+  "restartPolicy": {
+    "Name": "unless-stopped",
+    "MaximumRetryCount": 0
+  },
+  "logConfig": {
+    "Type": "json-file",
+    "Config": {
+      "max-file": "3",
+      "max-size": "10m"
+    }
+  },
+  "memoryLimit": 268435456,
+  "memorySwapLimit": 268435456,
+  "nanoCpus": 1000000000,
+  "entrypoint": [
+    "dotnet",
+    "DemoApi.dll"
+  ]
+}

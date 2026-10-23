@@ -1,0 +1,350 @@
+{
+  "name": "scenario-3-auto-restart",
+  "startUtc": "2026-10-23T09:22:20.028028+00:00",
+  "startNs": 1792747340028028100,
+  "before": {
+    "utc": "2026-10-23T09:22:20.028028+00:00",
+    "id": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 42020,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:20:31.240502884Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:21:36.894859564Z",
+            "End": "2026-10-23T09:21:36.999486493Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:47.000829975Z",
+            "End": "2026-10-23T09:21:47.074663526Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:57.076072246Z",
+            "End": "2026-10-23T09:21:57.136759609Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:07.135706793Z",
+            "End": "2026-10-23T09:22:07.240278596Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:17.242107326Z",
+            "End": "2026-10-23T09:22:17.298620685Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "http": {
+    "utc": "2026-10-23T09:22:20.730004+00:00",
+    "method": "POST",
+    "path": "/api/chaos/crash",
+    "status": 202,
+    "contentType": null,
+    "body": ""
+  },
+  "after": {
+    "utc": "2026-10-23T09:22:27.035567+00:00",
+    "id": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 42991,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:22:21.303066832Z",
+      "FinishedAt": "2026-10-23T09:22:20.986843334Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:21:47.000829975Z",
+            "End": "2026-10-23T09:21:47.074663526Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:57.076072246Z",
+            "End": "2026-10-23T09:21:57.136759609Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:07.135706793Z",
+            "End": "2026-10-23T09:22:07.240278596Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:17.242107326Z",
+            "End": "2026-10-23T09:22:17.298620685Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:26.450648406Z",
+            "End": "2026-10-23T09:22:26.59678643Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 1,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "ready": {
+    "utc": "2026-10-23T09:22:27.775129+00:00",
+    "method": "GET",
+    "path": "/health/ready",
+    "status": 200,
+    "contentType": "text/plain",
+    "body": "Healthy"
+  },
+  "marker": {
+    "project": {
+      "utc": "2026-10-23T09:22:27.870059+00:00",
+      "method": "GET",
+      "path": "/api/projects/24",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "body": {
+        "id": 24,
+        "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9",
+        "createdAt": "2026-10-23T09:22:15.178379+00:00"
+      }
+    },
+    "task": {
+      "utc": "2026-10-23T09:22:27.949174+00:00",
+      "method": "GET",
+      "path": "/api/tasks/26",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "body": {
+        "id": 26,
+        "projectId": 24,
+        "title": "Lab11: persists across process failures",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:22:15.293224+00:00",
+        "updatedAt": "2026-10-23T09:22:15.293224+00:00"
+      }
+    }
+  },
+  "logs": [
+    {
+      "EventId": 0,
+      "LogLevel": "Critical",
+      "Category": "DemoApi.Controllers.ChaosController",
+      "Message": "Chaos: аварийное завершение процесса",
+      "State": {
+        "{OriginalFormat}": "Chaos: аварийное завершение процесса"
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "DemoApi",
+      "Message": "Хранилище: PostgreSQL",
+      "State": {
+        "Storage": "PostgreSQL",
+        "{OriginalFormat}": "Хранилище: {Storage}"
+      }
+    },
+    {
+      "EventId": 14,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Now listening on: http://[::]:8080",
+      "State": {
+        "address": "http://[::]:8080",
+        "{OriginalFormat}": "Now listening on: {address}"
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Application started. Press Ctrl+C to shut down.",
+      "State": {
+        "{OriginalFormat}": "Application started. Press Ctrl+C to shut down."
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Hosting environment: Production",
+      "State": {
+        "EnvName": "Production",
+        "{OriginalFormat}": "Hosting environment: {EnvName}"
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Content root path: /app",
+      "State": {
+        "ContentRoot": "/app",
+        "{OriginalFormat}": "Content root path: {ContentRoot}"
+      }
+    }
+  ],
+  "endNs": 1792747348172833900,
+  "endUtc": "2026-10-23T09:22:28.172833+00:00",
+  "events": [
+    {
+      "Type": "container",
+      "Action": "die",
+      "Actor": {
+        "ID": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+        "Attributes": {
+          "com.docker.compose.config-hash": "6906e574a6821e19b446da6cbd6906e7af236e106d28b86ef3856a3fdf91665f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "db:service_healthy:false",
+          "com.docker.compose.image": "sha256:ed90aae05f3adefbb0259ff684941daf121d0fafadddd36d4cdfc2961e4b9d06",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "devops-labs",
+          "com.docker.compose.project.config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+          "com.docker.compose.project.working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+          "com.docker.compose.replace": "api-1",
+          "com.docker.compose.service": "api",
+          "com.docker.compose.version": "5.5.1",
+          "desktop.docker.io/ports.scheme": "v2",
+          "desktop.docker.io/ports/8080/tcp": "127.0.0.1:8088",
+          "execDuration": "109",
+          "exitCode": "1",
+          "image": "devops-labs-demo-api:lab11-89a0e2b",
+          "name": "devops-labs-api-1",
+          "org.opencontainers.image.version": "24.04"
+        }
+      },
+      "scope": "local",
+      "time": 1792747341,
+      "timeNano": 1792747341269121084
+    },
+    {
+      "Type": "container",
+      "Action": "start",
+      "Actor": {
+        "ID": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+        "Attributes": {
+          "com.docker.compose.config-hash": "6906e574a6821e19b446da6cbd6906e7af236e106d28b86ef3856a3fdf91665f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "db:service_healthy:false",
+          "com.docker.compose.image": "sha256:ed90aae05f3adefbb0259ff684941daf121d0fafadddd36d4cdfc2961e4b9d06",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "devops-labs",
+          "com.docker.compose.project.config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+          "com.docker.compose.project.working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+          "com.docker.compose.replace": "api-1",
+          "com.docker.compose.service": "api",
+          "com.docker.compose.version": "5.5.1",
+          "desktop.docker.io/ports.scheme": "v2",
+          "desktop.docker.io/ports/8080/tcp": "127.0.0.1:8088",
+          "image": "devops-labs-demo-api:lab11-89a0e2b",
+          "name": "devops-labs-api-1",
+          "org.opencontainers.image.version": "24.04"
+        }
+      },
+      "scope": "local",
+      "time": 1792747341,
+      "timeNano": 1792747341449921920
+    },
+    {
+      "Type": "container",
+      "Action": "health_status: healthy",
+      "Actor": {
+        "ID": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+        "Attributes": {
+          "com.docker.compose.config-hash": "6906e574a6821e19b446da6cbd6906e7af236e106d28b86ef3856a3fdf91665f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "db:service_healthy:false",
+          "com.docker.compose.image": "sha256:ed90aae05f3adefbb0259ff684941daf121d0fafadddd36d4cdfc2961e4b9d06",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "devops-labs",
+          "com.docker.compose.project.config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+          "com.docker.compose.project.working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+          "com.docker.compose.replace": "api-1",
+          "com.docker.compose.service": "api",
+          "com.docker.compose.version": "5.5.1",
+          "desktop.docker.io/ports.scheme": "v2",
+          "desktop.docker.io/ports/8080/tcp": "127.0.0.1:8088",
+          "image": "devops-labs-demo-api:lab11-89a0e2b",
+          "name": "devops-labs-api-1",
+          "org.opencontainers.image.version": "24.04"
+        }
+      },
+      "scope": "local",
+      "time": 1792747346,
+      "timeNano": 1792747346597089757
+    }
+  ]
+}

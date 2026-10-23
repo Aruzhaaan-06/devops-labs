@@ -1,0 +1,171 @@
+{
+  "name": "scenario-4-no-restart",
+  "startUtc": "2026-10-23T09:22:47.177655+00:00",
+  "startNs": 1792747367177655100,
+  "before": {
+    "utc": "2026-10-23T09:22:47.177655+00:00",
+    "id": "a6b527c3d39457647f5b26688a8450b7390e3e204c15d7f552743688c91ec285",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 43193,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:22:29.743153642Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:22:34.91516126Z",
+            "End": "2026-10-23T09:22:35.047515727Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:45.046200959Z",
+            "End": "2026-10-23T09:22:45.100075648Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "http": {
+    "utc": "2026-10-23T09:22:47.959327+00:00",
+    "method": "POST",
+    "path": "/api/chaos/crash",
+    "status": 202,
+    "contentType": null,
+    "body": ""
+  },
+  "after": {
+    "utc": "2026-10-23T09:22:55.167163+00:00",
+    "id": "a6b527c3d39457647f5b26688a8450b7390e3e204c15d7f552743688c91ec285",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 1,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:22:29.743153642Z",
+      "FinishedAt": "2026-10-23T09:22:48.207180889Z",
+      "Health": {
+        "Status": "unhealthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:22:34.91516126Z",
+            "End": "2026-10-23T09:22:35.047515727Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:45.046200959Z",
+            "End": "2026-10-23T09:22:45.100075648Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "psAll": "NAME                    IMAGE                                COMMAND                  SERVICE   CREATED          STATUS                     PORTS\ndevops-labs-adminer-1   adminer:latest                       \"entrypoint.sh docke…\"   adminer   20 hours ago     Exited (0) 19 hours ago    \ndevops-labs-api-1       devops-labs-demo-api:lab11-89a0e2b   \"dotnet DemoApi.dll\"     api       28 seconds ago   Exited (1) 7 seconds ago   \ndevops-labs-db-1        postgres:18-alpine                   \"docker-entrypoint.s…\"   db        2 minutes ago    Up 2 minutes (healthy)     127.0.0.1:15432->5432/tcp\n",
+  "logs": [
+    {
+      "EventId": 0,
+      "LogLevel": "Critical",
+      "Category": "DemoApi.Controllers.ChaosController",
+      "Message": "Chaos: аварийное завершение процесса",
+      "State": {
+        "{OriginalFormat}": "Chaos: аварийное завершение процесса"
+      }
+    }
+  ],
+  "endNs": 1792747376228152100,
+  "endUtc": "2026-10-23T09:22:56.228152+00:00",
+  "events": [
+    {
+      "Type": "container",
+      "Action": "die",
+      "Actor": {
+        "ID": "a6b527c3d39457647f5b26688a8450b7390e3e204c15d7f552743688c91ec285",
+        "Attributes": {
+          "com.docker.compose.config-hash": "a5b2d1d8fe69516961c682e21ccc71f0ef4c063f059392fede280a427a55d25a",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "db:service_healthy:false",
+          "com.docker.compose.image": "sha256:ed90aae05f3adefbb0259ff684941daf121d0fafadddd36d4cdfc2961e4b9d06",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "devops-labs",
+          "com.docker.compose.project.config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+          "com.docker.compose.project.working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+          "com.docker.compose.replace": "api-1",
+          "com.docker.compose.service": "api",
+          "com.docker.compose.version": "5.5.1",
+          "desktop.docker.io/ports.scheme": "v2",
+          "desktop.docker.io/ports/8080/tcp": "127.0.0.1:8088",
+          "execDuration": "18",
+          "exitCode": "1",
+          "image": "devops-labs-demo-api:lab11-89a0e2b",
+          "name": "devops-labs-api-1",
+          "org.opencontainers.image.version": "24.04"
+        }
+      },
+      "scope": "local",
+      "time": 1792747368,
+      "timeNano": 1792747368484935793
+    }
+  ]
+}

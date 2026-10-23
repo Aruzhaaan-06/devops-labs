@@ -1,0 +1,28 @@
+{
+  "archive": "Devops (1).zip",
+  "material": 11,
+  "scope": "Lab 6 sections 1-5, submission table scenarios 2-5 and questions 1-2. Part2 consulted only for full submission questions; its experiments were not run.",
+  "sourceFiles": [
+    {
+      "retainedReference": "58.pdf",
+      "sha256": "566527523c5f84e87b54aaa93b263862437c58a670258c585ccb829940a9ab18"
+    },
+    {
+      "retainedReference": "85.pdf",
+      "sha256": "93927eecafb838e2e639dfc178181d7e88efbc97a35ef207ab4078a29faa73ce"
+    },
+    {
+      "retainedReference": "86.pdf",
+      "sha256": "bf128c68fb4ff750fd98546175b8700fa73340cf6e70bd6aeca21177a013d041"
+    },
+    {
+      "retainedReference": "lab6-part2-reference.pdf",
+      "sha256": "c5e95b84c56f425110789cab9e38e2f1837945e91d85b28c32c43108a29ccc43"
+    }
+  ],
+  "officialDocs": [
+    "https://docs.docker.com/engine/containers/start-containers-automatically/",
+    "https://docs.docker.com/reference/cli/docker/container/stop/",
+    "https://docs.docker.com/reference/cli/docker/system/events/"
+  ]
+}

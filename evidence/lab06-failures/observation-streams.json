@@ -1,0 +1,35 @@
+{
+  "T1": "verify-lab11.py command and HTTP transcript",
+  "T2": [
+    "docker",
+    "events",
+    "--since",
+    "1792747335",
+    "--format",
+    "{{json .}}",
+    "--filter",
+    "container=devops-labs-api-1",
+    "--filter",
+    "event=start",
+    "--filter",
+    "event=kill",
+    "--filter",
+    "event=die",
+    "--filter",
+    "event=oom",
+    "--filter",
+    "event=stop",
+    "--filter",
+    "event=health_status"
+  ],
+  "T3": [
+    "docker",
+    "stats",
+    "--no-stream",
+    "--format",
+    "{{json .}}",
+    "devops-labs-api-1",
+    "devops-labs-db-1"
+  ],
+  "T3Mode": "repeated samples in parallel; resolves current container names across Compose recreation"
+}

@@ -1,0 +1,11 @@
+{
+  "target": "http://localhost:8088",
+  "storage": "PostgreSQL",
+  "version": "lab11-89a0e2b",
+  "requests": 4,
+  "assertions": 10,
+  "failed": 0,
+  "exitCode": 0,
+  "cloudPublication": false,
+  "scope": "error 500 without details; root and live/ready available; no process crash request"
+}

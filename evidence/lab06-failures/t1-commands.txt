@@ -1,0 +1,131 @@
+
+2026-10-23T09:22:13.322306+00:00 $ git diff -- compose.yaml
+
+exit=0
+
+2026-10-23T09:22:13.404403+00:00 $ docker inspect --format "{{index .Config.Labels \"com.docker.compose.project\"}}" devops-labs-api-1
+devops-labs
+
+exit=0
+
+2026-10-23T09:22:14.509330+00:00 $ docker compose ps
+NAME                IMAGE                                COMMAND                  SERVICE   CREATED              STATUS                        PORTS
+devops-labs-api-1   devops-labs-demo-api:lab11-89a0e2b   "dotnet DemoApi.dll"     api       About a minute ago   Up About a minute (healthy)   127.0.0.1:8088->8080/tcp
+devops-labs-db-1    postgres:18-alpine                   "docker-entrypoint.s…"   db        About a minute ago   Up About a minute (healthy)   127.0.0.1:15432->5432/tcp
+
+exit=0
+
+2026-10-23T09:22:14.778297+00:00 $ docker compose logs api --tail 20
+api-1  | {"EventId":0,"LogLevel":"Information","Category":"DemoApi","Message":"Хранилище: PostgreSQL","State":{"Storage":"PostgreSQL","{OriginalFormat}":"Хранилище: {Storage}"}}
+api-1  | {"EventId":14,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Now listening on: http://[::]:8080","State":{"address":"http://[::]:8080","{OriginalFormat}":"Now listening on: {address}"}}
+api-1  | {"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Application started. Press Ctrl+C to shut down.","State":{"{OriginalFormat}":"Application started. Press Ctrl+C to shut down."}}
+api-1  | {"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Hosting environment: Production","State":{"EnvName":"Production","{OriginalFormat}":"Hosting environment: {EnvName}"}}
+api-1  | {"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Content root path: /app","State":{"ContentRoot":"/app","{OriginalFormat}":"Content root path: {ContentRoot}"}}
+
+exit=0
+
+2026-10-23T09:22:14.884052+00:00 $ docker inspect devops-labs-api-1 --format "{{json .HostConfig.LogConfig}}"
+{"Type":"json-file","Config":{"max-file":"3","max-size":"10m"}}
+
+exit=0
+
+2026-10-23T09:22:14.984379+00:00 $ docker inspect devops-labs-api-1 --format {{.HostConfig.RestartPolicy.Name}}
+unless-stopped
+
+exit=0
+2026-10-23T09:22:15.248902+00:00 HTTP POST /api/projects
+{"utc": "2026-10-23T09:22:14.986379+00:00", "method": "POST", "path": "/api/projects", "status": 201, "contentType": "application/json; charset=utf-8", "body": {"id": 24, "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9", "createdAt": "2026-10-23T09:22:15.178379+00:00"}}
+2026-10-23T09:22:15.322014+00:00 HTTP POST /api/tasks
+{"utc": "2026-10-23T09:22:15.248902+00:00", "method": "POST", "path": "/api/tasks", "status": 201, "contentType": "application/json; charset=utf-8", "body": {"id": 26, "projectId": 24, "title": "Lab11: persists across process failures", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:22:15.293224+00:00", "updatedAt": "2026-10-23T09:22:15.293224+00:00"}}
+2026-10-23T09:22:17.119519+00:00 HTTP GET /api/chaos/error
+{"utc": "2026-10-23T09:22:17.064200+00:00", "method": "GET", "path": "/api/chaos/error", "status": 500, "contentType": "application/problem+json; charset=utf-8", "body": {"type": "https://tools.ietf.org/html/rfc9110#section-15.6.1", "title": "An error occurred while processing your request.", "status": 500, "traceId": "00-11be4563175ace3df3d4f1b6cb7cd9e7-7d84eaf95437df08-00"}}
+2026-10-23T09:22:19.933630+00:00 HTTP GET /health/live
+{"utc": "2026-10-23T09:22:19.930240+00:00", "method": "GET", "path": "/health/live", "status": 200, "contentType": "text/plain", "body": "Healthy"}
+2026-10-23T09:22:20.752827+00:00 HTTP POST /api/chaos/crash
+{"utc": "2026-10-23T09:22:20.730004+00:00", "method": "POST", "path": "/api/chaos/crash", "status": 202, "contentType": null, "body": ""}
+2026-10-23T09:22:27.869513+00:00 HTTP GET /health/ready
+{"utc": "2026-10-23T09:22:27.775129+00:00", "method": "GET", "path": "/health/ready", "status": 200, "contentType": "text/plain", "body": "Healthy"}
+2026-10-23T09:22:27.949174+00:00 HTTP GET /api/projects/24
+{"utc": "2026-10-23T09:22:27.870059+00:00", "method": "GET", "path": "/api/projects/24", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"id": 24, "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9", "createdAt": "2026-10-23T09:22:15.178379+00:00"}}
+2026-10-23T09:22:28.016940+00:00 HTTP GET /api/tasks/26
+{"utc": "2026-10-23T09:22:27.949174+00:00", "method": "GET", "path": "/api/tasks/26", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"id": 26, "projectId": 24, "title": "Lab11: persists across process failures", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:22:15.293224+00:00", "updatedAt": "2026-10-23T09:22:15.293224+00:00"}}
+
+2026-10-23T09:22:35.484073+00:00 $ docker compose up -d --no-build --wait --wait-timeout 90
+ Container devops-labs-db-1 Running 
+ Container devops-labs-api-1 Recreate 
+ Container devops-labs-api-1 Recreated 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Starting 
+ Container devops-labs-api-1 Started 
+ Container devops-labs-api-1 Waiting 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Healthy 
+
+exit=0
+2026-10-23T09:22:47.998173+00:00 HTTP POST /api/chaos/crash
+{"utc": "2026-10-23T09:22:47.959327+00:00", "method": "POST", "path": "/api/chaos/crash", "status": 202, "contentType": null, "body": ""}
+
+2026-10-23T09:22:56.134185+00:00 $ docker compose ps -a
+NAME                    IMAGE                                COMMAND                  SERVICE   CREATED          STATUS                     PORTS
+devops-labs-adminer-1   adminer:latest                       "entrypoint.sh docke…"   adminer   20 hours ago     Exited (0) 19 hours ago    
+devops-labs-api-1       devops-labs-demo-api:lab11-89a0e2b   "dotnet DemoApi.dll"     api       28 seconds ago   Exited (1) 7 seconds ago   
+devops-labs-db-1        postgres:18-alpine                   "docker-entrypoint.s…"   db        2 minutes ago    Up 2 minutes (healthy)     127.0.0.1:15432->5432/tcp
+
+exit=0
+
+2026-10-23T09:23:03.223700+00:00 $ docker compose up -d --no-build --wait --wait-timeout 90
+ Container devops-labs-db-1 Running 
+ Container devops-labs-api-1 Recreate 
+ Container devops-labs-api-1 Recreated 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Starting 
+ Container devops-labs-api-1 Started 
+ Container devops-labs-api-1 Waiting 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Healthy 
+
+exit=0
+2026-10-23T09:23:04.144060+00:00 HTTP GET /api/projects/24
+{"utc": "2026-10-23T09:23:04.030495+00:00", "method": "GET", "path": "/api/projects/24", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"id": 24, "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9", "createdAt": "2026-10-23T09:22:15.178379+00:00"}}
+2026-10-23T09:23:04.195849+00:00 HTTP GET /api/tasks/26
+{"utc": "2026-10-23T09:23:04.144060+00:00", "method": "GET", "path": "/api/tasks/26", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"id": 26, "projectId": 24, "title": "Lab11: persists across process failures", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:22:15.293224+00:00", "updatedAt": "2026-10-23T09:22:15.293224+00:00"}}
+
+2026-10-23T09:23:05.504329+00:00 $ docker compose stop api
+ Container devops-labs-api-1 Stopping 
+ Container devops-labs-api-1 Stopped 
+
+exit=0
+
+2026-10-23T09:23:12.799226+00:00 $ docker compose start api
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Starting 
+ Container devops-labs-api-1 Started 
+
+exit=0
+2026-10-23T09:23:19.426346+00:00 HTTP GET /
+{"utc": "2026-10-23T09:23:19.391012+00:00", "method": "GET", "path": "/", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"service": "DemoApi", "version": "lab11-89a0e2b", "host": "c0ef1527103e", "message": "hello from CI/CD"}}
+2026-10-23T09:23:19.434257+00:00 HTTP GET /health/live
+{"utc": "2026-10-23T09:23:19.426897+00:00", "method": "GET", "path": "/health/live", "status": 200, "contentType": "text/plain", "body": "Healthy"}
+2026-10-23T09:23:19.510756+00:00 HTTP GET /health/ready
+{"utc": "2026-10-23T09:23:19.434257+00:00", "method": "GET", "path": "/health/ready", "status": 200, "contentType": "text/plain", "body": "Healthy"}
+2026-10-23T09:23:19.582661+00:00 HTTP GET /api/projects/24
+{"utc": "2026-10-23T09:23:19.510756+00:00", "method": "GET", "path": "/api/projects/24", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"id": 24, "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9", "createdAt": "2026-10-23T09:22:15.178379+00:00"}}
+2026-10-23T09:23:19.623336+00:00 HTTP GET /api/tasks/26
+{"utc": "2026-10-23T09:23:19.582661+00:00", "method": "GET", "path": "/api/tasks/26", "status": 200, "contentType": "application/json; charset=utf-8", "body": {"id": 26, "projectId": 24, "title": "Lab11: persists across process failures", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:22:15.293224+00:00", "updatedAt": "2026-10-23T09:22:15.293224+00:00"}}
+
+2026-10-23T09:23:21.139996+00:00 $ docker compose up -d --no-build --wait --wait-timeout 90
+ Container devops-labs-api-1 Running 
+ Container devops-labs-db-1 Running 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-api-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Healthy 
+
+exit=0

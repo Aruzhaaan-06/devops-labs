@@ -1,0 +1,147 @@
+{
+  "passed": 35,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Local main image used",
+      "passed": true
+    },
+    {
+      "name": "Initial API healthy",
+      "passed": true
+    },
+    {
+      "name": "Initial restart policy unless-stopped",
+      "passed": true
+    },
+    {
+      "name": "JSON log rotation configured",
+      "passed": true
+    },
+    {
+      "name": "Memory and CPU limits configured",
+      "passed": true
+    },
+    {
+      "name": "Exec-form entrypoint",
+      "passed": true
+    },
+    {
+      "name": "Request error returns HTTP500 ProblemDetails",
+      "passed": true
+    },
+    {
+      "name": "Error response does not expose internal exception",
+      "passed": true
+    },
+    {
+      "name": "Error log includes exception and stack",
+      "passed": true
+    },
+    {
+      "name": "Request error did not restart container",
+      "passed": true
+    },
+    {
+      "name": "No lifecycle events from request error",
+      "passed": true
+    },
+    {
+      "name": "API live after request error",
+      "passed": true
+    },
+    {
+      "name": "Crash accepted asynchronously",
+      "passed": true
+    },
+    {
+      "name": "Auto-restart crash exits1",
+      "passed": true
+    },
+    {
+      "name": "Crash event chain includes start and healthy",
+      "passed": true
+    },
+    {
+      "name": "Same container automatic restart count increments once",
+      "passed": true
+    },
+    {
+      "name": "Crash logs Critical",
+      "passed": true
+    },
+    {
+      "name": "Readiness recovered",
+      "passed": true
+    },
+    {
+      "name": "Temporary restart policy no applied",
+      "passed": true
+    },
+    {
+      "name": "No policy leaves API Exited1",
+      "passed": true
+    },
+    {
+      "name": "No automatic restart under no",
+      "passed": true
+    },
+    {
+      "name": "No policy has actual die1 event",
+      "passed": true
+    },
+    {
+      "name": "Policy restored before graceful stop",
+      "passed": true
+    },
+    {
+      "name": "Graceful stop receives SIGTERM",
+      "passed": true
+    },
+    {
+      "name": "Graceful stop exits0 with stop event",
+      "passed": true
+    },
+    {
+      "name": "Graceful stop no SIGKILL",
+      "passed": true
+    },
+    {
+      "name": "Manually stopped container stays stopped",
+      "passed": true
+    },
+    {
+      "name": "Graceful shutdown log recorded",
+      "passed": true
+    },
+    {
+      "name": "Explicit start restored API",
+      "passed": true
+    },
+    {
+      "name": "Marker persisted across crashes and recreation",
+      "passed": true
+    },
+    {
+      "name": "Named DB volume retained",
+      "passed": true
+    },
+    {
+      "name": "Compose original bytes restored",
+      "passed": true
+    },
+    {
+      "name": "T2 observer no stderr",
+      "passed": true
+    },
+    {
+      "name": "T3 actual resource samples retained",
+      "passed": true
+    },
+    {
+      "name": "Live Postman4requests10assertions",
+      "passed": true
+    }
+  ],
+  "scope": "Actual command/HTTP/events/logs/resource consistency for material11. Docker Desktop tab inspection tracked separately."
+}

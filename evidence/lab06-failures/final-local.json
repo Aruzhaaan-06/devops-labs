@@ -1,0 +1,138 @@
+{
+  "inspection": {
+    "utc": "2026-10-23T09:23:18.634249+00:00",
+    "id": "c0ef1527103e0866ceec14de14b409e4494df05d4a38345fdbcfbe964dd3b143",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 43721,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:23:12.575974272Z",
+      "FinishedAt": "2026-10-23T09:23:05.219855429Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:23:02.657249747Z",
+            "End": "2026-10-23T09:23:02.802896995Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:23:17.753731625Z",
+            "End": "2026-10-23T09:23:17.896963141Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "info": {
+    "utc": "2026-10-23T09:23:19.391012+00:00",
+    "method": "GET",
+    "path": "/",
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "service": "DemoApi",
+      "version": "lab11-89a0e2b",
+      "host": "c0ef1527103e",
+      "message": "hello from CI/CD"
+    }
+  },
+  "live": {
+    "utc": "2026-10-23T09:23:19.426897+00:00",
+    "method": "GET",
+    "path": "/health/live",
+    "status": 200,
+    "contentType": "text/plain",
+    "body": "Healthy"
+  },
+  "ready": {
+    "utc": "2026-10-23T09:23:19.434257+00:00",
+    "method": "GET",
+    "path": "/health/ready",
+    "status": 200,
+    "contentType": "text/plain",
+    "body": "Healthy"
+  },
+  "marker": {
+    "project": {
+      "utc": "2026-10-23T09:23:19.510756+00:00",
+      "method": "GET",
+      "path": "/api/projects/24",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "body": {
+        "id": 24,
+        "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9",
+        "createdAt": "2026-10-23T09:22:15.178379+00:00"
+      }
+    },
+    "task": {
+      "utc": "2026-10-23T09:23:19.582661+00:00",
+      "method": "GET",
+      "path": "/api/tasks/26",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "body": {
+        "id": 26,
+        "projectId": 24,
+        "title": "Lab11: persists across process failures",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:22:15.293224+00:00",
+        "updatedAt": "2026-10-23T09:22:15.293224+00:00"
+      }
+    }
+  },
+  "databaseVolumes": [
+    {
+      "Type": "bind",
+      "Source": "/run/desktop/mnt/host/c/Users/Админ/Documents/Codex/2026-10-21/referenced-chatgpt-conversation-this-is-an/work/demo-api/db",
+      "Destination": "/docker-entrypoint-initdb.d",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "volume",
+      "Name": "devops-labs_pgdata",
+      "Source": "/var/lib/docker/volumes/devops-labs_pgdata/_data",
+      "Destination": "/var/lib/postgresql",
+      "Driver": "local",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": ""
+    }
+  ]
+}

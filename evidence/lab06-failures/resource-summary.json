@@ -1,0 +1,16 @@
+{
+  "sampleBatches": 25,
+  "apiSamples": 24,
+  "firstUtc": "2026-10-23T09:22:17.490473+00:00",
+  "lastUtc": "2026-10-23T09:23:21.098092+00:00",
+  "maxApiMemoryPercent": 16.11,
+  "maxApiCpuPercent": 59.13,
+  "failedBatches": [
+    {
+      "utc": "2026-10-23T09:22:28.972781+00:00",
+      "exitCode": 1,
+      "stderr": "EOF"
+    }
+  ],
+  "mode": "Docker stats --no-stream repeated in parallel, including API/DB. Exited API samples may show zero resources."
+}
