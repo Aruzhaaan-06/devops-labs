@@ -1,0 +1,15 @@
+{
+  "id": 39922922366,
+  "name": "ci-cd",
+  "head_branch": "ci/pipeline",
+  "head_sha": "bfd861774f93526fcddf7e1f0c987413ff24146f",
+  "event": "pull_request",
+  "status": "completed",
+  "conclusion": "failure",
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366",
+  "created_at": "2026-10-23T08:11:35Z",
+  "updated_at": "2026-10-23T08:12:28Z",
+  "run_started_at": "2026-10-23T08:11:35Z",
+  "run_attempt": 1,
+  "path": ".github/workflows/ci-cd.yml"
+}

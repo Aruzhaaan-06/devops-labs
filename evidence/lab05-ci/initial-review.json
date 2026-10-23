@@ -1,0 +1,40 @@
+{
+  "id": 5625605189,
+  "node_id": "PRR_kwDOVSp68c8AAAABT0_sRQ",
+  "user": {
+    "login": "temirkhanerbolatovich-coder",
+    "id": 330092700,
+    "node_id": "U_kgDOE6zQnA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/330092700?u=2ccfb7f84957d08a60183421522526be5a898386&v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/temirkhanerbolatovich-coder",
+    "html_url": "https://github.com/temirkhanerbolatovich-coder",
+    "followers_url": "https://api.github.com/users/temirkhanerbolatovich-coder/followers",
+    "following_url": "https://api.github.com/users/temirkhanerbolatovich-coder/following{/other_user}",
+    "gists_url": "https://api.github.com/users/temirkhanerbolatovich-coder/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/temirkhanerbolatovich-coder/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/temirkhanerbolatovich-coder/subscriptions",
+    "organizations_url": "https://api.github.com/users/temirkhanerbolatovich-coder/orgs",
+    "repos_url": "https://api.github.com/users/temirkhanerbolatovich-coder/repos",
+    "events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "body": "Техническое ревью вторым аккаунтом владельца: workflow kit прочитан, ответы на 5 вопросов есть. Hosted Ubuntu с отдельным PostgreSQL, права job ограничены, deploy только main push на помеченный Windows runner, действия закреплены SHA. Первый CI test прошел; image/deploy skipped. Следующий учебный шаг — неверное ожидание теста и проверка обязательного test. Это не независимое ревью одногруппника.",
+  "state": "APPROVED",
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/17#pullrequestreview-5625605189",
+  "pull_request_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/17",
+  "author_association": "COLLABORATOR",
+  "_links": {
+    "html": {
+      "href": "https://github.com/Aruzhaaan-06/devops-labs/pull/17#pullrequestreview-5625605189"
+    },
+    "pull_request": {
+      "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/17"
+    }
+  },
+  "submitted_at": "2026-10-23T08:11:27Z",
+  "commit_id": "4052ddb697eb217d87c60b727283e85786f2471e"
+}

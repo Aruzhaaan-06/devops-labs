@@ -1,0 +1,22 @@
+test	Run dotnet test DemoApi.slnx --no-build -c Release	﻿2026-10-23T08:12:17.0546440Z ##[group]Run dotnet test DemoApi.slnx --no-build -c Release
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0546888Z ^[[36;1mdotnet test DemoApi.slnx --no-build -c Release^[[0m
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0588053Z shell: /usr/bin/bash -e {0}
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0588341Z env:
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0588550Z   Storage: Postgres
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0589087Z   ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;***
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0589492Z   DOTNET_ROOT: /usr/share/dotnet
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:17.0589758Z ##[endgroup]
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:18.2267890Z Test run for /home/runner/work/devops-labs/devops-labs/tests/DemoApi.Tests/bin/Release/net10.0/DemoApi.Tests.dll (.NETCoreApp,Version=v10.0)
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:18.4479412Z A total of 1 test files matched the specified pattern.
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.0669072Z [xUnit.net 00:00:01.08]     DemoApi.Tests.Integration.ProjectsApiTests.Create_DuplicateName_ReturnsConflict [FAIL]
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1777957Z   Failed DemoApi.Tests.Integration.ProjectsApiTests.Create_DuplicateName_ReturnsConflict [9 ms]
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1779304Z   Error Message:
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1779847Z    Assert.Equal() Failure: Values differ
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1780375Z Expected: OK
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1780761Z Actual:   Conflict
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1781135Z   Stack Trace:
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1782401Z      at DemoApi.Tests.Integration.ProjectsApiTests.Create_DuplicateName_ReturnsConflict() in /home/runner/work/devops-labs/devops-labs/tests/DemoApi.Tests/Integration/ProjectsApiTests.cs:line 30
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.1783521Z --- End of stack trace from previous location ---
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.6071871Z
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.6110737Z Failed!  - Failed:     1, Passed:    37, Skipped:     0, Total:    38, Duration: 1 s - DemoApi.Tests.dll (net10.0)
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:12:20.6686478Z ##[error]Process completed with exit code 1.

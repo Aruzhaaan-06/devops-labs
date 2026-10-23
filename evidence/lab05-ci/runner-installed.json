@@ -1,0 +1,15 @@
+{
+  "path": "C:\\actions-runner",
+  "file": "actions-runner-win-x64-2.338.0.zip",
+  "sha256": "f48e0750a21812bca5f82de5f7f5aeae71abee647fab5a582f1742d07eba455f",
+  "checksumVerified": true,
+  "name": "devops-labs-windows",
+  "labels": [
+    "self-hosted",
+    "Windows",
+    "X64",
+    "devops-labs"
+  ],
+  "installedAsService": false,
+  "credentials": "Stored only by runner in C:/actions-runner; never read or published"
+}

@@ -1,0 +1,5 @@
+Тестовый запуск для [REPO]\tests\DemoApi.Tests\bin\Release\net10.0\DemoApi.Tests.dll (.NETCoreApp,Version=v10.0)
+Общее количество тестовых файлов (1), соответствующих указанному шаблону.
+Файл результатов: [STATE]\lab09-local.trx
+
+Пройден!   : не пройдено     0, пройдено    38, пропущено     0, всего    38, длительность 1 s. - DemoApi.Tests.dll (net10.0)

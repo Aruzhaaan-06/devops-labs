@@ -1,0 +1,40 @@
+{
+  "id": 5625660894,
+  "node_id": "PRR_kwDOVSp68c8AAAABT1DF3g",
+  "user": {
+    "login": "temirkhanerbolatovich-coder",
+    "id": 330092700,
+    "node_id": "U_kgDOE6zQnA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/330092700?u=2ccfb7f84957d08a60183421522526be5a898386&v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/temirkhanerbolatovich-coder",
+    "html_url": "https://github.com/temirkhanerbolatovich-coder",
+    "followers_url": "https://api.github.com/users/temirkhanerbolatovich-coder/followers",
+    "following_url": "https://api.github.com/users/temirkhanerbolatovich-coder/following{/other_user}",
+    "gists_url": "https://api.github.com/users/temirkhanerbolatovich-coder/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/temirkhanerbolatovich-coder/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/temirkhanerbolatovich-coder/subscriptions",
+    "organizations_url": "https://api.github.com/users/temirkhanerbolatovich-coder/orgs",
+    "repos_url": "https://api.github.com/users/temirkhanerbolatovich-coder/repos",
+    "events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "body": "Техническое повторное ревью тем же вторым аккаунтом: ожидаемый Conflict восстановлен, test снова success (38/38), обязательная проверка GitHub Actions остается, отказ с Expected OK / Actual Conflict и disabled merge зафиксирован. Runner Online/Idle и DB_PASSWORD подготовлены. По методичке PR оставляем открытым до материала 10; образ и deploy на PR skipped.",
+  "state": "APPROVED",
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/17#pullrequestreview-5625660894",
+  "pull_request_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/17",
+  "author_association": "COLLABORATOR",
+  "_links": {
+    "html": {
+      "href": "https://github.com/Aruzhaaan-06/devops-labs/pull/17#pullrequestreview-5625660894"
+    },
+    "pull_request": {
+      "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/17"
+    }
+  },
+  "submitted_at": "2026-10-23T08:17:04Z",
+  "commit_id": "07ef056ce4e0139ad8fec17605c7376092cdf852"
+}

@@ -1,0 +1,274 @@
+Browser tab: 3, Title: "ci: лабораторная 5 — пайплайн и защита merge by Aruzhaaan-06 · Pull Request #17 · Aruzhaaan-06/devops-labs", URL: "https://github.com/Aruzhaaan-06/devops-labs/pull/17".
+1 AXWebArea URL: github.com/Aruzhaaan-06/devops-labs/pull/17, ci: лабораторная 5 — пайплайн и защита merge by Aruzhaaan-06 · Pull Request #17 · Aruzhaaan-06/devops-labs
+	2 container
+		3 link Description: Skip to content, Value: github.com/Aruzhaaan-06/devops-labs/pull/17#start-of-content
+		4 container Global navigation menu
+			5 pop up button Open menu
+			6 link Description: Homepage ( g then d ), Value: github.com/
+			7 container Breadcrumbs
+				8 content list
+					9 button (collapsed) Secondary Actions: Expand
+					10 container
+						11 link Description: devops-labs, Value: github.com/Aruzhaaan-06/devops-labs
+						12 pop up button (collapsed) Switch repository ( alt shift r ), Secondary Actions: Expand
+			13 button Open quick search dialog, type / to search
+			14 link Description: You have unread notifications ( g then n ), Value: github.com/notifications
+			15 pop up button Open user navigation menu
+				16 image Aruzhaaan-06
+			17 heading Repository navigation, Value: 2
+				18 text Repository navigation
+			19 container Repository
+				20 content list
+					21 link Description: Code, Value: github.com/Aruzhaaan-06/devops-labs
+					22 link Description: Issues, Value: github.com/Aruzhaaan-06/devops-labs/issues
+					23 link Description: Pull requests  (6), Value: github.com/Aruzhaaan-06/devops-labs/pulls
+				30 pop up button (collapsed) More items, Secondary Actions: Expand
+	31 container diff-comparison-viewer-container
+		32 container
+			33 heading ci: лабораторная 5 — пайплайн и защита merge - #17, Value: 1
+				34 text ci: лабораторная 5 — пайплайн и защита merge - # 17
+			35 button Edit title
+			36 button (collapsed) Status, Secondary Actions: Expand
+			40 pop up button (collapsed) Code, Secondary Actions: Expand
+			41 image Pull request
+			42 text Open
+			43 link Description: Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+			44 text wants to merge 2 commits into
+			45 link Description: main, Value: github.com/Aruzhaaan-06/devops-labs/tree/main
+			46 text from
+			47 link Description: ci/pipeline, Value: github.com/Aruzhaaan-06/devops-labs/tree/ci/pipeline
+			48 button Copy head branch name to clipboard
+			213 container Pull request navigation
+				214 container
+					215 link Description: Conversation  (0), Value: github.com/Aruzhaaan-06/devops-labs/pull/17
+					216 link Description: Commits  (2), Value: github.com/Aruzhaaan-06/devops-labs/pull/17/commits, ID: prs-commits-anchor-tab
+					217 link Description: Checks  (3), Value: github.com/Aruzhaaan-06/devops-labs/pull/17/checks
+					218 link Description: Files changed  (2), Value: github.com/Aruzhaaan-06/devops-labs/pull/17/changes, ID: prs-files-anchor-tab
+		219 container
+			220 heading Conversation, Value: 2
+				221 text Conversation
+			222 container pullrequest-4979811244
+				223 heading @Aruzhaaan-06 Aruzhaaan-06 commented 3 minutes ago, Value: 3
+					224 image @Aruzhaaan-06
+					225 link Description: Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+					226 text commented
+					227 link Description: 3 minutes ago, Value: github.com/Aruzhaaan-06/devops-labs/pull/17#issue-5994284571, ID: issue-5994284571-permalink
+				228 pop up button (collapsed) Show options, Secondary Actions: Expand
+					229 image Show options
+				230 container
+					231 text 09-материал: 5-зертханалық жұмыс, 1-бөлім, 1-5-тармақтар. Оқу kit жинағындағы толық CI/CD workflow оқылып, репозиторийге бейімделді. Өзгерістер: .NET 10 шешімінің нақты жолы, Actions ресми коммиттеріне бекіту, checkout тіркелгі деректерін сақтамау, deploy үшін Windows/X64/devops-labs белгілері, жергілікті 15432/8088 порттары және Compose желісі. Қолданба коды өзгерген жоқ.
+					232 heading Методичкадағы бес сұраққа жауап, Value: 2
+						233 text Методичкадағы бес сұраққа жауап
+					234 content list
+						235 container
+							236 AXListMarker 1.
+							237 text PR, main push және v1.0.0 тегі кезінде қандай jobs орындалады?  PR үшін  test  орындалады,  image  және  deploy  skipped болады. main push кезінде  test → image → deploy  тізбегі орындалады, әрбір келесі job алдыңғысының сәтті аяқталуын күтеді.  v1.0.0  тегі үшін  test → image  орындалады; deploy өткізіледі, өйткені ref main емес. Бұл - workflow шарттарының түсіндірмесі; осы бөлімде нақты тек PR жолы орындалады.
+						238 container
+							239 AXListMarker 2.
+							240 text Тесттердегі PostgreSQL қайдан алынады?  GitHub-hosted Ubuntu runner  services.postgres  арқылы  postgres:18-alpine  контейнерін іске қосады. Health check аяқталған соң тесттер localhost:5432 арқылы оқшауланған  demo  дерекқорына қосылады. CI-дегі demo паролі уақытша контейнерге арналған; ол жергілікті сақталған томның құпиясөзі емес.
+						241 container
+							242 AXListMarker 3.
+							243 text image job ішіндегі GITHUB_TOKEN құқықтары қандай және не үшін? contents: read  бастапқы кодты алуға,  packages: write  образды GHCR-ға жіберуге қажет. Негізгі workflow құқығы - тек contents: read; қосымша құқық тек image job деңгейінде беріледі. Жеке PAT кодқа енгізілмейді.
+						244 container
+							245 AXListMarker 4.
+							246 text deploy қайда және неге орындалады?  Репозиторийге тіркелген жергілікті Windows x64 self-hosted runner-де,  devops-labs  белгісімен орындалады. Ол осы компьютердің Docker Desktop қызметіне қол жеткізеді; GitHub-hosted runner жергілікті Docker-ді көрмейді. PR тесттері self-hosted runner-де орындалмайды. Сыртқы PR workflow-ларына all_external_contributors мақұлдауы сақталған; бұл жергілікті runner-ді толық оқшауланған ортаға айналдырмайды.
+						247 container
+							248 AXListMarker 5.
+							249 text Жаңа контейнер healthy болмаса не болады? docker compose up -d --no-build --wait --wait-timeout 90  сәтсіз аяқталып, deploy қызыл болады. Кейінгі readiness smoke test орындалмайды; ол орындалған жағдайда да HTTP қатесі job-ты сәтсіз етеді. Бұл workflow автоматты rollback жасамайды: қайтару келесі 10-материалда тексеріледі.
+					250 heading Тексеру және шекаралар, Value: 2
+						251 text Тексеру және шекаралар
+					252 text Жергілікті Release restore/build: сәтті, 0 ескерту және 0 қате. PostgreSQL тесттері: 38/38, жеке
+					253 text demo_lab09_tests
+					254 text  дерекқорында. Келесі қадамдар: GitHub-та бастапқы жасыл run,
+					255 text test
+					256 text  мәртебесін міндетті ету, екінші аккаунттың Approve-ы, әдейі бұзылған тесттің қызыл run-ы мен merge блокталуын сақтау, тестті қалпына келтіру, runner Idle суреті және DB_PASSWORD secret метадеректерін тексеру. Әдістеме бойынша осы PR 09-тапсырма соңында ашық қалады; біріктіру мен алғашқы деплой 10-материалға жатады. Екі аккаунт бір иеге тиесілі, тәуелсіз студент ревьюі деп көрсетілмейді. Құпиясөздер мен runner тіркеу токендері журналға не Git-ке жазылмайды.
+				257 button (collapsed) Description: Add or remove reactions, ID: reaction-add-reaction-button-tooltip-anchor-459e3594, Secondary Actions: Expand
+			258 link Description: @Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+			259 link Description: ci: add build test image and local deploy pipeline, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/commits/4052ddb697eb217d87c60b727283e85786f2471e
+			260 button (collapsed) 1 / 3 checks OK, Secondary Actions: Expand
+				261 image 1 / 3 checks OK
+			262 link Description: 4052ddb, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/commits/4052ddb697eb217d87c60b727283e85786f2471e
+			263 container event-34031245325
+				264 link Description: @Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+				265 container
+					266 link Description: Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+					267 text  requested a review from
+					268 link Description: temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+					269 text  as a
+					270 link Description: code owner, Value: github.com/Aruzhaaan-06/devops-labs/blob/2b5bb35698d30410a8d0ac50cac942b322080290/.github/CODEOWNERS#L2
+					271 link Description: 3 minutes ago, Value: github.com/Aruzhaaan-06/devops-labs/pull/17#event-34031245325
+			272 container pullrequestreview-5625605189
+				273 container
+					274 link Description: temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+					275 container
+						276 link Description: temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+					277 text approved these changes
+					278 link Description: 2 minutes ago, Value: github.com/Aruzhaaan-06/devops-labs/pull/17#pullrequestreview-5625605189, ID: pullrequestreview-5625605189-permalink
+					279 link Description: View reviewed changes, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/files/4052ddb697eb217d87c60b727283e85786f2471e
+				280 container pullrequestreview-5625605189
+					281 heading @temirkhanerbolatovich-coder temirkhanerbolatovich-coder left a comment, Value: 3
+						282 image @temirkhanerbolatovich-coder
+						283 link Description: temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+						284 text left a comment
+					285 pop up button (collapsed) Show options, Secondary Actions: Expand
+						286 image Show options
+					287 text Техническое ревью вторым аккаунтом владельца: workflow kit прочитан, ответы на 5 вопросов есть. Hosted Ubuntu с отдельным PostgreSQL, права job ограничены, deploy только main push на помеченный Windows runner, действия закреплены SHA. Первый CI test прошел; image/deploy skipped. Следующий учебный шаг — неверное ожидание теста и проверка обязательного test. Это не независимое ревью одногруппника.
+					288 button (collapsed) Description: Add or remove reactions, ID: reaction-add-reaction-button-tooltip-anchor-34ca758a, Secondary Actions: Expand
+			289 link Description: @Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+			290 link Description: test: demonstrate merge blocked by failing CI, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/commits/bfd861774f93526fcddf7e1f0c987413ff24146f
+			291 button (collapsed) 0 / 3 checks OK, Secondary Actions: Expand
+				292 image 0 / 3 checks OK
+			293 link Description: bfd8617, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/commits/bfd861774f93526fcddf7e1f0c987413ff24146f
+			294 heading Merge info, Value: 2
+				295 text Merge info
+			296 container
+				297 container Reviews
+					298 container
+						299 heading Changes approved, Value: 3
+							300 text Changes approved
+						301 text 1 approving review by reviewers with write access.
+						302 button (expanded) Description: Changes approved, Secondary Actions: Collapse
+					303 button (collapsed) Description: Expand 1 approval group, Secondary Actions: Expand
+						304 text 1 approval
+					305 container 1 approval
+				306 container Checks
+					307 container
+						308 heading Some checks were not successful, Value: 3
+							309 text Some checks were not successful
+						310 text 1 failing, 2 skipped checks
+						311 button (expanded) Description: Collapse checks, Secondary Actions: Collapse
+					312 button (expanded) Description: Collapse 1 failing check group, Secondary Actions: Collapse
+						313 text 1 failing check
+					314 pop up button (collapsed) Checks settings, Secondary Actions: Expand
+					315 container failing checks
+						316 container
+							317 heading failing checks, Value: 3
+								318 text failing checks
+							319 content list failing checks
+								320 container ci-cd / test (pull_request) failing after 49s
+									321 image ci-cd / test (pull_request)
+									322 container
+										323 heading ci-cd / test (pull_request), Value: 4
+											324 link Description: ci-cd / test (pull_request), Help: ci-cd / test (pull_request) Failing after 49s null, Value: github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366/job/120312235115?pr=17
+										325 text Failing after 49s
+									326 text Required
+									327 pop up button (collapsed) More actions, Secondary Actions: Expand
+					328 button (expanded) Description: Collapse 2 skipped checks group, Secondary Actions: Collapse
+						329 text 2 skipped checks
+					330 container skipped checks
+						331 container
+							332 heading skipped checks, Value: 3
+								333 text skipped checks
+							334 content list skipped checks
+								335 container ci-cd / deploy (pull_request) skipped
+									336 image ci-cd / deploy (pull_request)
+									337 container
+										338 heading ci-cd / deploy (pull_request), Value: 4
+											339 link Description: ci-cd / deploy (pull_request), Value: github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366/job/120312572711?pr=17
+										340 text Skipped
+										341 container Oct 23, 2026, 13:12 GMT+5
+											427 text 1 minute ago
+									343 pop up button (collapsed) More actions, Secondary Actions: Expand
+								344 container ci-cd / image (pull_request) skipped
+									345 image ci-cd / image (pull_request)
+									346 container
+										347 heading ci-cd / image (pull_request), Value: 4
+											348 link Description: ci-cd / image (pull_request), Value: github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366/job/120312571348?pr=17
+										349 text Skipped
+										350 container Oct 23, 2026, 13:12 GMT+5
+											428 text 1 minute ago
+									352 pop up button (collapsed) More actions, Secondary Actions: Expand
+				353 button (disabled) Merge pull request
+				354 pop up button (collapsed) Description: Select merge method, Secondary Actions: Expand
+				355 text You can also merge this with the command line.
+				356 button View command line instructions.
+			357 text Still in progress?
+			358 button Convert to draft
+			359 container issuecomment-new
+				360 container Add a comment, ID: new_comment_form
+					361 container
+						362 heading Add a comment, Value: 4, ID: previewable-comment-form-component-0b315308-c0a6-4ce5-8b50-15eb0cf2b6b0-title
+							363 text Add a comment
+						364 text Comment
+						365 tab group Add a comment
+							366 tab (selected, settable, boolean) Write, Value: 1, ID: write_tab_previewable-comment-form-component-0b315308-c0a6-4ce5-8b50-15eb0cf2b6b0
+							367 tab (selectable, settable, boolean) Preview, Value: 0, ID: preview_tab_previewable-comment-form-component-0b315308-c0a6-4ce5-8b50-15eb0cf2b6b0
+						368 toolbar
+							369 container
+								370 button Heading, ID: action-bar-b0a07329-5f3f-4b20-a3e9-7020fec3839c
+								371 button Bold, ID: action-bar-2f4f7d65-0ae2-4c0d-9bfb-c6341d9d345f
+								372 button Italic, ID: action-bar-ecd99c93-7c0d-446f-8813-b1c92f09b691
+								373 button Quote, ID: action-bar-d94c20ec-65f8-4f60-9dd8-969798ff409c
+								374 button Code, ID: action-bar-1ee878fa-0f39-47ce-a6b3-0af9fabb3e52
+							375 pop up button (collapsed) Menu, ID: action-bar-574f7d0c-4f22-4224-8609-7d928a426527-button, Secondary Actions: Expand
+						376 container Write
+							377 container
+								378 text entry area (settable) Comment, ID: new_comment_field
+							379 link Description: Markdown, Value: docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+							380 button Add files
+					381 container partial-new-comment-form-actions
+						382 button Close pull request
+						383 button (disabled) Comment
+				384 text Remember, contributions to this repository should follow our
+				385 link Description: GitHub Community Guidelines, Value: docs.github.com/articles/github-community-guidelines
+				386 text .
+				387 container
+					388 text ProTip!  Add comments to specific lines under
+					389 link Description: Files changed, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/files
+					390 text .
+			391 container partial-discussion-sidebar
+				392 container Description: Select reviewers, ID: pull-request-reviewers-form-4979811244
+					393 pop up button (collapsed) Reviewers, Secondary Actions: Expand
+					394 container
+						395 link Description: @temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+						396 link Description: temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+					397 link Description: temirkhanerbolatovich-coder approved these changes, Value: github.com/Aruzhaaan-06/devops-labs/pull/17/changes/BASE..4052ddb697eb217d87c60b727283e85786f2471e, ID: review-status-temirkhanerbolatovich-coder
+					398 button Re-request review, ID: re-request-review-temirkhanerbolatovich-coder
+					399 text Still in progress?
+					400 button (collapsed) Convert to draft, Secondary Actions: Expand
+				401 container Select assignees
+					402 pop up button (collapsed) Assignees, Secondary Actions: Expand
+					403 text No one—
+					404 button assign yourself
+				405 pop up button (collapsed) Labels, Secondary Actions: Expand
+				406 text None yet
+				407 container Select projects
+					408 pop up button (collapsed) Projects, Secondary Actions: Expand
+					409 text None yet
+				410 container Select milestones
+					411 pop up button (collapsed) Milestone, Secondary Actions: Expand
+					412 text No milestone
+				413 container Link issues
+					414 pop up button (collapsed) Development, Secondary Actions: Expand
+					415 text Successfully merging this pull request may close these issues.
+					416 text None yet
+				417 text Loading
+				418 container partial-users-participants
+					419 heading 2 participants, Value: 3
+						420 text 2 participants
+					421 link Description: @Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+					422 link Description: @temirkhanerbolatovich-coder, Value: github.com/temirkhanerbolatovich-coder
+				423 button (collapsed) Lock conversation, Secondary Actions: Expand
+					424 text Lock conversation
+				425 button (collapsed) Archive pull request, Secondary Actions: Expand
+					426 text Archive pull request
+	195 container
+		196 heading Footer, Value: 2
+			197 text Footer
+		198 link Description: GitHub Homepage, Value: github.com/
+		199 text © 2026 GitHub, Inc.
+		200 container Footer
+			201 heading Footer navigation, Value: 3, ID: sr-footer-heading
+				202 text Footer navigation
+			203 content list Footer navigation
+				204 link Description: Terms, Value: docs.github.com/site-policy/github-terms/github-terms-of-service
+				205 link Description: Privacy, Value: docs.github.com/site-policy/privacy-policies/github-privacy-statement
+				206 link Description: Security, Value: github.com/security
+				207 link Description: Status, Value: githubstatus.com/
+				208 link Description: Community, Value: github.community/
+				209 link Description: Docs, Value: docs.github.com/
+				210 link Description: Contact, Value: support.github.com/?tags=dotcom-footer
+				211 button Manage cookies
+				212 button Do not share my personal information
+
+The focused UI element is 1 AXWebArea URL: github.com/Aruzhaaan-06/devops-labs/pull/17, ci: лабораторная 5 — пайплайн и защита merge by Aruzhaaan-06 · Pull Request #17 · Aruzhaaan-06/devops-labs
