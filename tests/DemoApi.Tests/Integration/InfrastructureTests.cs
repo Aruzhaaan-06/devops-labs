@@ -1,4 +1,6 @@
 using System.Net;
+using System.Net.Http.Json;
+using DemoApi.Controllers;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 
@@ -7,6 +9,21 @@ namespace DemoApi.Tests.Integration;
 [Collection(ApiCollection.Name)]
 public class InfrastructureTests(WebApplicationFactory<Program> factory)
 {
+    [Fact]
+    public async Task Info_ReturnsMessageAndConfiguredVersion()
+    {
+        await using var versioned = factory.WithWebHostBuilder(b => b.ConfigureAppConfiguration((_, cfg) =>
+            cfg.AddInMemoryCollection(new Dictionary<string, string?> { ["APP_VERSION"] = "integration-test" })));
+
+        var response = await versioned.CreateClient().GetFromJsonAsync<InfoResponse>("/");
+
+        Assert.NotNull(response);
+        Assert.Equal("DemoApi", response.Service);
+        Assert.Equal("integration-test", response.Version);
+        Assert.Equal("hello from CI/CD", response.Message);
+        Assert.False(string.IsNullOrWhiteSpace(response.Host));
+    }
+
     [Theory]
     [InlineData("/health/live")]
     [InlineData("/health/ready")]

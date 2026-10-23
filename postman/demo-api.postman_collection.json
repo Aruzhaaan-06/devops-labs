@@ -1409,6 +1409,33 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Лабораторная 5 - информация CI/CD",
+      "item": [
+        {
+          "name": "GET версия и сообщение",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Service\", () => pm.expect(pm.response.json().service).to.eql(\"DemoApi\"));",
+                  "pm.test(\"Message\", () => pm.expect(pm.response.json().message).to.eql(\"hello from CI/CD\"));",
+                  "pm.test(\"Version\", () => { const v = pm.response.json().version; pm.expect(v).to.be.a(\"string\").and.not.empty; const expected = pm.variables.get(\"expectedVersion\"); if (expected) pm.expect(v).to.eql(expected); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
