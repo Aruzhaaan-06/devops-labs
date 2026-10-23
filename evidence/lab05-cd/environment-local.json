@@ -1,0 +1,53 @@
+{
+  "id": 25112254586,
+  "node_id": "EN_kwDOVSp68c8AAAAF2M6Yeg",
+  "name": "local",
+  "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/environments/local",
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/deployments/activity_log?environments_filter=local",
+  "created_at": "2026-10-23T08:42:32Z",
+  "updated_at": "2026-10-23T08:42:32Z",
+  "can_admins_bypass": false,
+  "protection_rules": [
+    {
+      "id": 69825703,
+      "node_id": "GA_kwDOVSp68c4EKXSn",
+      "type": "required_reviewers",
+      "prevent_self_review": false,
+      "reviewers": [
+        {
+          "type": "User",
+          "reviewer": {
+            "login": "Aruzhaaan-06",
+            "id": 145279323,
+            "node_id": "U_kgDOCKjJWw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/145279323?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Aruzhaaan-06",
+            "html_url": "https://github.com/Aruzhaaan-06",
+            "followers_url": "https://api.github.com/users/Aruzhaaan-06/followers",
+            "following_url": "https://api.github.com/users/Aruzhaaan-06/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Aruzhaaan-06/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Aruzhaaan-06/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Aruzhaaan-06/subscriptions",
+            "organizations_url": "https://api.github.com/users/Aruzhaaan-06/orgs",
+            "repos_url": "https://api.github.com/users/Aruzhaaan-06/repos",
+            "events_url": "https://api.github.com/users/Aruzhaaan-06/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Aruzhaaan-06/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          }
+        }
+      ]
+    },
+    {
+      "id": 69825704,
+      "node_id": "GA_kwDOVSp68c4EKXSo",
+      "type": "branch_policy"
+    }
+  ],
+  "deployment_branch_policy": {
+    "protected_branches": true,
+    "custom_branch_policies": false
+  }
+}

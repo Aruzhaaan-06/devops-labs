@@ -1,0 +1,249 @@
+rollback	Set up job	﻿2026-10-23T08:54:22.5210664Z Current runner version: '2.338.0'
+rollback	Set up job	2026-10-23T08:54:22.5223082Z Runner name: 'devops-labs-windows'
+rollback	Set up job	2026-10-23T08:54:22.5223812Z Runner group name: 'Default'
+rollback	Set up job	2026-10-23T08:54:22.5224680Z Machine name: 'DESKTOP-S0KM4NO'
+rollback	Set up job	2026-10-23T08:54:22.5227229Z ##[group]GITHUB_TOKEN Permissions
+rollback	Set up job	2026-10-23T08:54:22.5229369Z Contents: read
+rollback	Set up job	2026-10-23T08:54:22.5229763Z Metadata: read
+rollback	Set up job	2026-10-23T08:54:22.5230132Z Packages: read
+rollback	Set up job	2026-10-23T08:54:22.5230529Z ##[endgroup]
+rollback	Set up job	2026-10-23T08:54:22.5232722Z Secret source: Actions
+rollback	Set up job	2026-10-23T08:54:22.5233361Z Cache mode: write
+rollback	Set up job	2026-10-23T08:54:22.5233884Z Prepare workflow directory
+rollback	Set up job	2026-10-23T08:54:22.5924327Z Prepare all required actions
+rollback	Set up job	2026-10-23T08:54:22.5983700Z Getting action download info
+rollback	Set up job	2026-10-23T08:54:23.5800021Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+rollback	Set up job	2026-10-23T08:54:28.4840478Z Download action repository 'docker/login-action@dbcb813823bdd20940b903addbd779551569679f' (SHA:dbcb813823bdd20940b903addbd779551569679f)
+rollback	Set up job	2026-10-23T08:54:31.5680957Z Complete job name: rollback
+rollback	Validate immutable tag	﻿2026-10-23T08:54:31.7691485Z ##[group]Run if ($env:API_TAG -notmatch '^(sha-[0-9a-f]{7}|[0-9]+\.[0-9]+\.[0-9]+)$') {
+rollback	Validate immutable tag	2026-10-23T08:54:31.7693754Z ^[[36;1mif ($env:API_TAG -notmatch '^(sha-[0-9a-f]{7}|[0-9]+\.[0-9]+\.[0-9]+)$') {^[[0m
+rollback	Validate immutable tag	2026-10-23T08:54:31.7695526Z ^[[36;1m  throw "Use an existing sha-xxxxxxx or release x.y.z tag; latest is not a rollback target"^[[0m
+rollback	Validate immutable tag	2026-10-23T08:54:31.7696984Z ^[[36;1m}^[[0m
+rollback	Validate immutable tag	2026-10-23T08:54:31.7722331Z shell: C:\Users\Админ\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.EXE -command ". '{0}'"
+rollback	Validate immutable tag	2026-10-23T08:54:31.7724619Z env:
+rollback	Validate immutable tag	2026-10-23T08:54:31.7725340Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Validate immutable tag	2026-10-23T08:54:31.7726231Z   API_TAG: sha-8511c6c
+rollback	Validate immutable tag	2026-10-23T08:54:31.7727654Z   DB_PASSWORD: ***
+rollback	Validate immutable tag	2026-10-23T08:54:31.7728380Z   DB_PORT: 15432
+rollback	Validate immutable tag	2026-10-23T08:54:31.7728997Z   API_PORT: 8088
+rollback	Validate immutable tag	2026-10-23T08:54:31.7729623Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Validate immutable tag	2026-10-23T08:54:31.7730430Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T08:54:32.3089083Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3090298Z with:
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3090815Z   persist-credentials: false
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3091457Z   repository: Aruzhaaan-06/devops-labs
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3097195Z   token: ***
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3097677Z   ssh-strict: true
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3098157Z   ssh-user: git
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3098613Z   clean: true
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3099127Z   sparse-checkout-cone-mode: true
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3099717Z   fetch-depth: 1
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3100191Z   fetch-tags: false
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3100677Z   show-progress: true
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3101171Z   lfs: false
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3101639Z   submodules: false
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3102208Z   set-safe-directory: true
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3102797Z   allow-unsafe-pr-checkout: false
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3103382Z env:
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3103901Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3104630Z   API_TAG: sha-8511c6c
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3105484Z   DB_PASSWORD: ***
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3105965Z   DB_PORT: 15432
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3106425Z   API_PORT: 8088
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3106906Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.3107459Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.6137852Z Syncing repository: Aruzhaaan-06/devops-labs
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.6141949Z ##[group]Getting Git version info
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.6143529Z Working directory is 'C:\actions-runner\_work\devops-labs\devops-labs'
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.6513730Z [command]"C:\Program Files\Git\cmd\git.exe" version
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.6965448Z git version 2.54.0.windows.1
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7012750Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7026523Z Copying 'C:\Users\Админ\.gitconfig' to 'C:\actions-runner\_work\_temp\0cbb7474-644c-4646-bd5a-366a4d34b77f\.gitconfig'
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7057476Z Temporarily overriding HOME='C:\actions-runner\_work\_temp\0cbb7474-644c-4646-bd5a-366a4d34b77f' before making global git config changes
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7066096Z Adding repository directory to the temporary git global config as a safe directory
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7069440Z [command]"C:\Program Files\Git\cmd\git.exe" config --global --add safe.directory C:\actions-runner\_work\devops-labs\devops-labs
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7491292Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --get remote.origin.url
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7844156Z https://github.com/Aruzhaaan-06/devops-labs
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7893635Z ##[group]Removing previously created refs, to avoid conflicts
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.7905473Z [command]"C:\Program Files\Git\cmd\git.exe" rev-parse --symbolic-full-name --verify --quiet HEAD
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.8291736Z refs/heads/main
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.8359646Z [command]"C:\Program Files\Git\cmd\git.exe" checkout --detach
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.8783868Z HEAD is now at 349a0b1 feat: publish CI message and add protected rollback workflow (#18)
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.9723985Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:32.9734890Z [command]"C:\Program Files\Git\cmd\git.exe" submodule status
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.8372084Z ##[group]Cleaning the repository
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.8380154Z [command]"C:\Program Files\Git\cmd\git.exe" clean -ffdx
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.8788943Z [command]"C:\Program Files\Git\cmd\git.exe" reset --hard HEAD
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9319670Z HEAD is now at 349a0b1 feat: publish CI message and add protected rollback workflow (#18)
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9366373Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9369539Z ##[group]Disabling automatic garbage collection
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9384802Z [command]"C:\Program Files\Git\cmd\git.exe" config --local gc.auto 0
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9795968Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9797414Z ##[group]Setting up auth
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9798507Z Removing SSH command configuration
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:33.9809883Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp core\.sshCommand
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:34.0207748Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:34.9468230Z Removing HTTP extra header
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:34.9482873Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:34.9945898Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:35.9068487Z Removing includeIf entries pointing to credentials config files
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:35.9080159Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:35.9528539Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:36.8515301Z [command]"C:\Program Files\Git\cmd\git.exe" config --file C:\actions-runner\_work\_temp\git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:36.9009820Z [command]"C:\Program Files\Git\cmd\git.exe" config --local includeIf.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git.path C:\actions-runner\_work\_temp\git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:36.9473115Z [command]"C:\Program Files\Git\cmd\git.exe" config --local includeIf.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git/worktrees/*.path C:\actions-runner\_work\_temp\git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:36.9897736Z [command]"C:\Program Files\Git\cmd\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:37.0389704Z [command]"C:\Program Files\Git\cmd\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:37.0861765Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:37.0863246Z ##[group]Fetching the repository
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:37.0886015Z [command]"C:\Program Files\Git\cmd\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +349a0b13078b3d2354631288239e82812a0c6d70:refs/remotes/origin/main
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.3590990Z [command]"C:\Program Files\Git\cmd\git.exe" branch --list --remote origin/main
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.3953862Z   origin/main
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4009055Z [command]"C:\Program Files\Git\cmd\git.exe" rev-parse refs/remotes/origin/main
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4375551Z 349a0b13078b3d2354631288239e82812a0c6d70
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4415502Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4416678Z ##[group]Determining the checkout info
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4417899Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4428931Z [command]"C:\Program Files\Git\cmd\git.exe" sparse-checkout disable
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.4913683Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --unset-all extensions.worktreeConfig
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.5324189Z ##[group]Checking out the ref
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.5335997Z [command]"C:\Program Files\Git\cmd\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.6061836Z Switched to and reset branch 'main'
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.6097876Z branch 'main' set up to track 'origin/main'.
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.6099463Z Your branch is up to date with 'origin/main'.
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.6148976Z ##[endgroup]
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.6596039Z [command]"C:\Program Files\Git\cmd\git.exe" log -1 --format=%H
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.6959973Z 349a0b13078b3d2354631288239e82812a0c6d70
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.7009694Z ##[group]Removing auth
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.7011253Z Removing SSH command configuration
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.7050344Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp core\.sshCommand
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:38.7442453Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:39.6073761Z Removing HTTP extra header
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:39.6084124Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:39.6471267Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5169488Z Removing includeIf entries pointing to credentials config files
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5205606Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5668513Z includeif.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5670621Z includeif.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git/worktrees/*.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5672202Z includeif.gitdir:/github/workspace/.git.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5673420Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.5747760Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --get-all includeif.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.6130316Z C:\actions-runner\_work\_temp\git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.6204789Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --unset includeif.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git.path C\:\\actions\-runner\\_work\\_temp\\git\-credentials\-db1ba80f\-36ef\-4d03\-b9d9\-02aaf38bc9dd\.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.6700525Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --get-all includeif.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git/worktrees/*.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.7182428Z C:\actions-runner\_work\_temp\git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.7267067Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --unset includeif.gitdir:C:/actions-runner/_work/devops-labs/devops-labs/.git/worktrees/*.path C\:\\actions\-runner\\_work\\_temp\\git\-credentials\-db1ba80f\-36ef\-4d03\-b9d9\-02aaf38bc9dd\.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.7780658Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.8165924Z /github/runner_temp/git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.8235827Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-db1ba80f\-36ef\-4d03\-b9d9\-02aaf38bc9dd\.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.8715816Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.9112986Z /github/runner_temp/git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.9183004Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-db1ba80f\-36ef\-4d03\-b9d9\-02aaf38bc9dd\.config
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:40.9685265Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:41.7988922Z Removing credentials config 'C:\actions-runner\_work\_temp\git-credentials-db1ba80f-36ef-4d03-b9d9-02aaf38bc9dd.config'
+rollback	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:41.8009287Z ##[endgroup]
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	﻿2026-10-23T08:54:41.8837673Z ##[group]Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8839094Z with:
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8839650Z   registry: ghcr.io
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8840228Z   username: Aruzhaaan-06
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8848234Z   password: ***
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8848806Z   logout: true
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8849305Z env:
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8849880Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8850721Z   API_TAG: sha-8511c6c
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8851615Z   DB_PASSWORD: ***
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8852195Z   DB_PORT: 15432
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8852740Z   API_PORT: 8088
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8853333Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:41.8853977Z ##[endgroup]
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:43.2667164Z Logging into ghcr.io...
+rollback	Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:44.8575758Z Login Succeeded!
+rollback	Pull existing image	﻿2026-10-23T08:54:44.9185347Z ##[group]Run docker compose pull api
+rollback	Pull existing image	2026-10-23T08:54:44.9186165Z ^[[36;1mdocker compose pull api^[[0m
+rollback	Pull existing image	2026-10-23T08:54:44.9193449Z shell: C:\Users\Админ\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.EXE -command ". '{0}'"
+rollback	Pull existing image	2026-10-23T08:54:44.9194434Z env:
+rollback	Pull existing image	2026-10-23T08:54:44.9194790Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Pull existing image	2026-10-23T08:54:44.9195274Z   API_TAG: sha-8511c6c
+rollback	Pull existing image	2026-10-23T08:54:44.9196108Z   DB_PASSWORD: ***
+rollback	Pull existing image	2026-10-23T08:54:44.9196452Z   DB_PORT: 15432
+rollback	Pull existing image	2026-10-23T08:54:44.9196753Z   API_PORT: 8088
+rollback	Pull existing image	2026-10-23T08:54:44.9197069Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Pull existing image	2026-10-23T08:54:44.9197450Z ##[endgroup]
+rollback	Pull existing image	2026-10-23T08:54:45.4985184Z  Image ghcr.io/aruzhaaan-06/devops-labs:sha-8511c6c Pulling 
+rollback	Pull existing image	2026-10-23T08:54:47.7440475Z  Image ghcr.io/aruzhaaan-06/devops-labs:sha-8511c6c Pulled 
+rollback	Roll back	﻿2026-10-23T08:54:47.9668573Z ##[group]Run docker compose up -d --no-build --wait --wait-timeout 90
+rollback	Roll back	2026-10-23T08:54:47.9669682Z ^[[36;1mdocker compose up -d --no-build --wait --wait-timeout 90^[[0m
+rollback	Roll back	2026-10-23T08:54:47.9678524Z shell: C:\Users\Админ\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.EXE -command ". '{0}'"
+rollback	Roll back	2026-10-23T08:54:47.9679738Z env:
+rollback	Roll back	2026-10-23T08:54:47.9680203Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Roll back	2026-10-23T08:54:47.9681474Z   API_TAG: sha-8511c6c
+rollback	Roll back	2026-10-23T08:54:47.9682264Z   DB_PASSWORD: ***
+rollback	Roll back	2026-10-23T08:54:47.9682657Z   DB_PORT: 15432
+rollback	Roll back	2026-10-23T08:54:47.9683020Z   API_PORT: 8088
+rollback	Roll back	2026-10-23T08:54:47.9683392Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Roll back	2026-10-23T08:54:47.9684024Z ##[endgroup]
+rollback	Roll back	2026-10-23T08:54:48.7061829Z  Container devops-labs-db-1 Running 
+rollback	Roll back	2026-10-23T08:54:48.7072816Z  Container devops-labs-api-1 Recreate 
+rollback	Roll back	2026-10-23T08:54:49.3698332Z  Container devops-labs-api-1 Recreated 
+rollback	Roll back	2026-10-23T08:54:49.4169359Z  Container devops-labs-db-1 Waiting 
+rollback	Roll back	2026-10-23T08:54:49.9257540Z  Container devops-labs-db-1 Healthy 
+rollback	Roll back	2026-10-23T08:54:49.9259414Z  Container devops-labs-api-1 Starting 
+rollback	Roll back	2026-10-23T08:54:50.1819443Z  Container devops-labs-api-1 Started 
+rollback	Roll back	2026-10-23T08:54:50.1820876Z  Container devops-labs-db-1 Waiting 
+rollback	Roll back	2026-10-23T08:54:50.1821981Z  Container devops-labs-api-1 Waiting 
+rollback	Roll back	2026-10-23T08:54:50.6925844Z  Container devops-labs-db-1 Healthy 
+rollback	Roll back	2026-10-23T08:54:55.6906368Z  Container devops-labs-api-1 Healthy 
+rollback	Smoke test	﻿2026-10-23T08:54:55.8316891Z ##[group]Run docker compose exec -T api curl -fsS http://localhost:8080/health/ready
+rollback	Smoke test	2026-10-23T08:54:55.8319001Z ^[[36;1mdocker compose exec -T api curl -fsS http://localhost:8080/health/ready^[[0m
+rollback	Smoke test	2026-10-23T08:54:55.8395672Z shell: C:\Users\Админ\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.EXE -command ". '{0}'"
+rollback	Smoke test	2026-10-23T08:54:55.8397347Z env:
+rollback	Smoke test	2026-10-23T08:54:55.8397948Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Smoke test	2026-10-23T08:54:55.8398804Z   API_TAG: sha-8511c6c
+rollback	Smoke test	2026-10-23T08:54:55.8399947Z   DB_PASSWORD: ***
+rollback	Smoke test	2026-10-23T08:54:55.8400528Z   DB_PORT: 15432
+rollback	Smoke test	2026-10-23T08:54:55.8401057Z   API_PORT: 8088
+rollback	Smoke test	2026-10-23T08:54:55.8401662Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Smoke test	2026-10-23T08:54:55.8402350Z ##[endgroup]
+rollback	Smoke test	2026-10-23T08:54:56.6297631Z Healthy
+rollback	Job summary	﻿2026-10-23T08:54:56.6802670Z ##[group]Run $version = (Invoke-RestMethod "http://127.0.0.1:$env:API_PORT/" -TimeoutSec 10).version
+rollback	Job summary	2026-10-23T08:54:56.6804905Z ^[[36;1m$version = (Invoke-RestMethod "http://127.0.0.1:$env:API_PORT/" -TimeoutSec 10).version^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6807168Z ^[[36;1m$imageEnv = docker image inspect "${env:API_IMAGE}:${env:API_TAG}" --format '{{range .Config.Env}}{{println .}}{{end}}'^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6809202Z ^[[36;1mif ($LASTEXITCODE -ne 0) { throw "Cannot inspect rollback image" }^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6811058Z ^[[36;1m$expectedVersion = ($imageEnv | Where-Object { $_ -like 'APP_VERSION=*' }) -replace '^APP_VERSION=', ''^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6813388Z ^[[36;1mif (-not $expectedVersion -or $version -ne $expectedVersion) { throw "Running version differs from rollback image" }^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6815314Z ^[[36;1m"Rolled back ${env:API_IMAGE}:${env:API_TAG}" >> $env:GITHUB_STEP_SUMMARY^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6816574Z ^[[36;1m"Verified version: $version" >> $env:GITHUB_STEP_SUMMARY^[[0m
+rollback	Job summary	2026-10-23T08:54:56.6827567Z shell: C:\Users\Админ\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.EXE -command ". '{0}'"
+rollback	Job summary	2026-10-23T08:54:56.6829150Z env:
+rollback	Job summary	2026-10-23T08:54:56.6829721Z   API_IMAGE: ghcr.io/aruzhaaan-06/devops-labs
+rollback	Job summary	2026-10-23T08:54:56.6830485Z   API_TAG: sha-8511c6c
+rollback	Job summary	2026-10-23T08:54:56.6831520Z   DB_PASSWORD: ***
+rollback	Job summary	2026-10-23T08:54:56.6832045Z   DB_PORT: 15432
+rollback	Job summary	2026-10-23T08:54:56.6832520Z   API_PORT: 8088
+rollback	Job summary	2026-10-23T08:54:56.6833020Z   COMPOSE_SUBNET: 10.254.54.0/24
+rollback	Job summary	2026-10-23T08:54:56.6833619Z ##[endgroup]
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	﻿2026-10-23T08:54:57.4982442Z Post job cleanup.
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:57.7206491Z ##[group]Logout from ghcr.io
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:57.7808957Z [command]"C:\Program Files\Docker\Docker\resources\bin\docker.exe" logout ghcr.io
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:57.8269470Z Removing login credentials for ghcr.io
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:58.0468039Z ##[endgroup]
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:58.0469510Z ##[group]Post cache
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:58.0470211Z State not set
+rollback	Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f	2026-10-23T08:54:58.0471656Z ##[endgroup]
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T08:54:58.1123233Z Post job cleanup.
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.2935715Z [command]"C:\Program Files\Git\cmd\git.exe" version
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.3416240Z git version 2.54.0.windows.1
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.3482470Z Copying 'C:\Users\Админ\.gitconfig' to 'C:\actions-runner\_work\_temp\9d18ced5-29ed-4207-91f6-04acb5206cf0\.gitconfig'
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.3517098Z Temporarily overriding HOME='C:\actions-runner\_work\_temp\9d18ced5-29ed-4207-91f6-04acb5206cf0' before making global git config changes
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.3519699Z Adding repository directory to the temporary git global config as a safe directory
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.3534980Z [command]"C:\Program Files\Git\cmd\git.exe" config --global --add safe.directory C:\actions-runner\_work\devops-labs\devops-labs
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.4010736Z Removing SSH command configuration
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.4027856Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp core\.sshCommand
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:58.4496633Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:59.3474603Z Removing HTTP extra header
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:59.3489400Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:54:59.3960981Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:55:00.2560070Z Removing includeIf entries pointing to credentials config files
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:55:00.2575239Z [command]"C:\Program Files\Git\cmd\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+rollback	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:55:00.3063951Z [command]"C:\Program Files\Git\cmd\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+rollback	Complete job	﻿2026-10-23T08:55:01.2334895Z Cleaning up orphan processes

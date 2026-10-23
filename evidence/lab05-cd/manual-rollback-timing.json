@@ -1,0 +1,17 @@
+{
+  "startUtc": "2026-10-23T08:51:20.261871+00:00",
+  "confirmedUtc": "2026-10-23T08:51:33.086285+00:00",
+  "seconds": 12.823,
+  "measurement": "Immediately before first compose command until GET / returns old version",
+  "image": "ghcr.io/aruzhaaan-06/devops-labs",
+  "tag": "sha-8511c6c",
+  "http": {
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "sha-8511c6c",
+      "host": "2ee94556fa64"
+    }
+  },
+  "command": "docker compose up -d --no-build --wait --wait-timeout 90"
+}

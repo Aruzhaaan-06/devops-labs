@@ -8,7 +8,7 @@
 
 [Работы и статус](docs/README.md) · [Отчеты и исходники](reports/README.md) · [Результаты проверок](evidence/lab01/README.md) · [Разбор лабораторной 1](docs/lab01.md)
 
-Все восемь отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
+Все девять отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
 
 ## Выполненные работы
 
@@ -22,12 +22,15 @@
 | Лабораторная 4, часть 1 · материал 07 | Защита main, Board, ревью README и конфликт; два аккаунта одного владельца, преподаватель пока не добавлен | [PDF · 7 страниц](reports/lab04-git-report.pdf) |
 | Лабораторная 4, часть 2 · материал 08 | Переименование проекта, PR template, Dependabot, CODEOWNERS и [релиз v0.1.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v0.1.0) | [PDF · 8 страниц](reports/lab04-release-report.pdf) |
 | Лабораторная 5, часть 1 · материал 09 | GitHub Actions: 38/38, намеренный красный test с блокировкой merge, восстановление 38/38; runner Idle и DB_PASSWORD готовы | [PDF · 6 страниц](reports/lab05-ci-report.pdf) |
+| Лабораторная 5, часть 2 · материал 10 | GHCR, deploy, Message, два отката, Environment local, Job summary и [v1.0.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.0.0) | [PDF · 8 страниц](reports/lab05-cd-report.pdf) |
 
 Код и проверки первой лабораторной подготовлены. Для полного комплекта сдачи остаются скриншоты коллекции Postman и Test Explorer, а также ручная пошаговая отладка с Locals и Call Stack. Подробности — в [чек-листе сдачи](docs/lab01.md#что-приложить-к-двум-отчётам). SQL-реализация проверена на настоящей PostgreSQL в [лабораторной 3](docs/lab03-postgres.md).
 
 Материал 08 проверен 23 октября 2026 года: **38/38 тестов в InMemory и 38/38 в PostgreSQL**, полная коллекция Postman — **37 запросов и 99 проверок**. [Описание API и выполнения](docs/lab04-release.md) · [Доказательства](evidence/lab04-release/README.md).
 
-Материал 09: **настоящий CI GitHub Actions с PostgreSQL, 38/38**. Обязательный `test` заблокировал merge при намеренной ошибке; после восстановления снова 38/38. [PR #17](https://github.com/Aruzhaaan-06/devops-labs/pull/17) с workflow, пятью ответами и отчетом оставлен открытым по методичке; образ/GHCR/deploy относятся к следующему материалу 10. Новые файлы этого этапа опубликованы в ветке `ci/pipeline`. [Подробности](docs/lab05-ci.md) · [Доказательства](evidence/lab05-ci/README.md).
+Материал 09: **настоящий CI GitHub Actions с PostgreSQL, 38/38**. Обязательный `test` заблокировал merge при намеренной ошибке; после восстановления CI снова зеленый. PR #17 объединен при выполнении материала 10. [Подробности](docs/lab05-ci.md) · [Доказательства](evidence/lab05-ci/README.md).
+
+Материал 10: **39/39 тестов, Postman 38/103**, полный `test → image → deploy`, GET / с `hello from CI/CD`, идемпотентный повторный deploy, ручной откат **12,823 с** и кнопочный откат **57,696 с** с сохранением контрольных данных. Выпущен **v1.0.0**; тег публикует образ без deploy. Настроены `local` с approval и Job summary. [Выполнение](docs/lab05-cd.md) · [34 проверки и доказательства](evidence/lab05-cd/README.md). Финальная сверка последнего main с живым API размещается в релизе как `lab10-final-verification.json`.
 
 Сохраненные результаты предыдущих этапов от 22 октября 2026 года:
 
@@ -118,6 +121,7 @@ pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -I
 
 | Адрес | Назначение |
 |---|---|
+| `/` | service, version, host и сообщение hello from CI/CD |
 | `/api/projects`, `/api/tasks` | Создание, чтение, удаление; изменение и фильтрация задач |
 | `/api/tasks/{id}/status` | Смена статуса задачи |
 | `/api/projects/{id}/stats` | Статистика задач проекта; отсутствующий проект — 404 |
@@ -140,4 +144,4 @@ pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -I
 | `reports` | PDF-отчеты и архив исходников для сдачи |
 | `evidence/lab01`, `evidence/lab02`, `evidence/lab03`, `evidence/lab03-compose` | Сохраненные результаты проверок и скриншоты |
 
-Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD и инфраструктура мониторинга относятся к следующим работам и пока не настроены.
+Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD с GHCR, локальным deploy и откатом проверен в материалах 09–10. Работы 11–15 по отказам и мониторингу еще не начаты.

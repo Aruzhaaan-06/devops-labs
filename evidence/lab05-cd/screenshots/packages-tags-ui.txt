@@ -1,0 +1,83 @@
+Browser tab: 4, Title: "devops-labs versions · aruzhaaan-06", URL: "https://github.com/Aruzhaaan-06/devops-labs/pkgs/container/devops-labs/versions?filters%5Bversion_type%5D=tagged".
+1 AXWebArea devops-labs versions · aruzhaaan-06, URL: github.com/Aruzhaaan-06/devops-labs/pkgs/container/devops-labs/versions?filters%5Bversion_type%5D=tagged
+	2 container
+		3 link Description: Skip to content, Value: github.com/Aruzhaaan-06/devops-labs/pkgs/container/devops-labs/versions?filters%5Bversion_type%5D=tagged#start-of-content
+		4 container Global navigation menu
+			5 pop up button Open menu
+			6 link Description: Homepage ( g then d ), Value: github.com/
+			7 container Breadcrumbs
+				8 content list
+					9 link Description: Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+			10 button Open quick search dialog, type / to search
+				11 text Type 
+				12 text /
+				13 text  to search
+			14 link Description: Chat with Copilot, Value: github.com/copilot
+			15 pop up button (collapsed) Description: Open Copilot…, Secondary Actions: Expand
+			16 pop up button (collapsed) Create new..., Secondary Actions: Expand
+			17 link Description: All issues ( g then i ), Value: github.com/issues
+			18 link Description: All pull requests ( g then p ), Value: github.com/pulls
+			19 link Description: All repositories, Value: github.com/repos
+			20 link Description: You have unread notifications ( g then n ), Value: github.com/notifications
+			21 pop up button Open user navigation menu
+				22 image Aruzhaaan-06
+			23 heading User navigation, Value: 2
+				24 text User navigation
+			25 container User
+				26 content list
+					27 link Description: Overview, Value: github.com/Aruzhaaan-06
+					28 link Description: Repositories  (1), Value: github.com/Aruzhaaan-06?tab=repositories
+					29 link Description: Projects, Value: github.com/Aruzhaaan-06?tab=projects
+					30 link Description: Packages, Value: github.com/Aruzhaaan-06?tab=packages
+					31 link Description: Stars, Value: github.com/Aruzhaaan-06?tab=stars
+	32 container repo-content-turbo-frame
+		33 heading Package versions of devops-labs, Value: 1
+			34 text Package versions of devops-labs
+		35 container Breadcrumb
+			36 content list
+				37 container
+					38 link Description: devops-labs, Value: github.com/users/Aruzhaaan-06/packages/container/package/devops-labs
+				39 link Description: Versions, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/versions
+		40 heading Versions, Value: 2
+			41 text Versions
+		42 container versions-list
+			43 container header-4470f44f-1fbc-4c9a-9fdc-56058cb46af1
+				44 link Description:  2 tagged, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/versions?filters%5Bversion_type%5D=tagged
+				45 link Description: 10 untagged, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/versions?filters%5Bversion_type%5D=untagged
+				46 pop up button (collapsed) Active , Secondary Actions: Expand
+					47 text Active 
+			48 content list  2 tagged 10 untagged Active 
+				49 container
+					50 link Description: latest, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/1433594395?tag=latest
+					51 link Description: 1.0.0, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/1433594395?tag=1.0.0
+					52 link Description: sha-349a0b1, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/1433594395?tag=sha-349a0b1
+					53 text Published 1 minute ago · Digest 
+					54 button (collapsed) …, Secondary Actions: Expand
+					55 text 0 Version downloads
+					56 button Delete, ID: dialog-show-delete-package-version-sha256:bd4f157b85c52630d6d345b07584c61947a8385db78b09e6190395fc23db2889
+				57 container
+					58 link Description: sha-8511c6c, Value: github.com/users/Aruzhaaan-06/packages/container/devops-labs/1433490297?tag=sha-8511c6c
+					59 text Published 20 minutes ago · Digest 
+					60 button (collapsed) …, Secondary Actions: Expand
+					61 text 1 Version downloads
+					62 button Delete, ID: dialog-show-delete-package-version-sha256:1e724d5ad8785a61df6f85e4f2c07eeaeff4bb62a1205e513eb33f877359bea6
+	63 container
+		64 heading Footer, Value: 2
+			65 text Footer
+		66 link Description: GitHub Homepage, Value: github.com/
+		67 text © 2026 GitHub, Inc.
+		68 container Footer
+			69 heading Footer navigation, Value: 3, ID: sr-footer-heading
+				70 text Footer navigation
+			71 content list Footer navigation
+				72 link Description: Terms, Value: docs.github.com/site-policy/github-terms/github-terms-of-service
+				73 link Description: Privacy, Value: docs.github.com/site-policy/privacy-policies/github-privacy-statement
+				74 link Description: Security, Value: github.com/security
+				75 link Description: Status, Value: githubstatus.com/
+				76 link Description: Community, Value: github.community/
+				77 link Description: Docs, Value: docs.github.com/
+				78 link Description: Contact, Value: support.github.com/?tags=dotcom-footer
+				79 button Manage cookies
+				80 button Do not share my personal information
+
+The focused UI element is 1 AXWebArea devops-labs versions · aruzhaaan-06, URL: github.com/Aruzhaaan-06/devops-labs/pkgs/container/devops-labs/versions?filters%5Bversion_type%5D=tagged

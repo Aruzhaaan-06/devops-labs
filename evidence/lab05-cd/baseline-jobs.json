@@ -1,0 +1,308 @@
+{
+  "jobs": [
+    {
+      "id": 120323635835,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-23T08:40:56Z",
+      "completed_at": "2026-10-23T08:41:37Z",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39926367307/job/120323635835",
+      "runner_name": "GitHub Actions 1000000007",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-23T08:40:57Z",
+          "completed_at": "2026-10-23T08:40:58Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-23T08:40:59Z",
+          "completed_at": "2026-10-23T08:41:11Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-23T08:41:11Z",
+          "completed_at": "2026-10-23T08:41:13Z"
+        },
+        {
+          "name": "Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-23T08:41:13Z",
+          "completed_at": "2026-10-23T08:41:19Z"
+        },
+        {
+          "name": "Run dotnet restore DemoApi.slnx",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-23T08:41:19Z",
+          "completed_at": "2026-10-23T08:41:23Z"
+        },
+        {
+          "name": "Run dotnet build DemoApi.slnx --no-restore -c Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-23T08:41:23Z",
+          "completed_at": "2026-10-23T08:41:29Z"
+        },
+        {
+          "name": "Run dotnet test DemoApi.slnx --no-build -c Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-23T08:41:29Z",
+          "completed_at": "2026-10-23T08:41:33Z"
+        },
+        {
+          "name": "Post Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-23T08:41:33Z",
+          "completed_at": "2026-10-23T08:41:33Z"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-23T08:41:33Z",
+          "completed_at": "2026-10-23T08:41:33Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-23T08:41:33Z",
+          "completed_at": "2026-10-23T08:41:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-23T08:41:35Z",
+          "completed_at": "2026-10-23T08:41:35Z"
+        }
+      ]
+    },
+    {
+      "id": 120323923918,
+      "name": "image",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-23T08:41:39Z",
+      "completed_at": "2026-10-23T08:43:10Z",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39926367307/job/120323923918",
+      "runner_name": "GitHub Actions 1000000008",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-23T08:41:40Z",
+          "completed_at": "2026-10-23T08:41:43Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-23T08:41:43Z",
+          "completed_at": "2026-10-23T08:41:44Z"
+        },
+        {
+          "name": "Run echo \"image=ghcr.io/${GITHUB_REPOSITORY,,}\" >> \"$GITHUB_OUTPUT\"",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-23T08:41:44Z",
+          "completed_at": "2026-10-23T08:41:44Z"
+        },
+        {
+          "name": "Run docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-23T08:41:44Z",
+          "completed_at": "2026-10-23T08:41:52Z"
+        },
+        {
+          "name": "Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-23T08:41:52Z",
+          "completed_at": "2026-10-23T08:41:53Z"
+        },
+        {
+          "name": "Run docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-23T08:41:53Z",
+          "completed_at": "2026-10-23T08:41:53Z"
+        },
+        {
+          "name": "Run docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-23T08:41:53Z",
+          "completed_at": "2026-10-23T08:43:03Z"
+        },
+        {
+          "name": "Post Run docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-23T08:43:03Z",
+          "completed_at": "2026-10-23T08:43:06Z"
+        },
+        {
+          "name": "Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-23T08:43:06Z",
+          "completed_at": "2026-10-23T08:43:06Z"
+        },
+        {
+          "name": "Post Run docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-23T08:43:06Z",
+          "completed_at": "2026-10-23T08:43:08Z"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-23T08:43:08Z",
+          "completed_at": "2026-10-23T08:43:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-23T08:43:08Z",
+          "completed_at": "2026-10-23T08:43:08Z"
+        }
+      ]
+    },
+    {
+      "id": 120324552494,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-23T08:43:13Z",
+      "completed_at": "2026-10-23T08:43:58Z",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39926367307/job/120324552494",
+      "runner_name": "devops-labs-windows",
+      "labels": [
+        "self-hosted",
+        "Windows",
+        "X64",
+        "devops-labs"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-23T08:43:17Z",
+          "completed_at": "2026-10-23T08:43:22Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-23T08:43:22Z",
+          "completed_at": "2026-10-23T08:43:31Z"
+        },
+        {
+          "name": "Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-23T08:43:31Z",
+          "completed_at": "2026-10-23T08:43:34Z"
+        },
+        {
+          "name": "Pull image",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-23T08:43:34Z",
+          "completed_at": "2026-10-23T08:43:40Z"
+        },
+        {
+          "name": "Deploy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-23T08:43:40Z",
+          "completed_at": "2026-10-23T08:43:53Z"
+        },
+        {
+          "name": "Smoke test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-23T08:43:53Z",
+          "completed_at": "2026-10-23T08:43:53Z"
+        },
+        {
+          "name": "Post Run docker/login-action@dbcb813823bdd20940b903addbd779551569679f",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-23T08:43:53Z",
+          "completed_at": "2026-10-23T08:43:54Z"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-23T08:43:54Z",
+          "completed_at": "2026-10-23T08:43:56Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-23T08:43:56Z",
+          "completed_at": "2026-10-23T08:43:56Z"
+        }
+      ]
+    }
+  ]
+}

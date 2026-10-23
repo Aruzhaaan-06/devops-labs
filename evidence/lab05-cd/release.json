@@ -1,0 +1,10 @@
+{
+  "id": 421635277,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.0.0",
+  "tag_name": "v1.0.0",
+  "target_commitish": "main",
+  "draft": false,
+  "prerelease": false,
+  "published_at": "2026-10-23T09:00:25Z",
+  "body": "## What's Changed\n* docs: отчет на казахском и доказательства задания 08 by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/16\n* ci: лабораторная 5 — пайплайн и защита merge by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/17\n* feat: CI/CD message and protected rollback controls by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/18\n\n\n**Full Changelog**: https://github.com/Aruzhaaan-06/devops-labs/compare/v0.1.0...v1.0.0"
+}

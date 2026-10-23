@@ -1,0 +1,10 @@
+[
+  {
+    "user": "temirkhanerbolatovich-coder",
+    "state": "APPROVED",
+    "body": "Техническое ревью вторым аккаунтом владельца: новое поле Message сохраняет прежние Service/Version/Host, тестирует настроенную APP_VERSION и точный текст. test с PostgreSQL прошел. workflow_dispatch передает tag через env, regex отклоняет произвольные команды, rollback использует существующий образ и сверяет версию с APP_VERSION образа, deploy/rollback требуют local approval и main. Job summary не выводит секреты; main deploy не отменяется новым push. Это не независимое ревью другого студента.",
+    "submitted_at": "2026-10-23T08:47:34Z",
+    "commit_id": "a61798673f5faf17a29318f24c06c8cbf6bd8459",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/18#pullrequestreview-5625967703"
+  }
+]

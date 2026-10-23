@@ -1,0 +1,15 @@
+{
+  "seconds": 57.696,
+  "startUtc": "2026-10-23T08:54:10.631394+00:00",
+  "confirmedUtc": "2026-10-23T08:55:08.327352+00:00",
+  "measurement": "Dispatch request through approval, runner queue and polling until first GET / confirms old version",
+  "http": {
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "sha-8511c6c",
+      "host": "4388018fef79"
+    }
+  },
+  "run": 39927957374
+}

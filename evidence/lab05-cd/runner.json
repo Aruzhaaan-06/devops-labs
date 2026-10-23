@@ -1,0 +1,32 @@
+{
+  "runners": [
+    {
+      "name": "devops-labs-windows",
+      "os": "Windows",
+      "status": "online",
+      "busy": false,
+      "labels": [
+        {
+          "id": 0,
+          "name": "self-hosted",
+          "type": "read-only"
+        },
+        {
+          "id": 0,
+          "name": "Windows",
+          "type": "read-only"
+        },
+        {
+          "id": 0,
+          "name": "X64",
+          "type": "read-only"
+        },
+        {
+          "id": 0,
+          "name": "devops-labs",
+          "type": "custom"
+        }
+      ]
+    }
+  ]
+}
