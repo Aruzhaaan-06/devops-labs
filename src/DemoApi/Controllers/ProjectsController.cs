@@ -71,6 +71,40 @@ public sealed class ProjectsController(ProjectService projects) : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = project.Id }, project);
     }
 
+    /// <summary>Переименовать проект</summary>
+    /// <param name="id">Идентификатор проекта</param>
+    /// <param name="request">Новое уникальное имя, до 100 символов</param>
+    /// <response code="200">Проект переименован; прежнее имя также допустимо</response>
+    /// <response code="400">Название пустое или длиннее 100 символов</response>
+    /// <response code="404">Проекта с таким id нет</response>
+    /// <response code="409">Имя занято другим проектом</response>
+    [HttpPut("{id:int}")]
+    [ProducesResponseType<Project>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<Project>> Rename(int id, RenameProjectRequest request, CancellationToken ct)
+    {
+        var existing = await projects.GetAsync(id, ct);
+        if (existing is null)
+        {
+            return NotFound();
+        }
+        if (existing.Name != request.Name && await projects.NameExistsAsync(request.Name, ct))
+        {
+            return Problem("Имя занято другим проектом", statusCode: StatusCodes.Status409Conflict);
+        }
+        try
+        {
+            var renamed = await projects.RenameAsync(id, request.Name, ct);
+            return renamed is null ? NotFound() : renamed;
+        }
+        catch (ProjectNameConflictException)
+        {
+            return Problem("Имя занято другим проектом", statusCode: StatusCodes.Status409Conflict);
+        }
+    }
+
     /// <summary>Удалить проект вместе с его задачами</summary>
     /// <param name="id">Идентификатор проекта</param>
     /// <response code="204">Проект удалён</response>
@@ -93,4 +127,9 @@ public sealed class ProjectsController(ProjectService projects) : ControllerBase
 /// <summary>Создание проекта</summary>
 /// <param name="Name">Название проекта: уникальное, до 100 символов</param>
 public sealed record CreateProjectRequest(
+    [Required, StringLength(100)] string Name);
+
+/// <summary>Переименование проекта</summary>
+/// <param name="Name">Новое название: уникальное, до 100 символов</param>
+public sealed record RenameProjectRequest(
     [Required, StringLength(100)] string Name);

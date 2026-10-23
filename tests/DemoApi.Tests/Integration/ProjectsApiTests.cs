@@ -47,6 +47,105 @@ public class ProjectsApiTests(WebApplicationFactory<Program> factory)
     }
 
     [Fact]
+    public async Task Rename_PreservesIdentityCreatedAtAndTasks()
+    {
+        var project = await _client.CreateProjectAsync();
+        var task = await _client.CreateTaskAsync(project.Id);
+        var name = TestApi.Unique("renamed");
+
+        var response = await _client.PutAsJsonAsync($"/api/projects/{project.Id}", new { name });
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var renamed = await response.Content.ReadFromJsonAsync<Project>(TestApi.Json);
+        Assert.Equal(project with { Name = name }, renamed);
+        Assert.Equal(renamed, await _client.GetFromJsonAsync<Project>($"/api/projects/{project.Id}", TestApi.Json));
+        var preserved = await _client.GetFromJsonAsync<TaskItem>($"/api/tasks/{task.Id}", TestApi.Json);
+        Assert.Equal(task, preserved);
+    }
+
+    [Fact]
+    public async Task Rename_DuplicateName_ReturnsConflictWithoutChangingProject()
+    {
+        var project = await _client.CreateProjectAsync();
+        var other = await _client.CreateProjectAsync();
+
+        var response = await _client.PutAsJsonAsync($"/api/projects/{project.Id}", new { name = other.Name });
+
+        Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);
+        Assert.Equal(project, await _client.GetFromJsonAsync<Project>($"/api/projects/{project.Id}", TestApi.Json));
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData(null)]
+    [InlineData("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")]
+    public async Task Rename_InvalidName_ReturnsBadRequest(string? name)
+    {
+        var project = await _client.CreateProjectAsync();
+
+        var response = await _client.PutAsJsonAsync($"/api/projects/{project.Id}", new { name });
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Equal(project, await _client.GetFromJsonAsync<Project>($"/api/projects/{project.Id}", TestApi.Json));
+    }
+
+    [Fact]
+    public async Task Rename_UnknownProject_ReturnsNotFoundEvenIfNameIsTaken()
+    {
+        var project = await _client.CreateProjectAsync();
+
+        var response = await _client.PutAsJsonAsync($"/api/projects/{int.MaxValue}", new { name = project.Name });
+
+        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task Rename_CurrentName_CanBeRepeated()
+    {
+        var project = await _client.CreateProjectAsync();
+        for (var attempt = 0; attempt < 2; attempt++)
+        {
+            var response = await _client.PutAsJsonAsync($"/api/projects/{project.Id}", new { name = project.Name });
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal(project, await response.Content.ReadFromJsonAsync<Project>(TestApi.Json));
+        }
+    }
+
+    [Fact]
+    public async Task Rename_ConcurrentRequests_OnlyOneProjectGetsName()
+    {
+        var first = await _client.CreateProjectAsync();
+        var second = await _client.CreateProjectAsync();
+        var name = TestApi.Unique("shared");
+
+        var responses = await Task.WhenAll(
+            _client.PutAsJsonAsync($"/api/projects/{first.Id}", new { name }),
+            _client.PutAsJsonAsync($"/api/projects/{second.Id}", new { name }));
+
+        Assert.Single(responses, r => r.StatusCode == HttpStatusCode.OK);
+        Assert.Single(responses, r => r.StatusCode == HttpStatusCode.Conflict);
+        var projects = await _client.GetFromJsonAsync<Project[]>("/api/projects", TestApi.Json);
+        Assert.Single(projects!, p => p.Name == name);
+        var loser = responses[0].StatusCode == HttpStatusCode.Conflict ? first : second;
+        Assert.Equal(loser, await _client.GetFromJsonAsync<Project>($"/api/projects/{loser.Id}", TestApi.Json));
+    }
+
+    [Fact]
+    public async Task Rename_QuotedName_IsStoredAsLiteralText()
+    {
+        var project = await _client.CreateProjectAsync();
+        var name = TestApi.Unique("O'Brien'; DROP TABLE projects;--");
+
+        var response = await _client.PutAsJsonAsync($"/api/projects/{project.Id}", new { name });
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(project with { Name = name }, await response.Content.ReadFromJsonAsync<Project>(TestApi.Json));
+        Assert.Equal(name, (await _client.GetFromJsonAsync<Project>($"/api/projects/{project.Id}", TestApi.Json))!.Name);
+        Assert.NotNull(await _client.GetFromJsonAsync<Project[]>("/api/projects", TestApi.Json));
+    }
+
+    [Fact]
     public async Task Stats_ReturnsProjectCountsAndOverdueTasks()
     {
         var project = await _client.CreateProjectAsync();
