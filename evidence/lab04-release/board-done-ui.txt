@@ -1,0 +1,119 @@
+Browser tab: 1, Title: "View 1 · DevOps Labs — лабораторная 4", URL: "https://github.com/users/Aruzhaaan-06/projects/1".
+1 AXWebArea View 1 · DevOps Labs — лабораторная 4, URL: github.com/users/Aruzhaaan-06/projects/1
+	2 container
+		3 link Description: Skip to content, Value: github.com/users/Aruzhaaan-06/projects/1#start-of-content
+		4 container Global navigation menu
+			5 pop up button Open menu
+			6 link Description: Homepage ( g then d ), Value: github.com/
+			7 container Breadcrumbs
+				8 content list
+					86 button (collapsed) Secondary Actions: Expand
+					87 link Description: DevOps Labs — лабораторная 4, Value: github.com/users/Aruzhaaan-06/projects/1
+			14 button Open quick search dialog, type / to search
+			15 pop up button (collapsed) Create new..., Secondary Actions: Expand
+			16 link Description: You have unread notifications ( g then n ), Value: github.com/notifications
+			17 pop up button Open user navigation menu
+				18 image Aruzhaaan-06
+	19 container js-repo-pjax-container
+		20 container memex-root
+			21 container
+				22 container Project
+					23 heading DevOps Labs — лабораторная 4, Value: 1
+						24 text DevOps Labs — лабораторная 4
+					25 button Add status update
+					26 link Description: Insights, Value: github.com/users/Aruzhaaan-06/projects/1/insights
+					27 link Description: Workflows (7 enabled), Value: github.com/users/Aruzhaaan-06/projects/1/workflows
+					28 button Project details
+					29 button View more options
+				30 container memex-project-view-root
+					31 container
+						32 container Select view
+							33 tab group
+								34 tab (selected, settable, boolean) View 1, Value: 1
+View 1
+								35 tab (collapsed, settable) New view, Secondary Actions: Expand
+						36 button View options for View 1
+					37 container project-view:_r_g_
+						38 container View filters
+							39 container Description: Filter, ID: filter-bar-component
+								40 text Filter
+								41 container
+									42 image Search
+									43 combo box (collapsed, settable) Filter, ID: filter-bar-component-input, Secondary Actions: Expand
+							44 pop up button (collapsed) View, Secondary Actions: Expand
+								45 text View
+						46 container
+							47 container project-items-region
+								48 container Y3Vyc29yOnYyOpLOGbCJ4KRUb2Rv
+									49 container
+										50 heading Todo, Value: 2
+											51 text Todo
+										52 text  (
+										53 text 0
+										54 text )
+									55 pop up button (collapsed) Actions for column: Todo, Secondary Actions: Expand
+									56 button Add item to Todo
+									57 text This item hasn't been started
+									58 button Add item
+								59 container Y3Vyc29yOnYyOpLOGbCJ4KtJbiBQcm9ncmVzcw==
+									60 container
+										61 heading In Progress, Value: 2
+											62 text In Progress
+										63 text  (
+										64 text 0
+										65 text )
+									66 pop up button (collapsed) Actions for column: In Progress, Secondary Actions: Expand
+									67 button Add item to In Progress
+									68 text This is actively being worked on
+									69 button Add item
+								70 container Y3Vyc29yOnYyOpLOGbCJ4KREb25l
+									71 container
+										72 heading Done, Value: 2
+											73 text Done
+										74 text  (
+										75 text 3
+										76 text )
+									77 pop up button (collapsed) Actions for column: Done, Secondary Actions: Expand
+									78 button Add item to Done
+									79 text This has been completed
+									80 container
+										81 draggable docs: README с инструкцией запуска Closed as completed issue devops-labs #1
+											88 image Closed as completed issue
+											89 container board-card-header-title-279860927
+												90 text devops-labs  # 1
+											91 pop up button (collapsed) More actions, Secondary Actions: Expand
+											92 button docs: README с инструкцией запуска
+												93 heading docs: README с инструкцией запуска, Value: 3, ID: board-card-title-279860927
+													94 text docs: README с инструкцией запуска
+											95 content list Fields
+												96 container Linked pull request: #4
+													97 link Description: Merged pull request #4, Value: github.com/Aruzhaaan-06/devops-labs/pull/4
+											98 text Click a value to filter the view
+										82 draggable chore: шаблон Pull Request и Dependabot Closed as completed issue devops-labs #2
+											99 image Closed as completed issue
+											100 container board-card-header-title-279860929
+												101 text devops-labs  # 2
+											102 pop up button (collapsed) More actions, Secondary Actions: Expand
+											103 button chore: шаблон Pull Request и Dependabot
+												104 heading chore: шаблон Pull Request и Dependabot, Value: 3, ID: board-card-title-279860929
+													105 text chore: шаблон Pull Request и Dependabot
+											106 content list Fields
+												107 container Linked pull request: #9
+													108 link Description: Merged pull request #9, Value: github.com/Aruzhaaan-06/devops-labs/pull/9
+											109 text Click a value to filter the view
+										83 draggable feat: переименование проекта Closed as completed issue devops-labs #3
+											110 image Closed as completed issue
+											111 container board-card-header-title-279860934
+												112 text devops-labs  # 3
+											113 pop up button (collapsed) More actions, Secondary Actions: Expand
+											114 button feat: переименование проекта
+												115 heading feat: переименование проекта, Value: 3, ID: board-card-title-279860934
+													116 text feat: переименование проекта
+											117 content list Fields
+												118 container Linked pull request: #14
+													119 link Description: Merged pull request #14, Value: github.com/Aruzhaaan-06/devops-labs/pull/14
+											120 text Click a value to filter the view
+										84 button Add item
+								85 pop up button (collapsed) Add a new column to the board, Secondary Actions: Expand
+
+The focused UI element is 1 AXWebArea View 1 · DevOps Labs — лабораторная 4, URL: github.com/users/Aruzhaaan-06/projects/1

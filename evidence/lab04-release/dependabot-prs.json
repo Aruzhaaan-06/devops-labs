@@ -1,0 +1,27 @@
+[
+  {
+    "number": 15,
+    "title": "Bump Swashbuckle.AspNetCore.SwaggerUI from 10.2.3 to 10.3.1",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/15"
+  },
+  {
+    "number": 13,
+    "title": "Bump Microsoft.NET.Test.Sdk from 17.14.1 to 18.11.0",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/13"
+  },
+  {
+    "number": 12,
+    "title": "Bump Microsoft.AspNetCore.OpenApi from 10.0.12 to 10.0.13",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/12"
+  },
+  {
+    "number": 11,
+    "title": "Bump Microsoft.AspNetCore.Mvc.Testing from 10.0.12 to 10.0.13",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/11"
+  },
+  {
+    "number": 10,
+    "title": "Bump coverlet.collector from 6.0.4 to 10.1.0",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/10"
+  }
+]

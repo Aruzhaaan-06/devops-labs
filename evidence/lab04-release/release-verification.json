@@ -1,0 +1,8 @@
+{
+  "tag": "v0.1.0",
+  "commit": "8e1371c67bbc0267947525e25d6cec88a569c8b9",
+  "testedBranchCommit": "9b1780b286c4098684285284ae632ebf1e708531",
+  "sameSourceTree": true,
+  "notesGeneratedBy": "gh release create --generate-notes",
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v0.1.0"
+}
