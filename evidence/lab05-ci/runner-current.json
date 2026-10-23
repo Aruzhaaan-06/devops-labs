@@ -1,0 +1,35 @@
+{
+  "total_count": 1,
+  "runners": [
+    {
+      "id": 2,
+      "name": "devops-labs-windows",
+      "os": "Windows",
+      "status": "online",
+      "busy": false,
+      "version": "2.338.0",
+      "labels": [
+        {
+          "id": 0,
+          "name": "self-hosted",
+          "type": "read-only"
+        },
+        {
+          "id": 0,
+          "name": "Windows",
+          "type": "read-only"
+        },
+        {
+          "id": 0,
+          "name": "X64",
+          "type": "read-only"
+        },
+        {
+          "id": 0,
+          "name": "devops-labs",
+          "type": "custom"
+        }
+      ]
+    }
+  ]
+}

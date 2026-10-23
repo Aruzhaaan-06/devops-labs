@@ -1,0 +1,125 @@
+Browser tab: 3, Title: "Runners · Aruzhaaan-06/devops-labs", URL: "https://github.com/Aruzhaaan-06/devops-labs/settings/actions/runners".
+0 AXWebArea Runners · Aruzhaaan-06/devops-labs, URL: github.com/Aruzhaaan-06/devops-labs/settings/actions/runners
+	1 container
+		2 link Description: Skip to content, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/runners#start-of-content
+		3 container Global navigation menu
+			4 pop up button Open menu
+			5 link Description: Homepage ( g then d ), Value: github.com/
+			6 container Breadcrumbs
+				7 content list
+					8 container
+						9 link Description: Aruzhaaan-06, Value: github.com/Aruzhaaan-06
+					10 container
+						11 link Description: devops-labs, Value: github.com/Aruzhaaan-06/devops-labs
+						12 pop up button (collapsed) Switch repository ( alt shift r ), Secondary Actions: Expand
+			13 button Open quick search dialog, type / to search
+				14 text Type
+				15 text /
+				16 text  to search
+			17 link Description: Chat with Copilot, Value: github.com/copilot
+			18 pop up button (collapsed) Description: Open Copilot…, Secondary Actions: Expand
+			19 pop up button (collapsed) Create new..., Secondary Actions: Expand
+			20 link Description: All issues, Value: github.com/issues
+			21 link Description: All pull requests, Value: github.com/pulls
+			22 link Description: All repositories, Value: github.com/repos
+			23 link Description: You have no unread notifications ( g then n ), Value: github.com/notifications
+			24 pop up button Open user navigation menu
+				25 image Aruzhaaan-06
+			26 heading Repository navigation, Value: 2
+				27 text Repository navigation
+			28 container Repository
+				29 content list
+					30 link Description: Code, Value: github.com/Aruzhaaan-06/devops-labs
+					31 link Description: Issues, Value: github.com/Aruzhaaan-06/devops-labs/issues
+					32 link Description: Pull requests  (6), Value: github.com/Aruzhaaan-06/devops-labs/pulls
+					33 link Description: Actions, Value: github.com/Aruzhaaan-06/devops-labs/actions
+					34 link Description: Projects, Value: github.com/Aruzhaaan-06/devops-labs/projects
+					35 link Description: Wiki, Value: github.com/Aruzhaaan-06/devops-labs/wiki
+					36 link Description: Security and quality, Value: github.com/Aruzhaaan-06/devops-labs/security
+					37 link Description: Insights, Value: github.com/Aruzhaaan-06/devops-labs/pulse
+					38 link Description: Settings, Value: github.com/Aruzhaaan-06/devops-labs/settings
+	39 container repo-content-pjax-container
+		40 heading Settings: Aruzhaaan-06/devops-labs, Value: 1
+			41 text Settings: Aruzhaaan-06/devops-labs
+		42 container General settings
+			43 content list
+				44 link Description: General, Value: github.com/Aruzhaaan-06/devops-labs/settings, ID: item-ac235f0a-da91-41b6-9124-bdb104652d24
+				45 container
+					46 heading Access, Value: 2, ID: heading-title-27eb8401-a70f-40b3-8b23-8f7f92d4f338
+						47 text Access
+					48 content list Access, ID: group-9887a330-c6bb-4048-9e81-082fa03b0d6e
+						49 link Description: Collaborators, Value: github.com/Aruzhaaan-06/devops-labs/settings/access, ID: item-1b49cd95-616a-4e68-a6c3-3ff9dd6a5bbc
+						50 button (collapsed) Moderation, ID: item-dacf271e-fb35-4119-9e29-97b0b24d4dbb, Secondary Actions: Expand
+				51 container
+					52 heading Code, planning, and automation, Value: 2, ID: heading-title-af6a4014-dcd0-40ad-8261-ee79fe30159f
+						53 text Code, planning, and automation
+					54 content list Code, planning, and automation, ID: group-8677f166-5ba6-4fdf-b188-7099287e56cb
+						55 button (collapsed) Rulesets, ID: repo_rules, Secondary Actions: Expand
+						56 link Description: Branches, Value: github.com/Aruzhaaan-06/devops-labs/settings/branches, ID: item-1edde019-8749-4b71-833b-1d7d143f3bc6
+						57 link Description: Tags, Value: github.com/Aruzhaaan-06/devops-labs/settings/tag_protection, ID: item-f43f03ee-6da9-4910-b674-2c3420b81479
+						58 container
+							59 button (expanded) Actions, ID: item-5b1e20b8-2b14-44c3-8db8-6dcb9646b774, Secondary Actions: Collapse
+							60 content list Actions
+								61 link Description: General, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions, ID: item-9a3bdb27-bece-40c8-a8fd-a68c4c4637d4
+								62 link Description: Runners, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/runners, ID: item-a5854512-b6f5-4b68-a476-82568423e225
+								63 link Description: Policies, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/rules, ID: item-1d109d41-4ff9-42d5-ab60-1525c4517515
+								64 link Description: Policy insights, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/rules/insights, ID: item-ebca3d37-7f2e-41dc-b9f3-3565fc0969ce
+								65 link Description: OIDC, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/oidc-configuration, ID: item-ddb8c86b-7602-42a8-bd34-080ae2cb4de0
+						66 link Description: Webhooks, Value: github.com/Aruzhaaan-06/devops-labs/settings/hooks, ID: item-36085307-13f9-4ae8-bcf6-764ca06b28bd
+						67 button (collapsed) Copilot, ID: item-2de90c5d-bfc7-4546-b4f3-55548eb06276, Secondary Actions: Expand
+						68 button (collapsed) Planning, ID: repo_planning, Secondary Actions: Expand
+						69 link Description: Environments, Value: github.com/Aruzhaaan-06/devops-labs/settings/environments, ID: item-924f4acf-fab2-4ee5-8b5b-fd24668ccda2
+						70 link Description: Codespaces, Value: github.com/Aruzhaaan-06/devops-labs/settings/codespaces, ID: item-291e9b13-a798-4878-b477-80a46fbaaf07
+						71 link Description: Pages, Value: github.com/Aruzhaaan-06/devops-labs/settings/pages, ID: item-764ac92c-531c-4a93-b5bc-885f444dda7c
+				72 container
+					73 heading Security and quality, Value: 2, ID: heading-title-63238f23-7ce6-4deb-aa76-4a8974d86eb5
+						74 text Security and quality
+					75 content list Security and quality, ID: group-a44b96c1-b744-4178-9610-10b6f3f0396b
+						76 link Description: Advanced Security, Value: github.com/Aruzhaaan-06/devops-labs/settings/security_analysis, ID: item-9af9f5fe-5f10-44cd-88a4-0c2690907304
+						77 link Description: Deploy keys, Value: github.com/Aruzhaaan-06/devops-labs/settings/keys, ID: item-7042f269-e214-47ff-bbde-6493416f5d57
+						78 button (collapsed) Secrets and variables, ID: item-04de38c1-6a8b-4bac-9772-184f8c9d10ad, Secondary Actions: Expand
+				79 container
+					80 heading Integrations, Value: 2, ID: heading-title-8e79aca6-d8ba-4901-8363-d4ce4811614a
+						81 text Integrations
+					82 content list Integrations, ID: group-7ff4cc3c-69b7-4626-ae7f-893a1efa113e
+						83 link Description: GitHub Apps, Value: github.com/Aruzhaaan-06/devops-labs/settings/installations, ID: item-5b971842-d6ea-46a9-81aa-ff4a8de550ae
+		84 heading Runners, Value: 2
+			85 text Runners
+		86 container
+			87 text Host your own runners and customize the environment used to run jobs in your GitHub Actions workflows.
+			88 link Description: Learn more about self-hosted runners, Value: docs.github.com/actions/hosting-your-own-runners/about-self-hosted-runners
+			89 text .
+		90 link Description: New self-hosted runner, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/runners/new
+		91 container runner-list
+			92 text Runners Status
+			93 content list
+				94 container
+					95 container runner-2
+						96 link Description: devops-labs-windows, Value: github.com/Aruzhaaan-06/devops-labs/settings/actions/runners/2
+						97 text self-hosted
+						98 text Windows
+						99 text X64
+						100 text devops-labs
+					101 text Idle
+					102 pop up button (collapsed) Show options, Secondary Actions: Expand
+						103 image Show options
+	104 container
+		105 heading Footer, Value: 2
+			106 text Footer
+		107 link Description: GitHub Homepage, Value: github.com/
+		108 text © 2026 GitHub, Inc.
+		109 container Footer
+			110 heading Footer navigation, Value: 3, ID: sr-footer-heading
+				111 text Footer navigation
+			112 content list Footer navigation
+				113 link Description: Terms, Value: docs.github.com/site-policy/github-terms/github-terms-of-service
+				114 link Description: Privacy, Value: docs.github.com/site-policy/privacy-policies/github-privacy-statement
+				115 link Description: Security, Value: github.com/security
+				116 link Description: Status, Value: githubstatus.com/
+				117 link Description: Community, Value: github.community/
+				118 link Description: Docs, Value: docs.github.com/
+				119 link Description: Contact, Value: support.github.com/?tags=dotcom-footer
+				120 button Manage cookies
+				121 button Do not share my personal information
+
+The focused UI element is 0 AXWebArea Runners · Aruzhaaan-06/devops-labs, URL: github.com/Aruzhaaan-06/devops-labs/settings/actions/runners

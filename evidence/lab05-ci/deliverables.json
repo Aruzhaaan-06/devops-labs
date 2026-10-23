@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-23T08:25:11.859672+00:00",
+  "language": "kk",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "university": "ВКТУ",
+  "group": "25-ИСТК-2о",
+  "report": {
+    "path": "reports/lab05-ci-report.pdf",
+    "pages": 6,
+    "bytes": 253296,
+    "sha256": "3ddb2cbf359aaf14927f1c7aa0d9ce23f08a0c88f716852237b5270806d19745"
+  },
+  "archive": {
+    "path": "reports/devops-reports-kk.zip",
+    "reports": 8,
+    "pages": 61,
+    "bytes": 1730774,
+    "sha256": "55955c89e9719ecd1f25b4089c543684ba361523a50520c028a48d902f5b3967"
+  },
+  "validation": {
+    "all6PagesRenderedAndVisuallyReviewed": true,
+    "noTextOutsideMargins": true,
+    "links": 9,
+    "originalScreenshotBytesMatch": 3,
+    "authorOnEveryPage": true,
+    "archiveCRCAndPDFBytesMatch": true
+  },
+  "publication": "ci/pipeline branch and open PR #17; no merge before material 10",
+  "reproduction": "python scripts/build-lab09-report.py; requires Windows Arial/Consolas and Python reportlab; no CI executed by builder"
+}

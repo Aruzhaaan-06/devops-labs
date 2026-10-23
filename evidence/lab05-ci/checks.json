@@ -1,0 +1,135 @@
+{
+  "utc": "2026-10-23T08:24:14.081625+00:00",
+  "technicalChecksPassed": 24,
+  "checks": [
+    {
+      "name": "Local PostgreSQL tests",
+      "passed": true,
+      "evidence": "local-tests.json: 38/38"
+    },
+    {
+      "name": "Local Release build",
+      "passed": true,
+      "evidence": "local-build.txt"
+    },
+    {
+      "name": "Initial GitHub CI",
+      "passed": true,
+      "evidence": "Run 39922701822"
+    },
+    {
+      "name": "Initial CI count",
+      "passed": true,
+      "evidence": "initial-ci-log.txt"
+    },
+    {
+      "name": "initial PR skipped jobs",
+      "passed": true,
+      "evidence": "initial-jobs.json"
+    },
+    {
+      "name": "failure PR skipped jobs",
+      "passed": true,
+      "evidence": "failure-jobs.json"
+    },
+    {
+      "name": "restored PR skipped jobs",
+      "passed": true,
+      "evidence": "restored-jobs.json"
+    },
+    {
+      "name": "Required GitHub Actions test",
+      "passed": true,
+      "evidence": "ruleset-required-test.json; Actions app id observed from check run"
+    },
+    {
+      "name": "Approval before failure",
+      "passed": true,
+      "evidence": "initial-review.json; failure-run.json"
+    },
+    {
+      "name": "Intentional red test",
+      "passed": true,
+      "evidence": "failure-run.json"
+    },
+    {
+      "name": "Exact failure evidence",
+      "passed": true,
+      "evidence": "failure-ci-log.txt"
+    },
+    {
+      "name": "Merge blocked",
+      "passed": true,
+      "evidence": "failure-pr.json; failure-reviews.json"
+    },
+    {
+      "name": "Blocked UI screenshot",
+      "passed": true,
+      "evidence": "failure-blocked-ui.txt; screenshots/merge-blocked.jpg"
+    },
+    {
+      "name": "Restored GitHub CI",
+      "passed": true,
+      "evidence": "Run 39923354322"
+    },
+    {
+      "name": "Restored CI count",
+      "passed": true,
+      "evidence": "restored-ci-log.txt"
+    },
+    {
+      "name": "Tests restored exactly",
+      "passed": true,
+      "evidence": "Only intentional test expectation changed and then restored; application source unchanged"
+    },
+    {
+      "name": "Runner official archive verified",
+      "passed": true,
+      "evidence": "runner-installed.json; runner-download-metadata.json"
+    },
+    {
+      "name": "Runner online and idle",
+      "passed": true,
+      "evidence": "runner-current.json"
+    },
+    {
+      "name": "Runner Idle UI",
+      "passed": true,
+      "evidence": "runner-idle-ui.txt; screenshots/runner-idle.jpg"
+    },
+    {
+      "name": "DB_PASSWORD secret stored",
+      "passed": true,
+      "evidence": "repository-secrets.json; value is never returned by GitHub"
+    },
+    {
+      "name": "External workflow approval",
+      "passed": true,
+      "evidence": "fork-approval.json"
+    },
+    {
+      "name": "Official action commit pins",
+      "passed": true,
+      "evidence": "action-pins.json"
+    },
+    {
+      "name": "PR intentionally open",
+      "passed": true,
+      "evidence": "pipeline-pr.json; methodical boundary before material 10"
+    },
+    {
+      "name": "Five PR answers",
+      "passed": true,
+      "evidence": "pipeline-pr.json"
+    }
+  ],
+  "scope": "Material 09, laboratory 5 part 1, sections 1-5; PR remains open until material 10",
+  "reviewDisclosure": "Both reviewer and author accounts belong to the same owner",
+  "notYetExecuted": [
+    "Image build/push to GHCR",
+    "Deployment job on local runner",
+    "Readiness smoke after deployment",
+    "Rollback"
+  ],
+  "security": "Public self-hosted runner is not a sandbox; external workflow approval required; credentials remain outside repository"
+}

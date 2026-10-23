@@ -1,0 +1,178 @@
+{
+  "total_count": 3,
+  "jobs": [
+    {
+      "id": 120312235115,
+      "run_id": 39922922366,
+      "workflow_name": "ci-cd",
+      "head_branch": "ci/pipeline",
+      "run_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/actions/runs/39922922366",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVSp68c8AAAAcAysEaw",
+      "head_sha": "bfd861774f93526fcddf7e1f0c987413ff24146f",
+      "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/actions/jobs/120312235115",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366/job/120312235115",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-23T08:11:36Z",
+      "started_at": "2026-10-23T08:11:38Z",
+      "completed_at": "2026-10-23T08:12:27Z",
+      "name": "test",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-23T08:11:38Z",
+          "completed_at": "2026-10-23T08:11:39Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-23T08:11:39Z",
+          "completed_at": "2026-10-23T08:11:58Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-23T08:11:58Z",
+          "completed_at": "2026-10-23T08:11:59Z"
+        },
+        {
+          "name": "Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-23T08:11:59Z",
+          "completed_at": "2026-10-23T08:12:08Z"
+        },
+        {
+          "name": "Run dotnet restore DemoApi.slnx",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-23T08:12:08Z",
+          "completed_at": "2026-10-23T08:12:12Z"
+        },
+        {
+          "name": "Run dotnet build DemoApi.slnx --no-restore -c Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-23T08:12:12Z",
+          "completed_at": "2026-10-23T08:12:17Z"
+        },
+        {
+          "name": "Run dotnet test DemoApi.slnx --no-build -c Release",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7,
+          "started_at": "2026-10-23T08:12:17Z",
+          "completed_at": "2026-10-23T08:12:20Z"
+        },
+        {
+          "name": "Post Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-10-23T08:12:20Z",
+          "completed_at": "2026-10-23T08:12:20Z"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-23T08:12:20Z",
+          "completed_at": "2026-10-23T08:12:20Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-23T08:12:20Z",
+          "completed_at": "2026-10-23T08:12:26Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-23T08:12:26Z",
+          "completed_at": "2026-10-23T08:12:26Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/check-runs/120312235115",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000004,
+      "runner_name": "GitHub Actions 1000000004",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 120312571348,
+      "run_id": 39922922366,
+      "workflow_name": "ci-cd",
+      "head_branch": "ci/pipeline",
+      "run_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/actions/runs/39922922366",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVSp68c8AAAAcAzAl1A",
+      "head_sha": "bfd861774f93526fcddf7e1f0c987413ff24146f",
+      "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/actions/jobs/120312571348",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366/job/120312571348",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-23T08:12:27Z",
+      "started_at": "2026-10-23T08:12:27Z",
+      "completed_at": "2026-10-23T08:12:27Z",
+      "name": "image",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/check-runs/120312571348",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 120312572711,
+      "run_id": 39922922366,
+      "workflow_name": "ci-cd",
+      "head_branch": "ci/pipeline",
+      "run_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/actions/runs/39922922366",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVSp68c8AAAAcAzArJw",
+      "head_sha": "bfd861774f93526fcddf7e1f0c987413ff24146f",
+      "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/actions/jobs/120312572711",
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366/job/120312572711",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-23T08:12:28Z",
+      "started_at": "2026-10-23T08:12:28Z",
+      "completed_at": "2026-10-23T08:12:27Z",
+      "name": "deploy",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/check-runs/120312572711",
+      "labels": [
+        "self-hosted",
+        "Windows",
+        "X64",
+        "devops-labs"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "number": 17,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/17",
+  "state": "open",
+  "merged": false,
+  "mergeable": true,
+  "mergeable_state": "blocked",
+  "head": {
+    "ref": "ci/pipeline",
+    "sha": "bfd861774f93526fcddf7e1f0c987413ff24146f"
+  }
+}

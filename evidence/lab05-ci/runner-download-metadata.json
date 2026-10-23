@@ -1,0 +1,7 @@
+{
+  "os": "win",
+  "architecture": "x64",
+  "download_url": "https://github.com/actions/runner/releases/download/v2.338.0/actions-runner-win-x64-2.338.0.zip",
+  "filename": "actions-runner-win-x64-2.338.0.zip",
+  "sha256_checksum": "f48e0750a21812bca5f82de5f7f5aeae71abee647fab5a582f1742d07eba455f"
+}
