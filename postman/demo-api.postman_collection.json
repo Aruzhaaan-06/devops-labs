@@ -1049,6 +1049,366 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Лабораторная 4 - переименование проекта",
+      "item": [
+        {
+          "name": "Создать проект A",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{renameOriginal}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.variables.replaceIn(\"{{$guid}}\");",
+                  "pm.collectionVariables.set(\"renameOriginal\", \"rename-a-\"+id);",
+                  "pm.collectionVariables.set(\"renameTarget\", \"rename-new-\"+id);",
+                  "pm.collectionVariables.set(\"renameTaken\", \"rename-b-\"+id);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "const p = pm.response.json(); pm.collectionVariables.set(\"renameA\", p.id); pm.collectionVariables.set(\"renameCreatedAt\", p.createdAt);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Создать проект B",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{renameTaken}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set(\"renameB\", pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Переименовать проект",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{renameTarget}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Имя изменено\", () => pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"renameTarget\")));",
+                  "pm.test(\"ID сохранен\", () => pm.expect(String(pm.response.json().id)).to.eql(String(pm.collectionVariables.get(\"renameA\"))));",
+                  "pm.test(\"Дата создания сохранена\", () => pm.expect(pm.response.json().createdAt).to.eql(pm.collectionVariables.get(\"renameCreatedAt\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Прочитать новое имя",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Имя изменено\", () => pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"renameTarget\")));",
+                  "pm.test(\"ID сохранен\", () => pm.expect(String(pm.response.json().id)).to.eql(String(pm.collectionVariables.get(\"renameA\"))));",
+                  "pm.test(\"Дата создания сохранена\", () => pm.expect(pm.response.json().createdAt).to.eql(pm.collectionVariables.get(\"renameCreatedAt\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Повторить PUT",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{renameTarget}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Имя изменено\", () => pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"renameTarget\")));",
+                  "pm.test(\"ID сохранен\", () => pm.expect(String(pm.response.json().id)).to.eql(String(pm.collectionVariables.get(\"renameA\"))));",
+                  "pm.test(\"Дата создания сохранена\", () => pm.expect(pm.response.json().createdAt).to.eql(pm.collectionVariables.get(\"renameCreatedAt\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Пустое имя",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Пробелы вместо имени",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"   \"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Слишком длинное имя",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Несуществующий проект",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/2147483647",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{renameTaken}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Имя другого проекта",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"{{renameTaken}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"ProblemDetails\", () => pm.expect(pm.response.json().status).to.eql(409));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Ошибки не изменили проект",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Имя изменено\", () => pm.expect(pm.response.json().name).to.eql(pm.collectionVariables.get(\"renameTarget\")));",
+                  "pm.test(\"ID сохранен\", () => pm.expect(String(pm.response.json().id)).to.eql(String(pm.collectionVariables.get(\"renameA\"))));",
+                  "pm.test(\"Дата создания сохранена\", () => pm.expect(pm.response.json().createdAt).to.eql(pm.collectionVariables.get(\"renameCreatedAt\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Удалить проект A",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/api/projects/{{renameA}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 204\", () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Удалить проект B",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/api/projects/{{renameB}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 204\", () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

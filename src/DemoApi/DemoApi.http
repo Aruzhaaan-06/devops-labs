@@ -12,6 +12,12 @@ Content-Type: application/json
 GET {{host}}/api/projects
 
 ###
+PUT {{host}}/api/projects/1
+Content-Type: application/json
+
+{ "name": "DevOps - новое имя" }
+
+###
 GET {{host}}/api/projects/1/stats
 
 ###
