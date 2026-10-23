@@ -1,0 +1,131 @@
+name: ci-cd
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------- CI: сборка и тесты на каждый PR и push ----------
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: demo
+          POSTGRES_USER: demo
+          POSTGRES_PASSWORD: demo
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U demo -d demo"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      Storage: Postgres
+      ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;Password=demo
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore DemoApi.slnx
+      - run: dotnet build DemoApi.slnx --no-restore -c Release
+      - run: dotnet test DemoApi.slnx --no-build -c Release
+
+  # ---------- Сборка образа и публикация в GHCR (не для PR) ----------
+  image:
+    needs: test
+    if: github.event_name == 'push' && github.repository == 'Aruzhaaan-06/devops-labs'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.vars.outputs.image }}
+      tag: ${{ steps.vars.outputs.tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - id: vars
+        run: |
+          echo "image=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+          echo "tag=sha-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
+        with:
+          images: ${{ steps.vars.outputs.image }}
+          tags: |
+            type=raw,value=${{ steps.vars.outputs.tag }}
+            type=semver,pattern={{version}}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: APP_VERSION=${{ steps.vars.outputs.tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ---------- CD: деплой на Docker Desktop через self-hosted runner ----------
+  deploy:
+    needs: image
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'Aruzhaaan-06/devops-labs'
+    runs-on: [self-hosted, Windows, X64, devops-labs]
+    permissions:
+      contents: read
+      packages: read
+    defaults:
+      run:
+        shell: pwsh          # на машине с runner нужен PowerShell 7
+    env:
+      API_IMAGE: ${{ needs.image.outputs.image }}
+      API_TAG: ${{ needs.image.outputs.tag }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_PORT: "15432"
+      API_PORT: "8088"
+      COMPOSE_SUBNET: "10.254.54.0/24"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull image
+        run: docker compose pull api
+
+      - name: Deploy
+        run: docker compose up -d --no-build --wait --wait-timeout 90
+
+      - name: Smoke test
+        run: docker compose exec -T api curl -fsS http://localhost:8080/health/ready
