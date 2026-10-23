@@ -1,0 +1,143 @@
+{
+  "passed": 34,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Initial PR merged to baseline main",
+      "passed": true
+    },
+    {
+      "name": "Initial full pipeline success",
+      "passed": true
+    },
+    {
+      "name": "Initial API version matches baseline main",
+      "passed": true
+    },
+    {
+      "name": "Message PR merged",
+      "passed": true
+    },
+    {
+      "name": "Code owner approved message PR",
+      "passed": true
+    },
+    {
+      "name": "PR test passed without publishing or deploy",
+      "passed": true
+    },
+    {
+      "name": "New main pipeline passed",
+      "passed": true
+    },
+    {
+      "name": "Message and configured main version returned",
+      "passed": true
+    },
+    {
+      "name": "InMemory tests passed 39/39",
+      "passed": true
+    },
+    {
+      "name": "Actual PostgreSQL CI passed 39 tests",
+      "passed": true
+    },
+    {
+      "name": "Real API Postman 38 requests, 103 assertions",
+      "passed": true
+    },
+    {
+      "name": "Same-tag deploy preserves container identity",
+      "passed": true
+    },
+    {
+      "name": "Same-tag deploy completed",
+      "passed": true
+    },
+    {
+      "name": "Manual rollback selects old version without message",
+      "passed": true
+    },
+    {
+      "name": "Manual rollback duration measured",
+      "passed": true
+    },
+    {
+      "name": "Restore through Re-run all jobs succeeded",
+      "passed": true
+    },
+    {
+      "name": "Main restored after manual rollback",
+      "passed": true
+    },
+    {
+      "name": "Button rollback uses workflow_dispatch",
+      "passed": true
+    },
+    {
+      "name": "Button only executes rollback job",
+      "passed": true
+    },
+    {
+      "name": "Button rollback returns old response",
+      "passed": true
+    },
+    {
+      "name": "Button duration includes approval and queue",
+      "passed": true
+    },
+    {
+      "name": "Main restored after button rollback",
+      "passed": true
+    },
+    {
+      "name": "Local Environment requires owner approval",
+      "passed": true
+    },
+    {
+      "name": "Protected branches only and no admin bypass",
+      "passed": true
+    },
+    {
+      "name": "Deploy and rollback actually waited for local approval",
+      "passed": true
+    },
+    {
+      "name": "Release pipeline publishes without deploy",
+      "passed": true
+    },
+    {
+      "name": "Release did not recreate running API",
+      "passed": true
+    },
+    {
+      "name": "Four GHCR tags resolve to real manifests",
+      "passed": true
+    },
+    {
+      "name": "Control project and task persisted through all phases",
+      "passed": true
+    },
+    {
+      "name": "Named PostgreSQL volume retained throughout",
+      "passed": true
+    },
+    {
+      "name": "Live and ready endpoints healthy throughout",
+      "passed": true
+    },
+    {
+      "name": "Required test and PR approval retained",
+      "passed": true
+    },
+    {
+      "name": "External workflows still require approval",
+      "passed": true
+    },
+    {
+      "name": "Required genuine screenshots saved",
+      "passed": true
+    }
+  ],
+  "scope": "Saved evidence consistency and acceptance conditions for material 10; not a substitute for live final verification."
+}

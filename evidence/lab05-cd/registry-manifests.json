@@ -1,0 +1,126 @@
+[
+  {
+    "tag": "sha-8511c6c",
+    "manifest": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "manifests": [
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:6b6bef1f92ed0dd0125b5b3c1d9fb2046f9c7687077100d26404b535b3cf864c",
+          "size": 2009,
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        },
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:cd81fbafdaf75e9ae4b5247ef83cdbcd451d33ea28cb75fa947cb9fa42a0469d",
+          "size": 838,
+          "annotations": {
+            "vnd.docker.reference.digest": "sha256:6b6bef1f92ed0dd0125b5b3c1d9fb2046f9c7687077100d26404b535b3cf864c",
+            "vnd.docker.reference.type": "attestation-manifest"
+          },
+          "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "tag": "sha-349a0b1",
+    "manifest": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "manifests": [
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:7c2f5359dc4f95ca2688a38dd11b73d72b93589f1727b3802a35f6845709c8c7",
+          "size": 2009,
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        },
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:eb597be92ee7cec2e124a0497c0a4695129a76de7c2f41b1966229e14e758b36",
+          "size": 838,
+          "annotations": {
+            "vnd.docker.reference.digest": "sha256:7c2f5359dc4f95ca2688a38dd11b73d72b93589f1727b3802a35f6845709c8c7",
+            "vnd.docker.reference.type": "attestation-manifest"
+          },
+          "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "tag": "latest",
+    "manifest": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "manifests": [
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:7c2f5359dc4f95ca2688a38dd11b73d72b93589f1727b3802a35f6845709c8c7",
+          "size": 2009,
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        },
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:eb597be92ee7cec2e124a0497c0a4695129a76de7c2f41b1966229e14e758b36",
+          "size": 838,
+          "annotations": {
+            "vnd.docker.reference.digest": "sha256:7c2f5359dc4f95ca2688a38dd11b73d72b93589f1727b3802a35f6845709c8c7",
+            "vnd.docker.reference.type": "attestation-manifest"
+          },
+          "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "tag": "1.0.0",
+    "manifest": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "manifests": [
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:7c2f5359dc4f95ca2688a38dd11b73d72b93589f1727b3802a35f6845709c8c7",
+          "size": 2009,
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        },
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:eb597be92ee7cec2e124a0497c0a4695129a76de7c2f41b1966229e14e758b36",
+          "size": 838,
+          "annotations": {
+            "vnd.docker.reference.digest": "sha256:7c2f5359dc4f95ca2688a38dd11b73d72b93589f1727b3802a35f6845709c8c7",
+            "vnd.docker.reference.type": "attestation-manifest"
+          },
+          "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+          }
+        }
+      ]
+    }
+  }
+]

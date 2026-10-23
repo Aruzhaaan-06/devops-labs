@@ -1,0 +1,53 @@
+{
+  "utc": "2026-10-23T09:00:09.194598+00:00",
+  "baseUrl": "http://localhost:8088",
+  "info": {
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "sha-349a0b1",
+      "host": "4127bbec1347",
+      "message": "hello from CI/CD"
+    }
+  },
+  "live": {
+    "status": 200,
+    "body": "Healthy"
+  },
+  "ready": {
+    "status": 200,
+    "body": "Healthy"
+  },
+  "apiContainerId": "4127bbec1347884ae13d417231e5153019e0afad185f12d6171f179813f6ee94",
+  "apiStartedAt": "2026-10-23T08:59:20.467150904Z",
+  "image": "ghcr.io/aruzhaaan-06/devops-labs:sha-349a0b1",
+  "imageId": "sha256:10fcf847a2d1bdf3f1ea4d4f3a50873ff1fdea6303db503a861ff84f4395fa6e",
+  "health": "healthy",
+  "databaseVolumes": [
+    {
+      "name": "devops-labs_pgdata",
+      "destination": "/var/lib/postgresql"
+    }
+  ],
+  "markerProject": {
+    "status": 200,
+    "body": {
+      "id": 18,
+      "name": "lab10-retained-858bd41db099460abe79952c1de09282",
+      "createdAt": "2026-10-23T08:45:38.223749+00:00"
+    }
+  },
+  "markerTask": {
+    "status": 200,
+    "body": {
+      "id": 20,
+      "projectId": 18,
+      "title": "Lab10: retained across both rollbacks",
+      "description": null,
+      "status": "Todo",
+      "dueDate": null,
+      "createdAt": "2026-10-23T08:45:38.281214+00:00",
+      "updatedAt": "2026-10-23T08:45:38.281214+00:00"
+    }
+  }
+}

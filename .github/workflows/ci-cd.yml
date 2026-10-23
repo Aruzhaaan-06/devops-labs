@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Existing immutable sha-xxxxxxx or release x.y.z tag"
+        description: "Existing version tag: sha-xxxxxxx or release x.y.z"
         required: true
         type: string
 
@@ -164,7 +164,7 @@ jobs:
       API_PORT: "8088"
       COMPOSE_SUBNET: "10.254.54.0/24"
     steps:
-      - name: Validate immutable tag
+      - name: Validate version tag
         run: |
           if ($env:API_TAG -notmatch '^(sha-[0-9a-f]{7}|[0-9]+\.[0-9]+\.[0-9]+)$') {
             throw "Use an existing sha-xxxxxxx or release x.y.z tag; latest is not a rollback target"

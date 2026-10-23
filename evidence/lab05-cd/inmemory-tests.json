@@ -1,0 +1,179 @@
+{
+  "source": "lab10-inmemory.trx",
+  "counters": {
+    "total": "39",
+    "executed": "39",
+    "passed": "39",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "results": [
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: InProgress, to: Todo, expected: True)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Get_Unknown_ReturnsNotFound",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Stats_ReturnsProjectCountsAndOverdueTasks",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Delete_ThenGet_ReturnsNotFound",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_InExistingProject_ReturnsCreatedTodoTask",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_CurrentName_CanBeRepeated",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_QuotedName_IsStoredAsLiteralText",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: InProgress, to: Done, expected: True)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_InUnknownProject_ReturnsNotFound",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_ValidDueDate_ReturnsCreatedAndPreservesDate(dayOffset: null)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_ValidDueDate_ReturnsCreatedAndPreservesDate(dayOffset: 0)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.Metrics_AreExposed",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Done, to: Todo, expected: False)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_InvalidName_ReturnsBadRequest(name: \"   \")",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_InvalidName_ReturnsBadRequest(name: null)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.HealthEndpoints_ReturnOk(url: \"/health/ready\")",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.List_FiltersByProjectAndStatus",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_InvalidName_ReturnsBadRequest(name: \"\")",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Stats_UnknownProject_ReturnsNotFound",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_DuplicateName_ReturnsConflictWithoutChangingProject",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_EmptyTitle_ReturnsBadRequest",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Todo, to: InProgress, expected: True)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Create_EmptyName_ReturnsBadRequest",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_PastDueDate_ReturnsBadRequestWithoutCreatingTask",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Todo, to: Done, expected: False)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_InvalidName_ReturnsBadRequest(name: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"···)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_ConcurrentRequests_OnlyOneProjectGetsName",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Done, to: InProgress, expected: True)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Create_DuplicateName_ReturnsConflict",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Create_ReturnsCreatedWithLocation",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.Info_ReturnsMessageAndConfiguredVersion",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.ChangeStatus_TodoToDone_ReturnsConflict",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.HealthEndpoints_ReturnOk(url: \"/health/live\")",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.ChangeStatus_TodoInProgressDone_Succeeds",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Unit.StatusRulesTests.CanTransition(from: Todo, to: Todo, expected: True)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.InfrastructureTests.Chaos_WhenDisabled_ReturnsNotFound",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_UnknownProject_ReturnsNotFoundEvenIfNameIsTaken",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.TasksApiTests.Create_ValidDueDate_ReturnsCreatedAndPreservesDate(dayOffset: 1)",
+      "outcome": "Passed"
+    },
+    {
+      "name": "DemoApi.Tests.Integration.ProjectsApiTests.Rename_PreservesIdentityCreatedAtAndTasks",
+      "outcome": "Passed"
+    }
+  ]
+}

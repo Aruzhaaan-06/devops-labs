@@ -1,0 +1,10 @@
+{
+  "number": 18,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/18",
+  "title": "feat: CI/CD message and protected rollback controls",
+  "state": "closed",
+  "merged": true,
+  "merged_at": "2026-10-23T08:47:37Z",
+  "merge_commit_sha": "349a0b13078b3d2354631288239e82812a0c6d70",
+  "body": "Материал 10, лабораторная 5, часть 2. GET / получает message=hello from CI/CD; добавлен интеграционный тест Service/Version/Host/Message и сохраненный запрос Postman. Дополнительно: workflow_dispatch с проверенным tag, отдельный rollback job без пересборки, Job summary с проверкой фактической версии, Environment local с обязательным одобрением владельца и только protected branches. Тексты tag передаются через env и валидируются до Docker-команд; API_TAG допускает sha-xxxxxxx или x.y.z, версия semver сверяется с APP_VERSION выбранного образа. Main/ручные запуски сериализованы без отмены deploy.\n\nПроверено локально: 39/39 InMemory. Базовый main run 39926367307 успешно выполнил test→image→deploy, версия sha-8511c6c без message, health=200, данные-маркер созданы для проверки сохранения. На этом PR выполняется test с PostgreSQL; image/deploy/rollback на PR skipped. После ревью и merge проверяются новый deploy, повтор deploy без пересоздания, ручной и кнопочный rollback, возврат актуальной версии и v1.0.0.\n\nРевью выполняется вторым аккаунтом того же владельца, как выбрал пользователь; независимой работой двух студентов это не называется."
+}

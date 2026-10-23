@@ -1,0 +1,290 @@
+No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+demo-api
+
+Folder Часть 1 — базовый API
+Sub-folder 01. Список проектов
+
+  GET http://localhost:8088/api/projects [200 OK, 1.1 KB, 51 ms]
+  Pass  HTTP 200
+  Pass  JSON-массив
+
+Sub-folder Создать отдельный проект
+
+  POST http://localhost:8088/api/projects [201 Created, 315 B, 58 ms]
+  Pass  HTTP 201
+  Pass  ID проекта сохранён
+  Pass  Location указывает на проект
+  Pass  Название проекта сохранено
+
+Sub-folder 03. Создать задачу Todo
+
+  POST http://localhost:8088/api/tasks [201 Created, 405 B, 29 ms]
+  Pass  HTTP 201
+  Pass  ID задачи сохранён
+  Pass  status = Todo
+  Pass  Проект задачи
+  Pass  Location указывает на задачу
+
+Sub-folder 04. Задачи проекта
+
+  GET http://localhost:8088/api/tasks?projectId=19 [200 OK, 356 B, 24 ms]
+  Pass  HTTP 200
+  Pass  Одна созданная задача
+
+Sub-folder 05. Todo → InProgress
+
+  PATCH http://localhost:8088/api/tasks/21/status [200 OK, 360 B, 37 ms]
+  Pass  HTTP 200
+  Pass  status = InProgress
+
+Sub-folder 06. Получить проект
+
+  GET http://localhost:8088/api/projects/19 [200 OK, 261 B, 9 ms]
+  Pass  HTTP 200
+  Pass  Идентификатор проекта
+
+Sub-folder 07. Пустое имя → 400
+
+  POST http://localhost:8088/api/projects [400 Bad Request, 399 B, 29 ms]
+  Pass  HTTP 400
+  Pass  Есть ошибки полей
+
+Sub-folder 08. Повторное имя → 409
+
+  POST http://localhost:8088/api/projects [409 Conflict, 421 B, 11 ms]
+  Pass  HTTP 409
+  Pass  Есть объяснение detail
+
+Sub-folder 09. Новая задача для запрещённого перехода
+
+  POST http://localhost:8088/api/tasks [201 Created, 423 B, 20 ms]
+  Pass  HTTP 201
+  Pass  ID задачи сохранён
+  Pass  status = Todo
+  Pass  Проект задачи
+  Pass  Location указывает на задачу
+
+Sub-folder 10. Todo → Done → 409
+
+  PATCH http://localhost:8088/api/tasks/22/status [409 Conflict, 393 B, 12 ms]
+  Pass  HTTP 409
+  Pass  Есть объяснение detail
+
+Sub-folder 11. Неизвестная задача → 404
+
+  GET http://localhost:8088/api/tasks/2147483647 [404 Not Found, 317 B, 9 ms]
+  Pass  HTTP 404
+
+Sub-folder 12. Изменить задачу
+
+  PUT http://localhost:8088/api/tasks/21 [200 OK, 413 B, 29 ms]
+  Pass  HTTP 200
+  Pass  title = Dockerfile подготовлен
+  Pass  status = InProgress
+
+Sub-folder 13. InProgress → Done
+
+  PATCH http://localhost:8088/api/tasks/21/status [200 OK, 408 B, 18 ms]
+  Pass  HTTP 200
+  Pass  status = Done
+
+Sub-folder 14. Получить завершённую задачу
+
+  GET http://localhost:8088/api/tasks/21 [200 OK, 408 B, 7 ms]
+  Pass  HTTP 200
+  Pass  status = Done
+
+Folder Часть 2 — статистика проекта
+Sub-folder Создать отдельный проект
+
+  POST http://localhost:8088/api/projects [201 Created, 315 B, 12 ms]
+  Pass  HTTP 201
+  Pass  ID проекта сохранён
+  Pass  Location указывает на проект
+  Pass  Название проекта сохранено
+
+Sub-folder 02. Задача Todo без срока
+
+  POST http://localhost:8088/api/tasks [201 Created, 400 B, 13 ms]
+  Pass  HTTP 201
+  Pass  ID задачи сохранён
+  Pass  status = Todo
+  Pass  Проект задачи
+  Pass  Location указывает на задачу
+
+Sub-folder 03. Задача для InProgress
+
+  POST http://localhost:8088/api/tasks [201 Created, 406 B, 12 ms]
+  Pass  HTTP 201
+  Pass  ID задачи сохранён
+  Pass  status = Todo
+  Pass  Проект задачи
+  Pass  Location указывает на задачу
+
+Sub-folder 04. Подготовить InProgress
+
+  PATCH http://localhost:8088/api/tasks/24/status [200 OK, 361 B, 11 ms]
+  Pass  HTTP 200
+  Pass  status = InProgress
+
+Sub-folder 05. Создать будущую просроченную задачу
+
+  POST http://localhost:8088/api/tasks [201 Created, 407 B, 17 ms]
+  Pass  HTTP 201
+  Pass  ID задачи сохранён
+  Pass  status = Todo
+  Pass  Проект задачи
+  Pass  Location указывает на задачу
+
+Sub-folder 06. Назначить срок позавчера через PUT
+
+  PUT http://localhost:8088/api/tasks/25 [200 OK, 385 B, 22 ms]
+  Pass  HTTP 200
+  Pass  status = Todo
+
+Sub-folder 07. Статистика проекта → 200
+
+  GET http://localhost:8088/api/projects/20/stats [200 OK, 219 B, 23 ms]
+  Pass  HTTP 200
+  Pass  projectId соответствует запросу
+  Pass  total = 3
+  Pass  todo = 2
+  Pass  inProgress = 1
+  Pass  done = 0
+  Pass  overdue = 1
+
+Sub-folder 08. Статистика неизвестного проекта → 404
+
+  GET http://localhost:8088/api/projects/2147483647/stats [404 Not Found, 317 B, 7 ms]
+  Pass  HTTP 404
+
+Folder Дополнительно — запрет прошлой даты
+Sub-folder Создать отдельный проект
+
+  POST http://localhost:8088/api/projects [201 Created, 319 B, 33 ms]
+  Pass  HTTP 201
+  Pass  ID проекта сохранён
+  Pass  Location указывает на проект
+  Pass  Название проекта сохранено
+
+Sub-folder Создание задачи со сроком в прошлом → 400
+
+  POST http://localhost:8088/api/tasks [400 Bad Request, 466 B, 15 ms]
+  Pass  HTTP 400
+  Pass  Ошибка описана JSON-объектом
+
+Folder Лабораторная 4 - переименование проекта
+Sub-folder Создать проект A
+
+  POST http://localhost:8088/api/projects [201 Created, 313 B, 36 ms]
+  Pass  HTTP 201
+
+Sub-folder Создать проект B
+
+  POST http://localhost:8088/api/projects [201 Created, 312 B, 16 ms]
+  Pass  HTTP 201
+
+Sub-folder Переименовать проект
+
+  PUT http://localhost:8088/api/projects/22 [200 OK, 261 B, 30 ms]
+  Pass  HTTP 200
+  Pass  Имя изменено
+  Pass  ID сохранен
+  Pass  Дата создания сохранена
+
+Sub-folder Прочитать новое имя
+
+  GET http://localhost:8088/api/projects/22 [200 OK, 261 B, 10 ms]
+  Pass  HTTP 200
+  Pass  Имя изменено
+  Pass  ID сохранен
+  Pass  Дата создания сохранена
+
+Sub-folder Повторить PUT
+
+  PUT http://localhost:8088/api/projects/22 [200 OK, 261 B, 15 ms]
+  Pass  HTTP 200
+  Pass  Имя изменено
+  Pass  ID сохранен
+  Pass  Дата создания сохранена
+
+Sub-folder Пустое имя
+
+  PUT http://localhost:8088/api/projects/22 [400 Bad Request, 399 B, 6 ms]
+  Pass  HTTP 400
+
+Sub-folder Пробелы вместо имени
+
+  PUT http://localhost:8088/api/projects/22 [400 Bad Request, 399 B, 8 ms]
+  Pass  HTTP 400
+
+Sub-folder Слишком длинное имя
+
+  PUT http://localhost:8088/api/projects/22 [400 Bad Request, 433 B, 9 ms]
+  Pass  HTTP 400
+
+Sub-folder Несуществующий проект
+
+  PUT http://localhost:8088/api/projects/2147483647 [404 Not Found, 317 B, 8 ms]
+  Pass  HTTP 404
+
+Sub-folder Имя другого проекта
+
+  PUT http://localhost:8088/api/projects/22 [409 Conflict, 377 B, 8 ms]
+  Pass  HTTP 409
+  Pass  ProblemDetails
+
+Sub-folder Ошибки не изменили проект
+
+  GET http://localhost:8088/api/projects/22 [200 OK, 261 B, 7 ms]
+  Pass  HTTP 200
+  Pass  Имя изменено
+  Pass  ID сохранен
+  Pass  Дата создания сохранена
+
+Sub-folder Удалить проект A
+
+  DELETE http://localhost:8088/api/projects/22 [204 No Content, 81 B, 39 ms]
+  Pass  HTTP 204
+
+Sub-folder Удалить проект B
+
+  DELETE http://localhost:8088/api/projects/23 [204 No Content, 81 B, 10 ms]
+  Pass  HTTP 204
+
+Folder Лабораторная 5 - информация CI/CD
+Sub-folder GET версия и сообщение
+
+  GET http://localhost:8088/ [200 OK, 244 B, 5 ms]
+  Pass  HTTP 200
+  Pass  Service
+  Pass  Message
+  Pass  Version
+
+---------------------------------------------------------------------
+|                         |           executed |             failed |
+--------------------------+--------------------+---------------------
+|              iterations |                  1 |                  0 |
+--------------------------+--------------------+---------------------
+|                requests |                 38 |                  0 |
+--------------------------+--------------------+---------------------
+|            test-scripts |                 38 |                  0 |
+--------------------------+--------------------+---------------------
+|      prerequest-scripts |                  6 |                  0 |
+--------------------------+--------------------+---------------------
+|              assertions |                103 |                  0 |
+---------------------------------------------------------------------
+| total run duration: 4 s                                           |
+---------------------------------------------------------------------
+| total data received: 7.33 KB (approx)                             |
+---------------------------------------------------------------------
+| average response time: 18 ms [min: 5 ms, max: 58 ms, s.d.: 12 ms] |
+---------------------------------------------------------------------
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+

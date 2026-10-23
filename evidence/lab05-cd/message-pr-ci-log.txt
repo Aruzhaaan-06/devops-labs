@@ -1,0 +1,400 @@
+test	Set up job	﻿2026-10-23T08:45:44.7640598Z Current runner version: '2.338.0'
+test	Set up job	2026-10-23T08:45:44.7659740Z ##[group]Runner Image Provisioner
+test	Set up job	2026-10-23T08:45:44.7660357Z Hosted Compute Agent
+test	Set up job	2026-10-23T08:45:44.7660776Z Version: 20261012.601
+test	Set up job	2026-10-23T08:45:44.7661136Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+test	Set up job	2026-10-23T08:45:44.7661611Z Build Date: 2026-10-12T17:48:21Z
+test	Set up job	2026-10-23T08:45:44.7662013Z Worker ID: {1be64f9b-4053-4e7c-9643-3ff0b23b48a0}
+test	Set up job	2026-10-23T08:45:44.7662451Z Region: centralus
+test	Set up job	2026-10-23T08:45:44.7662821Z Cloud: Azure
+test	Set up job	2026-10-23T08:45:44.7663145Z ##[endgroup]
+test	Set up job	2026-10-23T08:45:44.7663939Z ##[group]Operating System
+test	Set up job	2026-10-23T08:45:44.7664296Z Ubuntu
+test	Set up job	2026-10-23T08:45:44.7664600Z 24.04.5
+test	Set up job	2026-10-23T08:45:44.7665016Z LTS
+test	Set up job	2026-10-23T08:45:44.7665328Z ##[endgroup]
+test	Set up job	2026-10-23T08:45:44.7665685Z ##[group]Runner Image
+test	Set up job	2026-10-23T08:45:44.7666036Z Image: ubuntu-24.04
+test	Set up job	2026-10-23T08:45:44.7666366Z Version: 20261012.334.1
+test	Set up job	2026-10-23T08:45:44.7667062Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-10-23T08:45:44.7668235Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+test	Set up job	2026-10-23T08:45:44.7668787Z ##[endgroup]
+test	Set up job	2026-10-23T08:45:44.7669508Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-10-23T08:45:44.7670672Z Contents: read
+test	Set up job	2026-10-23T08:45:44.7671003Z Metadata: read
+test	Set up job	2026-10-23T08:45:44.7671398Z ##[endgroup]
+test	Set up job	2026-10-23T08:45:44.7672693Z Secret source: Actions
+test	Set up job	2026-10-23T08:45:44.7673338Z Cache mode: write
+test	Set up job	2026-10-23T08:45:44.7673790Z Prepare workflow directory
+test	Set up job	2026-10-23T08:45:44.7949737Z Prepare all required actions
+test	Set up job	2026-10-23T08:45:44.7981031Z Getting action download info
+test	Set up job	2026-10-23T08:45:45.0145043Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+test	Set up job	2026-10-23T08:45:45.1380319Z Download action repository 'actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68' (SHA:a98b56852c35b8e3190ac28c8c2271da59106c68)
+test	Set up job	2026-10-23T08:45:45.6843513Z Complete job name: test
+test	Initialize containers	﻿2026-10-23T08:45:45.7201375Z ##[group]Checking docker version
+test	Initialize containers	2026-10-23T08:45:45.7209321Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+test	Initialize containers	2026-10-23T08:45:45.7991946Z '1.48'
+test	Initialize containers	2026-10-23T08:45:45.8010928Z Docker daemon API version: '1.48'
+test	Initialize containers	2026-10-23T08:45:45.8011378Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+test	Initialize containers	2026-10-23T08:45:45.8140874Z '1.48'
+test	Initialize containers	2026-10-23T08:45:45.8154724Z Docker client API version: '1.48'
+test	Initialize containers	2026-10-23T08:45:45.8158788Z ##[endgroup]
+test	Initialize containers	2026-10-23T08:45:45.8161006Z ##[group]Clean up resources from previous jobs
+test	Initialize containers	2026-10-23T08:45:45.8164811Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=eee315"
+test	Initialize containers	2026-10-23T08:45:45.8275738Z ##[command]/usr/bin/docker network prune --force --filter "label=eee315"
+test	Initialize containers	2026-10-23T08:45:45.8376919Z ##[endgroup]
+test	Initialize containers	2026-10-23T08:45:45.8377255Z ##[group]Create local container network
+test	Initialize containers	2026-10-23T08:45:45.8384100Z ##[command]/usr/bin/docker network create --label eee315 github_network_1f7bd3fc08174efc923f9cadd9aeff17
+test	Initialize containers	2026-10-23T08:45:45.8761516Z 6e1775169402bf70f1e1ee07e1a7f5db14676b92465f45e848e5fe965317f04a
+test	Initialize containers	2026-10-23T08:45:45.8773504Z ##[endgroup]
+test	Initialize containers	2026-10-23T08:45:45.8791795Z ##[group]Starting postgres service container
+test	Initialize containers	2026-10-23T08:45:45.8806183Z ##[command]/usr/bin/docker pull postgres:18-alpine
+test	Initialize containers	2026-10-23T08:45:46.4599662Z 18-alpine: Pulling from library/postgres
+test	Initialize containers	2026-10-23T08:45:46.6288345Z 7b229517ed22: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6289935Z 9b7e1e6003c9: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6290987Z c636fe474156: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6291783Z 8a06bdb27c21: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6292561Z 242c5d565900: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6293430Z f0f97016fb12: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6294086Z ca102eb59e0e: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6294658Z 13930ab5cb14: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6295219Z 04d6f1f64405: Pulling fs layer
+test	Initialize containers	2026-10-23T08:45:46.6295773Z 8a06bdb27c21: Waiting
+test	Initialize containers	2026-10-23T08:45:46.6296245Z 242c5d565900: Waiting
+test	Initialize containers	2026-10-23T08:45:46.6297018Z f0f97016fb12: Waiting
+test	Initialize containers	2026-10-23T08:45:46.6297530Z ca102eb59e0e: Waiting
+test	Initialize containers	2026-10-23T08:45:46.6298293Z 13930ab5cb14: Waiting
+test	Initialize containers	2026-10-23T08:45:46.6298843Z 04d6f1f64405: Waiting
+test	Initialize containers	2026-10-23T08:45:46.7782019Z 9b7e1e6003c9: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:46.7783135Z 9b7e1e6003c9: Download complete
+test	Initialize containers	2026-10-23T08:45:46.8197816Z c636fe474156: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:46.8198685Z c636fe474156: Download complete
+test	Initialize containers	2026-10-23T08:45:46.8890178Z 7b229517ed22: Download complete
+test	Initialize containers	2026-10-23T08:45:46.9276020Z 8a06bdb27c21: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:46.9276549Z 8a06bdb27c21: Download complete
+test	Initialize containers	2026-10-23T08:45:46.9626839Z 7b229517ed22: Pull complete
+test	Initialize containers	2026-10-23T08:45:47.0263751Z f0f97016fb12: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:47.0266115Z f0f97016fb12: Download complete
+test	Initialize containers	2026-10-23T08:45:47.0832455Z ca102eb59e0e: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:47.0837788Z ca102eb59e0e: Download complete
+test	Initialize containers	2026-10-23T08:45:47.1845327Z 13930ab5cb14: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:47.1846592Z 13930ab5cb14: Download complete
+test	Initialize containers	2026-10-23T08:45:47.2125649Z 04d6f1f64405: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:47.2126301Z 04d6f1f64405: Download complete
+test	Initialize containers	2026-10-23T08:45:47.2795968Z 9b7e1e6003c9: Pull complete
+test	Initialize containers	2026-10-23T08:45:47.4041988Z 242c5d565900: Verifying Checksum
+test	Initialize containers	2026-10-23T08:45:47.4042464Z 242c5d565900: Download complete
+test	Initialize containers	2026-10-23T08:45:47.8539440Z c636fe474156: Pull complete
+test	Initialize containers	2026-10-23T08:45:47.8596849Z 8a06bdb27c21: Pull complete
+test	Initialize containers	2026-10-23T08:45:50.8721450Z 242c5d565900: Pull complete
+test	Initialize containers	2026-10-23T08:45:50.8819661Z f0f97016fb12: Pull complete
+test	Initialize containers	2026-10-23T08:45:50.8887119Z ca102eb59e0e: Pull complete
+test	Initialize containers	2026-10-23T08:45:50.9119515Z 13930ab5cb14: Pull complete
+test	Initialize containers	2026-10-23T08:45:50.9203046Z 04d6f1f64405: Pull complete
+test	Initialize containers	2026-10-23T08:45:50.9236170Z Digest: sha256:898c60cb390d1085bc97bdd6a1ae968757421df394b071848b52b1c09c89d6a5
+test	Initialize containers	2026-10-23T08:45:50.9249687Z Status: Downloaded newer image for postgres:18-alpine
+test	Initialize containers	2026-10-23T08:45:50.9254912Z docker.io/library/postgres:18-alpine
+test	Initialize containers	2026-10-23T08:45:50.9311713Z ##[command]/usr/bin/docker create --name 79232fd9cc3b45a28beaab24b69b42a4_postgres18alpine_04d216 --label eee315 --network github_network_1f7bd3fc08174efc923f9cadd9aeff17 --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U demo -d demo" --health-interval 5s --health-timeout 3s --health-retries 10 -e "POSTGRES_DB=demo" -e "POSTGRES_USER=demo" -e "POSTGRES_PASSWORD=demo" -e GITHUB_ACTIONS=true -e CI=true postgres:18-alpine
+test	Initialize containers	2026-10-23T08:45:50.9503217Z 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:50.9520486Z ##[command]/usr/bin/docker start 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:51.1163351Z 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:51.1186697Z ##[command]/usr/bin/docker ps --all --filter id=552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+test	Initialize containers	2026-10-23T08:45:51.1286970Z 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118 Up Less than a second (health: starting)
+test	Initialize containers	2026-10-23T08:45:51.1304740Z ##[command]/usr/bin/docker port 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:51.1421922Z 5432/tcp -> 0.0.0.0:5432
+test	Initialize containers	2026-10-23T08:45:51.1423502Z 5432/tcp -> [::]:5432
+test	Initialize containers	2026-10-23T08:45:51.1449083Z ##[endgroup]
+test	Initialize containers	2026-10-23T08:45:51.1455641Z ##[group]Waiting for all services to be ready
+test	Initialize containers	2026-10-23T08:45:51.1465771Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:51.1562720Z starting
+test	Initialize containers	2026-10-23T08:45:51.1580385Z postgres service is starting, waiting 2 seconds before checking again.
+test	Initialize containers	2026-10-23T08:45:53.1582293Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:53.1674615Z starting
+test	Initialize containers	2026-10-23T08:45:53.1686815Z postgres service is starting, waiting 3 seconds before checking again.
+test	Initialize containers	2026-10-23T08:45:56.9984290Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Initialize containers	2026-10-23T08:45:57.0092591Z healthy
+test	Initialize containers	2026-10-23T08:45:57.0111244Z postgres service is healthy.
+test	Initialize containers	2026-10-23T08:45:57.0111731Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T08:45:57.0277006Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0277307Z with:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0277428Z   persist-credentials: false
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0277579Z   repository: Aruzhaaan-06/devops-labs
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279103Z   token: ***
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279213Z   ssh-strict: true
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279321Z   ssh-user: git
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279426Z   clean: true
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279541Z   sparse-checkout-cone-mode: true
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279683Z   fetch-depth: 1
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279790Z   fetch-tags: false
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0279914Z   show-progress: true
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280027Z   lfs: false
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280126Z   submodules: false
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280237Z   set-safe-directory: true
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280370Z   allow-unsafe-pr-checkout: false
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280591Z env:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280693Z   Storage: Postgres
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0280913Z   ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;***
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0281154Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0906460Z Syncing repository: Aruzhaaan-06/devops-labs
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0907681Z ##[group]Getting Git version info
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0908195Z Working directory is '/home/runner/work/devops-labs/devops-labs'
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0908684Z [command]/usr/bin/git version
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0984592Z git version 2.55.0
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.0997584Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1004909Z Temporarily overriding HOME='/home/runner/work/_temp/638e8817-0643-43aa-9b8b-a3ed179c5cef' before making global git config changes
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1005703Z Adding repository directory to the temporary git global config as a safe directory
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1009961Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-labs/devops-labs
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1050415Z Deleting the contents of '/home/runner/work/devops-labs/devops-labs'
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1052669Z ##[group]Determining repository object format
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1053633Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1054013Z ##[group]Initializing the repository
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1056400Z [command]/usr/bin/git init /home/runner/work/devops-labs/devops-labs
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1161227Z hint: Using 'master' as the name for the initial branch. This default branch name
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1161857Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1162363Z hint: to use in all of your new repositories, which will suppress this warning,
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1162745Z hint: call:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1163008Z hint:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1163364Z hint: 	git config --global init.defaultBranch <name>
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1163653Z hint:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1163909Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1164347Z hint: 'development'. The just-created branch can be renamed via this command:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1164681Z hint:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1164861Z hint: 	git branch -m <name>
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1165080Z hint:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1165385Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1165894Z Initialized empty Git repository in /home/runner/work/devops-labs/devops-labs/.git/
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1174776Z [command]/usr/bin/git remote add origin https://github.com/Aruzhaaan-06/devops-labs
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1227149Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1227579Z ##[group]Disabling automatic garbage collection
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1230011Z [command]/usr/bin/git config --local gc.auto 0
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1261423Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1262011Z ##[group]Setting up auth
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1262307Z Removing SSH command configuration
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1267357Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1297261Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1591841Z Removing HTTP extra header
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1596047Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1623491Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1789826Z Removing includeIf entries pointing to credentials config files
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1794024Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1821322Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.1986225Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2016810Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-labs/devops-labs/.git.path /home/runner/work/_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2042728Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/devops-labs/devops-labs/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2072245Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2097483Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2122592Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2122901Z ##[group]Fetching the repository
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.2126785Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +72d2f5544f27197287cc21de721de45f7abcd5ad:refs/remotes/pull/18/merge
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9260602Z From https://github.com/Aruzhaaan-06/devops-labs
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9260982Z  * [new ref]         72d2f5544f27197287cc21de721de45f7abcd5ad -> pull/18/merge
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9264872Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9265288Z ##[group]Determining the checkout info
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9265630Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9270288Z [command]/usr/bin/git sparse-checkout disable
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9317729Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9363982Z ##[group]Checking out the ref
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9364372Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/18/merge
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9608698Z Note: switching to 'refs/remotes/pull/18/merge'.
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9608925Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9609108Z You are in 'detached HEAD' state. You can look around, make experimental
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9609518Z changes and commit them, and you can discard any commits you make in this
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9609769Z state without impacting any branches by switching back to a branch.
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9609922Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610079Z If you want to create a new branch to retain commits you create, you may
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610379Z do so (now or later) by using -c with the switch command. Example:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610516Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610581Z   git switch -c <new-branch-name>
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610675Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610737Z Or undo this operation with:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9610983Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9611033Z   git switch -
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9611114Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9611226Z Turn off this advice by setting config variable advice.detachedHead to false
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9611395Z 
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9611575Z HEAD is now at 72d2f55 Merge a61798673f5faf17a29318f24c06c8cbf6bd8459 into 8511c6cf38850e8dda016d46948239484a777d8a
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9620325Z ##[endgroup]
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9659346Z [command]/usr/bin/git log -1 --format=%H
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9683302Z 72d2f5544f27197287cc21de721de45f7abcd5ad
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9690237Z ##[group]Removing auth
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9690503Z Removing SSH command configuration
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9693310Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9722172Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9896939Z Removing HTTP extra header
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9900303Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:57.9930508Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0104257Z Removing includeIf entries pointing to credentials config files
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0109006Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0134304Z includeif.gitdir:/home/runner/work/devops-labs/devops-labs/.git.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0134862Z includeif.gitdir:/home/runner/work/devops-labs/devops-labs/.git/worktrees/*.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0135216Z includeif.gitdir:/github/workspace/.git.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0140799Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0147875Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-labs/devops-labs/.git.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0162659Z /home/runner/work/_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0171349Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-labs/devops-labs/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-beff1fab\-da91\-424d\-bec9\-56a47dc9b01e\.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0237302Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/devops-labs/devops-labs/.git/worktrees/*.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0258801Z /home/runner/work/_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0264922Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/devops-labs/devops-labs/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-beff1fab\-da91\-424d\-bec9\-56a47dc9b01e\.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0294585Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0317908Z /github/runner_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0323346Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-beff1fab\-da91\-424d\-bec9\-56a47dc9b01e\.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0352856Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0373868Z /github/runner_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0379870Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-beff1fab\-da91\-424d\-bec9\-56a47dc9b01e\.config
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0410187Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0582189Z Removing credentials config '/home/runner/work/_temp/git-credentials-beff1fab-da91-424d-bec9-56a47dc9b01e.config'
+test	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:45:58.0590198Z ##[endgroup]
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	﻿2026-10-23T08:45:58.0756837Z ##[group]Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0757068Z with:
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0757188Z   dotnet-version: 10.0.x
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0757320Z   cache: false
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0757430Z env:
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0757538Z   Storage: Postgres
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0757900Z   ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;***
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.0758312Z ##[endgroup]
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:45:58.1661152Z [command]/home/runner/work/_actions/actions/setup-dotnet/a98b56852c35b8e3190ac28c8c2271da59106c68/externals/install-dotnet.sh --skip-non-versioned-files --runtime dotnet --channel LTS
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:02.4008406Z dotnet-install: Attempting to download using aka.ms link https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.13/dotnet-runtime-10.0.13-linux-x64.tar.gz
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:02.9509835Z dotnet-install: Remote file https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.13/dotnet-runtime-10.0.13-linux-x64.tar.gz size is 36648012 bytes.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:02.9510726Z dotnet-install: Extracting archive from https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.13/dotnet-runtime-10.0.13-linux-x64.tar.gz
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4237594Z dotnet-install: Downloaded file size is 36648012 bytes.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4238161Z dotnet-install: The remote and local file sizes are equal.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4473326Z dotnet-install: Installed version is 10.0.13
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4515760Z dotnet-install: Adding to current process PATH: `/usr/share/dotnet`. Note: This change will be visible only when sourcing script.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4516449Z dotnet-install: Note that the script does not resolve dependencies during installation.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4517321Z dotnet-install: To check the list of dependencies, go to https://learn.microsoft.com/dotnet/core/install, select your operating system and check the "Dependencies" section.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4517986Z dotnet-install: Installation finished successfully.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.4533983Z [command]/home/runner/work/_actions/actions/setup-dotnet/a98b56852c35b8e3190ac28c8c2271da59106c68/externals/install-dotnet.sh --skip-non-versioned-files --channel 10.0
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:03.7299380Z dotnet-install: Attempting to download using aka.ms link https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.402/dotnet-sdk-10.0.402-linux-x64.tar.gz
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:06.1221560Z dotnet-install: Remote file https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.402/dotnet-sdk-10.0.402-linux-x64.tar.gz size is 240279509 bytes.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:06.1222577Z dotnet-install: Extracting archive from https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.402/dotnet-sdk-10.0.402-linux-x64.tar.gz
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.4146891Z dotnet-install: Downloaded file size is 240279509 bytes.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.4147327Z dotnet-install: The remote and local file sizes are equal.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.6269119Z dotnet-install: Installed version is 10.0.402
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.6317012Z dotnet-install: Adding to current process PATH: `/usr/share/dotnet`. Note: This change will be visible only when sourcing script.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.6317728Z dotnet-install: Note that the script does not resolve dependencies during installation.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.6318626Z dotnet-install: To check the list of dependencies, go to https://learn.microsoft.com/dotnet/core/install, select your operating system and check the "Dependencies" section.
+test	Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	2026-10-23T08:46:09.6319211Z dotnet-install: Installation finished successfully.
+test	Run dotnet restore DemoApi.slnx	﻿2026-10-23T08:46:09.6444726Z ##[group]Run dotnet restore DemoApi.slnx
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6444971Z ^[[36;1mdotnet restore DemoApi.slnx^[[0m
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6605720Z shell: /usr/bin/bash -e {0}
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6605919Z env:
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6606031Z   Storage: Postgres
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6606411Z   ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;***
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6606795Z   DOTNET_ROOT: /usr/share/dotnet
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:09.6606928Z ##[endgroup]
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:10.2775114Z   Determining projects to restore...
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:11.6135190Z   Restored /home/runner/work/devops-labs/devops-labs/src/DemoApi/DemoApi.csproj (in 1.09 sec).
+test	Run dotnet restore DemoApi.slnx	2026-10-23T08:46:11.6553728Z   Restored /home/runner/work/devops-labs/devops-labs/tests/DemoApi.Tests/DemoApi.Tests.csproj (in 1.14 sec).
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	﻿2026-10-23T08:46:11.6894298Z ##[group]Run dotnet build DemoApi.slnx --no-restore -c Release
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6894583Z ^[[36;1mdotnet build DemoApi.slnx --no-restore -c Release^[[0m
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6947071Z shell: /usr/bin/bash -e {0}
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6947212Z env:
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6947319Z   Storage: Postgres
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6947641Z   ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;***
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6947864Z   DOTNET_ROOT: /usr/share/dotnet
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:11.6948002Z ##[endgroup]
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.0485582Z   DemoApi -> /home/runner/work/devops-labs/devops-labs/src/DemoApi/bin/Release/net10.0/DemoApi.dll
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.6588433Z   DemoApi.Tests -> /home/runner/work/devops-labs/devops-labs/tests/DemoApi.Tests/bin/Release/net10.0/DemoApi.Tests.dll
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.7792674Z 
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.7803887Z Build succeeded.
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.7804355Z     0 Warning(s)
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.7804860Z     0 Error(s)
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.7805137Z 
+test	Run dotnet build DemoApi.slnx --no-restore -c Release	2026-10-23T08:46:14.7806181Z Time Elapsed 00:00:02.95
+test	Run dotnet test DemoApi.slnx --no-build -c Release	﻿2026-10-23T08:46:14.8045477Z ##[group]Run dotnet test DemoApi.slnx --no-build -c Release
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8045730Z ^[[36;1mdotnet test DemoApi.slnx --no-build -c Release^[[0m
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8095782Z shell: /usr/bin/bash -e {0}
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8095920Z env:
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8096025Z   Storage: Postgres
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8096347Z   ConnectionStrings__Db: Host=localhost;Port=5432;Database=demo;Username=demo;***
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8096573Z   DOTNET_ROOT: /usr/share/dotnet
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:14.8096724Z ##[endgroup]
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:15.6355745Z Test run for /home/runner/work/devops-labs/devops-labs/tests/DemoApi.Tests/bin/Release/net10.0/DemoApi.Tests.dll (.NETCoreApp,Version=v10.0)
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:15.7783643Z A total of 1 test files matched the specified pattern.
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:17.3045265Z 
+test	Run dotnet test DemoApi.slnx --no-build -c Release	2026-10-23T08:46:17.3081410Z Passed!  - Failed:     0, Passed:    39, Skipped:     0, Total:    39, Duration: 931 ms - DemoApi.Tests.dll (net10.0)
+test	Post Run actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68	﻿2026-10-23T08:46:17.3553945Z Post job cleanup.
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-23T08:46:17.4449049Z Post job cleanup.
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5035417Z [command]/usr/bin/git version
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5070193Z git version 2.55.0
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5095427Z Temporarily overriding HOME='/home/runner/work/_temp/23c09893-f4a3-49ab-8feb-3b3a25d03c62' before making global git config changes
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5096299Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5097919Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/devops-labs/devops-labs
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5142984Z Removing SSH command configuration
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5143603Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5172552Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5437283Z Removing HTTP extra header
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5438900Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5491228Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5731142Z Removing includeIf entries pointing to credentials config files
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5737672Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-23T08:46:17.5772033Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Stop containers	﻿2026-10-23T08:46:17.6083892Z Print service container logs: 79232fd9cc3b45a28beaab24b69b42a4_postgres18alpine_04d216
+test	Stop containers	2026-10-23T08:46:17.6087257Z ##[command]/usr/bin/docker logs --details 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Stop containers	2026-10-23T08:46:17.6194637Z  The files belonging to this database system will be owned by user "postgres".
+test	Stop containers	2026-10-23T08:46:17.6216366Z  This user must also own the server process.
+test	Stop containers	2026-10-23T08:46:17.6216673Z  
+test	Stop containers	2026-10-23T08:46:17.6216921Z  The database cluster will be initialized with locale "en_US.utf8".
+test	Stop containers	2026-10-23T08:46:17.6217321Z  The default database encoding has accordingly been set to "UTF8".
+test	Stop containers	2026-10-23T08:46:17.6217647Z  The default text search configuration will be set to "english".
+test	Stop containers	2026-10-23T08:46:17.6217905Z  
+test	Stop containers	2026-10-23T08:46:17.6218186Z  Data page checksums are enabled.
+test	Stop containers	2026-10-23T08:46:17.6218397Z  
+test	Stop containers	2026-10-23T08:46:17.6218642Z  fixing permissions on existing directory /var/lib/postgresql/18/docker ... ok
+test	Stop containers	2026-10-23T08:46:17.6218998Z  creating subdirectories ... ok
+test	Stop containers	2026-10-23T08:46:17.6219288Z  selecting dynamic shared memory implementation ... posix
+test	Stop containers	2026-10-23T08:46:17.6219550Z  selecting default "max_connections" ... 100
+test	Stop containers	2026-10-23T08:46:17.6219783Z  selecting default "shared_buffers" ... 128MB
+test	Stop containers	2026-10-23T08:46:17.6220032Z  selecting default time zone ... UTC
+test	Stop containers	2026-10-23T08:46:17.6220244Z  creating configuration files ... ok
+test	Stop containers	2026-10-23T08:46:17.6220474Z  running bootstrap script ... ok
+test	Stop containers	2026-10-23T08:46:17.6220708Z  performing post-bootstrap initialization ... ok
+test	Stop containers	2026-10-23T08:46:17.6220951Z  syncing data to disk ... ok
+test	Stop containers	2026-10-23T08:46:17.6221128Z  
+test	Stop containers	2026-10-23T08:46:17.6221263Z  
+test	Stop containers	2026-10-23T08:46:17.6221448Z  Success. You can now start the database server using:
+test	Stop containers	2026-10-23T08:46:17.6221684Z  
+test	Stop containers	2026-10-23T08:46:17.6221891Z      pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
+test	Stop containers	2026-10-23T08:46:17.6222162Z  
+test	Stop containers	2026-10-23T08:46:17.6222626Z  waiting for server to start....2026-10-23 08:45:52.105 UTC [46] LOG:  starting PostgreSQL 18.6 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+test	Stop containers	2026-10-23T08:46:17.6223314Z  2026-10-23 08:45:52.105 UTC [46] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+test	Stop containers	2026-10-23T08:46:17.6223778Z  2026-10-23 08:45:52.108 UTC [52] LOG:  database system was shut down at 2026-10-23 08:45:51 UTC
+test	Stop containers	2026-10-23T08:46:17.6224173Z  2026-10-23 08:45:52.126 UTC [46] LOG:  database system is ready to accept connections
+test	Stop containers	2026-10-23T08:46:17.6224415Z   done
+test	Stop containers	2026-10-23T08:46:17.6224512Z  server started
+test	Stop containers	2026-10-23T08:46:17.6224618Z  CREATE DATABASE
+test	Stop containers	2026-10-23T08:46:17.6224721Z  
+test	Stop containers	2026-10-23T08:46:17.6224806Z  
+test	Stop containers	2026-10-23T08:46:17.6224973Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+test	Stop containers	2026-10-23T08:46:17.6225181Z  
+test	Stop containers	2026-10-23T08:46:17.6225370Z  waiting for server to shut down....2026-10-23 08:45:52.249 UTC [46] LOG:  received fast shutdown request
+test	Stop containers	2026-10-23T08:46:17.6225652Z  2026-10-23 08:45:52.250 UTC [46] LOG:  aborting any active transactions
+test	Stop containers	2026-10-23T08:46:17.6225956Z  2026-10-23 08:45:52.252 UTC [46] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
+test	Stop containers	2026-10-23T08:46:17.6226239Z  2026-10-23 08:45:52.253 UTC [50] LOG:  shutting down
+test	Stop containers	2026-10-23T08:46:17.6226453Z  2026-10-23 08:45:52.253 UTC [50] LOG:  checkpoint starting: shutdown immediate
+test	Stop containers	2026-10-23T08:46:17.6227060Z  2026-10-23 08:45:52.349 UTC [50] LOG:  checkpoint complete: wrote 943 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.085 s, sync=0.011 s, total=0.097 s; sync files=303, longest=0.009 s, average=0.001 s; distance=4362 kB, estimate=4362 kB; lsn=0/1BA8858, redo lsn=0/1BA8858
+test	Stop containers	2026-10-23T08:46:17.6227661Z  2026-10-23 08:45:52.358 UTC [46] LOG:  database system is shut down
+test	Stop containers	2026-10-23T08:46:17.6227833Z   done
+test	Stop containers	2026-10-23T08:46:17.6228500Z  server stopped
+test	Stop containers	2026-10-23T08:46:17.6228664Z  
+test	Stop containers	2026-10-23T08:46:17.6228851Z  PostgreSQL init process complete; ready for start up.
+test	Stop containers	2026-10-23T08:46:17.6229092Z  
+test	Stop containers	2026-10-23T08:46:17.6229624Z  sh: locale: not found
+test	Stop containers	2026-10-23T08:46:17.6229989Z  2026-10-23 08:45:51.440 UTC [40] WARNING:  no usable system locales were found
+test	Stop containers	2026-10-23T08:46:17.6230236Z  initdb: warning: enabling "trust" authentication for local connections
+test	Stop containers	2026-10-23T08:46:17.6230600Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+test	Stop containers	2026-10-23T08:46:17.6231042Z  2026-10-23 08:45:52.467 UTC [1] LOG:  starting PostgreSQL 18.6 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+test	Stop containers	2026-10-23T08:46:17.6231378Z  2026-10-23 08:45:52.467 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+test	Stop containers	2026-10-23T08:46:17.6231629Z  2026-10-23 08:45:52.467 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+test	Stop containers	2026-10-23T08:46:17.6231899Z  2026-10-23 08:45:52.478 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+test	Stop containers	2026-10-23T08:46:17.6232201Z  2026-10-23 08:45:52.481 UTC [68] LOG:  database system was shut down at 2026-10-23 08:45:52 UTC
+test	Stop containers	2026-10-23T08:46:17.6232534Z  2026-10-23 08:45:52.485 UTC [1] LOG:  database system is ready to accept connections
+test	Stop containers	2026-10-23T08:46:17.6235881Z Stop and remove container: 79232fd9cc3b45a28beaab24b69b42a4_postgres18alpine_04d216
+test	Stop containers	2026-10-23T08:46:17.6238935Z ##[command]/usr/bin/docker rm --force 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Stop containers	2026-10-23T08:46:21.9126486Z 552be5dea139d89ee52b0c4a1a8b6c105db9dbaf1b63c596abd7f91b4358a118
+test	Stop containers	2026-10-23T08:46:21.9150459Z Remove container network: github_network_1f7bd3fc08174efc923f9cadd9aeff17
+test	Stop containers	2026-10-23T08:46:21.9153064Z ##[command]/usr/bin/docker network rm github_network_1f7bd3fc08174efc923f9cadd9aeff17
+test	Stop containers	2026-10-23T08:46:22.0215238Z github_network_1f7bd3fc08174efc923f9cadd9aeff17
+test	Complete job	﻿2026-10-23T08:46:22.0269814Z Cleaning up orphan processes
+test	Complete job	2026-10-23T08:46:22.0475964Z Terminate orphan process: pid (3095) (dotnet)
+test	Complete job	2026-10-23T08:46:22.0489115Z Terminate orphan process: pid (3193) (VBCSCompiler)

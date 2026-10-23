@@ -1,0 +1,66 @@
+{
+  "pages": 8,
+  "language": "kk",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "links": 12,
+  "screenshotsOriginalBytesVerified": 3,
+  "pagesReviewed": [
+    {
+      "page": 1,
+      "characters": 1074,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 2,
+      "characters": 965,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 3,
+      "characters": 1658,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 4,
+      "characters": 1312,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 5,
+      "characters": 1291,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 6,
+      "characters": 920,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 7,
+      "characters": 1921,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    },
+    {
+      "page": 8,
+      "characters": 1929,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "rendered PNG inspected; no clipping or overlap"
+    }
+  ],
+  "sha256": "b2f7989fcb826bbe2c6eb4d4131f00729002725de94265988571cb08da9d4d2b"
+}
