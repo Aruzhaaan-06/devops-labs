@@ -113,6 +113,39 @@ public class ProjectsApiTests(WebApplicationFactory<Program> factory)
     }
 
     [Fact]
+    public async Task Rename_ConcurrentRequests_OnlyOneProjectGetsName()
+    {
+        var first = await _client.CreateProjectAsync();
+        var second = await _client.CreateProjectAsync();
+        var name = TestApi.Unique("shared");
+
+        var responses = await Task.WhenAll(
+            _client.PutAsJsonAsync($"/api/projects/{first.Id}", new { name }),
+            _client.PutAsJsonAsync($"/api/projects/{second.Id}", new { name }));
+
+        Assert.Single(responses, r => r.StatusCode == HttpStatusCode.OK);
+        Assert.Single(responses, r => r.StatusCode == HttpStatusCode.Conflict);
+        var projects = await _client.GetFromJsonAsync<Project[]>("/api/projects", TestApi.Json);
+        Assert.Single(projects!, p => p.Name == name);
+        var loser = responses[0].StatusCode == HttpStatusCode.Conflict ? first : second;
+        Assert.Equal(loser, await _client.GetFromJsonAsync<Project>($"/api/projects/{loser.Id}", TestApi.Json));
+    }
+
+    [Fact]
+    public async Task Rename_QuotedName_IsStoredAsLiteralText()
+    {
+        var project = await _client.CreateProjectAsync();
+        var name = TestApi.Unique("O'Brien'; DROP TABLE projects;--");
+
+        var response = await _client.PutAsJsonAsync($"/api/projects/{project.Id}", new { name });
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(project with { Name = name }, await response.Content.ReadFromJsonAsync<Project>(TestApi.Json));
+        Assert.Equal(name, (await _client.GetFromJsonAsync<Project>($"/api/projects/{project.Id}", TestApi.Json))!.Name);
+        Assert.NotNull(await _client.GetFromJsonAsync<Project[]>("/api/projects", TestApi.Json));
+    }
+
+    [Fact]
     public async Task Stats_ReturnsProjectCountsAndOverdueTasks()
     {
         var project = await _client.CreateProjectAsync();
