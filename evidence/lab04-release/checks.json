@@ -1,0 +1,111 @@
+{
+  "utc": "2026-10-23T07:46:46.302367+00:00",
+  "technicalChecksPassed": 19,
+  "checks": [
+    {
+      "name": "inmemory tests",
+      "passed": true,
+      "detail": "38/38; 7 unit and 31 integration"
+    },
+    {
+      "name": "postgres tests",
+      "passed": true,
+      "detail": "38/38; 7 unit and 31 integration"
+    },
+    {
+      "name": "Postman full collection",
+      "passed": true,
+      "detail": "Real Compose API/PostgreSQL: 37 requests; 99 assertions; exit 0; local text output, no cloud report"
+    },
+    {
+      "name": "Live HTTP",
+      "passed": true,
+      "detail": "13 successful expected-status checks; only two own projects deleted"
+    },
+    {
+      "name": "OpenAPI responses",
+      "passed": true,
+      "detail": "Development container from the tested image"
+    },
+    {
+      "name": "PR configuration merged",
+      "passed": true,
+      "detail": "#9 closes #2"
+    },
+    {
+      "name": "Rename PR merged",
+      "passed": true,
+      "detail": "#14 closes #3"
+    },
+    {
+      "name": "Issue #1",
+      "passed": true,
+      "detail": "https://github.com/Aruzhaaan-06/devops-labs/issues/1"
+    },
+    {
+      "name": "Issue #2",
+      "passed": true,
+      "detail": "https://github.com/Aruzhaaan-06/devops-labs/issues/2"
+    },
+    {
+      "name": "Issue #3",
+      "passed": true,
+      "detail": "https://github.com/Aruzhaaan-06/devops-labs/issues/3"
+    },
+    {
+      "name": "Board Done",
+      "passed": true,
+      "detail": "Three Done cards observed; screenshot captured without editing"
+    },
+    {
+      "name": "Automatic code owner request",
+      "passed": true,
+      "detail": "Observed after ready PR creation; no manual reviewer request"
+    },
+    {
+      "name": "CODEOWNERS valid",
+      "passed": true,
+      "detail": "GitHub CODEOWNERS validation"
+    },
+    {
+      "name": "Main protection",
+      "passed": true,
+      "detail": "Active; one code-owner approval; no bypass; deletion/force-push restrictions retained"
+    },
+    {
+      "name": "Final approval",
+      "passed": true,
+      "detail": "Second account of same owner; not independent review"
+    },
+    {
+      "name": "Review correction",
+      "passed": true,
+      "detail": "Inline comment; separate test commit; author reply"
+    },
+    {
+      "name": "Release source",
+      "passed": true,
+      "detail": "Tag points at merged rename commit; tested and released trees match"
+    },
+    {
+      "name": "Generated release notes",
+      "passed": true,
+      "detail": "Published by gh release create --generate-notes"
+    },
+    {
+      "name": "Dependabot observed",
+      "passed": true,
+      "detail": "5 generated dependency update PRs; not merged in this work"
+    }
+  ],
+  "formalGaps": [
+    "Teacher GitHub username unavailable; collaborator not invited",
+    "Two accounts belong to the same person; independent classmate pairing and repository B stage not verified",
+    "Prior laboratory screenshots and manual debugger evidence remain in their own checklist"
+  ],
+  "notes": [
+    "CI is not configured until material 09; GitHub success status is explicitly manual",
+    "Postman --output required login; ordinary local run succeeded and its console output is retained",
+    "An early release/tag created by this turn before rename merge was deleted and recreated before final delivery; final tag and source verified"
+  ]
+}

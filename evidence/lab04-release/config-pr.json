@@ -1,0 +1,14 @@
+{
+  "number": 9,
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/9",
+  "title": "chore: add PR template, Dependabot and CODEOWNERS",
+  "body": "Closes #2\n\nДобавлены прочитанные шаблоны из учебного kit: PR checklist и еженедельные проверки NuGet, Docker, GitHub Actions. Пути соответствуют корневому Dockerfile и решению .NET. CODEOWNERS назначает второй аккаунт владельца для технического ревью; это не независимая работа с одногруппником.\n\nПроверка: git diff --check; файлы сверены с kit, в коммите только .github. Запуск API и тесты этим PR не меняются; будут проверены в PR переименования проекта. CI относится к заданию 09.",
+  "state": "closed",
+  "merged": true,
+  "merged_at": "2026-10-23T07:36:00Z",
+  "merge_commit_sha": "c3e6c2146357247bc57ff6a50931887f66663d88",
+  "head": {
+    "ref": "chore/2-repo-config",
+    "sha": "35d1adefa8c8b94a05c360423251a8819ce98d8d"
+  }
+}

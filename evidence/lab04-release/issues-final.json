@@ -1,0 +1,23 @@
+[
+  {
+    "number": 1,
+    "title": "docs: README с инструкцией запуска",
+    "state": "closed",
+    "closed_at": "2026-10-22T14:22:50Z",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/1"
+  },
+  {
+    "number": 2,
+    "title": "chore: шаблон Pull Request и Dependabot",
+    "state": "closed",
+    "closed_at": "2026-10-23T07:36:01Z",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/2"
+  },
+  {
+    "number": 3,
+    "title": "feat: переименование проекта",
+    "state": "closed",
+    "closed_at": "2026-10-23T07:44:12Z",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/3"
+  }
+]

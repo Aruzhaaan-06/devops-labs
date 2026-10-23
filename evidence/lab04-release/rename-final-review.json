@@ -1,0 +1,40 @@
+{
+  "id": 5625349185,
+  "node_id": "PRR_kwDOVSp68c8AAAABT0wEQQ",
+  "user": {
+    "login": "temirkhanerbolatovich-coder",
+    "id": 330092700,
+    "node_id": "U_kgDOE6zQnA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/330092700?u=2ccfb7f84957d08a60183421522526be5a898386&v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/temirkhanerbolatovich-coder",
+    "html_url": "https://github.com/temirkhanerbolatovich-coder",
+    "followers_url": "https://api.github.com/users/temirkhanerbolatovich-coder/followers",
+    "following_url": "https://api.github.com/users/temirkhanerbolatovich-coder/following{/other_user}",
+    "gists_url": "https://api.github.com/users/temirkhanerbolatovich-coder/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/temirkhanerbolatovich-coder/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/temirkhanerbolatovich-coder/subscriptions",
+    "organizations_url": "https://api.github.com/users/temirkhanerbolatovich-coder/orgs",
+    "repos_url": "https://api.github.com/users/temirkhanerbolatovich-coder/repos",
+    "events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "body": "Техническое ревью вторым аккаунтом владельца: замечание закрыто отдельным коммитом 9b1780b, конкурентный конфликт и SQL-подобное имя проверены. Итоговый SHA: 38/38 InMemory, 38/38 PostgreSQL, Postman 37 запросов/99 проверок, живой контейнер и OpenAPI проверены. Это проверка механики двух аккаунтов одного человека, не независимое ревью одногруппника.",
+  "state": "APPROVED",
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/14#pullrequestreview-5625349185",
+  "pull_request_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/14",
+  "author_association": "COLLABORATOR",
+  "_links": {
+    "html": {
+      "href": "https://github.com/Aruzhaaan-06/devops-labs/pull/14#pullrequestreview-5625349185"
+    },
+    "pull_request": {
+      "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/14"
+    }
+  },
+  "submitted_at": "2026-10-23T07:44:07Z",
+  "commit_id": "9b1780b286c4098684285284ae632ebf1e708531"
+}

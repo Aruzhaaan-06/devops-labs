@@ -1,0 +1,157 @@
+{
+  "utc": "2026-10-23T07:42:33.883358+00:00",
+  "baseUrl": "http://localhost:8088",
+  "testedCommit": "9b1780b286c4098684285284ae632ebf1e708531",
+  "records": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "request": null,
+      "status": 200,
+      "response": "Healthy"
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "request": null,
+      "status": 200,
+      "response": "Healthy"
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "request": null,
+      "status": 200,
+      "response": {
+        "service": "DemoApi",
+        "version": "9b1780b286c4098684285284ae632ebf1e708531",
+        "host": "9fe33c653e99"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "request": {
+        "name": "live-a-2515ca0fa5bb4f04a3362a3f2db07c54"
+      },
+      "status": 201,
+      "response": {
+        "id": 11,
+        "name": "live-a-2515ca0fa5bb4f04a3362a3f2db07c54",
+        "createdAt": "2026-10-23T07:42:25.540192+00:00"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "request": {
+        "name": "live-b-549262f2dd7e4e0086b6788e5755b454"
+      },
+      "status": 201,
+      "response": {
+        "id": 12,
+        "name": "live-b-549262f2dd7e4e0086b6788e5755b454",
+        "createdAt": "2026-10-23T07:42:25.54596+00:00"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/11",
+      "request": {
+        "name": "Жаңа атау 6b18a7f135ac4b5b83e6f56ddf13b51b"
+      },
+      "status": 200,
+      "response": {
+        "id": 11,
+        "name": "Жаңа атау 6b18a7f135ac4b5b83e6f56ddf13b51b",
+        "createdAt": "2026-10-23T07:42:25.540192+00:00"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/11",
+      "request": {
+        "name": "Жаңа атау 6b18a7f135ac4b5b83e6f56ddf13b51b"
+      },
+      "status": 200,
+      "response": {
+        "id": 11,
+        "name": "Жаңа атау 6b18a7f135ac4b5b83e6f56ddf13b51b",
+        "createdAt": "2026-10-23T07:42:25.540192+00:00"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/11",
+      "request": {
+        "name": ""
+      },
+      "status": 400,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "One or more validation errors occurred.",
+        "status": 400,
+        "errors": {
+          "Name": [
+            "The Name field is required."
+          ]
+        },
+        "traceId": "00-33e6585ade57d37b1de4ede328877cc2-cc972b716b12863f-00"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/11",
+      "request": {
+        "name": "live-b-549262f2dd7e4e0086b6788e5755b454"
+      },
+      "status": 409,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.10",
+        "title": "Conflict",
+        "status": 409,
+        "detail": "Имя занято другим проектом",
+        "traceId": "00-916daf6cb044e061ee26ed0ec0a3216b-cd83945a2e150560-00"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/2147483647",
+      "request": {
+        "name": "live-b-549262f2dd7e4e0086b6788e5755b454"
+      },
+      "status": 404,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+        "title": "Not Found",
+        "status": 404,
+        "traceId": "00-67a664a12a95352c166e9c2e05818ed4-3d5ce1083bef9449-00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/11",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": 11,
+        "name": "Жаңа атау 6b18a7f135ac4b5b83e6f56ddf13b51b",
+        "createdAt": "2026-10-23T07:42:25.540192+00:00"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/projects/11",
+      "request": null,
+      "status": 204,
+      "response": ""
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/projects/12",
+      "request": null,
+      "status": 204,
+      "response": ""
+    }
+  ]
+}

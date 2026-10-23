@@ -44,4 +44,20 @@ CODEOWNERS барлық файлдарға `temirkhanerbolatovich-coder` акк�
 
 Пайдаланушының шешімімен бір адамның екі аккаунты қолданылды. Бұл GitHub механизмдерін тексеруге мүмкіндік береді, бірақ басқа студентпен жұптық жұмысты дәлелдемейді. Бөлек B репозиторийіндегі рөл ауыстыру кезеңі орындалған жоқ. Оқытушының GitHub логині берілмегендіктен, ол collaborators тізіміне әлі қосылмаған. Алдыңғы жұмыстағы нақты конфликт, PR және main қорғанысы материал 07 есебінде сақталған.
 
+## 2026 жылғы 23 қазандағы нақты нәтиже
+
+- [PR #9](https://github.com/Aruzhaaan-06/devops-labs/pull/9): үлгілер мен CODEOWNERS; Closes #2.
+- [PR #14](https://github.com/Aruzhaaan-06/devops-labs/pull/14): API өзгерісі; жолға пікір, жеке 9b1780b түзету коммиті, соңғы SHA үшін Approve; Closes #3.
+- InMemory: **38/38**, PostgreSQL: **38/38**, әр режимде 7 модульдік және 31 интеграциялық тест. SQL тесттері бөлек `demo_lab08_tests` дерекқорында орындалды.
+- Нақты контейнердегі Postman: **37 сұрау, 99 тексеру, 0 қате**. Тікелей HTTP: **13 сұрау**. Development контейнеріндегі OpenAPI үшін 200/400/404/409 жауаптары тексерілді.
+- Үш issue жабылды; [тақтада](https://github.com/users/Aruzhaaan-06/projects/1) Done = 3. Карточкалар қолмен көшірілген жоқ.
+- [v0.1.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v0.1.0) тегі `8e1371c67bbc0267947525e25d6cec88a569c8b9` біріктіру коммитіне қойылған. Оның файл ағашы тексерілген `9b1780b` коммитімен бірдей; release notes автоматты жасалды.
+- CODEOWNERS ревьюері автоматты сұратылды, ruleset code owner мақұлдауын талап етеді, bypass тізімі бос. Dependabot бес NuGet жаңарту PR-ын жасады; олар осы тапсырмада біріктірілген жоқ.
+
+[Қазақша PDF есеп](../reports/lab04-release-report.pdf) · [19 техникалық тексеру және дәлелдер](../evidence/lab04-release/README.md).
+
+GitHub-тағы `lab08/manual-verification` мәртебесі жергілікті нәтижелер бойынша қолмен жіберілді; бұл автоматты CI емес. Postman `--output` экспорты аккаунтқа кіруді талап етті, сондықтан тек сәтті жергілікті іске қосудың мәтіндік журналы сақталды. Есептегі шынайы суреттер өзгертілген жоқ.
+
+Есепті қайта құрастыру: Windows-та Arial және Consolas қаріптері мен Python `reportlab` пакеті қажет. Репозиторий түбірінен `python scripts/build-lab08-report.py` орындалады. Құрастыруға сақталған evidence файлдары пайдаланылады; ол қолданба тесттерін қайта іске қоспайды.
+
 Анықтама: [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners), [Dependabot](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-version-updates).

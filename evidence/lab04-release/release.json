@@ -1,0 +1,9 @@
+{
+  "html_url": "https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v0.1.0",
+  "tag_name": "v0.1.0",
+  "name": "v0.1.0 - переименование проектов",
+  "body": "## What's Changed\n* docs: инструкции Compose и разработки в Visual Studio by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/4\n* docs: заголовок README, вариант A by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/5\n* docs: заголовок README, вариант B и разрешение конфликта by @temirkhanerbolatovich-coder in https://github.com/Aruzhaaan-06/devops-labs/pull/6\n* docs: отчет материала 07 и доказательства работы с Git by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/7\n* docs: все отчеты на казахском, ВКТУ и полное ФИО by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/8\n* chore: add PR template, Dependabot and CODEOWNERS by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/9\n* feat: rename projects through PUT /api/projects/{id} by @Aruzhaaan-06 in https://github.com/Aruzhaaan-06/devops-labs/pull/14\n\n## New Contributors\n* @Aruzhaaan-06 made their first contribution in https://github.com/Aruzhaaan-06/devops-labs/pull/4\n* @temirkhanerbolatovich-coder made their first contribution in https://github.com/Aruzhaaan-06/devops-labs/pull/6\n\n**Full Changelog**: https://github.com/Aruzhaaan-06/devops-labs/commits/v0.1.0",
+  "draft": false,
+  "prerelease": false,
+  "published_at": "2026-10-23T07:44:18Z"
+}

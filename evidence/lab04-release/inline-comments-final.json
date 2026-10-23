@@ -1,0 +1,141 @@
+[
+  {
+    "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/comments/4357236131",
+    "pull_request_review_id": 5625307325,
+    "id": 4357236131,
+    "node_id": "PRRC_kwDOVSp68c8AAAABA7Ylow",
+    "diff_hunk": "@@ -46,6 +46,72 @@ public async Task Get_Unknown_ReturnsNotFound()\n         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);\n     }\n \n+    [Fact]\n+    public async Task Rename_PreservesIdentityCreatedAtAndTasks()\n+    {\n+        var project = await _client.CreateProjectAsync();\n+        var task = await _client.CreateTaskAsync(project.Id);\n+        var name = TestApi.Unique(\"renamed\");\n+\n+        var response = await _client.PutAsJsonAsync($\"/api/projects/{project.Id}\", new { name });\n+\n+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);\n+        var renamed = await response.Content.ReadFromJsonAsync<Project>(TestApi.Json);\n+        Assert.Equal(project with { Name = name }, renamed);\n+        Assert.Equal(renamed, await _client.GetFromJsonAsync<Project>($\"/api/projects/{project.Id}\", TestApi.Json));\n+        var preserved = await _client.GetFromJsonAsync<TaskItem>($\"/api/tasks/{task.Id}\", TestApi.Json);\n+        Assert.Equal(task, preserved);\n+    }\n+\n+    [Fact]\n+    public async Task Rename_DuplicateName_ReturnsConflictWithoutChangingProject()\n+    {\n+        var project = await _client.CreateProjectAsync();\n+        var other = await _client.CreateProjectAsync();\n+\n+        var response = await _client.PutAsJsonAsync($\"/api/projects/{project.Id}\", new { name = other.Name });\n+\n+        Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);\n+        Assert.Equal(project, await _client.GetFromJsonAsync<Project>($\"/api/projects/{project.Id}\", TestApi.Json));",
+    "path": "tests/DemoApi.Tests/Integration/ProjectsApiTests.cs",
+    "commit_id": "9b1780b286c4098684285284ae632ebf1e708531",
+    "original_commit_id": "24d52923ee4e1ef28c12a404437af399da9a9d9d",
+    "user": {
+      "login": "temirkhanerbolatovich-coder",
+      "id": 330092700,
+      "node_id": "U_kgDOE6zQnA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/330092700?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/temirkhanerbolatovich-coder",
+      "html_url": "https://github.com/temirkhanerbolatovich-coder",
+      "followers_url": "https://api.github.com/users/temirkhanerbolatovich-coder/followers",
+      "following_url": "https://api.github.com/users/temirkhanerbolatovich-coder/following{/other_user}",
+      "gists_url": "https://api.github.com/users/temirkhanerbolatovich-coder/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/temirkhanerbolatovich-coder/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/temirkhanerbolatovich-coder/subscriptions",
+      "organizations_url": "https://api.github.com/users/temirkhanerbolatovich-coder/orgs",
+      "repos_url": "https://api.github.com/users/temirkhanerbolatovich-coder/repos",
+      "events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/temirkhanerbolatovich-coder/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "Техническое ревью вторым аккаунтом того же владельца. Не хватает проверки двух параллельных переименований разных проектов в одно имя: один запрос должен получить 200, второй 409, в хранилище должен остаться ровно один проект с новым именем. Добавьте такой тест для обоих режимов; также проверьте имя с апострофом, чтобы подтвердить параметризацию SQL реальным запросом.",
+    "created_at": "2026-10-23T07:39:35Z",
+    "updated_at": "2026-10-23T07:39:36Z",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/14#discussion_r4357236131",
+    "pull_request_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/14",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/comments/4357236131"
+      },
+      "html": {
+        "href": "https://github.com/Aruzhaaan-06/devops-labs/pull/14#discussion_r4357236131"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/14"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/comments/4357236131/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": null,
+    "original_start_line": null,
+    "start_side": null,
+    "line": 75,
+    "original_line": 75,
+    "side": "RIGHT",
+    "author_association": "COLLABORATOR",
+    "original_position": 30,
+    "position": 30,
+    "subject_type": "line"
+  },
+  {
+    "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/comments/4357242477",
+    "pull_request_review_id": 5625316260,
+    "id": 4357242477,
+    "node_id": "PRRC_kwDOVSp68c8AAAABA7Y-bQ",
+    "diff_hunk": "@@ -46,6 +46,72 @@ public async Task Get_Unknown_ReturnsNotFound()\n         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);\n     }\n \n+    [Fact]\n+    public async Task Rename_PreservesIdentityCreatedAtAndTasks()\n+    {\n+        var project = await _client.CreateProjectAsync();\n+        var task = await _client.CreateTaskAsync(project.Id);\n+        var name = TestApi.Unique(\"renamed\");\n+\n+        var response = await _client.PutAsJsonAsync($\"/api/projects/{project.Id}\", new { name });\n+\n+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);\n+        var renamed = await response.Content.ReadFromJsonAsync<Project>(TestApi.Json);\n+        Assert.Equal(project with { Name = name }, renamed);\n+        Assert.Equal(renamed, await _client.GetFromJsonAsync<Project>($\"/api/projects/{project.Id}\", TestApi.Json));\n+        var preserved = await _client.GetFromJsonAsync<TaskItem>($\"/api/tasks/{task.Id}\", TestApi.Json);\n+        Assert.Equal(task, preserved);\n+    }\n+\n+    [Fact]\n+    public async Task Rename_DuplicateName_ReturnsConflictWithoutChangingProject()\n+    {\n+        var project = await _client.CreateProjectAsync();\n+        var other = await _client.CreateProjectAsync();\n+\n+        var response = await _client.PutAsJsonAsync($\"/api/projects/{project.Id}\", new { name = other.Name });\n+\n+        Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);\n+        Assert.Equal(project, await _client.GetFromJsonAsync<Project>($\"/api/projects/{project.Id}\", TestApi.Json));",
+    "path": "tests/DemoApi.Tests/Integration/ProjectsApiTests.cs",
+    "commit_id": "9b1780b286c4098684285284ae632ebf1e708531",
+    "original_commit_id": "24d52923ee4e1ef28c12a404437af399da9a9d9d",
+    "user": {
+      "login": "Aruzhaaan-06",
+      "id": 145279323,
+      "node_id": "U_kgDOCKjJWw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/145279323?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Aruzhaaan-06",
+      "html_url": "https://github.com/Aruzhaaan-06",
+      "followers_url": "https://api.github.com/users/Aruzhaaan-06/followers",
+      "following_url": "https://api.github.com/users/Aruzhaaan-06/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Aruzhaaan-06/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Aruzhaaan-06/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Aruzhaaan-06/subscriptions",
+      "organizations_url": "https://api.github.com/users/Aruzhaaan-06/orgs",
+      "repos_url": "https://api.github.com/users/Aruzhaaan-06/repos",
+      "events_url": "https://api.github.com/users/Aruzhaaan-06/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Aruzhaaan-06/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "Исправлено отдельным коммитом 9b1780b286c4098684285284ae632ebf1e708531: добавлены Rename_ConcurrentRequests_OnlyOneProjectGetsName и Rename_QuotedName_IsStoredAsLiteralText. Теперь 38/38 тестов проходят в InMemory и PostgreSQL. Проверяются 200+409, ровно один обладатель имени, неизменность проигравшего проекта и буквальное сохранение SQL-подобной строки.",
+    "created_at": "2026-10-23T07:40:29Z",
+    "updated_at": "2026-10-23T07:40:29Z",
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/14#discussion_r4357242477",
+    "pull_request_url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/14",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/comments/4357242477"
+      },
+      "html": {
+        "href": "https://github.com/Aruzhaaan-06/devops-labs/pull/14#discussion_r4357242477"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/14"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/Aruzhaaan-06/devops-labs/pulls/comments/4357242477/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": null,
+    "original_start_line": null,
+    "start_side": null,
+    "line": 75,
+    "original_line": 75,
+    "side": "RIGHT",
+    "in_reply_to_id": 4357236131,
+    "author_association": "OWNER",
+    "original_position": 30,
+    "position": 30,
+    "subject_type": "line"
+  }
+]

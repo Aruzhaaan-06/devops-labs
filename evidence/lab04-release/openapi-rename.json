@@ -1,0 +1,82 @@
+{
+  "tags": [
+    "Проекты"
+  ],
+  "summary": "Переименовать проект",
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "description": "Идентификатор проекта",
+      "required": true,
+      "schema": {
+        "pattern": "^-?(?:0|[1-9]\\d*)$",
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  ],
+  "requestBody": {
+    "description": "Новое уникальное имя, до 100 символов",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RenameProjectRequest"
+        }
+      },
+      "text/json": {
+        "schema": {
+          "$ref": "#/components/schemas/RenameProjectRequest"
+        }
+      },
+      "application/*+json": {
+        "schema": {
+          "$ref": "#/components/schemas/RenameProjectRequest"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "200": {
+      "description": "Проект переименован; прежнее имя также допустимо",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/Project"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Название пустое или длиннее 100 символов",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/ProblemDetails"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Проекта с таким id нет",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/ProblemDetails"
+          }
+        }
+      }
+    },
+    "409": {
+      "description": "Имя занято другим проектом",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/ProblemDetails"
+          }
+        }
+      }
+    }
+  }
+}

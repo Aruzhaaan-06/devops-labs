@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-23T07:52:55.616227+00:00",
+  "language": "kk",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "university": "ВКТУ",
+  "group": "25-ИСТК-2о",
+  "report": {
+    "path": "reports/lab04-release-report.pdf",
+    "pages": 8,
+    "bytes": 328585,
+    "sha256": "250cf8a4f89ad62e4c5565752ef1b35f4f80c25af0cd202c3750e617d1016bc7"
+  },
+  "archive": {
+    "path": "reports/devops-reports-kk.zip",
+    "reports": 7,
+    "pages": 55,
+    "bytes": 1518489,
+    "sha256": "df788501d87699c0fe5d20265dc1d2fc22eb91b919823cc6418ffd75d1ef677f"
+  },
+  "validation": {
+    "all8PagesRenderedAndVisuallyReviewed": true,
+    "noTextOutsideMargins": true,
+    "githubLinks": 10,
+    "embeddedScreenshotBytesMatch": 3,
+    "authorOnAllPages": true,
+    "archiveCRCAndPDFBytesMatch": true
+  },
+  "reproduction": "python scripts/build-lab08-report.py; Windows Arial/Consolas and reportlab required; uses retained evidence, runs no application tests"
+}
