@@ -1,0 +1,17 @@
+{
+  "project": {
+    "id": 24,
+    "name": "lab11-retained-1a1a595b28014d0aa43720356a798ea9",
+    "createdAt": "2026-10-23T09:22:15.178379+00:00"
+  },
+  "task": {
+    "id": 26,
+    "projectId": 24,
+    "title": "Lab11: persists across process failures",
+    "description": null,
+    "status": "Todo",
+    "dueDate": null,
+    "createdAt": "2026-10-23T09:22:15.293224+00:00",
+    "updatedAt": "2026-10-23T09:22:15.293224+00:00"
+  }
+}

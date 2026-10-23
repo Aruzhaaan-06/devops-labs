@@ -1,0 +1,189 @@
+{
+  "name": "scenario-2-request-error",
+  "startUtc": "2026-10-23T09:22:16.333310+00:00",
+  "startNs": 1792747336333310500,
+  "before": {
+    "utc": "2026-10-23T09:22:16.333310+00:00",
+    "id": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 42020,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:20:31.240502884Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:21:26.844634768Z",
+            "End": "2026-10-23T09:21:26.895773353Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:36.894859564Z",
+            "End": "2026-10-23T09:21:36.999486493Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:47.000829975Z",
+            "End": "2026-10-23T09:21:47.074663526Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:57.076072246Z",
+            "End": "2026-10-23T09:21:57.136759609Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:07.135706793Z",
+            "End": "2026-10-23T09:22:07.240278596Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "http": {
+    "utc": "2026-10-23T09:22:17.064200+00:00",
+    "method": "GET",
+    "path": "/api/chaos/error",
+    "status": 500,
+    "contentType": "application/problem+json; charset=utf-8",
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+      "title": "An error occurred while processing your request.",
+      "status": 500,
+      "traceId": "00-11be4563175ace3df3d4f1b6cb7cd9e7-7d84eaf95437df08-00"
+    }
+  },
+  "after": {
+    "utc": "2026-10-23T09:22:19.120146+00:00",
+    "id": "16a0c3d24554e20fd8501b2eb0ac8114e6f0b88a4bc790e053c664cfcee305f5",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 42020,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-23T09:20:31.240502884Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-23T09:21:36.894859564Z",
+            "End": "2026-10-23T09:21:36.999486493Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:47.000829975Z",
+            "End": "2026-10-23T09:21:47.074663526Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:21:57.076072246Z",
+            "End": "2026-10-23T09:21:57.136759609Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:07.135706793Z",
+            "End": "2026-10-23T09:22:07.240278596Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          },
+          {
+            "Start": "2026-10-23T09:22:17.242107326Z",
+            "End": "2026-10-23T09:22:17.298620685Z",
+            "ExitCode": 0,
+            "Output": "Healthy"
+          }
+        ]
+      }
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab11-89a0e2b",
+    "imageId": "sha256:625fc004966509af8f0221d7b5021e5a008664d1c9a1455de4259799109bb66e",
+    "restartPolicy": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "logConfig": {
+      "Type": "json-file",
+      "Config": {
+        "max-file": "3",
+        "max-size": "10m"
+      }
+    },
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "nanoCpus": 1000000000,
+    "entrypoint": [
+      "dotnet",
+      "DemoApi.dll"
+    ]
+  },
+  "live": {
+    "utc": "2026-10-23T09:22:19.930240+00:00",
+    "method": "GET",
+    "path": "/health/live",
+    "status": 200,
+    "contentType": "text/plain",
+    "body": "Healthy"
+  },
+  "logs": [
+    {
+      "EventId": 1,
+      "LogLevel": "Error",
+      "Category": "Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware",
+      "Message": "An unhandled exception has occurred while executing the request.",
+      "Exception": "System.InvalidOperationException: Chaos: искусственная ошибка\n   at DemoApi.Controllers.ChaosController.Error() in /src/src/DemoApi/Controllers/ChaosController.cs:line 31\n   at lambda_method22(Closure, Object, Object[])\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+      "State": {
+        "{OriginalFormat}": "An unhandled exception has occurred while executing the request."
+      }
+    }
+  ],
+  "endNs": 1792747340026964400,
+  "endUtc": "2026-10-23T09:22:20.026964+00:00",
+  "events": []
+}

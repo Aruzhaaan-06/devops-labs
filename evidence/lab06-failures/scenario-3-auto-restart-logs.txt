@@ -1,0 +1,6 @@
+{"EventId":0,"LogLevel":"Critical","Category":"DemoApi.Controllers.ChaosController","Message":"Chaos: аварийное завершение процесса","State":{"{OriginalFormat}":"Chaos: аварийное завершение процесса"}}
+{"EventId":0,"LogLevel":"Information","Category":"DemoApi","Message":"Хранилище: PostgreSQL","State":{"Storage":"PostgreSQL","{OriginalFormat}":"Хранилище: {Storage}"}}
+{"EventId":14,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Now listening on: http://[::]:8080","State":{"address":"http://[::]:8080","{OriginalFormat}":"Now listening on: {address}"}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Application started. Press Ctrl+C to shut down.","State":{"{OriginalFormat}":"Application started. Press Ctrl+C to shut down."}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Hosting environment: Production","State":{"EnvName":"Production","{OriginalFormat}":"Hosting environment: {EnvName}"}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Content root path: /app","State":{"ContentRoot":"/app","{OriginalFormat}":"Content root path: {ContentRoot}"}}

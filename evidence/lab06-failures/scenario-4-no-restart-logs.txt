@@ -1,0 +1,1 @@
+{"EventId":0,"LogLevel":"Critical","Category":"DemoApi.Controllers.ChaosController","Message":"Chaos: аварийное завершение процесса","State":{"{OriginalFormat}":"Chaos: аварийное завершение процесса"}}

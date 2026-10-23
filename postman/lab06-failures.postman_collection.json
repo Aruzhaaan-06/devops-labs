@@ -1,0 +1,100 @@
+{
+  "info": {
+    "name": "Lab 6 part 1 - request failure and availability",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Run only on the local coursework API with Chaos enabled. GET error deliberately returns 500 and writes an Error log. Does not crash or stop containers; restart and signal evidence is collected separately by verify-lab11.py."
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8088"
+    },
+    {
+      "key": "expectedVersion",
+      "value": "lab11-89a0e2b"
+    }
+  ],
+  "item": [
+    {
+      "name": "Service remains available",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Service\", () => pm.expect(pm.response.json().service).to.eql(\"DemoApi\"));",
+              "pm.test(\"Expected local version\", () => pm.expect(pm.response.json().version).to.eql(pm.variables.get(\"expectedVersion\")));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Handled request failure",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/chaos/error"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 500\", () => pm.response.to.have.status(500));",
+              "pm.test(\"Problem status 500\", () => pm.expect(pm.response.json().status).to.eql(500));",
+              "pm.test(\"No exception details\", () => pm.expect(pm.response.json()).not.to.have.property(\"exception\"));",
+              "pm.test(\"No internal Chaos message\", () => pm.expect(pm.response.text()).not.to.include(\"Chaos:\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Liveness after request error",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/live"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Healthy\", () => pm.expect(pm.response.text()).to.eql(\"Healthy\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Readiness after request error",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/ready"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Healthy\", () => pm.expect(pm.response.text()).to.eql(\"Healthy\"));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
