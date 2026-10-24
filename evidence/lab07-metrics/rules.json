@@ -1,0 +1,123 @@
+{
+  "utc": "2026-10-24T16:40:13.137521+00:00",
+  "method": "GET",
+  "url": "http://localhost:9090/api/v1/rules",
+  "status": 200,
+  "body": {
+    "status": "success",
+    "data": {
+      "groups": [
+        {
+          "name": "containers",
+          "file": "/etc/prometheus/alerts.yml",
+          "rules": [
+            {
+              "state": "inactive",
+              "name": "ContainerHighMemory",
+              "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+              "duration": 15,
+              "keepFiringFor": 0,
+              "labels": {
+                "severity": "warning"
+              },
+              "annotations": {
+                "summary": "{{ $labels.name }}: память выше 80% лимита"
+              },
+              "alerts": [],
+              "health": "ok",
+              "evaluationTime": 0.00024161,
+              "lastEvaluation": "2026-10-24T16:40:09.602808613Z",
+              "type": "alerting"
+            },
+            {
+              "state": "inactive",
+              "name": "ContainerRestarted",
+              "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+              "duration": 0,
+              "keepFiringFor": 0,
+              "labels": {
+                "severity": "warning"
+              },
+              "annotations": {
+                "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+              },
+              "alerts": [],
+              "health": "ok",
+              "evaluationTime": 7.8303e-05,
+              "lastEvaluation": "2026-10-24T16:40:09.603057923Z",
+              "type": "alerting"
+            }
+          ],
+          "interval": 5,
+          "limit": 0,
+          "evaluationTime": 0.000351314,
+          "lastEvaluation": "2026-10-24T16:40:09.602786812Z"
+        },
+        {
+          "name": "demo-api",
+          "file": "/etc/prometheus/alerts.yml",
+          "rules": [
+            {
+              "state": "inactive",
+              "name": "ApiDown",
+              "query": "up{job=\"demo-api\"} == 0",
+              "duration": 30,
+              "keepFiringFor": 0,
+              "labels": {
+                "severity": "critical"
+              },
+              "annotations": {
+                "summary": "DemoApi не отвечает на /metrics"
+              },
+              "alerts": [],
+              "health": "ok",
+              "evaluationTime": 0.000131605,
+              "lastEvaluation": "2026-10-24T16:40:08.235076211Z",
+              "type": "alerting"
+            },
+            {
+              "state": "inactive",
+              "name": "ApiHighErrorRate",
+              "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+              "duration": 30,
+              "keepFiringFor": 0,
+              "labels": {
+                "severity": "warning"
+              },
+              "annotations": {
+                "summary": "Доля 5xx выше 5%"
+              },
+              "alerts": [],
+              "health": "ok",
+              "evaluationTime": 0.000140505,
+              "lastEvaluation": "2026-10-24T16:40:08.235211716Z",
+              "type": "alerting"
+            },
+            {
+              "state": "inactive",
+              "name": "ApiSlowRequests",
+              "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+              "duration": 30,
+              "keepFiringFor": 0,
+              "labels": {
+                "severity": "warning"
+              },
+              "annotations": {
+                "summary": "p95 времени ответа больше 1 секунды"
+              },
+              "alerts": [],
+              "health": "ok",
+              "evaluationTime": 0.000399515,
+              "lastEvaluation": "2026-10-24T16:40:08.235357622Z",
+              "type": "alerting"
+            }
+          ],
+          "interval": 5,
+          "limit": 0,
+          "evaluationTime": 0.000706327,
+          "lastEvaluation": "2026-10-24T16:40:08.23505311Z"
+        }
+      ]
+    }
+  }
+}

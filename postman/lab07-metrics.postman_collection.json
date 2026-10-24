@@ -1,0 +1,219 @@
+{
+  "info": {
+    "name": "Lab07 metrics - real local monitoring",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Read-only Prometheus queries at an explicit saved measurement time. Real targets, not mocks. Run after verify-lab13.py; override queryTime with its instant timestamp."
+  },
+  "variable": [
+    {
+      "key": "promUrl",
+      "value": "http://localhost:9090"
+    },
+    {
+      "key": "queryTime",
+      "value": "1792860013.004"
+    }
+  ],
+  "item": [
+    {
+      "name": "required-up",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{promUrl}}/api/v1/query?query=up&time={{queryTime}}",
+          "host": [
+            "{{promUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "up"
+            },
+            {
+              "key": "time",
+              "value": "{{queryTime}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const b=pm.response.json(); pm.test('Successful nonempty vector',()=>{pm.expect(b.status).to.eql('success'); pm.expect(b.data.result.length).to.be.above(0);});",
+              "pm.test('All three jobs UP',()=>{pm.expect(b.data.result.length).to.eql(3); b.data.result.forEach(s=>pm.expect(s.value[1]).to.eql('1'));});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "own-created",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{promUrl}}/api/v1/query?query=sum(increase(http_requests_received_total{job=\"demo-api\",controller=\"Tasks\",action=\"Create\",code=\"201\"}[1m]))&time={{queryTime}}",
+          "host": [
+            "{{promUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "sum(increase(http_requests_received_total{job=\"demo-api\",controller=\"Tasks\",action=\"Create\",code=\"201\"}[1m]))"
+            },
+            {
+              "key": "time",
+              "value": "{{queryTime}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const b=pm.response.json(); pm.test('Successful nonempty vector',()=>{pm.expect(b.status).to.eql('success'); pm.expect(b.data.result.length).to.be.above(0);});",
+              "pm.test('Tasks created in measured minute',()=>pm.expect(Number(b.data.result[0].value[1])).to.be.above(0));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "own-memory",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{promUrl}}/api/v1/query?query=100 * sum by (name) (container_memory_working_set_bytes{name=\"devops-labs-api-1\"}) / sum by (name) (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0)&time={{queryTime}}",
+          "host": [
+            "{{promUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "100 * sum by (name) (container_memory_working_set_bytes{name=\"devops-labs-api-1\"}) / sum by (name) (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0)"
+            },
+            {
+              "key": "time",
+              "value": "{{queryTime}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const b=pm.response.json(); pm.test('Successful nonempty vector',()=>{pm.expect(b.status).to.eql('success'); pm.expect(b.data.result.length).to.be.above(0);});",
+              "pm.test('Memory within 256MiB limit',()=>{const n=Number(b.data.result[0].value[1]);pm.expect(n).to.be.above(0);pm.expect(n).to.be.below(100);});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "own-p95",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{promUrl}}/api/v1/query?query=histogram_quantile(0.95, sum by (le, controller, action) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m])))&time={{queryTime}}",
+          "host": [
+            "{{promUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "histogram_quantile(0.95, sum by (le, controller, action) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m])))"
+            },
+            {
+              "key": "time",
+              "value": "{{queryTime}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const b=pm.response.json(); pm.test('Successful nonempty vector',()=>{pm.expect(b.status).to.eql('success'); pm.expect(b.data.result.length).to.be.above(0);});",
+              "pm.test('Active task actions have finite p95',()=>{['Create','ChangeStatus','List'].forEach(a=>{const s=b.data.result.find(s=>s.metric.controller==='Tasks' && s.metric.action===a);pm.expect(s).to.exist;pm.expect(Number.isFinite(Number(s.value[1]))).to.eql(true);});});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "own-4xx",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{promUrl}}/api/v1/query?query=sum by (controller, action, code) (rate(http_requests_received_total{job=\"demo-api\",code=~\"4..\"}[1m]))&time={{queryTime}}",
+          "host": [
+            "{{promUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "sum by (controller, action, code) (rate(http_requests_received_total{job=\"demo-api\",code=~\"4..\"}[1m]))"
+            },
+            {
+              "key": "time",
+              "value": "{{queryTime}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const b=pm.response.json(); pm.test('Successful nonempty vector',()=>{pm.expect(b.status).to.eql('success'); pm.expect(b.data.result.length).to.be.above(0);});",
+              "pm.test('Both 400 and 409 measured',()=>{const codes=b.data.result.filter(s=>Number(s.value[1])>0).map(s=>s.metric.code);pm.expect(codes).to.include('400');pm.expect(codes).to.include('409');});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

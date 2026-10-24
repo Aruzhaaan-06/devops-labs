@@ -8,7 +8,7 @@
 
 [Работы и статус](docs/README.md) · [Отчеты и исходники](reports/README.md) · [Результаты проверок](evidence/lab01/README.md) · [Разбор лабораторной 1](docs/lab01.md)
 
-Все одиннадцать отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
+Все двенадцать отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
 
 ## Выполненные работы
 
@@ -25,6 +25,7 @@
 | Лабораторная 5, часть 2 · материал 10 | GHCR, deploy, Message, два отката, Environment local, Job summary и [v1.0.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.0.0) | [PDF · 8 страниц](reports/lab05-cd-report.pdf) |
 | Лабораторная 6, часть 1 · материал 11 | Четыре сценария сбоев: HTTP500, crash, restart no и штатная остановка; events/exit/logs, 35 проверок | [PDF · 7 страниц](reports/lab06-failures-report.pdf) |
 | Лабораторная 6, часть 2 · материал 12 | OOM137, DB ready503, unhealthy без restart, slow3000ms и diag.ps1; полная таблица2–8, пять ответов | [PDF · 8 страниц](reports/lab06-resources-report.pdf) |
+| Лабораторная 7, часть 1 · материал 13 | Prometheus/Grafana/cAdvisor/Dozzle, 3UP, 9PromQL, 13скриншотов, нагрузка1200/0 и Postman5/15 | [PDF · 10 страниц](reports/lab07-metrics-report.pdf) |
 
 Код и проверки первой лабораторной подготовлены. Для полного комплекта сдачи остаются скриншоты коллекции Postman и Test Explorer, а также ручная пошаговая отладка с Locals и Call Stack. Подробности — в [чек-листе сдачи](docs/lab01.md#что-приложить-к-двум-отчётам). SQL-реализация проверена на настоящей PostgreSQL в [лабораторной 3](docs/lab03-postgres.md).
 
@@ -37,6 +38,8 @@
 Материал 11: **четыре сценария и 35 проверок**, Postman **4 запроса / 10 assertions**. Временный `restart: no` отменен, исходный Compose восстановлен, API healthy и данные сохранены. Вкладки Docker Desktop просмотрены пользователем. [Выполнение и ответы](docs/lab06-failures.md) · [Доказательства](evidence/lab06-failures/README.md).
 
 Материал 12: **OOM → die137 → start**, БД недоступна при live200/ready503/tasks500, unhealthy без restart, slow HTTP200 за 3,027 с. **38 проверок**, Postman **5/11**. Добавлен read-only `scripts/diag.ps1`, Compose восстановлен, данные сохранены. [Выполнение](docs/lab06-resources.md) · [Доказательства](evidence/lab06-resources/README.md).
+
+Материал 13: **3/3 UP, 9 PromQL, 13 настоящих снимков**, нагрузка1200/0, Postman5/15. [Мониторинг и повторение](docs/lab07-metrics.md) · [Доказательства](evidence/lab07-metrics/README.md) · [PR #22](https://github.com/Aruzhaaan-06/devops-labs/pull/22). Все UI только localhost; основной Compose не меняется.
 
 Сохраненные результаты предыдущих этапов от 22 октября 2026 года:
 
@@ -150,4 +153,4 @@ pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -I
 | `reports` | PDF-отчеты и архив исходников для сдачи |
 | `evidence/lab01`, `evidence/lab02`, `evidence/lab03`, `evidence/lab03-compose` | Сохраненные результаты проверок и скриншоты |
 
-Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD с GHCR, локальным deploy и откатом проверен в материалах 09–10. Четыре сценария отказов и остановки проверены в материале 11. Материал 12 завершает разбор сбоев и добавляет diag.ps1. Работы 13–15 еще не начаты.
+Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD с GHCR, локальным deploy и откатом проверен в материалах 09–10. Четыре сценария отказов и остановки проверены в материале 11. Материал 12 завершает разбор сбоев и добавляет diag.ps1. Материал 13 добавляет отдельный стек мониторинга и четыре собственных PromQL графика. Работы 14–15 еще не начаты.

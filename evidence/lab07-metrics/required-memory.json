@@ -1,0 +1,207 @@
+{
+  "expression": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / 1024 / 1024",
+  "instant": {
+    "utc": "2026-10-24T16:40:13.034631+00:00",
+    "method": "GET",
+    "url": "http://localhost:9090/api/v1/query?query=container_memory_working_set_bytes%7Bname%3D%22devops-labs-api-1%22%7D+%2F+1024+%2F+1024&time=1792860013.004099",
+    "status": 200,
+    "body": {
+      "status": "success",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "container_label_com_docker_compose_config_hash": "f02d23df4b4cc5270ea133a1ffb54a6e86abb0c1e584f8a303af92f5c0877ca5",
+              "container_label_com_docker_compose_container_number": "1",
+              "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+              "container_label_com_docker_compose_image": "sha256:150caceaebf794c1bba7ffcdc890b0f4165c5aad37be8cf3920691abb0ed9c23",
+              "container_label_com_docker_compose_oneoff": "False",
+              "container_label_com_docker_compose_project": "devops-labs",
+              "container_label_com_docker_compose_project_config_files": "C:\\actions-runner\\_work\\devops-labs\\devops-labs\\compose.yaml",
+              "container_label_com_docker_compose_project_working_dir": "C:\\actions-runner\\_work\\devops-labs\\devops-labs",
+              "container_label_com_docker_compose_replace": "api-1",
+              "container_label_com_docker_compose_service": "api",
+              "container_label_com_docker_compose_version": "5.5.1",
+              "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+              "container_label_desktop_docker_io_ports_scheme": "v2",
+              "container_label_org_opencontainers_image_created": "2026-10-24T16:17:03.420Z",
+              "container_label_org_opencontainers_image_description": "Учебные работы DevOps: ASP.NET Core API, тесты, Postman и отчеты — Есімханова Аружан, 25-ИСТК-2о",
+              "container_label_org_opencontainers_image_revision": "e8be38f8b568bba0a0ad651564246f4f6b32d54d",
+              "container_label_org_opencontainers_image_source": "https://github.com/Aruzhaaan-06/devops-labs",
+              "container_label_org_opencontainers_image_title": "devops-labs",
+              "container_label_org_opencontainers_image_url": "https://github.com/Aruzhaaan-06/devops-labs",
+              "container_label_org_opencontainers_image_version": "sha-e8be38f",
+              "id": "/docker/92a80f72d41e2844919da9e7f113efb7c702f1d267593238fc7b5d1e0270714f",
+              "image": "ghcr.io/aruzhaaan-06/devops-labs:sha-e8be38f",
+              "instance": "cadvisor:8080",
+              "job": "cadvisor",
+              "name": "devops-labs-api-1"
+            },
+            "value": [
+              1792860013.004,
+              "73.24609375"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "range": {
+    "utc": "2026-10-24T16:40:13.036427+00:00",
+    "method": "GET",
+    "url": "http://localhost:9090/api/v1/query_range?query=container_memory_working_set_bytes%7Bname%3D%22devops-labs-api-1%22%7D+%2F+1024+%2F+1024&start=1792859833.004099&end=1792860013.004099&step=5",
+    "status": 200,
+    "body": {
+      "status": "success",
+      "data": {
+        "resultType": "matrix",
+        "result": [
+          {
+            "metric": {
+              "container_label_com_docker_compose_config_hash": "f02d23df4b4cc5270ea133a1ffb54a6e86abb0c1e584f8a303af92f5c0877ca5",
+              "container_label_com_docker_compose_container_number": "1",
+              "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+              "container_label_com_docker_compose_image": "sha256:150caceaebf794c1bba7ffcdc890b0f4165c5aad37be8cf3920691abb0ed9c23",
+              "container_label_com_docker_compose_oneoff": "False",
+              "container_label_com_docker_compose_project": "devops-labs",
+              "container_label_com_docker_compose_project_config_files": "C:\\actions-runner\\_work\\devops-labs\\devops-labs\\compose.yaml",
+              "container_label_com_docker_compose_project_working_dir": "C:\\actions-runner\\_work\\devops-labs\\devops-labs",
+              "container_label_com_docker_compose_replace": "api-1",
+              "container_label_com_docker_compose_service": "api",
+              "container_label_com_docker_compose_version": "5.5.1",
+              "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+              "container_label_desktop_docker_io_ports_scheme": "v2",
+              "container_label_org_opencontainers_image_created": "2026-10-24T16:17:03.420Z",
+              "container_label_org_opencontainers_image_description": "Учебные работы DevOps: ASP.NET Core API, тесты, Postman и отчеты — Есімханова Аружан, 25-ИСТК-2о",
+              "container_label_org_opencontainers_image_revision": "e8be38f8b568bba0a0ad651564246f4f6b32d54d",
+              "container_label_org_opencontainers_image_source": "https://github.com/Aruzhaaan-06/devops-labs",
+              "container_label_org_opencontainers_image_title": "devops-labs",
+              "container_label_org_opencontainers_image_url": "https://github.com/Aruzhaaan-06/devops-labs",
+              "container_label_org_opencontainers_image_version": "sha-e8be38f",
+              "id": "/docker/92a80f72d41e2844919da9e7f113efb7c702f1d267593238fc7b5d1e0270714f",
+              "image": "ghcr.io/aruzhaaan-06/devops-labs:sha-e8be38f",
+              "instance": "cadvisor:8080",
+              "job": "cadvisor",
+              "name": "devops-labs-api-1"
+            },
+            "values": [
+              [
+                1792859878.004,
+                "70.3359375"
+              ],
+              [
+                1792859883.004,
+                "71.05078125"
+              ],
+              [
+                1792859888.004,
+                "71.5"
+              ],
+              [
+                1792859893.004,
+                "71.7265625"
+              ],
+              [
+                1792859898.004,
+                "71.17578125"
+              ],
+              [
+                1792859903.004,
+                "71.328125"
+              ],
+              [
+                1792859908.004,
+                "71.7421875"
+              ],
+              [
+                1792859913.004,
+                "72.99609375"
+              ],
+              [
+                1792859918.004,
+                "73.00390625"
+              ],
+              [
+                1792859923.004,
+                "72.58984375"
+              ],
+              [
+                1792859928.004,
+                "72.6015625"
+              ],
+              [
+                1792859933.004,
+                "72.80859375"
+              ],
+              [
+                1792859938.004,
+                "72.75"
+              ],
+              [
+                1792859943.004,
+                "72.7578125"
+              ],
+              [
+                1792859948.004,
+                "72.140625"
+              ],
+              [
+                1792859953.004,
+                "72.75"
+              ],
+              [
+                1792859958.004,
+                "72.63671875"
+              ],
+              [
+                1792859963.004,
+                "72.95703125"
+              ],
+              [
+                1792859968.004,
+                "72.73046875"
+              ],
+              [
+                1792859973.004,
+                "73.15234375"
+              ],
+              [
+                1792859978.004,
+                "72.375"
+              ],
+              [
+                1792859983.004,
+                "72.9453125"
+              ],
+              [
+                1792859988.004,
+                "72.8671875"
+              ],
+              [
+                1792859993.004,
+                "72.93359375"
+              ],
+              [
+                1792859998.004,
+                "72.64453125"
+              ],
+              [
+                1792860003.004,
+                "72.34765625"
+              ],
+              [
+                1792860008.004,
+                "72.55078125"
+              ],
+              [
+                1792860013.004,
+                "73.24609375"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

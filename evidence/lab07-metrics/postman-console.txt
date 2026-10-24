@@ -1,0 +1,64 @@
+No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+Lab07 metrics - real local monitoring
+
+Root required-up
+
+  GET http://localhost:9090/api/v1/query?query=up&time=1792860013.004 [200 OK, 377 B, 19 ms]
+  Pass  HTTP 200
+  Pass  Successful nonempty vector
+  Pass  All three jobs UP
+
+Root own-created
+
+  GET http://localhost:9090/api/v1/query?query=sum(increase(http_requests_received_total{job="demo-api",controller="Tasks",action="Create",code="201"}[1m]))&time=1792860013.004 [200 OK, 322 B, 6 ms]
+  Pass  HTTP 200
+  Pass  Successful nonempty vector
+  Pass  Tasks created in measured minute
+
+Root own-memory
+
+  GET http://localhost:9090/api/v1/query?query=100 * sum by (name) (container_memory_working_set_bytes{name="devops-labs-api-1"}) / sum by (name) (container_spec_memory_limit_bytes{name="devops-labs-api-1"} > 0)&time=1792860013.004 [200 OK, 318 B, 4 ms]
+  Pass  HTTP 200
+  Pass  Successful nonempty vector
+  Pass  Memory within 256MiB limit
+
+Root own-p95
+
+  GET http://localhost:9090/api/v1/query?query=histogram_quantile(0.95, sum by (le, controller, action) (rate(http_request_duration_seconds_bucket{job="demo-api"}[1m])))&time=1792860013.004 [200 OK, 426 B, 4 ms]
+  Pass  HTTP 200
+  Pass  Successful nonempty vector
+  Pass  Active task actions have finite p95
+
+Root own-4xx
+
+  GET http://localhost:9090/api/v1/query?query=sum by (controller, action, code) (rate(http_requests_received_total{job="demo-api",code=~"4.."}[1m]))&time=1792860013.004 [200 OK, 364 B, 4 ms]
+  Pass  HTTP 200
+  Pass  Successful nonempty vector
+  Pass  Both 400 and 409 measured
+
+-------------------------------------------------------------------
+|                         |          executed |            failed |
+--------------------------+-------------------+--------------------
+|              iterations |                 1 |                 0 |
+--------------------------+-------------------+--------------------
+|                requests |                 5 |                 0 |
+--------------------------+-------------------+--------------------
+|            test-scripts |                 5 |                 0 |
+--------------------------+-------------------+--------------------
+|      prerequest-scripts |                 0 |                 0 |
+--------------------------+-------------------+--------------------
+|              assertions |                15 |                 0 |
+-------------------------------------------------------------------
+| total run duration: 419 ms                                      |
+-------------------------------------------------------------------
+| total data received: 957 B (approx)                             |
+-------------------------------------------------------------------
+| average response time: 7 ms [min: 4 ms, max: 19 ms, s.d.: 5 ms] |
+-------------------------------------------------------------------
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

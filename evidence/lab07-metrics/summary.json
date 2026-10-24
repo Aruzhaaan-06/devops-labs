@@ -1,0 +1,251 @@
+{
+  "utc": "2026-10-24T16:40:13.138039+00:00",
+  "queries": 9,
+  "targets": {
+    "cadvisor": "up",
+    "demo-api": "up",
+    "prometheus": "up"
+  },
+  "errors": [
+    400,
+    409
+  ],
+  "values": {
+    "required-up": [
+      {
+        "labels": {
+          "__name__": "up",
+          "instance": "host.docker.internal:8088",
+          "job": "demo-api"
+        },
+        "value": "1"
+      },
+      {
+        "labels": {
+          "__name__": "up",
+          "instance": "localhost:9090",
+          "job": "prometheus"
+        },
+        "value": "1"
+      },
+      {
+        "labels": {
+          "__name__": "up",
+          "instance": "cadvisor:8080",
+          "job": "cadvisor"
+        },
+        "value": "1"
+      }
+    ],
+    "required-rps": [
+      {
+        "labels": {},
+        "value": "0.09091404985726495"
+      },
+      {
+        "labels": {
+          "action": "Get",
+          "controller": "Info"
+        },
+        "value": "0.01818280997145299"
+      },
+      {
+        "labels": {
+          "action": "Get",
+          "controller": "Projects"
+        },
+        "value": "0"
+      },
+      {
+        "labels": {
+          "action": "Get",
+          "controller": "Tasks"
+        },
+        "value": "0"
+      },
+      {
+        "labels": {
+          "action": "List",
+          "controller": "Tasks"
+        },
+        "value": "3.018346455261196"
+      },
+      {
+        "labels": {
+          "action": "Slow",
+          "controller": "Chaos"
+        },
+        "value": "0"
+      },
+      {
+        "labels": {
+          "action": "Create",
+          "controller": "Projects"
+        },
+        "value": "0.054548429914358966"
+      },
+      {
+        "labels": {
+          "action": "Create",
+          "controller": "Tasks"
+        },
+        "value": "3.036529265232649"
+      },
+      {
+        "labels": {
+          "action": "ChangeStatus",
+          "controller": "Tasks"
+        },
+        "value": "3.054712075204102"
+      }
+    ],
+    "required-p95": [
+      {
+        "labels": {},
+        "value": "0.007795586369017707"
+      }
+    ],
+    "required-memory": [
+      {
+        "labels": {
+          "container_label_com_docker_compose_config_hash": "f02d23df4b4cc5270ea133a1ffb54a6e86abb0c1e584f8a303af92f5c0877ca5",
+          "container_label_com_docker_compose_container_number": "1",
+          "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+          "container_label_com_docker_compose_image": "sha256:150caceaebf794c1bba7ffcdc890b0f4165c5aad37be8cf3920691abb0ed9c23",
+          "container_label_com_docker_compose_oneoff": "False",
+          "container_label_com_docker_compose_project": "devops-labs",
+          "container_label_com_docker_compose_project_config_files": "C:\\actions-runner\\_work\\devops-labs\\devops-labs\\compose.yaml",
+          "container_label_com_docker_compose_project_working_dir": "C:\\actions-runner\\_work\\devops-labs\\devops-labs",
+          "container_label_com_docker_compose_replace": "api-1",
+          "container_label_com_docker_compose_service": "api",
+          "container_label_com_docker_compose_version": "5.5.1",
+          "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+          "container_label_desktop_docker_io_ports_scheme": "v2",
+          "container_label_org_opencontainers_image_created": "2026-10-24T16:17:03.420Z",
+          "container_label_org_opencontainers_image_description": "Учебные работы DevOps: ASP.NET Core API, тесты, Postman и отчеты — Есімханова Аружан, 25-ИСТК-2о",
+          "container_label_org_opencontainers_image_revision": "e8be38f8b568bba0a0ad651564246f4f6b32d54d",
+          "container_label_org_opencontainers_image_source": "https://github.com/Aruzhaaan-06/devops-labs",
+          "container_label_org_opencontainers_image_title": "devops-labs",
+          "container_label_org_opencontainers_image_url": "https://github.com/Aruzhaaan-06/devops-labs",
+          "container_label_org_opencontainers_image_version": "sha-e8be38f",
+          "id": "/docker/92a80f72d41e2844919da9e7f113efb7c702f1d267593238fc7b5d1e0270714f",
+          "image": "ghcr.io/aruzhaaan-06/devops-labs:sha-e8be38f",
+          "instance": "cadvisor:8080",
+          "job": "cadvisor",
+          "name": "devops-labs-api-1"
+        },
+        "value": "73.24609375"
+      }
+    ],
+    "required-cpu": [
+      {
+        "labels": {
+          "name": "devops-labs-db-1"
+        },
+        "value": "0.012031300074778331"
+      },
+      {
+        "labels": {
+          "name": "devops-labs-api-1"
+        },
+        "value": "0.02267913004077932"
+      }
+    ],
+    "own-created": [
+      {
+        "labels": {},
+        "value": "182.19175591395893"
+      }
+    ],
+    "own-memory": [
+      {
+        "labels": {
+          "name": "devops-labs-api-1"
+        },
+        "value": "28.61175537109375"
+      }
+    ],
+    "own-p95": [
+      {
+        "labels": {
+          "action": "Get",
+          "controller": "Info"
+        },
+        "value": "0.00095"
+      },
+      {
+        "labels": {
+          "action": "Get",
+          "controller": "Projects"
+        },
+        "value": "NaN"
+      },
+      {
+        "labels": {
+          "action": "Get",
+          "controller": "Tasks"
+        },
+        "value": "NaN"
+      },
+      {
+        "labels": {
+          "action": "List",
+          "controller": "Tasks"
+        },
+        "value": "0.0010777777777777765"
+      },
+      {
+        "labels": {
+          "action": "Slow",
+          "controller": "Chaos"
+        },
+        "value": "NaN"
+      },
+      {
+        "labels": {
+          "action": "Create",
+          "controller": "Tasks"
+        },
+        "value": "0.013679999999999998"
+      },
+      {
+        "labels": {},
+        "value": "0.00095"
+      },
+      {
+        "labels": {
+          "action": "Create",
+          "controller": "Projects"
+        },
+        "value": "0.0038022793532997605"
+      },
+      {
+        "labels": {
+          "action": "ChangeStatus",
+          "controller": "Tasks"
+        },
+        "value": "0.00397"
+      }
+    ],
+    "own-4xx": [
+      {
+        "labels": {
+          "action": "Create",
+          "code": "400",
+          "controller": "Projects"
+        },
+        "value": "0.03636561994290598"
+      },
+      {
+        "labels": {
+          "action": "ChangeStatus",
+          "code": "409",
+          "controller": "Tasks"
+        },
+        "value": "0.03636561994290598"
+      }
+    ]
+  },
+  "loadRequired": true,
+  "sourceVersion": "sha-e8be38f"
+}

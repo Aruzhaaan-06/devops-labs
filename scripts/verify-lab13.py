@@ -18,7 +18,7 @@ QUERIES={
     'required-memory':'container_memory_working_set_bytes{name="devops-labs-api-1"} / 1024 / 1024',
     'required-cpu':'sum by (name) (rate(container_cpu_usage_seconds_total{name=~"devops-labs-.*"}[1m]))',
     'own-created':'sum(increase(http_requests_received_total{job="demo-api",controller="Tasks",action="Create",code="201"}[1m]))',
-    'own-memory':'100 * container_memory_working_set_bytes{name="devops-labs-api-1"} / (container_spec_memory_limit_bytes{name="devops-labs-api-1"} > 0)',
+    'own-memory':'100 * sum by (name) (container_memory_working_set_bytes{name="devops-labs-api-1"}) / sum by (name) (container_spec_memory_limit_bytes{name="devops-labs-api-1"} > 0)',
     'own-p95':'histogram_quantile(0.95, sum by (le, controller, action) (rate(http_request_duration_seconds_bucket{job="demo-api"}[1m])))',
     'own-4xx':'sum by (controller, action, code) (rate(http_requests_received_total{job="demo-api",code=~"4.."}[1m]))',
 }
@@ -70,7 +70,10 @@ def main():
         instant=http(prom+'/api/v1/query?'+urlencode({'query':expr,'time':now}))
         result=instant['body']['data']['result']
         assert instant['body']['status']=='success' and result, name
-        assert all(math.isfinite(float(s['value'][1])) for s in result),name
+        # An idle action has zero observations and therefore undefined p95 (NaN).
+        # Keep it in evidence; require finite values for actions with traffic.
+        finite=[s for s in result if math.isfinite(float(s['value'][1]))]
+        assert finite and (name=='own-p95' or len(finite)==len(result)),name
         if name=='required-up':assert all(s['value'][1]=='1' for s in result)
         if name=='own-created':assert float(result[0]['value'][1])>0
         if name=='own-memory':assert 0<float(result[0]['value'][1])<100
@@ -85,6 +88,6 @@ def main():
         'targets':{x['labels']['job']:x['health'] for x in active},'errors':[400,409],
         'values':{n:[{'labels':s['metric'],'value':s['value'][1]} for s in v['instant']['body']['data']['result']] for n,v in results.items()},
         'loadRequired':True,'sourceVersion':initial['body'].get('version')})
-    print('Nine queries returned finite samples; three targets UP; genuine 400/409 confirmed.')
+    print('Nine queries returned samples; active actions have finite p95; three targets UP; genuine 400/409 confirmed.')
 
 if __name__=='__main__':main()

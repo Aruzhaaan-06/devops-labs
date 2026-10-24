@@ -58,3 +58,9 @@ services:
 volumes:
   prometheus-data:
   grafana-data:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${MONITORING_SUBNET:-10.254.55.0/24}

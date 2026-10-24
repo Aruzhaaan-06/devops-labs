@@ -1,0 +1,29 @@
+{
+  "iterations": 1200,
+  "failed": 0,
+  "projectId": 26,
+  "tasksInDatabase": 1200,
+  "allInProgress": true,
+  "stopped": true,
+  "firstTask": {
+    "id": 28,
+    "projectId": 26,
+    "title": "Load task 1",
+    "description": null,
+    "status": "InProgress",
+    "dueDate": null,
+    "createdAt": "2026-10-24T16:37:41.01433+00:00",
+    "updatedAt": "2026-10-24T16:37:41.040221+00:00"
+  },
+  "lastTask": {
+    "id": 1229,
+    "projectId": 26,
+    "title": "Load task 1200",
+    "description": null,
+    "status": "InProgress",
+    "dueDate": null,
+    "createdAt": "2026-10-24T16:44:18.19595+00:00",
+    "updatedAt": "2026-10-24T16:44:18.202069+00:00"
+  },
+  "verifiedUtc": "2026-10-24T16:45:03.381270+00:00"
+}

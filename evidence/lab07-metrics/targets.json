@@ -1,0 +1,97 @@
+{
+  "utc": "2026-10-24T16:40:12.886793+00:00",
+  "method": "GET",
+  "url": "http://localhost:9090/api/v1/targets",
+  "status": 200,
+  "body": {
+    "status": "success",
+    "data": {
+      "activeTargets": [
+        {
+          "discoveredLabels": {
+            "__address__": "cadvisor:8080",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "5s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "5s",
+            "job": "cadvisor"
+          },
+          "labels": {
+            "instance": "cadvisor:8080",
+            "job": "cadvisor"
+          },
+          "scrapePool": "cadvisor",
+          "scrapeUrl": "http://cadvisor:8080/metrics",
+          "globalUrl": "http://cadvisor:8080/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-24T16:40:12.595890953Z",
+          "lastScrapeDuration": 0.087556644,
+          "health": "up",
+          "scrapeInterval": "5s",
+          "scrapeTimeout": "5s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "host.docker.internal:8088",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "5s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "5s",
+            "job": "demo-api"
+          },
+          "labels": {
+            "instance": "host.docker.internal:8088",
+            "job": "demo-api"
+          },
+          "scrapePool": "demo-api",
+          "scrapeUrl": "http://host.docker.internal:8088/metrics",
+          "globalUrl": "http://host.docker.internal:8088/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-24T16:40:11.406519666Z",
+          "lastScrapeDuration": 0.020569909,
+          "health": "up",
+          "scrapeInterval": "5s",
+          "scrapeTimeout": "5s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "localhost:9090",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "5s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "5s",
+            "job": "prometheus"
+          },
+          "labels": {
+            "instance": "localhost:9090",
+            "job": "prometheus"
+          },
+          "scrapePool": "prometheus",
+          "scrapeUrl": "http://localhost:9090/metrics",
+          "globalUrl": "http://0fcdb926f9f7:9090/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-24T16:40:12.207408871Z",
+          "lastScrapeDuration": 0.004616181,
+          "health": "up",
+          "scrapeInterval": "5s",
+          "scrapeTimeout": "5s"
+        }
+      ],
+      "droppedTargets": [],
+      "droppedTargetCounts": {
+        "cadvisor": 0,
+        "demo-api": 0,
+        "prometheus": 0
+      }
+    }
+  }
+}

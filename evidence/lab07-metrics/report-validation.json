@@ -1,0 +1,79 @@
+{
+  "pages": 10,
+  "language": "kk",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "links": 24,
+  "visualReviewPages": [
+    {
+      "page": 1,
+      "characters": 1342,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 2,
+      "characters": 1288,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 3,
+      "characters": 1665,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 4,
+      "characters": 807,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 5,
+      "characters": 1586,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 6,
+      "characters": 711,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 7,
+      "characters": 807,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 8,
+      "characters": 786,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 9,
+      "characters": 1057,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    },
+    {
+      "page": 10,
+      "characters": 2184,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG inspected; no overlap or clipping"
+    }
+  ],
+  "sha256": "b470e7b779516602b9919a6db96c9c892ccd0c91c6a8323e3479ceffa9e327d6"
+}
