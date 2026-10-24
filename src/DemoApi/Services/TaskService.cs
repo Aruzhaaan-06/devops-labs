@@ -10,11 +10,8 @@ public sealed class TaskService(ITaskRepository tasks, IProjectRepository projec
     private static readonly Counter TasksCreated = Metrics.CreateCounter(
         "demo_tasks_created_total", "Successfully persisted tasks created by TaskService.");
 
-    public async Task<IReadOnlyList<TaskItem>> ListAsync(int? projectId, TaskItemStatus? status, CancellationToken ct)
-    {
-        await Task.Delay(1500, ct); // "аудит"
-        return await tasks.ListAsync(projectId, status, ct);
-    }
+    public Task<IReadOnlyList<TaskItem>> ListAsync(int? projectId, TaskItemStatus? status, CancellationToken ct) =>
+        tasks.ListAsync(projectId, status, ct);
 
     public Task<TaskItem?> GetAsync(int id, CancellationToken ct) => tasks.GetAsync(id, ct);
 
