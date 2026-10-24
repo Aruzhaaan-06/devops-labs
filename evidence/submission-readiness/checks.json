@@ -1,0 +1,69 @@
+{
+  "preparedAtUtc": "2026-10-24T19:05:05.416207+00:00",
+  "repository": "Aruzhaaan-06/devops-labs",
+  "purpose": "Submission preparation; genuine UI evidence still outstanding",
+  "runs": [
+    {
+      "sourceRef": "lab01-required-24",
+      "sourceCommit": "f93b1234fc09eb70b1010f566c0c8282ac55d336",
+      "storage": "InMemory",
+      "suite": "required24",
+      "total": 24,
+      "passed": 24,
+      "failed": 0,
+      "startedAt": "2026-10-25T00:02:07.4016488+05:00",
+      "finishedAt": "2026-10-25T00:02:09.7800977+05:00",
+      "originalTrxSha256": "06b1e53bcbcd9004f89f49911332c079d369e4e7eb4f03640397edeb79a6b029",
+      "evidenceMethod": "dotnet test CLI; original TRX retained locally",
+      "testExplorerUiObserved": false
+    },
+    {
+      "sourceRef": "lab03-postgres",
+      "sourceCommit": "890b3546ae9b18179e36509d7552dd4e4182d8f7",
+      "storage": "Postgres",
+      "suite": "required24",
+      "total": 24,
+      "passed": 24,
+      "failed": 0,
+      "startedAt": "2026-10-24T23:58:37.2048963+05:00",
+      "finishedAt": "2026-10-24T23:58:38.8711049+05:00",
+      "originalTrxSha256": "0d640d4dce70e2fb01c0cbee0bdea526a1a6a0f1a34a8774d214b967cabac689",
+      "evidenceMethod": "dotnet test CLI; original TRX retained locally",
+      "testExplorerUiObserved": false
+    },
+    {
+      "sourceRef": "lab03-postgres",
+      "sourceCommit": "890b3546ae9b18179e36509d7552dd4e4182d8f7",
+      "storage": "Postgres",
+      "suite": "full28",
+      "total": 28,
+      "passed": 28,
+      "failed": 0,
+      "startedAt": "2026-10-24T23:58:20.1675686+05:00",
+      "finishedAt": "2026-10-24T23:58:23.0712382+05:00",
+      "originalTrxSha256": "cb3efa9370d7c6519d1d3a798fee1a35149d48be80ceea03ce27713b244e62f2",
+      "evidenceMethod": "dotnet test CLI; original TRX retained locally",
+      "testExplorerUiObserved": false
+    }
+  ],
+  "postgresDatabaseSnapshot": {
+    "database": "demo_ui_checks",
+    "projects": 24,
+    "tasks": 21,
+    "method": "docker exec devops-labs-db-1 psql SELECT current_database(), counts; read-only after both SQL runs",
+    "mainDatabaseUsed": false
+  },
+  "ui": {
+    "screenshotsCaptured": 0,
+    "manualDebuggerCompleted": false,
+    "nativeErrors": [
+      "window capture timed out: timed out waiting on channel",
+      "window is minimized",
+      "user input was detected in this window"
+    ],
+    "browserError": "Local browser use is disabled in Work settings"
+  },
+  "secretsPublished": false,
+  "applicationSourceChanged": false,
+  "releaseV110AssetsChanged": false
+}
