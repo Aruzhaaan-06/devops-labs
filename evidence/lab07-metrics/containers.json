@@ -1,0 +1,98 @@
+[
+  {
+    "id": "0fcdb926f9f765b06d44d5ec5d34ac528d113aea162f03de8d2f923c6ddac9e5",
+    "image": "prom/prometheus:v3.14.0",
+    "state": "running",
+    "startedAt": "2026-10-24T16:37:13.441233447Z",
+    "ports": {
+      "9090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "9090"
+        }
+      ]
+    },
+    "privileged": false,
+    "memoryLimit": 0
+  },
+  {
+    "id": "c048816ff2c4d8a420c93bb7aa14af22007297e50fb1819335f1363093488244",
+    "image": "grafana/grafana:13.2.1",
+    "state": "running",
+    "startedAt": "2026-10-24T16:37:13.199383575Z",
+    "ports": {
+      "3000/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "3000"
+        }
+      ]
+    },
+    "privileged": false,
+    "memoryLimit": 0
+  },
+  {
+    "id": "c60c5e78a154998cf289de31b5d1f84821965c1e0efe05b98ec5fb70e4f84faa",
+    "image": "ghcr.io/google/cadvisor:v0.60.5",
+    "state": "running",
+    "startedAt": "2026-10-24T16:37:55.961366514Z",
+    "ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8081"
+        }
+      ]
+    },
+    "privileged": true,
+    "memoryLimit": 0
+  },
+  {
+    "id": "28971462406e27487da526a9256618444f8759522a9908df33bb90b216627118",
+    "image": "amir20/dozzle:v11.0.1",
+    "state": "running",
+    "startedAt": "2026-10-24T16:37:12.953154975Z",
+    "ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8888"
+        }
+      ]
+    },
+    "privileged": false,
+    "memoryLimit": 0
+  },
+  {
+    "id": "92a80f72d41e2844919da9e7f113efb7c702f1d267593238fc7b5d1e0270714f",
+    "image": "ghcr.io/aruzhaaan-06/devops-labs:sha-e8be38f",
+    "state": "running",
+    "startedAt": "2026-10-24T16:20:19.039833471Z",
+    "ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8088"
+        }
+      ]
+    },
+    "privileged": false,
+    "memoryLimit": 268435456
+  },
+  {
+    "id": "a0ce9cba49f94c6e218e503fdacd8d4e829e0053611afdb3b9efd49abbda0fb2",
+    "image": "postgres:18-alpine",
+    "state": "running",
+    "startedAt": "2026-10-24T16:20:13.334986919Z",
+    "ports": {
+      "5432/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "15432"
+        }
+      ]
+    },
+    "privileged": false,
+    "memoryLimit": 0
+  }
+]

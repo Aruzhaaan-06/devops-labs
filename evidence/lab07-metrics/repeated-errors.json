@@ -1,0 +1,32 @@
+{
+  "badProject": {
+    "utc": "2026-10-24T16:40:04.878009+00:00",
+    "method": "POST",
+    "url": "http://localhost:8088/api/projects",
+    "status": 400,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-e626ce490e25a01ff7f417f837fca0fc-1a22734c7948c2c7-00"
+    }
+  },
+  "conflict": {
+    "utc": "2026-10-24T16:40:04.882016+00:00",
+    "method": "PATCH",
+    "url": "http://localhost:8088/api/tasks/428/status",
+    "status": 409,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.10",
+      "title": "Conflict",
+      "status": 409,
+      "detail": "Нельзя перевести задачу 428 из Todo в Done",
+      "traceId": "00-7610a0e6b36ecc04269255e53ee11b45-15bfd716205a764d-00"
+    }
+  }
+}

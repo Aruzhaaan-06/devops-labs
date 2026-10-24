@@ -1,0 +1,119 @@
+{
+  "passed": 28,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Exactly demo-api cadvisor prometheus UP",
+      "passed": true
+    },
+    {
+      "name": "API scrape uses actual port8088",
+      "passed": true
+    },
+    {
+      "name": "Nine query responses",
+      "passed": true
+    },
+    {
+      "name": "required-up real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "required-rps real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "required-p95 real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "required-memory real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "required-cpu real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "own-created real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "own-memory real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "own-p95 real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "own-4xx real nonempty vector and range",
+      "passed": true
+    },
+    {
+      "name": "Created tasks increased",
+      "passed": true
+    },
+    {
+      "name": "Memory within limit",
+      "passed": true
+    },
+    {
+      "name": "Known active actions have finite p95",
+      "passed": true
+    },
+    {
+      "name": "Idle action p95 honestly retained NaN",
+      "passed": true
+    },
+    {
+      "name": "400and409 rates positive",
+      "passed": true
+    },
+    {
+      "name": "Real400and409 responses",
+      "passed": true
+    },
+    {
+      "name": "API labels match controllers",
+      "passed": true
+    },
+    {
+      "name": "Real cAdvisor working set and limit",
+      "passed": true
+    },
+    {
+      "name": "Five alert rules loaded",
+      "passed": true
+    },
+    {
+      "name": "Promtool passed",
+      "passed": true
+    },
+    {
+      "name": "1200 iterations stored then stopped",
+      "passed": true
+    },
+    {
+      "name": "Postman5requests15assertions zero failures",
+      "passed": true
+    },
+    {
+      "name": "Three previous data markers retained",
+      "passed": true
+    },
+    {
+      "name": "13 actual screenshot hashes",
+      "passed": true
+    },
+    {
+      "name": "Kazakh PDF10pages24links",
+      "passed": true
+    },
+    {
+      "name": "12reports94pages prior11 unchanged",
+      "passed": true
+    }
+  ],
+  "scope": "Saved real monitoring run, not a current live health monitor"
+}

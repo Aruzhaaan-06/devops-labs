@@ -1,0 +1,67 @@
+[
+  {
+    "file": "cadvisor-api.png",
+    "sha256": "e7bc978fff55143f791771eb8470e1b116474fa26ea1cf3e667104edcbc62b02",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "dozzle-api.png",
+    "sha256": "493cd4558ed4aed7e8792531aedde6103813f6901608e4503572508000d10037",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "grafana-dashboard.png",
+    "sha256": "ec834a95a7aafb36003bb6e26ba036fc95b05477f49ef5bf6868050d1910ca7b",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "own-4xx.png",
+    "sha256": "4a3132ff0e3e9a874b35605501c7f8c18da378335fb0f987af47dbcac0c50957",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "own-created.png",
+    "sha256": "5545dc37fda811476948e4c545f814ff7dbd4b6a82ddd653fc3afa8b1cb1db75",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "own-memory.png",
+    "sha256": "a9f1d896022625e096ac7e5162108faeb7ce196ba5d994d0e72a35c7058e51af",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "own-p95.png",
+    "sha256": "7b85a0101d4eb26e8618cba82e071bda0d2e15d2fcbe109e17f0887c68300ad3",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "required-cpu.png",
+    "sha256": "48a6e821262e99b21f007a71f9a0dda48745f8f8b7903fd5d02066bec44a549a",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "required-memory.png",
+    "sha256": "7818934f6c3e89dc028e7c9d7a262497ceaaf0d680b7d884e7f2e09dd99a0767",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "required-p95.png",
+    "sha256": "6e64e41597e19cd060e8306e07847e290297da571ed15e370cf47e0ec385f35a",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "required-rps.png",
+    "sha256": "0a3cfa1a98f3fb105aa9cffecad277ef4b00ec085e4aa416a2aad8f3914a0be5",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "required-up.png",
+    "sha256": "4b2b155f979f570fc9be8765c3f16353593da27d0b6ff47adfcf89071da69d62",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  },
+  {
+    "file": "targets-up.png",
+    "sha256": "cf37b61a096976a7052d25c11d90506e02d421c59266a71a1c825c5b3e4eba11",
+    "origin": "actual Chrome tab screenshot via CUA; no synthetic data"
+  }
+]

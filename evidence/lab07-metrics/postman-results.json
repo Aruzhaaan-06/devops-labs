@@ -1,0 +1,9 @@
+{
+  "target": "real local Prometheus",
+  "requests": 5,
+  "assertions": 15,
+  "failed": 0,
+  "exitCode": 0,
+  "queryTime": 1792860013.004,
+  "cloudPublished": false
+}
