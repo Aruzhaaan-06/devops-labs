@@ -1,0 +1,1048 @@
+{
+  "query": "ALERTS",
+  "response": {
+    "status": "success",
+    "data": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ApiDown",
+            "alertstate": "firing",
+            "instance": "host.docker.internal:8088",
+            "job": "demo-api",
+            "severity": "critical"
+          },
+          "values": [
+            [
+              1792863033.813,
+              "1"
+            ],
+            [
+              1792863038.813,
+              "1"
+            ],
+            [
+              1792863043.813,
+              "1"
+            ],
+            [
+              1792863048.813,
+              "1"
+            ],
+            [
+              1792863053.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ApiDown",
+            "alertstate": "pending",
+            "instance": "host.docker.internal:8088",
+            "job": "demo-api",
+            "severity": "critical"
+          },
+          "values": [
+            [
+              1792862608.813,
+              "1"
+            ],
+            [
+              1792863003.813,
+              "1"
+            ],
+            [
+              1792863008.813,
+              "1"
+            ],
+            [
+              1792863013.813,
+              "1"
+            ],
+            [
+              1792863018.813,
+              "1"
+            ],
+            [
+              1792863023.813,
+              "1"
+            ],
+            [
+              1792863028.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ApiHighErrorRate",
+            "alertstate": "firing",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862158.813,
+              "1"
+            ],
+            [
+              1792862163.813,
+              "1"
+            ],
+            [
+              1792862168.813,
+              "1"
+            ],
+            [
+              1792862173.813,
+              "1"
+            ],
+            [
+              1792862178.813,
+              "1"
+            ],
+            [
+              1792862183.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ApiHighErrorRate",
+            "alertstate": "pending",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862128.813,
+              "1"
+            ],
+            [
+              1792862133.813,
+              "1"
+            ],
+            [
+              1792862138.813,
+              "1"
+            ],
+            [
+              1792862143.813,
+              "1"
+            ],
+            [
+              1792862148.813,
+              "1"
+            ],
+            [
+              1792862153.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ApiSlowRequests",
+            "alertstate": "firing",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862268.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ApiSlowRequests",
+            "alertstate": "pending",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862238.813,
+              "1"
+            ],
+            [
+              1792862243.813,
+              "1"
+            ],
+            [
+              1792862248.813,
+              "1"
+            ],
+            [
+              1792862253.813,
+              "1"
+            ],
+            [
+              1792862258.813,
+              "1"
+            ],
+            [
+              1792862263.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ContainerHighMemory",
+            "alertstate": "firing",
+            "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+            "container_label_com_docker_compose_container_number": "1",
+            "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+            "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+            "container_label_com_docker_compose_oneoff": "False",
+            "container_label_com_docker_compose_project": "devops-labs",
+            "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+            "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+            "container_label_com_docker_compose_replace": "api-1",
+            "container_label_com_docker_compose_service": "api",
+            "container_label_com_docker_compose_version": "5.5.1",
+            "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+            "container_label_desktop_docker_io_ports_scheme": "v2",
+            "container_label_org_opencontainers_image_version": "24.04",
+            "container_label_restartcount": "2",
+            "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+            "image": "devops-labs-demo-api:lab14-7d78755",
+            "instance": "cadvisor:8080",
+            "job": "cadvisor",
+            "name": "devops-labs-api-1",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862948.813,
+              "1"
+            ],
+            [
+              1792862953.813,
+              "1"
+            ],
+            [
+              1792862958.813,
+              "1"
+            ],
+            [
+              1792862963.813,
+              "1"
+            ],
+            [
+              1792862968.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ContainerHighMemory",
+            "alertstate": "pending",
+            "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+            "container_label_com_docker_compose_container_number": "1",
+            "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+            "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+            "container_label_com_docker_compose_oneoff": "False",
+            "container_label_com_docker_compose_project": "devops-labs",
+            "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+            "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+            "container_label_com_docker_compose_replace": "api-1",
+            "container_label_com_docker_compose_service": "api",
+            "container_label_com_docker_compose_version": "5.5.1",
+            "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+            "container_label_desktop_docker_io_ports_scheme": "v2",
+            "container_label_org_opencontainers_image_version": "24.04",
+            "container_label_restartcount": "1",
+            "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+            "image": "devops-labs-demo-api:lab14-7d78755",
+            "instance": "cadvisor:8080",
+            "job": "cadvisor",
+            "name": "devops-labs-api-1",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862608.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ContainerHighMemory",
+            "alertstate": "pending",
+            "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+            "container_label_com_docker_compose_container_number": "1",
+            "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+            "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+            "container_label_com_docker_compose_oneoff": "False",
+            "container_label_com_docker_compose_project": "devops-labs",
+            "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+            "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+            "container_label_com_docker_compose_replace": "api-1",
+            "container_label_com_docker_compose_service": "api",
+            "container_label_com_docker_compose_version": "5.5.1",
+            "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+            "container_label_desktop_docker_io_ports_scheme": "v2",
+            "container_label_org_opencontainers_image_version": "24.04",
+            "container_label_restartcount": "2",
+            "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+            "image": "devops-labs-demo-api:lab14-7d78755",
+            "instance": "cadvisor:8080",
+            "job": "cadvisor",
+            "name": "devops-labs-api-1",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862933.813,
+              "1"
+            ],
+            [
+              1792862938.813,
+              "1"
+            ],
+            [
+              1792862943.813,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "ALERTS",
+            "alertname": "ContainerRestarted",
+            "alertstate": "firing",
+            "name": "devops-labs-api-1",
+            "severity": "warning"
+          },
+          "values": [
+            [
+              1792862033.813,
+              "1"
+            ],
+            [
+              1792862038.813,
+              "1"
+            ],
+            [
+              1792862043.813,
+              "1"
+            ],
+            [
+              1792862048.813,
+              "1"
+            ],
+            [
+              1792862053.813,
+              "1"
+            ],
+            [
+              1792862058.813,
+              "1"
+            ],
+            [
+              1792862063.813,
+              "1"
+            ],
+            [
+              1792862068.813,
+              "1"
+            ],
+            [
+              1792862073.813,
+              "1"
+            ],
+            [
+              1792862078.813,
+              "1"
+            ],
+            [
+              1792862083.813,
+              "1"
+            ],
+            [
+              1792862088.813,
+              "1"
+            ],
+            [
+              1792862093.813,
+              "1"
+            ],
+            [
+              1792862098.813,
+              "1"
+            ],
+            [
+              1792862103.813,
+              "1"
+            ],
+            [
+              1792862108.813,
+              "1"
+            ],
+            [
+              1792862113.813,
+              "1"
+            ],
+            [
+              1792862118.813,
+              "1"
+            ],
+            [
+              1792862123.813,
+              "1"
+            ],
+            [
+              1792862128.813,
+              "1"
+            ],
+            [
+              1792862133.813,
+              "1"
+            ],
+            [
+              1792862138.813,
+              "1"
+            ],
+            [
+              1792862143.813,
+              "1"
+            ],
+            [
+              1792862148.813,
+              "1"
+            ],
+            [
+              1792862153.813,
+              "1"
+            ],
+            [
+              1792862158.813,
+              "1"
+            ],
+            [
+              1792862163.813,
+              "1"
+            ],
+            [
+              1792862168.813,
+              "1"
+            ],
+            [
+              1792862173.813,
+              "1"
+            ],
+            [
+              1792862178.813,
+              "1"
+            ],
+            [
+              1792862183.813,
+              "1"
+            ],
+            [
+              1792862188.813,
+              "1"
+            ],
+            [
+              1792862193.813,
+              "1"
+            ],
+            [
+              1792862198.813,
+              "1"
+            ],
+            [
+              1792862203.813,
+              "1"
+            ],
+            [
+              1792862208.813,
+              "1"
+            ],
+            [
+              1792862213.813,
+              "1"
+            ],
+            [
+              1792862218.813,
+              "1"
+            ],
+            [
+              1792862223.813,
+              "1"
+            ],
+            [
+              1792862228.813,
+              "1"
+            ],
+            [
+              1792862233.813,
+              "1"
+            ],
+            [
+              1792862238.813,
+              "1"
+            ],
+            [
+              1792862243.813,
+              "1"
+            ],
+            [
+              1792862303.813,
+              "1"
+            ],
+            [
+              1792862308.813,
+              "1"
+            ],
+            [
+              1792862313.813,
+              "1"
+            ],
+            [
+              1792862318.813,
+              "1"
+            ],
+            [
+              1792862323.813,
+              "1"
+            ],
+            [
+              1792862328.813,
+              "1"
+            ],
+            [
+              1792862333.813,
+              "1"
+            ],
+            [
+              1792862338.813,
+              "1"
+            ],
+            [
+              1792862343.813,
+              "1"
+            ],
+            [
+              1792862348.813,
+              "1"
+            ],
+            [
+              1792862353.813,
+              "1"
+            ],
+            [
+              1792862358.813,
+              "1"
+            ],
+            [
+              1792862363.813,
+              "1"
+            ],
+            [
+              1792862368.813,
+              "1"
+            ],
+            [
+              1792862373.813,
+              "1"
+            ],
+            [
+              1792862378.813,
+              "1"
+            ],
+            [
+              1792862383.813,
+              "1"
+            ],
+            [
+              1792862388.813,
+              "1"
+            ],
+            [
+              1792862393.813,
+              "1"
+            ],
+            [
+              1792862398.813,
+              "1"
+            ],
+            [
+              1792862403.813,
+              "1"
+            ],
+            [
+              1792862408.813,
+              "1"
+            ],
+            [
+              1792862413.813,
+              "1"
+            ],
+            [
+              1792862418.813,
+              "1"
+            ],
+            [
+              1792862423.813,
+              "1"
+            ],
+            [
+              1792862428.813,
+              "1"
+            ],
+            [
+              1792862433.813,
+              "1"
+            ],
+            [
+              1792862438.813,
+              "1"
+            ],
+            [
+              1792862443.813,
+              "1"
+            ],
+            [
+              1792862448.813,
+              "1"
+            ],
+            [
+              1792862453.813,
+              "1"
+            ],
+            [
+              1792862458.813,
+              "1"
+            ],
+            [
+              1792862463.813,
+              "1"
+            ],
+            [
+              1792862468.813,
+              "1"
+            ],
+            [
+              1792862473.813,
+              "1"
+            ],
+            [
+              1792862478.813,
+              "1"
+            ],
+            [
+              1792862483.813,
+              "1"
+            ],
+            [
+              1792862488.813,
+              "1"
+            ],
+            [
+              1792862493.813,
+              "1"
+            ],
+            [
+              1792862498.813,
+              "1"
+            ],
+            [
+              1792862503.813,
+              "1"
+            ],
+            [
+              1792862508.813,
+              "1"
+            ],
+            [
+              1792862513.813,
+              "1"
+            ],
+            [
+              1792862518.813,
+              "1"
+            ],
+            [
+              1792862523.813,
+              "1"
+            ],
+            [
+              1792862528.813,
+              "1"
+            ],
+            [
+              1792862533.813,
+              "1"
+            ],
+            [
+              1792862538.813,
+              "1"
+            ],
+            [
+              1792862543.813,
+              "1"
+            ],
+            [
+              1792862548.813,
+              "1"
+            ],
+            [
+              1792862553.813,
+              "1"
+            ],
+            [
+              1792862558.813,
+              "1"
+            ],
+            [
+              1792862563.813,
+              "1"
+            ],
+            [
+              1792862568.813,
+              "1"
+            ],
+            [
+              1792862573.813,
+              "1"
+            ],
+            [
+              1792862578.813,
+              "1"
+            ],
+            [
+              1792862583.813,
+              "1"
+            ],
+            [
+              1792862588.813,
+              "1"
+            ],
+            [
+              1792862593.813,
+              "1"
+            ],
+            [
+              1792862618.813,
+              "1"
+            ],
+            [
+              1792862623.813,
+              "1"
+            ],
+            [
+              1792862628.813,
+              "1"
+            ],
+            [
+              1792862633.813,
+              "1"
+            ],
+            [
+              1792862638.813,
+              "1"
+            ],
+            [
+              1792862643.813,
+              "1"
+            ],
+            [
+              1792862648.813,
+              "1"
+            ],
+            [
+              1792862653.813,
+              "1"
+            ],
+            [
+              1792862658.813,
+              "1"
+            ],
+            [
+              1792862663.813,
+              "1"
+            ],
+            [
+              1792862668.813,
+              "1"
+            ],
+            [
+              1792862673.813,
+              "1"
+            ],
+            [
+              1792862678.813,
+              "1"
+            ],
+            [
+              1792862683.813,
+              "1"
+            ],
+            [
+              1792862688.813,
+              "1"
+            ],
+            [
+              1792862693.813,
+              "1"
+            ],
+            [
+              1792862698.813,
+              "1"
+            ],
+            [
+              1792862703.813,
+              "1"
+            ],
+            [
+              1792862708.813,
+              "1"
+            ],
+            [
+              1792862713.813,
+              "1"
+            ],
+            [
+              1792862718.813,
+              "1"
+            ],
+            [
+              1792862723.813,
+              "1"
+            ],
+            [
+              1792862728.813,
+              "1"
+            ],
+            [
+              1792862733.813,
+              "1"
+            ],
+            [
+              1792862738.813,
+              "1"
+            ],
+            [
+              1792862743.813,
+              "1"
+            ],
+            [
+              1792862748.813,
+              "1"
+            ],
+            [
+              1792862753.813,
+              "1"
+            ],
+            [
+              1792862758.813,
+              "1"
+            ],
+            [
+              1792862763.813,
+              "1"
+            ],
+            [
+              1792862768.813,
+              "1"
+            ],
+            [
+              1792862773.813,
+              "1"
+            ],
+            [
+              1792862778.813,
+              "1"
+            ],
+            [
+              1792862783.813,
+              "1"
+            ],
+            [
+              1792862788.813,
+              "1"
+            ],
+            [
+              1792862793.813,
+              "1"
+            ],
+            [
+              1792862798.813,
+              "1"
+            ],
+            [
+              1792862803.813,
+              "1"
+            ],
+            [
+              1792862808.813,
+              "1"
+            ],
+            [
+              1792862813.813,
+              "1"
+            ],
+            [
+              1792862818.813,
+              "1"
+            ],
+            [
+              1792862823.813,
+              "1"
+            ],
+            [
+              1792862828.813,
+              "1"
+            ],
+            [
+              1792862833.813,
+              "1"
+            ],
+            [
+              1792862838.813,
+              "1"
+            ],
+            [
+              1792862843.813,
+              "1"
+            ],
+            [
+              1792862848.813,
+              "1"
+            ],
+            [
+              1792862853.813,
+              "1"
+            ],
+            [
+              1792862858.813,
+              "1"
+            ],
+            [
+              1792862863.813,
+              "1"
+            ],
+            [
+              1792862868.813,
+              "1"
+            ],
+            [
+              1792862873.813,
+              "1"
+            ],
+            [
+              1792862878.813,
+              "1"
+            ],
+            [
+              1792862883.813,
+              "1"
+            ],
+            [
+              1792862888.813,
+              "1"
+            ],
+            [
+              1792862893.813,
+              "1"
+            ],
+            [
+              1792862898.813,
+              "1"
+            ],
+            [
+              1792862903.813,
+              "1"
+            ],
+            [
+              1792862908.813,
+              "1"
+            ],
+            [
+              1792862978.813,
+              "1"
+            ],
+            [
+              1792862983.813,
+              "1"
+            ],
+            [
+              1792862988.813,
+              "1"
+            ],
+            [
+              1792862993.813,
+              "1"
+            ],
+            [
+              1792862998.813,
+              "1"
+            ],
+            [
+              1792863003.813,
+              "1"
+            ],
+            [
+              1792863008.813,
+              "1"
+            ],
+            [
+              1792863013.813,
+              "1"
+            ],
+            [
+              1792863018.813,
+              "1"
+            ],
+            [
+              1792863023.813,
+              "1"
+            ],
+            [
+              1792863028.813,
+              "1"
+            ],
+            [
+              1792863033.813,
+              "1"
+            ],
+            [
+              1792863038.813,
+              "1"
+            ],
+            [
+              1792863043.813,
+              "1"
+            ],
+            [
+              1792863048.813,
+              "1"
+            ],
+            [
+              1792863053.813,
+              "1"
+            ],
+            [
+              1792863058.813,
+              "1"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

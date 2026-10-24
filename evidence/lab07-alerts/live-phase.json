@@ -1,0 +1,6 @@
+{
+  "phase": "e-down",
+  "status": "firing",
+  "utc": "2026-10-24T17:30:39.138215+00:00",
+  "alert": "ApiDown"
+}

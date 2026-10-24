@@ -1,0 +1,39 @@
+{
+  "markers": [
+    {
+      "label": "lab10",
+      "projectId": 18,
+      "taskId": 20,
+      "preserved": true
+    },
+    {
+      "label": "lab11",
+      "projectId": 24,
+      "taskId": 26,
+      "preserved": true
+    },
+    {
+      "label": "lab12",
+      "projectId": 25,
+      "taskId": 27,
+      "preserved": true
+    }
+  ],
+  "lab13Tasks": 1200,
+  "loads": [
+    {
+      "file": "load-console.txt",
+      "projectId": 32,
+      "storedTasks": 531,
+      "errors": 18
+    },
+    {
+      "file": "initial-attempt-load-console.txt",
+      "projectId": 30,
+      "storedTasks": 2231,
+      "errors": 3
+    }
+  ],
+  "loadStopped": true,
+  "explanation": "Load failures during intentional crash/stop are retained, not counted as successful iterations. Separate load projects before/after resumed d-e retained."
+}

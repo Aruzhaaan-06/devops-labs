@@ -3,48 +3,234 @@
   "title": "DemoApi",
   "schemaVersion": 39,
   "refresh": "5s",
-  "time": { "from": "now-15m", "to": "now" },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
   "panels": [
     {
-      "id": 1, "type": "stat", "title": "API up",
-      "gridPos": { "x": 0, "y": 0, "w": 4, "h": 4 },
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "targets": [{ "refId": "A", "expr": "up{job=\"demo-api\"}" }],
-      "fieldConfig": { "defaults": { "mappings": [
-        { "type": "value", "options": { "0": { "text": "DOWN", "color": "red" }, "1": { "text": "UP", "color": "green" } } }
-      ] }, "overrides": [] },
-      "options": { "colorMode": "background", "reduceOptions": { "calcs": ["lastNotNull"] } }
-    },
-    {
-      "id": 2, "type": "timeseries", "title": "RPS по кодам ответа",
-      "gridPos": { "x": 4, "y": 0, "w": 10, "h": 8 },
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "targets": [{ "refId": "A", "expr": "sum by (code) (rate(http_requests_received_total{job=\"demo-api\"}[1m]))", "legendFormat": "{{code}}" }],
-      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] }
-    },
-    {
-      "id": 3, "type": "timeseries", "title": "Latency p95",
-      "gridPos": { "x": 14, "y": 0, "w": 10, "h": 8 },
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "targets": [{ "refId": "A", "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m])))", "legendFormat": "p95" }],
-      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] }
-    },
-    {
-      "id": 4, "type": "timeseries", "title": "Память контейнера / лимит",
-      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "id": 1,
+      "type": "stat",
+      "title": "API up",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "targets": [
-        { "refId": "A", "expr": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"}", "legendFormat": "working set" },
-        { "refId": "B", "expr": "container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"}", "legendFormat": "limit" }
+        {
+          "refId": "A",
+          "expr": "up{job=\"demo-api\"}"
+        }
       ],
-      "fieldConfig": { "defaults": { "unit": "bytes" }, "overrides": [] }
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "DOWN",
+                  "color": "red"
+                },
+                "1": {
+                  "text": "UP",
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "background",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        }
+      }
     },
     {
-      "id": 5, "type": "timeseries", "title": "CPU контейнера (ядер)",
-      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "targets": [{ "refId": "A", "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name=~\"devops-labs-.*\"}[1m]))", "legendFormat": "{{name}}" }],
-      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] }
+      "id": 2,
+      "type": "timeseries",
+      "title": "RPS по кодам ответа",
+      "gridPos": {
+        "x": 4,
+        "y": 0,
+        "w": 10,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (code) (rate(http_requests_received_total{job=\"demo-api\"}[1m]))",
+          "legendFormat": "{{code}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Latency p95",
+      "gridPos": {
+        "x": 14,
+        "y": 0,
+        "w": 10,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m])))",
+          "legendFormat": "p95"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Память контейнера / лимит",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"}",
+          "legendFormat": "working set"
+        },
+        {
+          "refId": "B",
+          "expr": "container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"}",
+          "legendFormat": "limit"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "CPU контейнера (ядер)",
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name=~\"devops-labs-.*\"}[1m]))",
+          "legendFormat": "{{name}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Tasks created per minute",
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(increase(http_requests_received_total{job=\"demo-api\",controller=\"Tasks\",action=\"Create\",code=\"201\"}[1m]))",
+          "legendFormat": "tasks/min"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "description": "HTTP 201 responses for Tasks/Create, extrapolated over the last minute."
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Business tasks created per minute",
+      "gridPos": {
+        "x": 12,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(increase(demo_tasks_created_total{job=\"demo-api\"}[1m]))",
+          "legendFormat": "tasks/min"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "description": "Successfully persisted tasks, counted before the HTTP response is completed. Resets on process restart."
     }
   ]
 }

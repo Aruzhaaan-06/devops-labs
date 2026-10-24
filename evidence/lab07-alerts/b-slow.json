@@ -1,0 +1,662 @@
+{
+  "name": "b-slow",
+  "startUtc": "2026-10-24T17:16:33.694748+00:00",
+  "startEpoch": 1792862193.6947489,
+  "before": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:12:25.098026382Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 0,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "expectedAlerts": [
+    "ApiSlowRequests"
+  ],
+  "requests": [
+    {
+      "utc": "2026-10-24T17:16:33.740288+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.535612
+    },
+    {
+      "utc": "2026-10-24T17:16:35.276007+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.502621
+    },
+    {
+      "utc": "2026-10-24T17:16:36.772851+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.50363
+    },
+    {
+      "utc": "2026-10-24T17:16:38.282081+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.530831
+    },
+    {
+      "utc": "2026-10-24T17:16:39.813094+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.530198
+    },
+    {
+      "utc": "2026-10-24T17:16:41.343178+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.505551
+    },
+    {
+      "utc": "2026-10-24T17:16:42.848742+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.508076
+    },
+    {
+      "utc": "2026-10-24T17:16:44.357114+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.53189
+    },
+    {
+      "utc": "2026-10-24T17:16:45.888835+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.50749
+    },
+    {
+      "utc": "2026-10-24T17:16:47.396227+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.525041
+    },
+    {
+      "utc": "2026-10-24T17:16:48.921374+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503921
+    },
+    {
+      "utc": "2026-10-24T17:16:50.425431+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503794
+    },
+    {
+      "utc": "2026-10-24T17:16:51.929415+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.509048
+    },
+    {
+      "utc": "2026-10-24T17:16:53.438732+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.534718
+    },
+    {
+      "utc": "2026-10-24T17:16:54.973144+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503152
+    },
+    {
+      "utc": "2026-10-24T17:16:56.476274+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.50338
+    },
+    {
+      "utc": "2026-10-24T17:16:57.979807+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503157
+    },
+    {
+      "utc": "2026-10-24T17:16:59.482927+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503644
+    },
+    {
+      "utc": "2026-10-24T17:17:00.986978+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.523086
+    },
+    {
+      "utc": "2026-10-24T17:17:02.509721+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503338
+    },
+    {
+      "utc": "2026-10-24T17:17:04.013123+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.504614
+    },
+    {
+      "utc": "2026-10-24T17:17:05.517644+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.50621
+    },
+    {
+      "utc": "2026-10-24T17:17:07.024046+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.504701
+    },
+    {
+      "utc": "2026-10-24T17:17:08.528740+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503976
+    },
+    {
+      "utc": "2026-10-24T17:17:10.032644+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.505852
+    },
+    {
+      "utc": "2026-10-24T17:17:11.538223+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.531437
+    },
+    {
+      "utc": "2026-10-24T17:17:13.070202+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.504744
+    },
+    {
+      "utc": "2026-10-24T17:17:14.575272+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.500752
+    },
+    {
+      "utc": "2026-10-24T17:17:16.075709+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.527411
+    },
+    {
+      "utc": "2026-10-24T17:17:17.603171+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.502992
+    },
+    {
+      "utc": "2026-10-24T17:17:19.106058+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.502975
+    },
+    {
+      "utc": "2026-10-24T17:17:20.609183+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503232
+    },
+    {
+      "utc": "2026-10-24T17:17:22.112420+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.519881
+    },
+    {
+      "utc": "2026-10-24T17:17:23.632340+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.502955
+    },
+    {
+      "utc": "2026-10-24T17:17:25.135398+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.512069
+    },
+    {
+      "utc": "2026-10-24T17:17:26.647690+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503935
+    },
+    {
+      "utc": "2026-10-24T17:17:28.151336+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.502248
+    },
+    {
+      "utc": "2026-10-24T17:17:29.653873+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.503851
+    },
+    {
+      "utc": "2026-10-24T17:17:31.157722+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.500693
+    },
+    {
+      "utc": "2026-10-24T17:17:32.658369+00:00",
+      "method": "GET",
+      "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+      "status": 200,
+      "body": {
+        "delayedMs": 1500
+      },
+      "seconds": 1.516835
+    }
+  ],
+  "firingSnapshots": {
+    "ApiSlowRequests": {
+      "utc": "2026-10-24T17:17:53.688605+00:00",
+      "method": "GET",
+      "url": "http://localhost:9090/api/v1/rules?type=alert",
+      "status": 200,
+      "body": {
+        "status": "success",
+        "data": {
+          "groups": [
+            {
+              "name": "containers",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "inactive",
+                  "name": "ContainerHighMemory",
+                  "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                  "duration": 15,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }}: память выше 80% лимита"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000254112,
+                  "lastEvaluation": "2026-10-24T17:17:49.502087207Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ContainerRestarted",
+                  "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                  "duration": 0,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000191709,
+                  "lastEvaluation": "2026-10-24T17:17:49.502350419Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.000486622,
+              "lastEvaluation": "2026-10-24T17:17:49.502057906Z"
+            },
+            {
+              "name": "demo-api",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "inactive",
+                  "name": "ApiDown",
+                  "query": "up{job=\"demo-api\"} == 0",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "critical"
+                  },
+                  "annotations": {
+                    "summary": "DemoApi не отвечает на /metrics"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000380517,
+                  "lastEvaluation": "2026-10-24T17:17:53.1349827Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiHighErrorRate",
+                  "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "Доля 5xx выше 5%"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000693932,
+                  "lastEvaluation": "2026-10-24T17:17:53.135379317Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "firing",
+                  "name": "ApiSlowRequests",
+                  "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "p95 времени ответа больше 1 секунды"
+                  },
+                  "alerts": [
+                    {
+                      "labels": {
+                        "alertname": "ApiSlowRequests",
+                        "severity": "warning"
+                      },
+                      "annotations": {
+                        "summary": "p95 времени ответа больше 1 секунды"
+                      },
+                      "state": "firing",
+                      "activeAt": "2026-10-24T17:17:18.242515366Z",
+                      "value": "1.1193379310344806e+00"
+                    }
+                  ],
+                  "health": "ok",
+                  "evaluationTime": 0.00266212,
+                  "lastEvaluation": "2026-10-24T17:17:53.136089149Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.003882074,
+              "lastEvaluation": "2026-10-24T17:17:53.134877695Z"
+            }
+          ]
+        }
+      },
+      "seconds": 0.019326
+    }
+  },
+  "metricsAtFiring": {
+    "ApiSlowRequests": {
+      "p95": [
+        {
+          "metric": {},
+          "value": [
+            1792862273.71,
+            "0.23679999999999563"
+          ]
+        }
+      ],
+      "httpCodes": [
+        {
+          "metric": {
+            "code": "200"
+          },
+          "value": [
+            1792862273.712,
+            "6.527391407116493"
+          ]
+        },
+        {
+          "metric": {
+            "code": "201"
+          },
+          "value": [
+            1792862273.712,
+            "2.981872397679958"
+          ]
+        },
+        {
+          "metric": {
+            "code": "400"
+          },
+          "value": [
+            1792862273.712,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "code": "404"
+          },
+          "value": [
+            1792862273.712,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "code": "500"
+          },
+          "value": [
+            1792862273.712,
+            "0"
+          ]
+        }
+      ],
+      "memoryPercent": [
+        {
+          "metric": {
+            "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+            "container_label_com_docker_compose_container_number": "1",
+            "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+            "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+            "container_label_com_docker_compose_oneoff": "False",
+            "container_label_com_docker_compose_project": "devops-labs",
+            "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+            "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+            "container_label_com_docker_compose_replace": "api-1",
+            "container_label_com_docker_compose_service": "api",
+            "container_label_com_docker_compose_version": "5.5.1",
+            "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+            "container_label_desktop_docker_io_ports_scheme": "v2",
+            "container_label_org_opencontainers_image_version": "24.04",
+            "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+            "image": "devops-labs-demo-api:lab14-7d78755",
+            "instance": "cadvisor:8080",
+            "job": "cadvisor",
+            "name": "devops-labs-api-1"
+          },
+          "value": [
+            1792862273.715,
+            "27.069091796875"
+          ]
+        }
+      ]
+    }
+  },
+  "after": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:12:25.098026382Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 0,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "endUtc": "2026-10-24T17:18:08.765903+00:00",
+  "endEpoch": 1792862288.7659037
+}

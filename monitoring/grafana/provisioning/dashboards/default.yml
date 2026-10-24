@@ -4,5 +4,7 @@ providers:
   - name: default
     folder: DevOps course
     type: file
+    # Docker Desktop bind mounts may not forward filesystem watch events.
+    updateIntervalSeconds: 20
     options:
       path: /var/lib/grafana/dashboards

@@ -1,0 +1,330 @@
+{
+  "kind": "Dashboard",
+  "apiVersion": "dashboard.grafana.app/v1",
+  "metadata": {
+    "name": "demo-api",
+    "namespace": "default",
+    "uid": "d9fdfa60-b352-4ca6-98a4-b0e9f8c8b64c",
+    "resourceVersion": "1792862505987015",
+    "generation": 3,
+    "creationTimestamp": "2026-10-24T16:37:25Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "1845305132191744"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "access-policy:service",
+      "grafana.app/folder": "eg27mcckibksgc",
+      "grafana.app/managedBy": "classic-file-provisioning",
+      "grafana.app/managerId": "default",
+      "grafana.app/sourceChecksum": "821c5c30c20cfd740a4997806edba83c",
+      "grafana.app/sourcePath": "/var/lib/grafana/dashboards/demo-api.json",
+      "grafana.app/sourceTimestamp": "1792862486000",
+      "grafana.app/updatedBy": "access-policy:service",
+      "grafana.app/updatedTimestamp": "2026-10-24T17:21:45Z"
+    },
+    "managedFields": [
+      {
+        "manager": "grafana",
+        "operation": "Update",
+        "apiVersion": "dashboard.grafana.app/v0alpha1",
+        "time": "2026-10-24T17:21:45Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:grafana.app/folder": {},
+              "f:grafana.app/managedBy": {},
+              "f:grafana.app/managerId": {},
+              "f:grafana.app/sourceChecksum": {},
+              "f:grafana.app/sourcePath": {},
+              "f:grafana.app/sourceTimestamp": {}
+            }
+          },
+          "f:spec": {
+            "f:id": {},
+            "f:panels": {},
+            "f:refresh": {},
+            "f:schemaVersion": {},
+            "f:time": {
+              ".": {},
+              "f:from": {},
+              "f:to": {}
+            },
+            "f:title": {},
+            "f:uid": {},
+            "f:version": {}
+          }
+        }
+      }
+    ]
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "color": "red",
+                    "text": "DOWN"
+                  },
+                  "1": {
+                    "color": "green",
+                    "text": "UP"
+                  }
+                },
+                "type": "value"
+              }
+            ]
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "colorMode": "background",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "expr": "up{job=\"demo-api\"}",
+            "refId": "A"
+          }
+        ],
+        "title": "API up",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 10,
+          "x": 4,
+          "y": 0
+        },
+        "id": 2,
+        "targets": [
+          {
+            "expr": "sum by (code) (rate(http_requests_received_total{job=\"demo-api\"}[1m]))",
+            "legendFormat": "{{code}}",
+            "refId": "A"
+          }
+        ],
+        "title": "RPS по кодам ответа",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 10,
+          "x": 14,
+          "y": 0
+        },
+        "id": 3,
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m])))",
+            "legendFormat": "p95",
+            "refId": "A"
+          }
+        ],
+        "title": "Latency p95",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "id": 4,
+        "targets": [
+          {
+            "expr": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"}",
+            "legendFormat": "working set",
+            "refId": "A"
+          },
+          {
+            "expr": "container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"}",
+            "legendFormat": "limit",
+            "refId": "B"
+          }
+        ],
+        "title": "Память контейнера / лимит",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "id": 5,
+        "targets": [
+          {
+            "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name=~\"devops-labs-.*\"}[1m]))",
+            "legendFormat": "{{name}}",
+            "refId": "A"
+          }
+        ],
+        "title": "CPU контейнера (ядер)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "description": "HTTP 201 responses for Tasks/Create, extrapolated over the last minute.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "id": 6,
+        "targets": [
+          {
+            "expr": "sum(increase(http_requests_received_total{job=\"demo-api\",controller=\"Tasks\",action=\"Create\",code=\"201\"}[1m]))",
+            "legendFormat": "tasks/min",
+            "refId": "A"
+          }
+        ],
+        "title": "Tasks created per minute",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "description": "Successfully persisted tasks, counted before the HTTP response is completed. Resets on process restart.",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "id": 7,
+        "targets": [
+          {
+            "expr": "sum(increase(demo_tasks_created_total{job=\"demo-api\"}[1m]))",
+            "legendFormat": "tasks/min",
+            "refId": "A"
+          }
+        ],
+        "title": "Business tasks created per minute",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "5s",
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "DemoApi",
+    "weekStart": ""
+  },
+  "status": {
+    "conversion": {
+      "failed": false,
+      "storedVersion": "v0alpha1"
+    }
+  }
+}

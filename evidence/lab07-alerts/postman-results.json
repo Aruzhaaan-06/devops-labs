@@ -1,0 +1,8 @@
+{
+  "target": "real local API and Prometheus after recovery, load stopped",
+  "requests": 10,
+  "assertions": 17,
+  "failed": 0,
+  "exitCode": 0,
+  "cloudPublished": false
+}

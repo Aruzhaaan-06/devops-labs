@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-24T17:27:06.838191+00:00",
+  "inspection": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:23:26.132036632Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 2,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "info": {
+    "utc": "2026-10-24T17:27:06.838191+00:00",
+    "method": "GET",
+    "url": "http://localhost:8088/",
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "lab14-7d78755",
+      "host": "c313d9dbde27",
+      "message": "hello from CI/CD"
+    },
+    "seconds": 0.002026
+  }
+}

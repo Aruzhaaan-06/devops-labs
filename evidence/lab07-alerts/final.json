@@ -1,0 +1,142 @@
+{
+  "utc": "2026-10-24T17:31:04.401140+00:00",
+  "inspection": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:30:54.832897397Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 0,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "info": {
+    "utc": "2026-10-24T17:31:04.445994+00:00",
+    "method": "GET",
+    "url": "http://localhost:8088/",
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "lab14-7d78755",
+      "host": "c313d9dbde27",
+      "message": "hello from CI/CD"
+    },
+    "seconds": 0.005337
+  },
+  "live": {
+    "utc": "2026-10-24T17:31:04.451461+00:00",
+    "method": "GET",
+    "url": "http://localhost:8088/health/live",
+    "status": 200,
+    "body": "Healthy",
+    "seconds": 0.002824
+  },
+  "ready": {
+    "utc": "2026-10-24T17:31:04.454611+00:00",
+    "method": "GET",
+    "url": "http://localhost:8088/health/ready",
+    "status": 200,
+    "body": "Healthy",
+    "seconds": 0.025476
+  },
+  "targets": {
+    "utc": "2026-10-24T17:31:04.479837+00:00",
+    "method": "GET",
+    "url": "http://localhost:9090/api/v1/targets",
+    "status": 200,
+    "body": {
+      "status": "success",
+      "data": {
+        "activeTargets": [
+          {
+            "discoveredLabels": {
+              "__address__": "cadvisor:8080",
+              "__always_scrape_classic_histograms__": "false",
+              "__convert_classic_histograms_to_nhcb__": "false",
+              "__metrics_path__": "/metrics",
+              "__scheme__": "http",
+              "__scrape_interval__": "5s",
+              "__scrape_native_histograms__": "false",
+              "__scrape_timeout__": "5s",
+              "job": "cadvisor"
+            },
+            "labels": {
+              "instance": "cadvisor:8080",
+              "job": "cadvisor"
+            },
+            "scrapePool": "cadvisor",
+            "scrapeUrl": "http://cadvisor:8080/metrics",
+            "globalUrl": "http://cadvisor:8080/metrics",
+            "lastError": "",
+            "lastScrape": "2026-10-24T17:31:02.460763004Z",
+            "lastScrapeDuration": 0.082989614,
+            "health": "up",
+            "scrapeInterval": "5s",
+            "scrapeTimeout": "5s"
+          },
+          {
+            "discoveredLabels": {
+              "__address__": "host.docker.internal:8088",
+              "__always_scrape_classic_histograms__": "false",
+              "__convert_classic_histograms_to_nhcb__": "false",
+              "__metrics_path__": "/metrics",
+              "__scheme__": "http",
+              "__scrape_interval__": "5s",
+              "__scrape_native_histograms__": "false",
+              "__scrape_timeout__": "5s",
+              "job": "demo-api"
+            },
+            "labels": {
+              "instance": "host.docker.internal:8088",
+              "job": "demo-api"
+            },
+            "scrapePool": "demo-api",
+            "scrapeUrl": "http://host.docker.internal:8088/metrics",
+            "globalUrl": "http://host.docker.internal:8088/metrics",
+            "lastError": "",
+            "lastScrape": "2026-10-24T17:31:01.273103318Z",
+            "lastScrapeDuration": 0.015851672,
+            "health": "up",
+            "scrapeInterval": "5s",
+            "scrapeTimeout": "5s"
+          },
+          {
+            "discoveredLabels": {
+              "__address__": "localhost:9090",
+              "__always_scrape_classic_histograms__": "false",
+              "__convert_classic_histograms_to_nhcb__": "false",
+              "__metrics_path__": "/metrics",
+              "__scheme__": "http",
+              "__scrape_interval__": "5s",
+              "__scrape_native_histograms__": "false",
+              "__scrape_timeout__": "5s",
+              "job": "prometheus"
+            },
+            "labels": {
+              "instance": "localhost:9090",
+              "job": "prometheus"
+            },
+            "scrapePool": "prometheus",
+            "scrapeUrl": "http://localhost:9090/metrics",
+            "globalUrl": "http://0fcdb926f9f7:9090/metrics",
+            "lastError": "",
+            "lastScrape": "2026-10-24T17:31:02.073651414Z",
+            "lastScrapeDuration": 0.004421987,
+            "health": "up",
+            "scrapeInterval": "5s",
+            "scrapeTimeout": "5s"
+          }
+        ],
+        "droppedTargets": [],
+        "droppedTargetCounts": {
+          "cadvisor": 0,
+          "demo-api": 0,
+          "prometheus": 0
+        }
+      }
+    },
+    "seconds": 0.020117
+  },
+  "loadStopped": true
+}

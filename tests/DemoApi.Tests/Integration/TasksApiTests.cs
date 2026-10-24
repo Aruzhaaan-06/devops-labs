@@ -12,6 +12,31 @@ public class TasksApiTests(WebApplicationFactory<Program> factory)
     private readonly HttpClient _client = factory.CreateClient();
 
     [Fact]
+    public async Task CreatedCounter_CountsOnlySuccessfullyPersistedTasks()
+    {
+        var project = await _client.CreateProjectAsync();
+        // Initialize the metric even if this test runs first in the shared API.
+        await _client.CreateTaskAsync(project.Id);
+        var before = await ReadCreatedCounterAsync();
+
+        await _client.CreateTaskAsync(project.Id);
+        Assert.Equal(before + 1, await ReadCreatedCounterAsync());
+
+        var invalid = await _client.PostAsJsonAsync("/api/tasks", new { projectId = project.Id, title = "" });
+        var missing = await _client.PostAsJsonAsync("/api/tasks", new { projectId = int.MaxValue, title = "Missing project" });
+        Assert.Equal(HttpStatusCode.BadRequest, invalid.StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, missing.StatusCode);
+        Assert.Equal(before + 1, await ReadCreatedCounterAsync());
+    }
+
+    private async Task<double> ReadCreatedCounterAsync()
+    {
+        var metrics = await _client.GetStringAsync("/metrics");
+        var sample = metrics.Split('\n').Single(line => line.StartsWith("demo_tasks_created_total ", StringComparison.Ordinal));
+        return double.Parse(sample.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1], System.Globalization.CultureInfo.InvariantCulture);
+    }
+
+    [Fact]
     public async Task Create_InExistingProject_ReturnsCreatedTodoTask()
     {
         var project = await _client.CreateProjectAsync();

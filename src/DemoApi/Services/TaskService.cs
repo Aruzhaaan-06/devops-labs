@@ -1,11 +1,15 @@
 using DemoApi.Data;
 using DemoApi.Domain;
+using Prometheus;
 
 namespace DemoApi.Services;
 
 // Действия с задачами. null / false в ответе — «задачи (или проекта) нет»: что ответить клиенту, решает контроллер
 public sealed class TaskService(ITaskRepository tasks, IProjectRepository projects, ILogger<TaskService> log)
 {
+    private static readonly Counter TasksCreated = Metrics.CreateCounter(
+        "demo_tasks_created_total", "Successfully persisted tasks created by TaskService.");
+
     public Task<IReadOnlyList<TaskItem>> ListAsync(int? projectId, TaskItemStatus? status, CancellationToken ct) =>
         tasks.ListAsync(projectId, status, ct);
 
@@ -20,6 +24,7 @@ public sealed class TaskService(ITaskRepository tasks, IProjectRepository projec
         }
 
         var task = await tasks.CreateAsync(projectId, title, description, dueDate, ct);
+        TasksCreated.Inc();
         log.LogInformation("Создана новая задача {TaskId} в проекте {ProjectId}", task.Id, task.ProjectId);
         return task;
     }
