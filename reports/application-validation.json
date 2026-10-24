@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-25",
+  "applicationTests": [
+    {
+      "storage": "inmemory",
+      "passed": 40,
+      "failed": 0,
+      "trxSha256": "88ec23ab7ec490097cfcc65c53532f66ec190285bde308efb1d1ccda3b06b223"
+    },
+    {
+      "storage": "postgres",
+      "passed": 40,
+      "failed": 0,
+      "trxSha256": "f8501b24ea17061444e19ebdd03a0350a794ed6ab7ac1694d7b3e87c8fcf6b60"
+    }
+  ],
+  "pdfAutomaticPassed": 15,
+  "pdfAutomaticFailed": 0,
+  "businessLogicUnchanged": true,
+  "note": "Тек нақты орындалған тексерулер. Алғашқы Windows UTF-8 қатесі аудитте сипатталған.",
+  "savedEvidenceChecks": {
+    "10": "passed",
+    "11": "35/35",
+    "12": "38/38",
+    "13": "28/28 after UTF-8 fix",
+    "14": "30/30",
+    "15": "34/34"
+  },
+  "composeConfigQuiet": "passed"
+}

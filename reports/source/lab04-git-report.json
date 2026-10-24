@@ -1,0 +1,667 @@
+{
+  "schemaVersion": 1,
+  "file": "lab04-git-report.pdf",
+  "originalPdfSha256": "513eb7e6bcf96ca732383eb2c7946acebb704c9290f8b39f469c95ae8b46b30a",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "DEVOPS · 7-АПТА · 07-МАТЕРИАЛ",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "4-зертханалық жұмыс<br/>Git және GitHub",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "1-бөлім: дайындық және 1-6-тармақтар. A репозиторийі.",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "<b>Орындаған:</b> Есімханова Аружан Түсіпханқызы<br/><b>Тобы:</b> 25-ИСТК-2о<br/><b>Күні:</b> 2026 жылғы 22 қазан",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Нәтиже және орындалу шектері",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бар ашық репозиторийде техникалық цикл орындалды: қорғалған main, тақтадағы тапсырмалар, код жолына пікір қалдырылған PR, түзету, Approve, squash-merge және екі тармақтың нақты қақтығысы. Команда шығыстары мен GitHub-тың шынайы экран суреттері сақталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Тармақ",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "main тармағын қорғау",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Active; әдепкі тармақ; 1 мақұлдау; жою мен force-push тыйым салынған; bypass жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тікелей push",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Қабылданбады: GH013; main және жұмыс тармағы өзгерген жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тапсырмалар тақтасы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3 issue; README тапсырмасы жабылып, workflow тексеруінде Done күйіне ауысты",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "README PR #4",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Екінші тіркелгінің пікірі → бөлек түзету → Approve → squash",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "#5 / #6 қақтығысы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "README қақтығысы болды; оны шешкен 02d593b main тарихында сақталған",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тексерулер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "13 техникалық тармақ; құрастыруда 0 ескерту / 0 қате",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "<b>Ресми тапсыру талаптары толық орындалмаған.</b> Иесінің шешімімен оның екі тіркелгісі пайдаланылды; топтас студентпен жұмыс және бөлек B репозиторийі расталмаған. Оқытушы шақырылмаған: GitHub атауы әлі белгісіз. Қабылданбаған push бөлек терминал суретінің орнына дәл мәтіндік шығыспен берілген.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/lab04-git\" color=\"#175E9A\">GitHub-та бекітілген нұсқа</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/4\" color=\"#175E9A\">Пікірмен қаралған README PR</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Дайындық және main тармағын қорғау",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Репозиторий: <link href=\"https://github.com/Aruzhaaan-06/devops-labs/\" color=\"#175E9A\">Aruzhaaan-06/devops-labs</link>. Онда сервис, Dockerfile, Compose және бұрынғы есептер бар. Жаңа репозиторий жасау және git init қайталау қажет болмады. Git, PowerShell 7 және .NET 10 қолжетімді; kit ішіндегі .github каталогы табылды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "temirkhanerbolatovich-coder тіркелгісі шақырылып, write құқығын алды. Екінші рөл үшін бөлек жергілікті көшірме жасалды. Екінші тіркелгі коммиттерінің авторы мен email мәні жергілікті бапталды. Екі тіркелгі де бір адамға тиесілі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Баптау",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Бекітілген мән",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ruleset",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "main, active, Include default branch",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ережелер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Restrict deletions; Pull Request + 1 approval; Block force pushes",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ережені айналып өту",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Bypass list бос; current_user_can_bypass=never",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Сыртқы Actions",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "all_external_contributors: әр сыртқы workflow мақұлдауды талап етеді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Еленбейтін файлдар",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": ".env, bin, obj және .vs; қадағаланатын файлдар арасында жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "1-сурет. Баптаудың шынайы суреті: міндетті PR және бір Approve. Барлық параметр main-ruleset.json ішінде де сақталған.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/c8ed1b08cd2d15a3.jpg",
+      "caption": "main-ruleset.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/rules/25644144\" color=\"#175E9A\">Ашық ережелер жиынтығы</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab04-git/main-ruleset.json\" color=\"#175E9A\">Сақталған параметрлер</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Тікелей push: күтілген қабылдамау",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тексеру үшін файлдар ағашы ағымдағы main-мен бірдей бос коммит жасалды. Жұмыс тармағын жылжытпау және reset --hard орындамау үшін git commit-tree қолданылды. Тексеру SHA мәнін тікелей main-ге жіберу нөлден өзгеше кодпен аяқталды:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "# Empty commit created by git commit-tree HEAD^{tree} -p HEAD with message test: direct push.\n$ git push origin bd42e87dae0872ddbc9596af9b8885bde6f369c6:refs/heads/main\nremote: error: GH013: Repository rule violations found for refs/heads/main.\nremote: Review all repository rules at \nhttps://github.com/Aruzhaaan-06/devops-labs/rules?ref=refs%2Fheads%2Fmain\nremote:\nremote: - Changes must be made through a pull request.\nremote:\nTo https://github.com/Aruzhaaan-06/devops-labs.git\n ! [remote rejected] bd42e87dae0872ddbc9596af9b8885bde6f369c6 -> main (push declined due to \nrepository rule violations)\nerror: failed to push some refs to 'https://github.com/Aruzhaaan-06/devops-labs.git'"
+    },
+    {
+      "type": "heading",
+      "text": "Нәтиже нені дәлелдейді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "GitHub дәл refs/heads/main жаңартуын қабылдамады: өзгерістер Pull Request арқылы өтуі керек. Әрекеттен кейін GitHub-тағы main SHA мәні мен жергілікті HEAD қосымша салыстырылды - екеуі де бұрынғыдай қалды. Бос коммит негізгі тарихқа енген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Құпия деректер және Git-тен алып тасталатын файлдар",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "$ git check-ignore .env src/DemoApi/bin/Debug/net10.0/DemoApi.dll \nsrc/DemoApi/obj/project.assets.json .vs/settings.json\n.env\nsrc/DemoApi/bin/Debug/net10.0/DemoApi.dll\nsrc/DemoApi/obj/project.assets.json\n.vs/settings.json"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қадағаланатын файлдарда .env, bin, obj және .vs жоқ. Құпиясөздер мен токендер жарияланбайды. GitHub CLI әр тіркелгі үшін иесі растаған авторизацияны пайдаланады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ережелер жиынтығының суреті алдыңғы бетте берілген. Мұнда терминал жауабының дәл мәтіні сақталған; терминал терезесінің бөлек суреті жоқ. Мұндай сурет нақты талап етілсе, бұл тармақ әлі толықтырылуы керек.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. README-ді PR арқылы тексеру",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/4\" color=\"#175E9A\">PR #4</link> · docs/1-readme тармағы · автор Aruzhaaan-06 · тексеруші temirkhanerbolatovich-coder.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "README сервис пен маршруттарды, .env және docker compose up -d --build --wait командаларын, Compose дерекқорымен және F5 арқылы әзірлеуді, тест командаларын сипаттайды. Visual Studio конфигурациясы үшін csproj ішіне UserSecretsId қосылды: жергілікті құпиясөз Git-тен тыс сақталады. Бұл идентификатор құпия дерек емес.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "README жолына қалдырылған пікірдің қазақша мазмұны",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Төменде бар .env файлын сақтау туралы ескерту берілген, бірақ командалар блогын көшіріп орындағанда бұл команда файлды қайта жазады. Нұсқауды қайталағанда дерекқордың ағымдағы құпиясөзі сақталуы үшін Copy-Item алдында Test-Path тексеруін қосу қажет.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/4#discussion_r4349438594\" color=\"#175E9A\">Код жолына қалдырылған бастапқы пікірді ашу</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "code",
+      "text": "Тексеруге дейін:\nCopy-Item .env.example .env\n \nБөлек түзетуден кейін:\nif (-not (Test-Path .env)) { Copy-Item .env.example .env }"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Қадам",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Расталған нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "e1742a0",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "README және UserSecretsId қосылды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "53-жолға қалдырылған пікір",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Екінші тіркелгі .env қайта жазылу қаупін көрсетті",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "c1e3b46",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Автор Test-Path тексеруін бөлек коммитпен қосты",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Команданы тексеру",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бар .env өзгеріссіз сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Approve және Squash and merge",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Түзетілген SHA мақұлданды; main нәтижесі b80b32f",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Closes #1",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Issue біріктіруден кейін автоматты жабылды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Шешім сәтті құрастырылды: 0 ескерту және 0 қате. User Secrets әзірлеуге арналған және мәндерді шифрламайды; құпиясөз репозиторийде сақталмайды. Бұл жұмыста Visual Studio-дағы F5 іске қосылмаған. Маршруттар коды мен бизнес ережелері өзгерген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Барлық пікірлер мен мақұлдаулар бір иесінің екі тіркелгісін пайдаланатын техникалық сценарийде орындалды; топтас студенттің тәуелсіз тексеруі жүргізілді деп көрсетілмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. Үш issue және тапсырмалар тақтасы",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/1\" color=\"#175E9A\">#1 README</link>, <link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/2\" color=\"#175E9A\">#2 PR үлгісі / Dependabot</link> және <link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/3\" color=\"#175E9A\">#3 жобаның атын өзгерту</link> жасалды. Барлығы «DevOps Labs - лабораторная 4» ашық Board тақтасына қосылды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "2-сурет. Бастапқы тақта: барлық үш тапсырма Todo күйінде.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/dbc2a38a11706f9f.jpg",
+      "caption": "board-three-issues.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "PR #4 Closes #1 арқылы #1 тапсырмасымен байланысқан. squash орындалғаннан кейін issue автоматты жабылды, бірақ жаңартудан кейін Status In Progress болып қалды. Қосылған Item closed ережесін тексеру үшін сол тапсырма қайта ашылып, қайта жабылды. Status қолмен өзгертілмей, тапсырма автоматты түрде Done күйіне өтті. Алғашқы күйдің себебі анықталмаған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "3-сурет. Қайта тексеруден кейін: жабылған issue #1 Done күйінде. Қалған екі тапсырма Todo күйінде.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/66fd20d6d8358ce6.jpg",
+      "caption": "board-readme-done.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/users/Aruzhaaan-06/projects/1\" color=\"#175E9A\">Ашық тақтаны қарау</link>. Қосылған workflow және әрекеттер реті бөлек сақталған.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Екі тармақтың нақты қақтығысы",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бір main b80b32f күйінен негізгі көшірмеде docs/title-a, екінші тіркелгі көшірмесінде docs/title-b жасалды. Екеуінде де README-дің бірінші жолы әртүрлі өзгертілді. <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/5\" color=\"#175E9A\">PR #5 (A)</link> екінші тіркелгі арқылы мақұлданып, squash арқылы біріктірілді. Осыдан кейін <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/6\" color=\"#175E9A\">PR #6 (B)</link> үшін mergeable=false, mergeable_state=dirty алынды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "4-сурет. GitHub: This branch has conflicts that must be resolved, README.md файлы.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/4c5df9269b1e654f.jpg",
+      "caption": "pr6-conflict.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "code",
+      "text": "$ git fetch origin\n$ git merge origin/main\nAuto-merging README.md\nCONFLICT (content): Merge conflict in README.md\nAutomatic merge failed; fix conflicts and then commit the result."
+    },
+    {
+      "type": "heading",
+      "text": "B жергілікті көшірмесіндегі нақты қақтығыс белгілері:",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "# Captured README.md lines, numbered as historical evidence.\n1 | <<<<<<< HEAD\n2 | # DevOps Labs — проекты и задачи\n3 | =======\n4 | # DevOps Labs — DemoApi: сервис задач\n5 | >>>>>>> origin/main"
+    },
+    {
+      "type": "paragraph",
+      "text": "«DevOps Labs - DemoApi: проекты и задачи» ортақ тақырыбы қалдырылды. Қақтығыс белгілері жойылып, git add README.md және git commit -m \"docs: resolve title conflict\" арқылы екі ата-аналық коммиті бар 02d593b біріктіру коммиті жасалды. push кейін иесі PR #6 өзгерістерін мақұлдап, merge commit арқылы біріктірді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "6. Тарих, тексерулер және толықтырылатын тармақтар",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Екі нұсқа біріктірілгеннен кейін main тармағынан алынған команда шығысы. Қақтығысты шешкен коммит сақталған және екінші PR-ды squash арқылы біріктіру кезінде жасырылмаған:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "$ git log --oneline --graph -16\n*   0715252 Merge pull request #6: resolve README title conflict\n|\\\n| *   02d593b docs: resolve title conflict\n| |\\\n| |/\n|/|\n* | a35874e docs: update README title, variant A (#5)\n| * 2fa73ab docs: update README title, variant B\n|/\n* b80b32f docs: инструкции Compose и разработки в Visual Studio (#4)\n* c057d5d feat: add verified Docker Compose laboratory and report\n* ee2ac68 docs: publish verified PostgreSQL laboratory 3 and report\n* ac16542 feat: containerize DemoApi and document laboratory 2 verification\n* 0a79d5d docs: organize lab reports, evidence and repository navigation\n* 5235623 feat: validate task deadlines and publish laboratory 1 reports\n* f93b123 feat: complete required laboratory 1 API statistics and checks\n* 8ad6b5d chore: import DevOps course starter"
+    },
+    {
+      "type": "paragraph",
+      "text": "git merge-base --is-ancestor 02d593b HEAD сәтті аяқталды. 02d593b коммитінің бірінші ата-анасы - B нұсқасының коммиті, екіншісі - A нұсқасы бар өзекті main. main-ге қорытынды біріктіру: 0715252. Тармақты қорғау және міндетті мақұлдау талабы өшірілген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Осы жұмыста тексерілгені",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "checks.json ішіндегі 13 техникалық тармақ: құқықтар, ережелер, push қабылдамауы, issue және Board, тексеру тізбегі, нақты қақтығыс және тарих. dotnet build DemoApi.slnx --no-restore --nologo: 0 ескерту / 0 қате. Бар .env файлының сақталуы тексерілді. API тестілері қайта іске қосылған жоқ; олардың нәтижелері 06-материалға жатады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Толық тапсыру үшін не қажет?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Оқытушыны қосу: GitHub атауы әзірге берілмеген.<br/>2. Топтас студенттің орнына бір иесінің екі тіркелгісін қолдануды оқытушымен келісу. Бөлек B репозиторийіндегі кезең орындалмаған.<br/>3. Қабылданбаған push суреті нақты талап етілсе, терминал терезесінің суретін қосу; дәл мәтіндік шығыс сақталған.<br/>4. Бұл жұмыста Visual Studio-дағы F5 расталмаған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Үлгілер, Dependabot, API өзгерісі және шығарылым 08-материалға жатады және бұл есепте орындалды деп көрсетілмейді. main тармағына енгізілетін барлық кейінгі өзгерістер PR арқылы өтуі керек.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Шарттардың дереккөзі: Задание_07.pdf; Неделя_07_Лаба_4_ч 1.pdf, дайындық және 1-6-тармақтар, Devops (1).zip мұрағаты.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets\" color=\"#175E9A\">GitHub ережелері</link> · <link href=\"https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0\" color=\"#175E9A\">ASP.NET Core ішіндегі User Secrets</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab04-git/README.md\" color=\"#175E9A\">Барлық дәлелдер</link>",
+      "originalStyle": "Small"
+    }
+  ]
+}

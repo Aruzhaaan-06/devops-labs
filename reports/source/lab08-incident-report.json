@@ -1,0 +1,1945 @@
+{
+  "schemaVersion": 1,
+  "file": "lab08-incident-report.pdf",
+  "originalPdfSha256": "d2bf2cec2354faade1067c7f8b2cbdedc600889261e8fab1f754141cde4ea728",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "ВКТУ · DEVOPS · 15-МАТЕРИАЛ",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "8-зертханалық жұмыс<br/>Тапсырмалар сервисіндегі инцидент",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "Қорытынды жұмыс: анықтау, кері қайтару және түзету",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Мәлімет",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Мәні",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындаған",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Есімханова Аружан Түсіпханқызы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тобы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "25-ИСТК-2о",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Университет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ВКТУ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Күні",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2026 жылғы 24 қазан",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Материал",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "15; қорытынды 8-зертханалық жұмыс",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Мақсаты",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Шығарылымды пайплайн арқылы жариялау, деградацияны мониторингтен анықтау, бұрынғы нұсқаға кері қайтару, Revert PR арқылы түзету және қайталанудың алдын алу шараларын тіркеу.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Нақты нәтиже",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функционалдық тестілерден өткен 1500 мс кідіріс әдейі шығарылды. ApiSlowRequests алерті іске қосылып, себеп Tasks/List әрекетінен табылды. Бұрынғы sha-cf768be нұсқасына rollback жасалды. GitHub жасаған Revert PR №28 түзетілген нұсқаны қайта жариялады. Бақылау деректері сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Орындау шекарасы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тәжірибе localhost оқу стендінде орындалды. Браузерді басқару бұғатталғандықтан UI скриншоттары жасалды деп көрсетілмейді: нақты Prometheus жауаптары, график және журналдар берілді. Оқытушы алдындағы онлайн қорғау бұл есеппен алмастырылмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/27\" color=\"#175E9A\">Инцидент №27</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/26\" color=\"#175E9A\">Нашар шығарылым PR №26</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/28\" color=\"#175E9A\">Revert PR №28</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0\" color=\"#175E9A\">v1.1.0 релизі</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Уақыттар UTC бойынша жазылған; жергілікті уақыт UTC+5. Негізгі өлшемдер түзетілген sha-21b953a кезеңіне қатысты. Есеп пен deploy тексеруі қосылған соңғы main сәйкестігі lab15-final-verification.json арқылы бөлек расталады.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Бастапқы күй және жұмыс реті",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Қадам",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты орындау",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "1. Нашар шығарылым",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Issue №25, feat/25-audit, PR №26; CI және merge",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "2. Анықтау",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Қолмен сұрау жібермей ApiSlowRequests firing күту",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "3. Кері қайтару",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Сақталған sha-cf768be тегіне workflow rollback",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "4. Инцидент",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "T0/T1/T2, метрикалар және себеп - issue №27",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "5. Түзету",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "GitHub жасаған Revert PR №28 және жаңа deploy",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "6. Постмортем",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Алты бөлім, әр әрекетке жеке issue №29-31",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "7. Релиз",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жаңа v1.1.0 тегі, жасалған release notes және постмортемге сілтеме",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Стенд",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "ASP.NET Core / .NET 10 API, PostgreSQL, Docker Desktop, PowerShell 7, GitHub Actions және self-hosted Windows runner. Prometheus, Grafana, cAdvisor және Dozzle бұрынғы monitoring жобасында жұмыс істеді. API хостта 8088, контейнер ішінде 8080 портын қолданады; әдістемедегі 8080 хост адресі осы стендте 8088 болып бейімделді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Бастапқы тексеру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "main=cf768be; GET / нұсқасы sha-cf768be. Readiness 200, үш monitoring нысанасы UP, ApiSlowRequests inactive. Runner online/idle болды. Бұрынғы sha-тег rollback нысанасы ретінде алдын ала сақталды; main қорғауы мен міндетті test өшірілген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Жүктеме",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бастапқы load.ps1 жаңа №37 жобасында тапсырма құрып, InProgress күйіне ауыстырып, тізімді оқыды. Қайталану шегі 20 000, кідірісі 300 мс; басқарушы процесс түзетілген нұсқа расталған соң өзінің жүктемесін ғана тоқтатты.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/baseline.json\" color=\"#175E9A\">Бастапқы күй</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/scripts/observe-lab15.py\" color=\"#175E9A\">Нақты алертті бақылаушы</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Функционалдық тест өткен нашар шығарылым",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Issue №25 бойынша TaskService.ListAsync әдісі ғана өзгертілді. Сұраудың нәтижесі бұрынғыдай қалады, бірақ әр оқу 1500 мс күтеді. Сондықтан бұл мысал функционалдық дұрыстық пен жауап уақытының бөлек қасиеттер екенін көрсетеді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "public async Task<IReadOnlyList<TaskItem>> ListAsync(\n    int? projectId, TaskItemStatus? status, CancellationToken ct)\n{\n    await Task.Delay(1500, ct); // \"аудит\"\n    return await tasks.ListAsync(projectId, status, ct);\n}"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Белгі",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ветка",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "feat/25-audit",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "PR",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "№26; Closes #25",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "PR PostgreSQL CI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "40 өтті, 0 қате",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Merge нәтижесі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "4e49041b629a30791b27654a793722dc8a4c82bf",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "main PostgreSQL CI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "40 өтті, 0 қате",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жарияланған нұсқа",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "sha-4e49041",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "T0: GitHub merged_at",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "18:10:54.000 UTC",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Неге тестілер жасыл?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тестілер HTTP күйін, жауап мазмұнын, валидацияны және деректерді тексереді. Сұраудың 1,5 секунд күтуі сол нәтижелерді өзгертпейді. Бұрынғы deploy smoke тек /health/ready-ді оқыды; ол Tasks/List кідірісін тексермеді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Ревьюдің шегі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Екі GitHub тіркелгісі бір адамға тиесілі. Сондықтан Approve - қорғалған репозиторийдегі техникалық сценарий, тәуелсіз топтас студенттің ревьюі емес. Әдейі енгізілген кідіріс оқу инциденті екені PR ішінде ашық жазылды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/26\" color=\"#175E9A\">PR және diff</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/ci-summary.json\" color=\"#175E9A\">Төрт CI іске қосуының нәтижесі</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. Алерт арқылы анықтау және себепті табу",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Автоматты бақылаушы Prometheus ережелерін шамамен әр секунд сайын оқыды. ApiSlowRequests firing болғанға дейін қолмен API диагностикасы жасалмады. Жүктеме мен пайплайнның штаттық health тексерулері жұмысын жалғастырды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Өлшем",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты мән",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "T1: бірінші firing бақылауы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "18:14:18.726 UTC",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ереже",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жалпы p95 &gt; 1 с, for=30s",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Себеп болған әрекет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "controller=Tasks, action=List",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Tasks/List p95",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1,9968 с",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Алерттен кейінгі бір HTTP жауабы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200; 1,512 с",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Нұсқа және код",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "sha-4e49041; TaskService.cs, 15-жол",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "code",
+      "text": "histogram_quantile(0.95,\n  sum by (le, controller, action) (\n    rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m])\n  )\n)"
+    },
+    {
+      "type": "heading",
+      "text": "Диагностика жолы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "PromQL әрекетті Tasks/List деп бөлді. Тек содан кейін GET / арқылы version оқылып, оның commit-і GitHub-та ашылды. TasksController.List сұрауды TaskService.ListAsync әдісіне береді; сол әдістің 15-жолындағы Task.Delay(1500, ct) кідірістің себебі болды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Екі түрлі уақыт өлшемі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Histogram p95 bucket шекаралары бойынша жуықталады. Сондықтан 1,9968 с мәнін дәл 1500 мс stopwatch өлшемімен теңестіруге болмайды. Екеуі де сұраудың белгіленген 1 секунд шегінен асқанын растайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/first-firing.json\" color=\"#175E9A\">Бірінші firing</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/diagnosis.json\" color=\"#175E9A\">PromQL, version және нақты HTTP өлшемі</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. Нақты метрикалар графигі және хронология",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/4145cc5242719c55.png",
+      "vectorSource": "reports/assets/e12374297736202b.pdf",
+      "caption": "Нақты Prometheus деректерінен құрылған график; UI скриншоты емес",
+      "evidenceKind": "data-chart"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-сурет. Prometheus query_range бастапқы деректерінен құрылған график. Бұл Grafana UI скриншоты емес. Қадам - 5 секунд; NaN аралықтары нөлмен алмастырылмады. T1 - анықтау, T2 - rollback пен алерттің сөнгенін бірге растау.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Оқиға",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "UTC",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Мағынасы",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "T0",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "18:10:54.000",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PR merge; кейін CI, image және deploy бар",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "T1",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "18:14:18.726",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бақылаушы ApiSlowRequests firing көрді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "T2",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "18:15:58.875",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Ескі нұсқа расталды; ApiSlowRequests inactive",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        64.11968503937008,
+        118.37480314960631,
+        310.7338582677166
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Анықтау: T1 - T0 = <b>204,726 с</b>. Бұл санға пайплайн мен deploy да кіреді. Оны тек Prometheus scrape/evaluation кідірісі деп атау қате.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қалпына келу: T2 - T1 = <b>100,149 с</b>. Диагностика, workflow dispatch, approval, runner кезегі, контейнерді ауыстыру және қалыпты күйді растау осы аралықта орындалды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Бақылау шегі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "T0 GitHub серверінің секундтық merged_at уақытына сүйенеді. T1 және T2 - сақталған бақылау уақыттары. Миллисекундтың жазылуы абсолют шекара дәлдігін білдірмейді; бақылаушының шамамен 1 секундтық аралығы және API сұрау уақыты бар.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/p95-actions-range.json\" color=\"#175E9A\">Әр әрекеттің бастапқы қатары</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/incident-metrics.json\" color=\"#175E9A\">Уақыттардың анықтамалары</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Алдымен сервисті қалпына келтіру",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Себеп анықталғаннан кейін түзетуді күтпей, дайын бұрынғы бейнеге rollback жасалды. Нысана - sha-cf768be. Қозғалмалы latest тегі қолданылған жоқ; дерекқор томы жойылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "gh workflow run ci-cd.yml --ref main -f tag=sha-cf768be\n# Таңдалған run үшін local environment approval\n# rollback: pull existing image -> compose up -> readiness -> version"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Тексеру",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Workflow",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "workflow_dispatch; rollback job - success",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қайтарылған нұсқа",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "sha-cf768be",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "T2",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "18:15:58.875 UTC",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ApiSlowRequests",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "inactive",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Деректер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PostgreSQL бақылау объектілері сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жүктеме",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Rollback кезінде жалғасты; байланыс қателері журналда қалды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Алерт неге бірден сөнбеуі мүмкін?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "p95 соңғы минуттағы histogram өсіміне сүйенеді. Жаңа процесс, scrape және ережені есептеу уақыттары қатарға әсер етеді; ескі баяу үлгілердің салмағы бірден жоғалмайды. T2 тек нұсқа мен inactive күйі нақты расталғанда тіркелді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Шешімнің шегі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жергілікті мақұлдау пайдаланушының тапсырмасы бойынша ассистентпен орындалды. Қорғау өшірілмеді және bypass қолданылмады. Бұл тәуелсіз адамның approval-ы деп көрсетілмейді. Rollback - жедел қалпына келтіру; main ішіндегі нашар commit келесі Revert PR арқылы ғана түзетіледі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/T2.json\" color=\"#175E9A\">Түпкі T2 және нұсқа</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/27\" color=\"#175E9A\">Инциденттегі rollback run сілтемесі</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "6. GitHub Revert PR арқылы тұрақты түзету",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "GitHub серверінің revertPullRequest операциясы PR №26 өзгерісін кері қайтаратын жаңа PR №28 жасады. Бұл - GitHub Revert батырмасының серверлік баламасы; файлды қолмен бұрынғы күйге ұқсатып жазу емес. Браузер қолжетімсіз болғандықтан операция ресми API арқылы орындалды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Қадам",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Revert PR",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "№28; сипаттамада Refs #27",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "PR test",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PostgreSQL 40/40",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ревью",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "CODEOWNER екінші тіркелгімен; бір иесі бар екені көрсетілген",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Merge және main",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "21b953a4b34b5f336aca46f2928ede6966fb47d2",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "main test -&gt; image -&gt; deploy",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Барлығы success",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты version",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "sha-21b953a",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қалпына келген Tasks/List p95",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1,759 мс",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Кодты салыстыру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Revert-тен кейін src және tests каталогтары бастапқы cf768be нұсқасымен дәл салыстырылды: айырма жоқ. Бизнес-санауыш сақталды; HTTP-контракт өзгермеді. Compose, Dockerfile, scrape және alert ережелері де өзгертілген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қайта қосылу алерті",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "ContainerRestarted соңғы 5 минуттағы process start өзгерісін көрсетеді. Басқарылатын deploy-дан кейін ол уақытша firing болуы қалыпты. Соңғы тексеруде осы терезе толық өткенше күтіліп, бес ереженің бәрі inactive болғаны расталады; уақыт қысқартылмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/28\" color=\"#175E9A\">GitHub жасаған Revert PR</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/revert-operation.json\" color=\"#175E9A\">Нақты сервер операциясы</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab08-incident/source-proof.json\" color=\"#175E9A\">Бастапқы және түзетілген код</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "7. Постмортем: не болды және неге болды",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "Не болды?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "«Аудит» атауымен тізімді оқу жолына 1500 мс жасанды күту енгізілді. Сұрау HTTP 200 қайтарды, функционалдық тестілер өтті. Деградацияны ApiSlowRequests алерті анықтады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Әсері",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Оқу жүктемесіндегі Tasks/List клиенттері ұзақ күтті; нақты бір жауап 1,512 с алды. Қалпына келтірудің T1-ден есептелген уақыты 100,149 с. Бұл барлық клиентке әсердің дәл ұзақтығы емес: T0 - merge, ал әсер deploy-дан кейін басталған. Қайта қосылу кезіндегі 5 байланыс қатесі сақталды; тапсырмалар жойылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Түпкі себеп",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әрбір оқу сұрауының тікелей жолындағы await Task.Delay(1500, ct). Аудитті орындау тәсіліне response-time бюджеті қойылмаған. Controller/action метрикалары мен root version себепті нақты commit-пен байланыстырды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Неге ертерек табылмады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функционалдық тестілер жауаптың дұрыстығын тексерді. Readiness дерекқорға қолжетімділікті тексерді. Екеуінде де Tasks/List жауап уақытының шегі болмады. Сондықтан жасыл пайплайн жеткілікті latency кепілдігі бола алмады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Не жақсы жұмыс істеді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Алерт, controller/action белгілері, нұсқаны commit-пен байланыстыру, сақталған sha-тег, қорғалған PR үрдісі және дайын rollback workflow. Алдымен сервис қалпына келтіріліп, содан кейін main Revert PR арқылы түзетілді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Әрі қарайғы әрекеттер",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тез deploy smoke енгізу, жеке performance baseline дайындау және оқиғаға әрекет ету нұсқаулығын сақтау. Әр әрекетке жеке issue ашылды; орындалған және ашық қалған жұмыс ажыратылады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/27#issuecomment-6387899631\" color=\"#175E9A\">Инциденттегі бастапқы постмортем түсініктемесі</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "8. Қайталанудың алдын алу және әрекеттер",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Issue",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Әрекет және күй",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "№29",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Deploy ішінде Tasks/List latency smoke; осы жұмыстың қорытынды PR-ына енгізілді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "№30",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PostgreSQL бар performance baseline; кеңейтілген follow-up ашық қалады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "№31",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Диагностика, rollback және қорғау жоспары; нұсқаулыққа енгізілді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Жаңа deploy шегі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "scripts/smoke-tasks-latency.ps1 үш рет деректерді өзгертпейтін GET жібереді. Әр жауап HTTP 200 болып, 1000 мс-тан аз уақытта аяқталуы тиіс; бір сұраудың timeout мәні 5 секунд. Белгісіз projectId және Todo сүзгісі үлкен жауап көлемінің ықпалын азайтады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "./scripts/smoke-tasks-latency.ps1 `\n  -BaseUrl \"http://127.0.0.1:$env:API_PORT\""
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Нұсқа",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Өлшем",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Қорытынды",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Нашар",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1615,960 мс",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "exit 1; 1000 мс шегі орындалмады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Түзетілген, үлгі 1",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "98,281 мс",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP 200; шектен төмен",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Түзетілген, үлгі 2",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "4,096 мс",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP 200; шектен төмен",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Түзетілген, үлгі 3",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2,590 мс",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP 200; шектен төмен",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        113.44251968503939,
+        202.2236220472441
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Нені қамтамасыз етеді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Осы 1500 мс регрессиясы енді deploy job ішінде байқалмай жасыл өте алмайды. Тексеру readiness-тен кейін, Job summary-ден бұрын іске қосылады. Ол статистикалық жүктеме тесті де, автоматты rollback та емес. Шек бұзылса, оператор инцидент нұсқаулығымен кері қайтарады. Кеңейтілген жүктеме жұмысы №30 issue-де бөлек сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/29\" color=\"#175E9A\">№29: latency gate</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/30\" color=\"#175E9A\">№30: performance baseline</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/31\" color=\"#175E9A\">№31: runbook</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "9. Деректер, бақылау және тексеру нәтижелері",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Тексеру",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Нашар PR және main CI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Екі іске қосуда да PostgreSQL 40/40",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Revert PR және main CI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Екі іске қосуда да PostgreSQL 40/40",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Read-only Postman",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "6 сұрау; 13 тексеру; 0 қате",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ережелер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бес ереже healthy/inactive болғанша күтілді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бұрынғы деректер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "10-12 бақылау объектілері; 13-тегі 1200 InProgress; 14-тегі 2231/531 тапсырма сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Инцидент жүктемесі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "№37 жоба; 1771 InProgress тапсырма; 5 байланыс қатесі",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жүктеме/бақылаушы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Өз процестері тоқтатылды; Prometheus бақылаушысының қатесі жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Дәлелдерді тексеру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "checks.json уақытының реті, firing фактісі, себеп болған әрекет, version/commit байланысы, rollback, GitHub Revert операциясы, кодтың дәл қалпына келуі, деректердің сақталуы және latency шегінің екі нұсқадағы нәтижесін тексереді. Бұл - сақталған өлшемдердің тексеруі; ақау сценарийі қайта орындалмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қайта тексеру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "postman collection run postman/lab08-incident.postman_collection.json `\n  --env-var expectedVersion=sha-<current-main> --no-report-events\npython scripts/check-lab15-evidence.py"
+    },
+    {
+      "type": "heading",
+      "text": "Маңызды шектеу",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "API/CLI жауаптары мен осы есептің графигі нақты деректерден алынды. Бірақ олар интерфейстің шынайы скриншоты деп көрсетілмейді. Браузер бұғаттауы салдарынан әдістемедегі alert/Grafana скриншоттары толықтырылмаған. Бұл тармақтың бағасын оқытушы анықтайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab08-incident\" color=\"#175E9A\">Барлық бастапқы дәлелдер</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/postman/lab08-incident.postman_collection.json\" color=\"#175E9A\">Қайта қолданылатын коллекция</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "10. Қорғауға дайындық: алты сұрақ",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "1. PATCH /api/tasks/{id}/status қай жолмен өтеді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "TasksController.ChangeStatus алдымен TaskService.GetAsync арқылы тапсырманы алады. Ол жоқ болса 404 береді. StatusRules.CanTransition жалған болса 409 Problem жауабын контроллер жасайды. Рұқсат етілсе TaskService.ChangeStatusAsync репозиторийдің SetStatusAsync әдісін шақырады; PostgreSQL UPDATE орындалып, нәтиже 200 болып қайтады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "2. Контейнер exit 137 арқылы аяқталды. Не істейміз?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Алдымен Docker events, inspect және журналды уақытпен салыстырамыз. Exit 137 жалғыз өзі OOM дәлелі емес: SIGKILL де сол кодты бере алады. oom оқиғасын, сол іске қосудың OOMKilled белгісін, working set/limit және restart уақытын тексереміз. Автоматты restart-тен кейін соңғы State ескі оқиғаны жаппауы мүмкін; сақталған events маңызды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "3. Неге sha-тег, ал latest емес?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "sha-тег шығарылымды нақты commit-пен байланыстырып, бұрын тексерілген нұсқаны таңдау мүмкіндігін береді. latest жаңа push сайын басқа бейнеге ауыса алады. Образ байттарын дәл бекіту үшін digest қолданылады; бұл жұмыста нұсқа, commit және бейне сәйкестігі бөлек тексеріледі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "4. Readiness пен liveness айырмасы қандай?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Liveness процестің жауап беруін, readiness PostgreSQL-мен жұмысқа дайын екенін тексереді. Осы Dockerfile HEALTHCHECK ішінде /health/live шақырылады. Сондықтан БД қолжетімсіз болса контейнер healthy болып қалуы мүмкін, ал /health/ready 503 береді. Deploy smoke readiness-ті қосымша тексереді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "5. БД құпиясөзі қайда? Өзгертсек не болады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "GitHub-та DB_PASSWORD Actions secret ретінде, жергілікті машинада Git-ке кірмейтін .env ішінде сақталады. Құпиясөз есепке немесе журналға шығарылмайды. PostgreSQL томы бұрын жасалса, env мәнін ғана ауыстыру БД пайдаланушысының құпиясөзін өзгертпейді; сәйкессіздік қосылу қатесін тудырады. Өзгеріс БД мен конфигурацияда келісілген түрде орындалуы тиіс.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "6. cAdvisor /metrics-тен нені бөлек көреді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "cAdvisor контейнердің CPU, working set, memory limit және start уақытын көреді. Қолданбаның /metrics адресі HTTP сұрау кодтарын, latency histogram және demo_tasks_created_total бизнес-санауышын береді. Екі қабат бірін-бірі толықтырады; контейнердің тірі болуы қолданушы сұрауының жылдамдығын дәлелдемейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "11. Тапсыру талаптары және он минуттық қорғау",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Критерий",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Ұпай",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Осы жұмыстың күйі",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жасыл test -&gt; image -&gt; deploy, main қорғауы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "20",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Қорғаныс сақталды; соңғы release/main бөлек manifest арқылы тексеріледі",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Алертпен табу, әрекет/жол/deploy",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "20",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты firing, Tasks/List, 15-жол және sha-4e49041",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Rollback және қалпына келу уақыты",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "20",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "100,149 с; нақты version және inactive",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Revert PR және deploy",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "15",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "GitHub жасаған PR №28; пайплайнмен жарияланды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Инцидент, суреттер, постмортем, әрекеттер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "15",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Хронология/постмортем/issue бар; UI скриншоттары толықтырылмаған",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Оқытушының екі сұрағына жауап",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "10",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Алты дайын жауап берілді; онлайн қорғау өтпеді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        226.88503937007877,
+        44.39055118110237,
+        221.95275590551185
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Өздігінен баға қойылмайды",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әдістемеде өту шегі 70 ұпай деп берілген. Бұл есеп автоматты түрде сол бағаны кепілдемейді: UI дәлелдерін, орындалған тармақтарды және онлайн жауаптарды оқытушы бағалайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қорғау жоспары",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "0-2 минут: репозиторий, main қорғауы, жасыл пайплайн және v1.1.0. 2-4 минут: алерт, controller/action, нұсқа және код жолы. 4-6 минут: rollback, T0/T1/T2 және деректердің сақталуы. 6-8 минут: Revert PR, постмортем, latency gate және ашық follow-up. 8-10 минут: оқытушының екі сұрағына жауап.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Студент орындайтын қадамдар",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Курс форумында слотқа жазылу, Teams/Zoom/Meet арқылы экран көрсетіп қорғау және есепті СДО-ға жүктеу. Оқытушының GitHub атауы әлі берілмеген. Бұрынғы жұмыстардағы қолмен жөндеу және экран суреттері жөніндегі тармақтар мен шарттары алынбаған 04-материал жалпы чек-листе сақталады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0\" color=\"#175E9A\">Релиз: есеп, ортақ мұрағат және final verification</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/lab08-incident.md\" color=\"#175E9A\">Қадамдық runbook және шектеулер</link>",
+      "originalStyle": "Body"
+    }
+  ]
+}

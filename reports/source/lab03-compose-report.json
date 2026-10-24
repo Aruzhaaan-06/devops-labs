@@ -1,0 +1,695 @@
+{
+  "schemaVersion": 1,
+  "file": "lab03-compose-report.pdf",
+  "originalPdfSha256": "c68d632deecb0ed73ece9dd7384a2da333731f0e5f6f934d6aacdbecf69c5f59",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "DEVOPS · 6-АПТА · 06-МАТЕРИАЛ",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "3-зертханалық жұмыс<br/>Docker Compose",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "3-бөлім: 6-11-тармақтар және Adminer қосымша тапсырмасы.",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "<b>Орындаған:</b> Есімханова Аружан Түсіпханқызы<br/><b>Тобы:</b> 25-ИСТК-2о<br/><b>Күні:</b> 2026 жылғы 22 қазан",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Мақсаты және орындалған тексерулер",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сервис пен PostgreSQL-ді бір Compose файлы арқылы сипаттау, деректердің өмірлік циклін, дерекқор істен шыққанда live/ready айырмашылығын, әзірлеу режимін және Adminer арқылы кестелерді қарауды тексеру.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Тармақ",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Compose up --build --wait",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "API және дерекқор healthy; Docker Compose 5.5.1",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Деректердің сақталуы: үш сан",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3 → 3 → 2; Compose-тың бөлек оқу томы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Дерекқор тоқтатылған",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "live 200; ready 503; /api/tasks 500; API healthy",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Дерекқорды қайта іске қосу",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "API қайта іске қосылмай-ақ сұраулар қайтадан 200 қайтарады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "API тексерулері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24/24 міндетті, 28/28 толық тест; Postman-да 73 тексеру",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қосымша тапсырма",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Adminer 6.1.2: db серверіне кіру, projects және tasks кестелерін қарау",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Құпия деректер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Git .env файлын елемейді; config құпиясөзі алынып тасталып жарияланған",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "14 техникалық тексеру сәтті өтті. Есепке толық compose.yaml, журналдар, жауаптар және Adminer-дің екі шынайы экран суреті кіреді. 3-зертханалық жұмыстың жинақталған тапсыру тізімінде Visual Studio консолі мен Test Explorer суреттері әлі талап етіледі; бұл интерфейс тармақтары расталды деп көрсетілмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/lab03-compose\" color=\"#175E9A\">GitHub-тағы жұмыс нұсқасы</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Compose: API сервисі",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-листингтің 1-бөлігі (барлығы 2 бөлік). Файл репозиторий түбірінде орналасқан. Бекітілген devops-labs атауы ресурстар атауларын бумаға тәуелсіз етеді және оқу ортасын басқа жобалардан ажыратады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "name: devops-labs\n \nservices:\n  api:\n    image: ${API_IMAGE:-devops-labs-demo-api}:${API_TAG:-local}\n    build:\n      context: .\n      args:\n        APP_VERSION: ${API_TAG:-local}\n    ports:\n      - \"127.0.0.1:${API_PORT:-8088}:8080\"\n    environment:\n      Storage: Postgres\n      ConnectionStrings__Db: \"Host=db;Database=demo;Username=demo;Password=${DB_PASSWORD:?Set \nDB_PASSWORD in .env}\"\n      Chaos__Enabled: \"true\"\n    depends_on:\n      db:\n        condition: service_healthy\n    restart: unless-stopped\n    memswap_limit: 256M\n    deploy:\n      resources:\n        limits:\n          cpus: \"1.0\"\n          memory: 256M\n    logging:\n      driver: json-file\n      options:\n        max-size: \"10m\"\n        max-file: \"3\""
+    },
+    {
+      "type": "heading",
+      "text": "Күту, ресурстар және журналдар",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "API PostgreSQL healthcheck тексеруі сәтті өткеннен кейін іске қосылады. Шектеулердің қолданылғаны тексерілді: NanoCpus=1 000 000 000, Memory=268 435 456 және MemorySwap=268 435 456 байт. Memory мен MemorySwap тең болуы қосымша swap жоқ екенін білдіреді. Қайта іске қосу саясаты - unless-stopped, json-file журналдары 10m × 3 шегімен сақталады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Нұсқаулыққа сәйкес, кейінгі оқу ақаулары үшін Chaos__Enabled=true қосылған. API порты тек localhost-та жарияланған. Құпиясөз DB_PASSWORD арқылы міндетті түрде беріледі; compose.yaml ішіне үлгі құпиясөз жазылмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Compose: дерекқор, Adminer, том және желі",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-листингтің 2-бөлігі (барлығы 2 бөлік). Adminer tools профилімен қосылады; әдеттегі іске қосу API мен дерекқорды көтереді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "  db:\n    image: postgres:18-alpine\n    environment:\n      POSTGRES_DB: demo\n      POSTGRES_USER: demo\n      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}\n    ports:\n      - \"127.0.0.1:${DB_PORT:-15432}:5432\"\n    volumes:\n      - pgdata:/var/lib/postgresql\n      - ./db:/docker-entrypoint-initdb.d:ro\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -h 127.0.0.1 -U demo -d demo\"]\n      interval: 5s\n      timeout: 3s\n      retries: 10\n    restart: unless-stopped\n \n  adminer:\n    image: adminer:latest\n    profiles: [tools]\n    ports:\n      - \"127.0.0.1:${ADMINER_PORT:-8083}:8080\"\n    environment:\n      ADMINER_DEFAULT_SERVER: db\n    depends_on:\n      db:\n        condition: service_healthy\n    restart: unless-stopped\n \nvolumes:\n  pgdata:\n \nnetworks:\n  default:\n    ipam:\n      config:\n        - subnet: ${COMPOSE_SUBNET:-10.254.54.0/24}"
+    },
+    {
+      "type": "heading",
+      "text": "Осы ортаның параметрлері",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бос емес 8080 орнына 8088 қолданылады; PostgreSQL 15432 портында жарияланған. Контейнерлер db атауы арқылы ішкі 5432 портында байланысады. Docker-дің стандартты пулы таусылғандықтан, бос ішкі желі анық көрсетілді. Алдыңғы жұмыстың атаулы томы бөлек сақталған; тәжірибеде devops-labs_pgdata пайдаланылады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. Деректердің сақталуы: үш сан",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жаңа томда seed.sql екі жоба жасады. API арқылы Compose жобасы қосылды. Содан кейін 9-тармақтың екі команда тізбегі орындалды:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "POST /api/projects  {\"name\":\"Compose\"}\ndocker compose down\ndocker compose up -d --wait\ndocker compose down -v\ndocker compose up -d --wait"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Өлшеу сәті",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Саны және түсіндірмесі",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "down алдында",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3: екі оқу жобасы және жасалған Compose жобасы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "down және up кейін",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3: контейнерлер мен желі қайта жасалды, атаулы том сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "down -v және up кейін",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2: ескі оқу томы жойылып, жаңасы seed.sql арқылы бапталды; Compose жобасы енді жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Тазартудан кейін неге нөл емес?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "PGDATA бос болса, PostgreSQL entrypoint бағдарламасы db/seed.sql скриптін қайта орындайды. Скрипт «Курс DevOps» және «Домашние дела» жобаларын, сондай-ақ төрт тапсырма жасайды. Сондықтан толық тазартудан кейін дәл екі оқу жобасы қайтарылады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Резервтік көшірме тексерілді",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "down -v алдында pg_dump -Fc орындалды. Мұрағат репозиторийден тыс жерге көшіріліп, бөлек demo_restore дерекқорына қалпына келтірілді: Compose-ты қоса, барлық үш жоба табылды. Тазарту алдында негізгі оқу томында бөгде жобалар мен тапсырмалар жоқтығы да тексерілді. 05-материалдың томы жойылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "pg_dump -U demo -d demo -Fc -f /tmp/lab06-before-reset.dump\npg_restore -U demo -d demo_restore --no-owner /tmp/lab06-before-reset.dump"
+    },
+    {
+      "type": "heading",
+      "text": "Қолмен бапталған ортаны талдау, 6-тармақ",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "05-материалдағы орналастыруды ғана қайталау үшін 7 команда және параметрлердің 21 қолданысы қажет: том, дерекқор, дайындық тексеруі, API құрастыру, желі, дерекқорды желіге қосу және API іске қосу. Күту қайталаулары, оқу қателері мен тестілер бұл санға кірмейді. Compose сипаттаманы бір файлға, іске қосуды бір командаға біріктіреді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. Желі, дерекқорды тоқтату және дайындық",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "db атауы API контейнерінен getent hosts db командасы арқылы анықталды. Кейін docker compose stop db және нақты HTTP сұраулары орындалды:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Маршрут",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Дерекқор тоқтатылғандағы жауап",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "/health/live",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200 · процесс жұмыс істеп тұр",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "/health/ready",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "503 · дерекқор қолжетімсіз",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "/api/tasks",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "500 · SQL сұрауы орындалмады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "API неге әлі healthy күйінде?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dockerfile /health/live маршрутын тексереді: қолданба процесі жауап беруді жалғастырады. /health/ready дайындық тексеруі PostgreSQL-ді бөлек қамтып, 503 қайтарады. Тапсырмалар сұрауы дерекқорға шынымен жүгінетіндіктен, 500 қайтарылады. healthy күйі тәуелді сервистің қолжетімді екенін білдірмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "docker compose start db кейін не болды?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Дайындық және тапсырмалар сұрауы қайтадан 200 қайтара бастады. API іске қосылған уақыт пен қайта іске қосу санауышы өзгерген жоқ. depends_on тәуелділікті үздіксіз бақыламайды, тек up кезіндегі іске қосу ретін анықтайды. Дерекқор қалпына келгеннен кейін Npgsql сұрауларды қайта орындай алды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Құпия деректер және .gitignore",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тапсыру тізіміндегі дәл команда орындалды: Select-String '^\\.env$' .gitignore. Төменде жергілікті жолы алмастырылған шығыс берілген:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": ".gitignore:7:.env"
+    },
+    {
+      "type": "paragraph",
+      "text": "Құпиясөз тек жергілікті .env ішінде сақталады. Git-ке бос .env.example қосылған. Нәтижелік конфигурация docker compose config арқылы тексерілді; жариялау үшін құпиясөз бен абсолютті жолдар алынып тасталды. Өңделмеген config жарияланбауы керек: онда айнымалылардың нақты қойылған мәндері бар.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "DB_PASSWORD жоқ болса, Compose сервистерді іске қоспай тоқтайды. Осылайша, нұсқаулықтағы қосалқы demo мәнінің орнына жергілікті құпиясөзді міндетті беру талабы қойылған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Әзірлеу, тестілер және ортақ тапсыру тізімі",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Compose API контейнері тоқтатылып, дерекқор контейнерде қалдырылды. Windows-тағы dotnet процесі сол 8088 портын пайдаланып, PostgreSQL-ге localhost:15432 арқылы қосылды. Жобалар мен тапсырмалар сұраулары 200 қайтарды. Тестілерден кейін Windows процесі аяқталып, толық Compose ортасы healthy күйіне қайтарылды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Тексеру",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Міндетті іріктеме",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PostgreSQL-де 24/24: 7 юнит + 17 интеграциялық тест",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Толық жиынтық",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PostgreSQL-де 28/28: 7 юнит + 21 интеграциялық тест",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP сценарийлері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "26 сәтті сұрау, оның ішінде үш тестілік жобаны тазарту",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24 сұрау, 73 тексеру, 0 қате",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Тестілер бөлек demo_tests дерекқорын пайдаланды. 24 санын алу үшін DueDate-тің төрт қосымша жағдайы алынып тасталды; толық іске қосу барлық 28 тестіні қамтиды. API коды өзгерген жоқ. Postman нәтижелері бұлтқа жарияланбай, жергілікті сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Алдыңғы бөлімнің 1-5-тармақтары",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Атаулы томсыз жаңа PostgreSQL контейнері басқа сақтау орнын алады және notes кестесін көрмейді. Атаулы том қайта қосылғанда деректер сақталады, ал seed.sql орындалмайды: PGDATA бұрыннан бапталған. 05-материалда Windows / API контейнері қайта іске қосылғаннан кейін деректердің сақталуы расталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Алдыңғы бөлімнің екі нақты қатесі және себептері:",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "Unhandled exception. System.InvalidOperationException: Не задана строка подключения \nConnectionStrings:Db\nUnhandled exception. Npgsql.NpgsqlException (0x80004005): Failed to connect to 127.0.0.1:5432"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бірінші қате: Production ортасында Development конфигурациясындағы қосылу жолы жүктелмеген. Екінші қате: API контейнерінің ішіндегі localhost PostgreSQL контейнерін емес, сол API контейнерін көрсетеді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Орындалуы күтілетін тармақтар",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жинақталған тапсыру тізіміндегі Visual Studio консолі мен Test Explorer-дегі 24 жасыл жағдайдың экран суреттері әзірге жоқ. Windows іске қосылуы dotnet арқылы тексерілген; F5 арқылы қолмен іске қосылғаны расталмаған. 06-материалдың жаңа тармақтары тапсыру шарттары рұқсат ететін команда шығысы және жауаптар арқылы расталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "6. Қосымша тапсырма: Adminer",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Adminer 6.1.2 tools профилімен localhost:8083 мекенжайында іске қосылды. Кіру параметрлері: PostgreSQL, db сервері, demo пайдаланушысы, demo дерекқоры; құпиясөз жергілікті .env ішінен алынды. Екі кесте де қаралды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-сурет. projects кестесі: оқу жобалары және 3 → 3 → 2 тәжірибесінен кейін Postman коллекциясы қалдырған үш жоба.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/21c23f0b1c9a3ada.jpg",
+      "caption": "adminer-projects.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "2-сурет. tasks кестесі: оқу тапсырмалары және Postman коллекциясының деректері. Бұл - веб-интерфейстің шынайы суреттері.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/dd1b12233bc4a01e.jpg",
+      "caption": "adminer-tasks.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "heading",
+      "text": "Қай хостты көрсету керек және неге localhost емес?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "db - Compose ортақ желісіндегі PostgreSQL DNS атауы. Adminer ішіндегі localhost Adminer контейнерінің өзін білдірер еді. Көрсетілімнен кейін сеанс аяқталып, сервис ортасы тоқтатылды, атаулы том сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/lab03-compose.md\" color=\"#175E9A\">Іске қосу командалары және жауаптар</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab03-compose/README.md\" color=\"#175E9A\">Барлық журналдар мен дәлелдер</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "Дереккөз: Devops (1).zip мұрағатындағы 06-материал, «Неделя 6 - Лаба 3. Данные и Docker Compose», 6-11-тармақтар және қосымша. <link href=\"https://docs.docker.com/compose/how-tos/startup-order/\" color=\"#175E9A\">Compose іске қосу реті</link> · <link href=\"https://hub.docker.com/_/adminer/\" color=\"#175E9A\">Adminer ресми бейнесі</link>",
+      "originalStyle": "Small"
+    }
+  ]
+}

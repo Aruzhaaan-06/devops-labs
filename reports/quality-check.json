@@ -1,0 +1,480 @@
+{
+  "scope": "Автоматты техникалық тексеру; ГОСТ сертификаты немесе ресми баға емес",
+  "pdfCount": 15,
+  "labReportCount": 14,
+  "totalPages": 234,
+  "passed": 15,
+  "failed": 0,
+  "reports": [
+    {
+      "file": "lab01-part1-report.pdf",
+      "pages": 14,
+      "sha256": "3a79a63f75e89a014dd2e86e9083aad2229f1a07501d49b1172dbd28c7f91b6d",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 9266,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab01-part2-report.pdf",
+      "pages": 22,
+      "sha256": "4662a79c4a27aec6240f98036a9b9df1723bebeffcc558d9ccb9c482bb4f6de3",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 16691,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab02-part1-report.pdf",
+      "pages": 13,
+      "sha256": "7d14477ad350699c4b6f14e22b99897eb8704355900aeb4782e0d61a1322944d",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 8545,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab03-compose-report.pdf",
+      "pages": 14,
+      "sha256": "dfea3f4bb42fd23d0cf2c36e17115f993bf66d0cdcb07f25285a01a92bacd723",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 9958,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab03-postgres-report.pdf",
+      "pages": 15,
+      "sha256": "808032a32f170dbd5e171b9ace86fbeb60d22b0955776f455b1526cc5ff1cae9",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 10939,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab04-git-report.pdf",
+      "pages": 16,
+      "sha256": "a0ed2a487541f5a9933f22a5ebb6be5c2b7149227c21afe407c00d1d9e88969d",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 9693,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab04-release-report.pdf",
+      "pages": 17,
+      "sha256": "a3ba82ede5729e0e459aa43c3cc4dbf1230028e2a76cc8a8d21213214c4e7d30",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 11638,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab05-cd-report.pdf",
+      "pages": 15,
+      "sha256": "c0d5a99678a786615497e7e48ee250d4e26e279d40d67ed86801d1d68577fe1c",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 10511,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab05-ci-report.pdf",
+      "pages": 14,
+      "sha256": "2e3d131ef5251bd9261036b7d2ec16549d1883bbb24969db845b5c7bd38105b4",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 9590,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab06-failures-report.pdf",
+      "pages": 14,
+      "sha256": "1cf3dff2faae576a127b172b4a4f92a040a2ca6aa078835e7a7ed6f25c9de030",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 10556,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab06-resources-report.pdf",
+      "pages": 15,
+      "sha256": "6d31cb04e973e7d91ac4c66fc6c492a2338ce78e7bb18412aac110ffc68acdc4",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 12935,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab07-alerts-report.pdf",
+      "pages": 18,
+      "sha256": "27fcb9020067d8c7e810ced83028fee1c288b66eae92db99c09d14ac04d6fb11",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 16454,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab07-metrics-report.pdf",
+      "pages": 18,
+      "sha256": "3b58105740ff67dd1e703139a7f6cf17ca611422b0af8349f768d2f0c82d710a",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 11701,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab08-incident-report.pdf",
+      "pages": 20,
+      "sha256": "4f5484623d501920c3cab8cfc95136d4aae8548707cd7f6ac888ab1550213657",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 14922,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [
+        "Скриншоттың ішкі мәтінін толық оқу үшін түпнұсқа сілтемесін пайдалану қажет болуы мүмкін"
+      ],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "submission-summary-kk.pdf",
+      "pages": 9,
+      "sha256": "5318c7019e991f26e90846ebf0f08b93fb074876b9534efc3fc9c607fb315576",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        12.0,
+        14.0
+      ],
+      "body14Characters": 5791,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    }
+  ]
+}
