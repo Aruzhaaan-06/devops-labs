@@ -2,7 +2,7 @@
   "info": {
     "name": "Lab07 alerts - recovered real API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Run only with load stopped and after failure recovery. Keeps its one project/task as evidence. Raw business counter increments once after201 and ignores400/404. Real local API/Prometheus; no mocks."
+    "description": "Run only with load stopped and after failure recovery. Keeps its one project/task as evidence. Raw business counter increments once after201 and ignores400/404. Real local API/Prometheus; no mocks. A fresh process may not export the lazy service counter until its first creation; only the initial read treats absence as zero. Reads after successful creation must contain the actual metric."
   },
   "variable": [
     {
@@ -46,7 +46,7 @@
             "type": "text/javascript",
             "exec": [
               "pm.test('Metrics 200',()=>pm.response.to.have.status(200));",
-              "const line=pm.response.text().split('\\n').find(x=>x.startsWith('demo_tasks_created_total ')); pm.expect(line).to.exist; const value=Number(line.split(/\\s+/)[1]);",
+              "const line=pm.response.text().split('\\n').find(x=>x.startsWith('demo_tasks_created_total ')); const value=line ? Number(line.split(/\\s+/)[1]) : 0;",
               "pm.test('Counter finite',()=>pm.expect(Number.isFinite(value)).to.eql(true)); pm.collectionVariables.set('beforeCounter',String(value));"
             ]
           }
