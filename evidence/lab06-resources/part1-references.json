@@ -1,0 +1,23 @@
+{
+  "sourceMaterial": 11,
+  "date": "2026-10-23",
+  "note": "Scenarios2-5 are the retained real runs from material11, not rerun on Oct24. Docker daemon event buffer is not historical storage.",
+  "files": [
+    {
+      "path": "evidence/lab06-failures/scenario-2-request-error.json",
+      "sha256": "a23149ef3ee2312087ad99ad79c97caee05a32159ee74ed949af3af02df5575b"
+    },
+    {
+      "path": "evidence/lab06-failures/scenario-3-auto-restart.json",
+      "sha256": "107fd9df7c3c1468587f4417b979819a3f6adae09ede4cac8bd1b6ecf955a49b"
+    },
+    {
+      "path": "evidence/lab06-failures/scenario-4-no-restart.json",
+      "sha256": "9cc8f9cc22c5ae9ab6f590676080df903b6a2beb1704f9b2e511406ad9525608"
+    },
+    {
+      "path": "evidence/lab06-failures/scenario-5-graceful-stop.json",
+      "sha256": "5f35cb2239d80bd6cbdb97718b0cb43244b8e4c8acbe4def61b1a42fe8820c74"
+    }
+  ]
+}

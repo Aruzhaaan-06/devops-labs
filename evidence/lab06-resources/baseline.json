@@ -1,0 +1,6 @@
+{
+  "main": "2dd5a9f236634e3f2b27d74d459acff14c873650",
+  "image": "devops-labs-demo-api:lab12-2dd5a9f",
+  "ps": "NAME                IMAGE                                COMMAND                  SERVICE   CREATED          STATUS                    PORTS\ndevops-labs-api-1   devops-labs-demo-api:lab12-2dd5a9f   \"dotnet DemoApi.dll\"     api       12 seconds ago   Up 5 seconds (healthy)    127.0.0.1:8088->8080/tcp\ndevops-labs-db-1    postgres:18-alpine                   \"docker-entrypoint.s…\"   db        12 seconds ago   Up 11 seconds (healthy)   127.0.0.1:15432->5432/tcp\n",
+  "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28"
+}

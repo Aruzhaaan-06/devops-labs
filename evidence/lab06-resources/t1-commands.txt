@@ -1,0 +1,89 @@
+2026-10-24T16:03:08.794562+00:00 $ git diff -- compose.yaml
+
+exit=0
+2026-10-24T16:03:08.845061+00:00 $ docker inspect --format "{{index .Config.Labels \"com.docker.compose.project\"}}" devops-labs-api-1
+devops-labs
+
+exit=0
+{"utc": "2026-10-24T16:03:08.891275+00:00", "method": "POST", "path": "/api/projects", "status": 201, "body": {"id": 25, "name": "lab12-retained-4be66504d51f4b30841cdb6be9400c48", "createdAt": "2026-10-24T16:03:09.003333+00:00"}, "seconds": 0.14133}
+{"utc": "2026-10-24T16:03:09.033089+00:00", "method": "POST", "path": "/api/tasks", "status": 201, "body": {"id": 27, "projectId": 25, "title": "Lab12 retained through OOM and DB outage", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-24T16:03:09.064687+00:00", "updatedAt": "2026-10-24T16:03:09.064687+00:00"}, "seconds": 0.047489}
+{"utc": "2026-10-24T16:03:10.466035+00:00", "method": "POST", "path": "/api/chaos/leak?mb=80", "status": 200, "body": {"leakedMb": 80}, "seconds": 0.082877}
+{"utc": "2026-10-24T16:03:11.597672+00:00", "method": "POST", "path": "/api/chaos/leak?mb=80", "status": 200, "body": {"leakedMb": 160}, "seconds": 0.077496}
+{"utc": "2026-10-24T16:03:12.720668+00:00", "method": "POST", "path": "/api/chaos/leak?mb=80", "status": null, "transportError": "RemoteDisconnected: Remote end closed connection without response", "seconds": 0.065612}
+{"utc": "2026-10-24T16:03:19.110551+00:00", "method": "GET", "path": "/api/projects/25", "status": 200, "body": {"id": 25, "name": "lab12-retained-4be66504d51f4b30841cdb6be9400c48", "createdAt": "2026-10-24T16:03:09.003333+00:00"}, "seconds": 0.075738}
+{"utc": "2026-10-24T16:03:19.186749+00:00", "method": "GET", "path": "/api/tasks/27", "status": 200, "body": {"id": 27, "projectId": 25, "title": "Lab12 retained through OOM and DB outage", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-24T16:03:09.064687+00:00", "updatedAt": "2026-10-24T16:03:09.064687+00:00"}, "seconds": 0.025511}
+2026-10-24T16:03:21.974639+00:00 $ docker compose stop db
+ Container devops-labs-db-1 Stopping 
+ Container devops-labs-db-1 Stopped 
+
+exit=0
+{"utc": "2026-10-24T16:03:21.974639+00:00", "method": "GET", "path": "/health/live", "status": 200, "body": "Healthy", "seconds": 0.00418}
+{"utc": "2026-10-24T16:03:21.978917+00:00", "method": "GET", "path": "/health/ready", "status": 503, "body": "Unhealthy", "seconds": 3.461356}
+{"utc": "2026-10-24T16:03:25.440213+00:00", "method": "GET", "path": "/api/tasks", "status": 500, "body": {"type": "https://tools.ietf.org/html/rfc9110#section-15.6.1", "title": "An error occurred while processing your request.", "status": 500, "traceId": "00-9b06cb7628b0bddbbfa4cd216244eb41-60c3d23d3cfb53e2-00"}, "seconds": 0.053667}
+2026-10-24T16:03:25.641837+00:00 $ docker compose ps -a
+NAME                    IMAGE                                COMMAND                  SERVICE   CREATED         STATUS                     PORTS
+devops-labs-adminer-1   adminer:latest                       "entrypoint.sh docke…"   adminer   2 days ago      Exited (0) 2 days ago      
+devops-labs-api-1       devops-labs-demo-api:lab12-2dd5a9f   "dotnet DemoApi.dll"     api       2 minutes ago   Up 12 seconds (healthy)    127.0.0.1:8088->8080/tcp
+devops-labs-db-1        postgres:18-alpine                   "docker-entrypoint.s…"   db        2 minutes ago   Exited (0) 3 seconds ago   
+
+exit=0
+2026-10-24T16:03:26.112426+00:00 $ docker compose start db
+ Container devops-labs-db-1 Starting 
+ Container devops-labs-db-1 Started 
+
+exit=0
+{"utc": "2026-10-24T16:03:26.112426+00:00", "method": "GET", "path": "/health/ready", "status": 503, "body": "Unhealthy", "seconds": 0.006658}
+{"utc": "2026-10-24T16:03:27.119939+00:00", "method": "GET", "path": "/health/ready", "status": 200, "body": "Healthy", "seconds": 0.030564}
+{"utc": "2026-10-24T16:03:27.197188+00:00", "method": "GET", "path": "/api/projects/25", "status": 200, "body": {"id": 25, "name": "lab12-retained-4be66504d51f4b30841cdb6be9400c48", "createdAt": "2026-10-24T16:03:09.003333+00:00"}, "seconds": 0.011108}
+{"utc": "2026-10-24T16:03:27.208721+00:00", "method": "GET", "path": "/api/tasks/27", "status": 200, "body": {"id": 27, "projectId": 25, "title": "Lab12 retained through OOM and DB outage", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-24T16:03:09.064687+00:00", "updatedAt": "2026-10-24T16:03:09.064687+00:00"}, "seconds": 0.006183}
+2026-10-24T16:03:31.533417+00:00 $ docker compose up -d --no-build
+ Container devops-labs-db-1 Running 
+ Container devops-labs-api-1 Recreate 
+ Container devops-labs-api-1 Recreated 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Starting 
+ Container devops-labs-api-1 Started 
+
+exit=0
+{"utc": "2026-10-24T16:04:11.639917+00:00", "method": "GET", "path": "/health/live", "status": 200, "body": "Healthy", "seconds": 0.007195}
+{"utc": "2026-10-24T16:04:11.647153+00:00", "method": "GET", "path": "/health/ready", "status": 200, "body": "Healthy", "seconds": 0.061862}
+2026-10-24T16:04:11.852107+00:00 $ docker compose ps
+NAME                IMAGE                                COMMAND                  SERVICE   CREATED          STATUS                      PORTS
+devops-labs-api-1   devops-labs-demo-api:lab12-2dd5a9f   "dotnet DemoApi.dll"     api       44 seconds ago   Up 40 seconds (unhealthy)   127.0.0.1:8088->8080/tcp
+devops-labs-db-1    postgres:18-alpine                   "docker-entrypoint.s…"   db        2 minutes ago    Up 45 seconds (healthy)     127.0.0.1:15432->5432/tcp
+
+exit=0
+2026-10-24T16:04:18.819581+00:00 $ docker compose up -d --no-build --wait --wait-timeout 90
+ Container devops-labs-db-1 Running 
+ Container devops-labs-api-1 Recreate 
+ Container devops-labs-api-1 Recreated 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Starting 
+ Container devops-labs-api-1 Started 
+ Container devops-labs-api-1 Waiting 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Healthy 
+
+exit=0
+{"utc": "2026-10-24T16:04:18.908627+00:00", "method": "GET", "path": "/api/tasks", "status": 200, "body": [{"id": 1, "projectId": 1, "title": "Установить Docker Desktop", "description": null, "status": "Done", "dueDate": null, "createdAt": "2026-10-22T13:42:52.755467+00:00", "updatedAt": "2026-10-22T13:42:52.755467+00:00"}, {"id": 2, "projectId": 1, "title": "Запустить БД в контейнере", "description": null, "status": "InProgress", "dueDate": "2026-10-23", "createdAt": "2026-10-22T13:42:52.755467+00:00", "updatedAt": "2026-10-22T13:42:52.755467+00:00"}, {"id": 3, "projectId": 1, "title": "Написать Dockerfile", "description": null, "status": "Todo", "dueDate": "2026-10-29", "createdAt": "2026-10-22T13:42:52.755467+00:00", "updatedAt": "2026-10-22T13:42:52.755467+00:00"}, {"id": 4, "projectId": 2, "title": "Купить продукты", "description": null, "status": "Todo", "dueDate": "2026-10-21", "createdAt": "2026-10-22T13:42:52.755467+00:00", "updatedAt": "2026-10-22T13:42:52.755467+00:00"}, {"id": 10, "projectId": 6, "title": "Dockerfile подготовлен", "description": "Проверка PUT в лабораторной 1", "status": "Done", "dueDate": null, "createdAt": "2026-10-22T13:46:29.7625+00:00", "updatedAt": "2026-10-22T13:46:30.745328+00:00"}, {"id": 11, "projectId": 6, "title": "Проверка запрета Todo → Done", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-22T13:46:30.369741+00:00", "updatedAt": "2026-10-22T13:46:30.369741+00:00"}, {"id": 12, "projectId": 7, "title": "Todo без срока", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-22T13:46:31.021746+00:00", "updatedAt": "2026-10-22T13:46:31.021746+00:00"}, {"id": 13, "projectId": 7, "title": "Задача в работе", "description": null, "status": "InProgress", "dueDate": null, "createdAt": "2026-10-22T13:46:31.118579+00:00", "updatedAt": "2026-10-22T13:46:31.224778+00:00"}, {"id": 14, "projectId": 7, "title": "Просроченная Todo", "description": "UTC: позавчера", "status": "Todo", "dueDate": "2026-10-20", "createdAt": "2026-10-22T13:46:31.31896+00:00", "updatedAt": "2026-10-22T13:46:31.39828+00:00"}, {"id": 15, "projectId": 13, "title": "Dockerfile подготовлен", "description": "Проверка PUT в лабораторной 1", "status": "Done", "dueDate": null, "createdAt": "2026-10-23T07:42:27.403645+00:00", "updatedAt": "2026-10-23T07:42:28.37543+00:00"}, {"id": 16, "projectId": 13, "title": "Проверка запрета Todo → Done", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T07:42:28.002907+00:00", "updatedAt": "2026-10-23T07:42:28.002907+00:00"}, {"id": 17, "projectId": 14, "title": "Todo без срока", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T07:42:28.638162+00:00", "updatedAt": "2026-10-23T07:42:28.638162+00:00"}, {"id": 18, "projectId": 14, "title": "Задача в работе", "description": null, "status": "InProgress", "dueDate": null, "createdAt": "2026-10-23T07:42:28.731204+00:00", "updatedAt": "2026-10-23T07:42:28.825176+00:00"}, {"id": 19, "projectId": 14, "title": "Просроченная Todo", "description": "UTC: позавчера", "status": "Todo", "dueDate": "2026-10-21", "createdAt": "2026-10-23T07:42:28.916858+00:00", "updatedAt": "2026-10-23T07:42:29.010617+00:00"}, {"id": 20, "projectId": 18, "title": "Lab10: retained across both rollbacks", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T08:45:38.281214+00:00", "updatedAt": "2026-10-23T08:45:38.281214+00:00"}, {"id": 21, "projectId": 19, "title": "Dockerfile подготовлен", "description": "Проверка PUT в лабораторной 1", "status": "Done", "dueDate": null, "createdAt": "2026-10-23T09:00:18.428819+00:00", "updatedAt": "2026-10-23T09:00:19.519726+00:00"}, {"id": 22, "projectId": 19, "title": "Проверка запрета Todo → Done", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:00:19.070695+00:00", "updatedAt": "2026-10-23T09:00:19.070695+00:00"}, {"id": 23, "projectId": 20, "title": "Todo без срока", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:00:19.803455+00:00", "updatedAt": "2026-10-23T09:00:19.803455+00:00"}, {"id": 24, "projectId": 20, "title": "Задача в работе", "description": null, "status": "InProgress", "dueDate": null, "createdAt": "2026-10-23T09:00:19.925944+00:00", "updatedAt": "2026-10-23T09:00:20.018177+00:00"}, {"id": 25, "projectId": 20, "title": "Просроченная Todo", "description": "UTC: позавчера", "status": "Todo", "dueDate": "2026-10-21", "createdAt": "2026-10-23T09:00:20.130024+00:00", "updatedAt": "2026-10-23T09:00:20.251109+00:00"}, {"id": 26, "projectId": 24, "title": "Lab11: persists across process failures", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-23T09:22:15.293224+00:00", "updatedAt": "2026-10-23T09:22:15.293224+00:00"}, {"id": 27, "projectId": 25, "title": "Lab12 retained through OOM and DB outage", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-24T16:03:09.064687+00:00", "updatedAt": "2026-10-24T16:03:09.064687+00:00"}], "seconds": 0.114133}
+{"utc": "2026-10-24T16:04:19.022955+00:00", "method": "GET", "path": "/api/chaos/slow?ms=3000", "status": 200, "body": {"delayedMs": 3000}, "seconds": 3.027295}
+{"utc": "2026-10-24T16:04:22.050281+00:00", "method": "GET", "path": "/health/ready", "status": 200, "body": "Healthy", "seconds": 0.03481}
+{"utc": "2026-10-24T16:04:22.265266+00:00", "method": "GET", "path": "/", "status": 200, "body": {"service": "DemoApi", "version": "lab12-2dd5a9f", "host": "a947bf41c1bc", "message": "hello from CI/CD"}, "seconds": 0.022614}
+{"utc": "2026-10-24T16:04:22.287942+00:00", "method": "GET", "path": "/health/ready", "status": 200, "body": "Healthy", "seconds": 0.005789}
+{"utc": "2026-10-24T16:04:22.294056+00:00", "method": "GET", "path": "/health/live", "status": 200, "body": "Healthy", "seconds": 0.021245}
+{"utc": "2026-10-24T16:04:22.315041+00:00", "method": "GET", "path": "/api/projects/25", "status": 200, "body": {"id": 25, "name": "lab12-retained-4be66504d51f4b30841cdb6be9400c48", "createdAt": "2026-10-24T16:03:09.003333+00:00"}, "seconds": 0.019574}
+{"utc": "2026-10-24T16:04:22.334616+00:00", "method": "GET", "path": "/api/tasks/27", "status": 200, "body": {"id": 27, "projectId": 25, "title": "Lab12 retained through OOM and DB outage", "description": null, "status": "Todo", "dueDate": null, "createdAt": "2026-10-24T16:03:09.064687+00:00", "updatedAt": "2026-10-24T16:03:09.064687+00:00"}, "seconds": 0.012361}
+2026-10-24T16:04:23.713387+00:00 $ docker compose up -d --no-build --wait --wait-timeout 90
+ Container devops-labs-api-1 Running 
+ Container devops-labs-db-1 Running 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-db-1 Healthy 
+ Container devops-labs-api-1 Waiting 
+ Container devops-labs-db-1 Waiting 
+ Container devops-labs-api-1 Healthy 
+ Container devops-labs-db-1 Healthy 
+
+exit=0

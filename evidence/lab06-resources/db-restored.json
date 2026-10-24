@@ -1,0 +1,102 @@
+{
+  "inspection": {
+    "utc": "2026-10-24T16:03:27.149355+00:00",
+    "id": "214389e314395b4d2d13034a7daf47d1b29c81f6cf84097947d0abed8710d291",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-24T16:03:12.80377177Z",
+      "Health": {
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "End": "2026-10-24T16:02:40.37090393Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:02:40.338755957Z"
+          },
+          {
+            "End": "2026-10-24T16:02:50.404102199Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:02:50.370693827Z"
+          },
+          {
+            "End": "2026-10-24T16:03:00.436326694Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:00.405413612Z"
+          },
+          {
+            "End": "2026-10-24T16:03:10.475078812Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:10.436821342Z"
+          },
+          {
+            "End": "2026-10-24T16:03:18.302815696Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:18.210781387Z"
+          }
+        ],
+        "Status": "healthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3875,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:03:13.096091934Z",
+      "Status": "running"
+    },
+    "restartCount": 1,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 10000000000,
+      "Retries": 3,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD-SHELL",
+        "curl -fsS http://localhost:8080/health/live || exit 1"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "marker": {
+    "project": {
+      "utc": "2026-10-24T16:03:27.197188+00:00",
+      "method": "GET",
+      "path": "/api/projects/25",
+      "status": 200,
+      "body": {
+        "id": 25,
+        "name": "lab12-retained-4be66504d51f4b30841cdb6be9400c48",
+        "createdAt": "2026-10-24T16:03:09.003333+00:00"
+      },
+      "seconds": 0.011108
+    },
+    "task": {
+      "utc": "2026-10-24T16:03:27.208721+00:00",
+      "method": "GET",
+      "path": "/api/tasks/27",
+      "status": 200,
+      "body": {
+        "id": 27,
+        "projectId": 25,
+        "title": "Lab12 retained through OOM and DB outage",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-24T16:03:09.064687+00:00",
+        "updatedAt": "2026-10-24T16:03:09.064687+00:00"
+      },
+      "seconds": 0.006183
+    }
+  }
+}

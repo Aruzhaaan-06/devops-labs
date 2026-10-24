@@ -1,0 +1,7 @@
+{
+  "healthyExitCode": 0,
+  "missingExitCode": 1,
+  "healthyRequiredSectionsPresent": true,
+  "missingContainerExplicitError": true,
+  "containerIdentityStartedAtRestartCountUnchanged": true
+}

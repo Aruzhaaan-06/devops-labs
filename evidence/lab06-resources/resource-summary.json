@@ -1,0 +1,14 @@
+{
+  "batches": 38,
+  "apiSamples": 37,
+  "maxMemoryPercent": 78.58,
+  "maxCpuPercent": 33.3,
+  "failedBatches": [
+    {
+      "utc": "2026-10-24T16:03:28.265006+00:00",
+      "exitCode": 1,
+      "stderr": "EOF"
+    }
+  ],
+  "note": "Repeated Docker stats --no-stream; instantaneous samples can miss the peak. cgroup counters after restart may refer to the new process/cgroup."
+}
