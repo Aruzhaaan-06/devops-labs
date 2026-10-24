@@ -1,0 +1,16 @@
+{
+  "data": {
+    "revertPullRequest": {
+      "pullRequest": {
+        "number": 26,
+        "url": "https://github.com/Aruzhaaan-06/devops-labs/pull/26"
+      },
+      "revertPullRequest": {
+        "number": 28,
+        "url": "https://github.com/Aruzhaaan-06/devops-labs/pull/28",
+        "id": "PR_kwDOVSp68c8AAAABKeZX1g",
+        "headRefName": "revert-26-feat/25-audit"
+      }
+    }
+  }
+}

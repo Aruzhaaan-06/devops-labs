@@ -1,0 +1,42 @@
+[
+  {
+    "stage": "bad-pr",
+    "id": 40119406410,
+    "url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/40119406410",
+    "sha": "73d045577355a3a9a03e661fbfc2698dd6ea6cb0",
+    "event": "pull_request",
+    "conclusion": "success",
+    "postgresPassed": 40,
+    "postgresFailed": 0
+  },
+  {
+    "stage": "bad-main",
+    "id": 40119520726,
+    "url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/40119520726",
+    "sha": "4e49041b629a30791b27654a793722dc8a4c82bf",
+    "event": "push",
+    "conclusion": "success",
+    "postgresPassed": 40,
+    "postgresFailed": 0
+  },
+  {
+    "stage": "revert-pr",
+    "id": 40119932907,
+    "url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/40119932907",
+    "sha": "39f4086675ca584df73124e4cba8f5269a39831e",
+    "event": "pull_request",
+    "conclusion": "success",
+    "postgresPassed": 40,
+    "postgresFailed": 0
+  },
+  {
+    "stage": "revert-main",
+    "id": 40120013295,
+    "url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/40120013295",
+    "sha": "21b953a4b34b5f336aca46f2928ede6966fb47d2",
+    "event": "push",
+    "conclusion": "success",
+    "postgresPassed": 40,
+    "postgresFailed": 0
+  }
+]

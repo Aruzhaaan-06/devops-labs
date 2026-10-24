@@ -1,0 +1,28 @@
+{
+  "badExitCode": 1,
+  "badMilliseconds": 1615.96,
+  "badExitEvidence": "Observed original pwsh process exit1; exception text retained",
+  "goodExitCode": 0,
+  "good": {
+    "path": "/api/tasks",
+    "maxMilliseconds": 1000,
+    "samples": [
+      {
+        "sample": 1,
+        "status": 200,
+        "milliseconds": 98.281
+      },
+      {
+        "sample": 2,
+        "status": 200,
+        "milliseconds": 4.096
+      },
+      {
+        "sample": 3,
+        "status": 200,
+        "milliseconds": 2.59
+      }
+    ]
+  },
+  "scriptSha256": "64d2e743af3d75670ac2ad0a9183d0747ef60debfc7055ea476f6d3987f3d61f"
+}

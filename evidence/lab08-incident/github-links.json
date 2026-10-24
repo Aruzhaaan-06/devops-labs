@@ -1,0 +1,51 @@
+{
+  "featureIssue": {
+    "number": 25,
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/25",
+    "title": "feat: аудит чтения списка задач"
+  },
+  "badPR": {
+    "number": 26,
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/26",
+    "title": "feat: аудит чтения списка задач (учебный инцидент)",
+    "merged": true,
+    "merged_at": "2026-10-24T18:10:54Z",
+    "merge_commit_sha": "4e49041b629a30791b27654a793722dc8a4c82bf"
+  },
+  "revertPR": {
+    "number": 28,
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/pull/28",
+    "title": "Revert \"feat: аудит чтения списка задач\"",
+    "merged": true,
+    "merged_at": "2026-10-24T18:17:22Z",
+    "merge_commit_sha": "21b953a4b34b5f336aca46f2928ede6966fb47d2"
+  },
+  "incident": {
+    "number": 27,
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/27",
+    "title": "incident: p95 > 1s после деплоя sha-4e49041"
+  },
+  "actions": {
+    "latency": {
+      "number": 29,
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/29",
+      "title": "prevent: проверять задержку Tasks/List при deploy"
+    },
+    "benchmark": {
+      "number": 30,
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/30",
+      "title": "test: добавить воспроизводимый performance baseline с PostgreSQL"
+    },
+    "runbook": {
+      "number": 31,
+      "html_url": "https://github.com/Aruzhaaan-06/devops-labs/issues/31",
+      "title": "docs: описать диагностику и откат инцидента Tasks/List"
+    }
+  },
+  "rollbackRun": {
+    "id": 40119809413,
+    "html_url": "https://github.com/Aruzhaaan-06/devops-labs/actions/runs/40119809413",
+    "head_sha": "4e49041b629a30791b27654a793722dc8a4c82bf",
+    "conclusion": "success"
+  }
+}

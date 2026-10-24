@@ -1,0 +1,10 @@
+{
+  "T0": "2026-10-24T18:10:54Z",
+  "T1": "2026-10-24T18:14:18.726369+00:00",
+  "T2": "2026-10-24T18:15:58.875623+00:00",
+  "detectionSeconds": 204.726,
+  "recoverySeconds": 100.149,
+  "metricsAreObservedBounds": true,
+  "T0IncludesPipeline": true,
+  "discoveryMethod": "Prometheus ApiSlowRequests firing, not manual application probe"
+}

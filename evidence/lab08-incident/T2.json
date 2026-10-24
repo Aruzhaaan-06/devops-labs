@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-24T18:15:58.875623+00:00",
+  "definition": "First post-rollback explicit rules observation with ApiSlowRequests inactive; rolling-window drain included",
+  "version": {
+    "service": "DemoApi",
+    "version": "sha-cf768be",
+    "host": "c0337d8193da",
+    "message": "hello from CI/CD"
+  },
+  "rule": {
+    "state": "inactive",
+    "name": "ApiSlowRequests",
+    "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+    "duration": 30,
+    "keepFiringFor": 0,
+    "labels": {
+      "severity": "warning"
+    },
+    "annotations": {
+      "summary": "p95 времени ответа больше 1 секунды"
+    },
+    "alerts": [],
+    "health": "ok",
+    "evaluationTime": 0.000541945,
+    "lastEvaluation": "2026-10-24T18:15:57.951105719Z",
+    "type": "alerting"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "utc": "2026-10-24T18:09:22.482920+00:00",
+  "main": "cf768be3876c9c0eda966edf7f36b165ed9c1c36",
+  "rollbackTag": "sha-cf768be",
+  "info": {
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "sha-cf768be",
+      "host": "2e81255e72de",
+      "message": "hello from CI/CD"
+    }
+  },
+  "targets": [
+    {
+      "discoveredLabels": {
+        "__address__": "cadvisor:8080",
+        "__always_scrape_classic_histograms__": "false",
+        "__convert_classic_histograms_to_nhcb__": "false",
+        "__metrics_path__": "/metrics",
+        "__scheme__": "http",
+        "__scrape_interval__": "5s",
+        "__scrape_native_histograms__": "false",
+        "__scrape_timeout__": "5s",
+        "job": "cadvisor"
+      },
+      "labels": {
+        "instance": "cadvisor:8080",
+        "job": "cadvisor"
+      },
+      "scrapePool": "cadvisor",
+      "scrapeUrl": "http://cadvisor:8080/metrics",
+      "globalUrl": "http://cadvisor:8080/metrics",
+      "lastError": "",
+      "lastScrape": "2026-10-24T18:09:17.333151959Z",
+      "lastScrapeDuration": 0.092538771,
+      "health": "up",
+      "scrapeInterval": "5s",
+      "scrapeTimeout": "5s"
+    },
+    {
+      "discoveredLabels": {
+        "__address__": "host.docker.internal:8088",
+        "__always_scrape_classic_histograms__": "false",
+        "__convert_classic_histograms_to_nhcb__": "false",
+        "__metrics_path__": "/metrics",
+        "__scheme__": "http",
+        "__scrape_interval__": "5s",
+        "__scrape_native_histograms__": "false",
+        "__scrape_timeout__": "5s",
+        "job": "demo-api"
+      },
+      "labels": {
+        "instance": "host.docker.internal:8088",
+        "job": "demo-api"
+      },
+      "scrapePool": "demo-api",
+      "scrapeUrl": "http://host.docker.internal:8088/metrics",
+      "globalUrl": "http://host.docker.internal:8088/metrics",
+      "lastError": "",
+      "lastScrape": "2026-10-24T18:09:21.144329728Z",
+      "lastScrapeDuration": 0.010347667,
+      "health": "up",
+      "scrapeInterval": "5s",
+      "scrapeTimeout": "5s"
+    },
+    {
+      "discoveredLabels": {
+        "__address__": "localhost:9090",
+        "__always_scrape_classic_histograms__": "false",
+        "__convert_classic_histograms_to_nhcb__": "false",
+        "__metrics_path__": "/metrics",
+        "__scheme__": "http",
+        "__scrape_interval__": "5s",
+        "__scrape_native_histograms__": "false",
+        "__scrape_timeout__": "5s",
+        "job": "prometheus"
+      },
+      "labels": {
+        "instance": "localhost:9090",
+        "job": "prometheus"
+      },
+      "scrapePool": "prometheus",
+      "scrapeUrl": "http://localhost:9090/metrics",
+      "globalUrl": "http://0fcdb926f9f7:9090/metrics",
+      "lastError": "",
+      "lastScrape": "2026-10-24T18:09:16.945113793Z",
+      "lastScrapeDuration": 0.004164329,
+      "health": "up",
+      "scrapeInterval": "5s",
+      "scrapeTimeout": "5s"
+    }
+  ],
+  "rules": [
+    {
+      "name": "containers",
+      "file": "/etc/prometheus/alerts.yml",
+      "rules": [
+        {
+          "state": "inactive",
+          "name": "ContainerHighMemory",
+          "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+          "duration": 15,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "{{ $labels.name }}: память выше 80% лимита"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.000190611,
+          "lastEvaluation": "2026-10-24T18:09:19.340281655Z",
+          "type": "alerting"
+        },
+        {
+          "state": "inactive",
+          "name": "ContainerRestarted",
+          "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+          "duration": 0,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 9.9505e-05,
+          "lastEvaluation": "2026-10-24T18:09:19.340476266Z",
+          "type": "alerting"
+        }
+      ],
+      "interval": 5,
+      "limit": 0,
+      "evaluationTime": 0.000320617,
+      "lastEvaluation": "2026-10-24T18:09:19.340257354Z"
+    },
+    {
+      "name": "demo-api",
+      "file": "/etc/prometheus/alerts.yml",
+      "rules": [
+        {
+          "state": "inactive",
+          "name": "ApiDown",
+          "query": "up{job=\"demo-api\"} == 0",
+          "duration": 30,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "critical"
+          },
+          "annotations": {
+            "summary": "DemoApi не отвечает на /metrics"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.000157709,
+          "lastEvaluation": "2026-10-24T18:09:17.973412247Z",
+          "type": "alerting"
+        },
+        {
+          "state": "inactive",
+          "name": "ApiHighErrorRate",
+          "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+          "duration": 30,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "Доля 5xx выше 5%"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.00017891,
+          "lastEvaluation": "2026-10-24T18:09:17.973573856Z",
+          "type": "alerting"
+        },
+        {
+          "state": "inactive",
+          "name": "ApiSlowRequests",
+          "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+          "duration": 30,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "p95 времени ответа больше 1 секунды"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.000582332,
+          "lastEvaluation": "2026-10-24T18:09:17.973755166Z",
+          "type": "alerting"
+        }
+      ],
+      "interval": 5,
+      "limit": 0,
+      "evaluationTime": 0.000964353,
+      "lastEvaluation": "2026-10-24T18:09:17.973375945Z"
+    }
+  ]
+}

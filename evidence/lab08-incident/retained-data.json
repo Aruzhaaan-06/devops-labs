@@ -1,0 +1,50 @@
+{
+  "markers": [
+    {
+      "label": "lab10",
+      "projectId": 18,
+      "taskId": 20,
+      "preserved": true
+    },
+    {
+      "label": "lab11",
+      "projectId": 24,
+      "taskId": 26,
+      "preserved": true
+    },
+    {
+      "label": "lab12",
+      "projectId": 25,
+      "taskId": 27,
+      "preserved": true
+    }
+  ],
+  "lab13InProgressTasks": 1200,
+  "lab14Loads": [
+    {
+      "file": "load-console.txt",
+      "projectId": 32,
+      "storedTasks": 531,
+      "errors": 18
+    },
+    {
+      "file": "initial-attempt-load-console.txt",
+      "projectId": 30,
+      "storedTasks": 2231,
+      "errors": 3
+    }
+  ],
+  "lab14BusinessTasksRetained": true,
+  "incidentLoad": {
+    "projectId": 37,
+    "storedTasks": 1771,
+    "statuses": {
+      "InProgress": 1771
+    },
+    "taskSetSha256": "8dcbe7ea620071a72c2d84d7c565e7ada5988fe93c9a92a4b6eb1281d2bd95f2",
+    "consoleErrors": 5,
+    "lastPrintedIteration": 1760,
+    "loadStopped": true,
+    "note": "Stopped own bounded process after healthy revert. Printed iterations are progress markers, not an exact successful request count; transient deploy errors retained."
+  }
+}

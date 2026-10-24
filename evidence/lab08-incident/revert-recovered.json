@@ -1,0 +1,179 @@
+{
+  "utc": "2026-10-24T18:21:29.395051+00:00",
+  "version": {
+    "status": 200,
+    "body": {
+      "service": "DemoApi",
+      "version": "sha-21b953a",
+      "host": "dc806f1babd8",
+      "message": "hello from CI/CD"
+    }
+  },
+  "live": {
+    "status": 200,
+    "body": "Healthy"
+  },
+  "ready": {
+    "status": 200,
+    "body": "Healthy"
+  },
+  "perActionP95": {
+    "status": 200,
+    "body": {
+      "status": "success",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "action": "Create",
+              "controller": "Tasks"
+            },
+            "value": [
+              1792866089.371,
+              "0.014459259259259255"
+            ]
+          },
+          {
+            "metric": {
+              "action": "ChangeStatus",
+              "controller": "Tasks"
+            },
+            "value": [
+              1792866089.371,
+              "0.007559999999999998"
+            ]
+          },
+          {
+            "metric": {},
+            "value": [
+              1792866089.371,
+              "0.0009783224344781425"
+            ]
+          },
+          {
+            "metric": {
+              "action": "Get",
+              "controller": "Info"
+            },
+            "value": [
+              1792866089.371,
+              "NaN"
+            ]
+          },
+          {
+            "metric": {
+              "action": "List",
+              "controller": "Tasks"
+            },
+            "value": [
+              1792866089.371,
+              "0.0017588235294117647"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "tasksListP95Seconds": 0.0017588235294117647,
+  "rule": {
+    "state": "inactive",
+    "name": "ApiSlowRequests",
+    "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+    "duration": 30,
+    "keepFiringFor": 0,
+    "labels": {
+      "severity": "warning"
+    },
+    "annotations": {
+      "summary": "p95 времени ответа больше 1 секунды"
+    },
+    "alerts": [],
+    "health": "ok",
+    "evaluationTime": 0.000237312,
+    "lastEvaluation": "2026-10-24T18:21:27.933879128Z",
+    "type": "alerting"
+  },
+  "targets": [
+    {
+      "discoveredLabels": {
+        "__address__": "cadvisor:8080",
+        "__always_scrape_classic_histograms__": "false",
+        "__convert_classic_histograms_to_nhcb__": "false",
+        "__metrics_path__": "/metrics",
+        "__scheme__": "http",
+        "__scrape_interval__": "5s",
+        "__scrape_native_histograms__": "false",
+        "__scrape_timeout__": "5s",
+        "job": "cadvisor"
+      },
+      "labels": {
+        "instance": "cadvisor:8080",
+        "job": "cadvisor"
+      },
+      "scrapePool": "cadvisor",
+      "scrapeUrl": "http://cadvisor:8080/metrics",
+      "globalUrl": "http://cadvisor:8080/metrics",
+      "lastError": "",
+      "lastScrape": "2026-10-24T18:21:27.294060243Z",
+      "lastScrapeDuration": 0.11521224,
+      "health": "up",
+      "scrapeInterval": "5s",
+      "scrapeTimeout": "5s"
+    },
+    {
+      "discoveredLabels": {
+        "__address__": "host.docker.internal:8088",
+        "__always_scrape_classic_histograms__": "false",
+        "__convert_classic_histograms_to_nhcb__": "false",
+        "__metrics_path__": "/metrics",
+        "__scheme__": "http",
+        "__scrape_interval__": "5s",
+        "__scrape_native_histograms__": "false",
+        "__scrape_timeout__": "5s",
+        "job": "demo-api"
+      },
+      "labels": {
+        "instance": "host.docker.internal:8088",
+        "job": "demo-api"
+      },
+      "scrapePool": "demo-api",
+      "scrapeUrl": "http://host.docker.internal:8088/metrics",
+      "globalUrl": "http://host.docker.internal:8088/metrics",
+      "lastError": "",
+      "lastScrape": "2026-10-24T18:21:26.104634323Z",
+      "lastScrapeDuration": 0.010126422,
+      "health": "up",
+      "scrapeInterval": "5s",
+      "scrapeTimeout": "5s"
+    },
+    {
+      "discoveredLabels": {
+        "__address__": "localhost:9090",
+        "__always_scrape_classic_histograms__": "false",
+        "__convert_classic_histograms_to_nhcb__": "false",
+        "__metrics_path__": "/metrics",
+        "__scheme__": "http",
+        "__scrape_interval__": "5s",
+        "__scrape_native_histograms__": "false",
+        "__scrape_timeout__": "5s",
+        "job": "prometheus"
+      },
+      "labels": {
+        "instance": "localhost:9090",
+        "job": "prometheus"
+      },
+      "scrapePool": "prometheus",
+      "scrapeUrl": "http://localhost:9090/metrics",
+      "globalUrl": "http://0fcdb926f9f7:9090/metrics",
+      "lastError": "",
+      "lastScrape": "2026-10-24T18:21:26.906296352Z",
+      "lastScrapeDuration": 0.004910453,
+      "health": "up",
+      "scrapeInterval": "5s",
+      "scrapeTimeout": "5s"
+    }
+  ],
+  "applicationSourceRestoredExactly": true,
+  "note": "ContainerRestarted may legitimately remain firing for5m after controlled deploy; final release waits until all five rules inactive."
+}

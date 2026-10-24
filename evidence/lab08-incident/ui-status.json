@@ -1,0 +1,7 @@
+{
+  "browserControlError": "Local browser use is disabled in Work settings",
+  "alertScreenshotTaken": false,
+  "grafanaScreenshotTaken": false,
+  "graphMethod": "Report will use a clearly labelled plot from actual Prometheus range data, not an alleged UI screenshot.",
+  "revertMethod": "Official GitHub GraphQL revertPullRequest server operation, equivalent to Revert button; actual generated PR28."
+}
