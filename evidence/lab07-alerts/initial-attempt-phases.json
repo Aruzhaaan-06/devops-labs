@@ -1,0 +1,2074 @@
+[
+  {
+    "name": "a-errors",
+    "startUtc": "2026-10-24T17:14:53.813027+00:00",
+    "startEpoch": 1792862093.8130274,
+    "before": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:12:25.098026382Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 0,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "expectedAlerts": [
+      "ApiHighErrorRate"
+    ],
+    "requests": [
+      {
+        "utc": "2026-10-24T17:14:53.863667+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-fad71048b5956199ed6f321ad938fa10-1006720d4acabd30-00"
+        },
+        "seconds": 0.019
+      },
+      {
+        "utc": "2026-10-24T17:14:54.883415+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-a67045654b5e5e19f19dc9afb70a245c-7e087188aec981bc-00"
+        },
+        "seconds": 0.041296
+      },
+      {
+        "utc": "2026-10-24T17:14:55.924934+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-f9061b1afce3fde50e289725e0fb2c29-dde3d5a8d87e0999-00"
+        },
+        "seconds": 0.024038
+      },
+      {
+        "utc": "2026-10-24T17:14:56.949192+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-7b778345bf42a08165364c3de407bd87-7b87009975dab248-00"
+        },
+        "seconds": 0.002499
+      },
+      {
+        "utc": "2026-10-24T17:14:57.951971+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-857a3680a9833a30be080dcf418dd89e-247c989a384d962e-00"
+        },
+        "seconds": 0.035592
+      },
+      {
+        "utc": "2026-10-24T17:14:58.988669+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-3dc6a9856f2001b01ff573ff7457865b-0a5ba94e5bf272b4-00"
+        },
+        "seconds": 0.01303
+      },
+      {
+        "utc": "2026-10-24T17:15:00.001873+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-be74bb5146fb797c78f99e143c8bae44-508fc2601035be88-00"
+        },
+        "seconds": 0.033068
+      },
+      {
+        "utc": "2026-10-24T17:15:01.035211+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-3330734c5663d1e9a37ba73408f7e1f1-1b37e8890b515970-00"
+        },
+        "seconds": 0.016373
+      },
+      {
+        "utc": "2026-10-24T17:15:02.051923+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-89c21fa1138007aaa72c4a875484fe9a-41d67dcffa38a421-00"
+        },
+        "seconds": 0.03137
+      },
+      {
+        "utc": "2026-10-24T17:15:03.083950+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-a621ad15d59fc19a0624bd4e3ac4d21e-3817e3715783dc26-00"
+        },
+        "seconds": 0.02136
+      },
+      {
+        "utc": "2026-10-24T17:15:04.105736+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-5a2674aeec79f3e311fcdac2a9d0be01-07c5de0e16b28c77-00"
+        },
+        "seconds": 0.02047
+      },
+      {
+        "utc": "2026-10-24T17:15:05.126937+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-3e225b6f7c801662008ae215ccbce151-30f0d59a3e65c066-00"
+        },
+        "seconds": 0.030861
+      },
+      {
+        "utc": "2026-10-24T17:15:06.159102+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-3a461b1ec1843aa05ea0935716f50866-333bddde472f15d9-00"
+        },
+        "seconds": 0.016412
+      },
+      {
+        "utc": "2026-10-24T17:15:07.175938+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-07600ca28241064da76bf7f5249b2ec3-82a553eac1c54a69-00"
+        },
+        "seconds": 0.030728
+      },
+      {
+        "utc": "2026-10-24T17:15:08.207061+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-1c11783d0f525d0f12b8137313e0025f-4b9720210fc96f09-00"
+        },
+        "seconds": 0.030643
+      },
+      {
+        "utc": "2026-10-24T17:15:09.238548+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-bb6b0a0f6ca0504730a107899288e7dc-cad2275bc673ecfb-00"
+        },
+        "seconds": 0.003128
+      },
+      {
+        "utc": "2026-10-24T17:15:10.241837+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-1a9e5bc18aa14d73a82fb36204456fec-8f77025dce9a2222-00"
+        },
+        "seconds": 0.020151
+      },
+      {
+        "utc": "2026-10-24T17:15:11.262762+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-04cfe66796a14c8c6b166f050146e394-65d6f72bdf091ba7-00"
+        },
+        "seconds": 0.006492
+      },
+      {
+        "utc": "2026-10-24T17:15:12.269943+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-b8fb154648e03cbf7112103aabf9bbc5-661489982803f856-00"
+        },
+        "seconds": 0.003733
+      },
+      {
+        "utc": "2026-10-24T17:15:13.273982+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-b23e78be7674e39bd4a413698b1c609b-8b882c04ac6a3025-00"
+        },
+        "seconds": 0.019261
+      },
+      {
+        "utc": "2026-10-24T17:15:14.294499+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-f31e76d7712c2e98514cf36cd10ea1e8-4915cb58e87f56dc-00"
+        },
+        "seconds": 0.019936
+      },
+      {
+        "utc": "2026-10-24T17:15:15.314826+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-afed1f2ce2cce78c9b6adac676946eab-be7b65815d468c46-00"
+        },
+        "seconds": 0.00479
+      },
+      {
+        "utc": "2026-10-24T17:15:16.319907+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-8b0656472d31fa2007dff8fcd7f54e57-8078022f1e98e99c-00"
+        },
+        "seconds": 0.00562
+      },
+      {
+        "utc": "2026-10-24T17:15:17.326055+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-f12369a4f9d4a7c5e9d37818508bfd06-453f4b3c66c1f674-00"
+        },
+        "seconds": 0.005514
+      },
+      {
+        "utc": "2026-10-24T17:15:18.332020+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-dee652bed7e1ad3accb512ec41c0a1ff-ee144cc4360c3342-00"
+        },
+        "seconds": 0.028287
+      },
+      {
+        "utc": "2026-10-24T17:15:19.360737+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-dc6faa7cccf1e60b0aa3040dec3be5fc-7e4c0ca030c66edc-00"
+        },
+        "seconds": 0.035409
+      },
+      {
+        "utc": "2026-10-24T17:15:20.397088+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-c38571a5f6aecce7fcdc91659f464b1b-cb03d7ed63b9153d-00"
+        },
+        "seconds": 0.021744
+      },
+      {
+        "utc": "2026-10-24T17:15:21.419277+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-5e6b1e853c9ef10466b01fec189ba407-1bffec26e2653b82-00"
+        },
+        "seconds": 0.039219
+      },
+      {
+        "utc": "2026-10-24T17:15:22.459393+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-351602c7940c40abf8ece663e4dfe7ab-d37ef23deebfa833-00"
+        },
+        "seconds": 0.02059
+      },
+      {
+        "utc": "2026-10-24T17:15:23.480404+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-c223cb2469fac4b39f8350c1f80deec3-fc9125c112f6c6bc-00"
+        },
+        "seconds": 0.003717
+      },
+      {
+        "utc": "2026-10-24T17:15:24.484254+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-7e2f80b9661bc6d8b8d735114cf68792-8b66e574e0eba639-00"
+        },
+        "seconds": 0.024485
+      },
+      {
+        "utc": "2026-10-24T17:15:25.509132+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-fa158d77cf68a9dac747c8cfb530a0d4-a61a0d659f426a30-00"
+        },
+        "seconds": 0.032603
+      },
+      {
+        "utc": "2026-10-24T17:15:26.542752+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-726610a474d5bf27ce8f04db4c2fdd63-152a47349029b754-00"
+        },
+        "seconds": 0.002611
+      },
+      {
+        "utc": "2026-10-24T17:15:27.545534+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-2fdf9332ac72788160c5278132275d90-072237225675dbde-00"
+        },
+        "seconds": 0.019197
+      },
+      {
+        "utc": "2026-10-24T17:15:28.565390+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-6a95a2c652fcd5c7f8e90eca6052e58b-fe814721118a175b-00"
+        },
+        "seconds": 0.014447
+      },
+      {
+        "utc": "2026-10-24T17:15:29.580101+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-d17ed27a285996781b7dfa320e9ea207-3e17dcd1589d8bcc-00"
+        },
+        "seconds": 0.02917
+      },
+      {
+        "utc": "2026-10-24T17:15:30.609636+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-7ca46cfaa9d833b572305e2c45b3dac6-9f7fc8c8785b9364-00"
+        },
+        "seconds": 0.015921
+      },
+      {
+        "utc": "2026-10-24T17:15:31.626225+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-ed1abb5c059e1cc3e9aeb2e4e65f58f8-e58fa8f68a96daae-00"
+        },
+        "seconds": 0.003091
+      },
+      {
+        "utc": "2026-10-24T17:15:32.629850+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-224b9fd307bad371135115147fecd778-8e631f71075f659f-00"
+        },
+        "seconds": 0.033407
+      },
+      {
+        "utc": "2026-10-24T17:15:33.663631+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-dccc3d850e069e3afd30c63b8fbad4c7-cd67ced7ffca7972-00"
+        },
+        "seconds": 0.003194
+      },
+      {
+        "utc": "2026-10-24T17:15:34.667158+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-1d647b59ed36a972a4967e9637945d86-ee633c7d624c92b8-00"
+        },
+        "seconds": 0.036218
+      },
+      {
+        "utc": "2026-10-24T17:15:35.703864+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-fe446f4d2206e6101fa3f566c1eb7b8c-dd445d8205803659-00"
+        },
+        "seconds": 0.011926
+      },
+      {
+        "utc": "2026-10-24T17:15:36.716188+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-8eceeb3940d9c8ccb0c59af660465100-c3870c8ad5fc04ca-00"
+        },
+        "seconds": 0.018508
+      },
+      {
+        "utc": "2026-10-24T17:15:37.735191+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-72606610d588fdafc8dff4597dafd426-45fa5a2837902d2f-00"
+        },
+        "seconds": 0.03602
+      },
+      {
+        "utc": "2026-10-24T17:15:38.771913+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-ba75b98756cf929056db19a9c18c9ec4-a53d16ffc287ad0b-00"
+        },
+        "seconds": 0.014911
+      },
+      {
+        "utc": "2026-10-24T17:15:39.787448+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-aca26bf6c4016d17cbbed25ae73c2234-2fad1e9dbb356ac5-00"
+        },
+        "seconds": 0.01754
+      },
+      {
+        "utc": "2026-10-24T17:15:40.805695+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-59079229308e39f0644b92f6afb0a4c1-01c77175e0458c71-00"
+        },
+        "seconds": 0.005299
+      },
+      {
+        "utc": "2026-10-24T17:15:41.811341+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-cf0c20dba7fa64b882182cb11b685912-a57349c8f577a098-00"
+        },
+        "seconds": 0.005933
+      },
+      {
+        "utc": "2026-10-24T17:15:42.817527+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-b775bbe70e9f5e86c78e16e21b0d8f6d-2f609e61d21eccb5-00"
+        },
+        "seconds": 0.002937
+      },
+      {
+        "utc": "2026-10-24T17:15:43.821379+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-e6ab475c148c56bcaa916e5de696b68f-0f46d6ab7b7920cb-00"
+        },
+        "seconds": 0.005159
+      },
+      {
+        "utc": "2026-10-24T17:15:44.826770+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-212e89d866fcfc4367740c699eb85b08-9e268ac5a51ac352-00"
+        },
+        "seconds": 0.01807
+      },
+      {
+        "utc": "2026-10-24T17:15:45.845664+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-900434dfb9420b2c04ef30a05cfbd400-986d3cc5e374be3d-00"
+        },
+        "seconds": 0.002503
+      },
+      {
+        "utc": "2026-10-24T17:15:46.848669+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-9402a8a2c49b16a619c589b9fd24b7c7-366a7549eebad2b6-00"
+        },
+        "seconds": 0.029424
+      },
+      {
+        "utc": "2026-10-24T17:15:47.878416+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-fb0d8191fec22269d0f8656542573359-75bed7f53ed300a6-00"
+        },
+        "seconds": 0.024144
+      },
+      {
+        "utc": "2026-10-24T17:15:48.903058+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-d547994f49cec8c4fb6616eaa69c51ce-804364c6b6f2d132-00"
+        },
+        "seconds": 0.020971
+      },
+      {
+        "utc": "2026-10-24T17:15:49.924448+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-0dd681018180d84710c47dc6ffa3bab2-c260584c0dd4eef8-00"
+        },
+        "seconds": 0.015199
+      },
+      {
+        "utc": "2026-10-24T17:15:50.940085+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-571431304e7b9986039b0461bfb89f82-8c1ae11d7ce64185-00"
+        },
+        "seconds": 0.012967
+      },
+      {
+        "utc": "2026-10-24T17:15:51.953514+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-a97dce354e32ff44daabe46730fdba4b-64603de47b712833-00"
+        },
+        "seconds": 0.013461
+      },
+      {
+        "utc": "2026-10-24T17:15:52.967450+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-574205b80d1e0898fa64588a63202eed-70d43df2d185b7a3-00"
+        },
+        "seconds": 0.014588
+      },
+      {
+        "utc": "2026-10-24T17:15:53.982608+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/error",
+        "status": 500,
+        "body": {
+          "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+          "title": "An error occurred while processing your request.",
+          "status": 500,
+          "traceId": "00-9fd6cbcb240cee644c71ac727f89277f-1be818a574dc9e81-00"
+        },
+        "seconds": 0.012011
+      }
+    ],
+    "firingSnapshots": {
+      "ApiHighErrorRate": {
+        "utc": "2026-10-24T17:16:04.003457+00:00",
+        "method": "GET",
+        "url": "http://localhost:9090/api/v1/rules?type=alert",
+        "status": 200,
+        "body": {
+          "status": "success",
+          "data": {
+            "groups": [
+              {
+                "name": "containers",
+                "file": "/etc/prometheus/alerts.yml",
+                "rules": [
+                  {
+                    "state": "inactive",
+                    "name": "ContainerHighMemory",
+                    "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                    "duration": 15,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "{{ $labels.name }}: память выше 80% лимита"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000712133,
+                    "lastEvaluation": "2026-10-24T17:15:59.507303291Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "firing",
+                    "name": "ContainerRestarted",
+                    "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                    "duration": 0,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                    },
+                    "alerts": [
+                      {
+                        "labels": {
+                          "alertname": "ContainerRestarted",
+                          "name": "devops-labs-api-1",
+                          "severity": "warning"
+                        },
+                        "annotations": {
+                          "summary": "devops-labs-api-1 перезапускался за последние 5 минут"
+                        },
+                        "state": "firing",
+                        "activeAt": "2026-10-24T17:12:34.609224133Z",
+                        "value": "1e+00"
+                      }
+                    ],
+                    "health": "ok",
+                    "evaluationTime": 0.000817939,
+                    "lastEvaluation": "2026-10-24T17:15:59.508037325Z",
+                    "type": "alerting"
+                  }
+                ],
+                "interval": 5,
+                "limit": 0,
+                "evaluationTime": 0.001614976,
+                "lastEvaluation": "2026-10-24T17:15:59.507248988Z"
+              },
+              {
+                "name": "demo-api",
+                "file": "/etc/prometheus/alerts.yml",
+                "rules": [
+                  {
+                    "state": "inactive",
+                    "name": "ApiDown",
+                    "query": "up{job=\"demo-api\"} == 0",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "critical"
+                    },
+                    "annotations": {
+                      "summary": "DemoApi не отвечает на /metrics"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000208209,
+                    "lastEvaluation": "2026-10-24T17:16:03.141185209Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "firing",
+                    "name": "ApiHighErrorRate",
+                    "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "Доля 5xx выше 5%"
+                    },
+                    "alerts": [
+                      {
+                        "labels": {
+                          "alertname": "ApiHighErrorRate",
+                          "severity": "warning"
+                        },
+                        "annotations": {
+                          "summary": "Доля 5xx выше 5%"
+                        },
+                        "state": "firing",
+                        "activeAt": "2026-10-24T17:15:28.242515366Z",
+                        "value": "9.47176684881603e-02"
+                      }
+                    ],
+                    "health": "ok",
+                    "evaluationTime": 0.000565525,
+                    "lastEvaluation": "2026-10-24T17:16:03.141399818Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "inactive",
+                    "name": "ApiSlowRequests",
+                    "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "p95 времени ответа больше 1 секунды"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000803235,
+                    "lastEvaluation": "2026-10-24T17:16:03.141977743Z",
+                    "type": "alerting"
+                  }
+                ],
+                "interval": 5,
+                "limit": 0,
+                "evaluationTime": 0.001632171,
+                "lastEvaluation": "2026-10-24T17:16:03.141151807Z"
+              }
+            ]
+          }
+        },
+        "seconds": 0.002438
+      }
+    },
+    "metricsAtFiring": {
+      "ApiHighErrorRate": {
+        "p95": [
+          {
+            "metric": {},
+            "value": [
+              1792862164.018,
+              "0.009544827586206861"
+            ]
+          }
+        ],
+        "httpCodes": [
+          {
+            "metric": {
+              "code": "200"
+            },
+            "value": [
+              1792862164.036,
+              "6.10931306592967"
+            ]
+          },
+          {
+            "metric": {
+              "code": "201"
+            },
+            "value": [
+              1792862164.036,
+              "3.0001090948761773"
+            ]
+          },
+          {
+            "metric": {
+              "code": "400"
+            },
+            "value": [
+              1792862164.036,
+              "0"
+            ]
+          },
+          {
+            "metric": {
+              "code": "404"
+            },
+            "value": [
+              1792862164.036,
+              "0"
+            ]
+          },
+          {
+            "metric": {
+              "code": "500"
+            },
+            "value": [
+              1792862164.036,
+              "0.8545765300556384"
+            ]
+          }
+        ],
+        "memoryPercent": [
+          {
+            "metric": {
+              "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+              "container_label_com_docker_compose_container_number": "1",
+              "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+              "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+              "container_label_com_docker_compose_oneoff": "False",
+              "container_label_com_docker_compose_project": "devops-labs",
+              "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+              "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+              "container_label_com_docker_compose_replace": "api-1",
+              "container_label_com_docker_compose_service": "api",
+              "container_label_com_docker_compose_version": "5.5.1",
+              "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+              "container_label_desktop_docker_io_ports_scheme": "v2",
+              "container_label_org_opencontainers_image_version": "24.04",
+              "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+              "image": "devops-labs-demo-api:lab14-7d78755",
+              "instance": "cadvisor:8080",
+              "job": "cadvisor",
+              "name": "devops-labs-api-1"
+            },
+            "value": [
+              1792862164.048,
+              "26.800537109375"
+            ]
+          }
+        ]
+      }
+    },
+    "after": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:12:25.098026382Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 0,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "endUtc": "2026-10-24T17:16:19.102837+00:00",
+    "endEpoch": 1792862179.1033585
+  },
+  {
+    "name": "b-slow",
+    "startUtc": "2026-10-24T17:16:33.694748+00:00",
+    "startEpoch": 1792862193.6947489,
+    "before": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:12:25.098026382Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 0,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "expectedAlerts": [
+      "ApiSlowRequests"
+    ],
+    "requests": [
+      {
+        "utc": "2026-10-24T17:16:33.740288+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.535612
+      },
+      {
+        "utc": "2026-10-24T17:16:35.276007+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.502621
+      },
+      {
+        "utc": "2026-10-24T17:16:36.772851+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.50363
+      },
+      {
+        "utc": "2026-10-24T17:16:38.282081+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.530831
+      },
+      {
+        "utc": "2026-10-24T17:16:39.813094+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.530198
+      },
+      {
+        "utc": "2026-10-24T17:16:41.343178+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.505551
+      },
+      {
+        "utc": "2026-10-24T17:16:42.848742+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.508076
+      },
+      {
+        "utc": "2026-10-24T17:16:44.357114+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.53189
+      },
+      {
+        "utc": "2026-10-24T17:16:45.888835+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.50749
+      },
+      {
+        "utc": "2026-10-24T17:16:47.396227+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.525041
+      },
+      {
+        "utc": "2026-10-24T17:16:48.921374+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503921
+      },
+      {
+        "utc": "2026-10-24T17:16:50.425431+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503794
+      },
+      {
+        "utc": "2026-10-24T17:16:51.929415+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.509048
+      },
+      {
+        "utc": "2026-10-24T17:16:53.438732+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.534718
+      },
+      {
+        "utc": "2026-10-24T17:16:54.973144+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503152
+      },
+      {
+        "utc": "2026-10-24T17:16:56.476274+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.50338
+      },
+      {
+        "utc": "2026-10-24T17:16:57.979807+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503157
+      },
+      {
+        "utc": "2026-10-24T17:16:59.482927+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503644
+      },
+      {
+        "utc": "2026-10-24T17:17:00.986978+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.523086
+      },
+      {
+        "utc": "2026-10-24T17:17:02.509721+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503338
+      },
+      {
+        "utc": "2026-10-24T17:17:04.013123+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.504614
+      },
+      {
+        "utc": "2026-10-24T17:17:05.517644+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.50621
+      },
+      {
+        "utc": "2026-10-24T17:17:07.024046+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.504701
+      },
+      {
+        "utc": "2026-10-24T17:17:08.528740+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503976
+      },
+      {
+        "utc": "2026-10-24T17:17:10.032644+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.505852
+      },
+      {
+        "utc": "2026-10-24T17:17:11.538223+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.531437
+      },
+      {
+        "utc": "2026-10-24T17:17:13.070202+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.504744
+      },
+      {
+        "utc": "2026-10-24T17:17:14.575272+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.500752
+      },
+      {
+        "utc": "2026-10-24T17:17:16.075709+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.527411
+      },
+      {
+        "utc": "2026-10-24T17:17:17.603171+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.502992
+      },
+      {
+        "utc": "2026-10-24T17:17:19.106058+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.502975
+      },
+      {
+        "utc": "2026-10-24T17:17:20.609183+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503232
+      },
+      {
+        "utc": "2026-10-24T17:17:22.112420+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.519881
+      },
+      {
+        "utc": "2026-10-24T17:17:23.632340+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.502955
+      },
+      {
+        "utc": "2026-10-24T17:17:25.135398+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.512069
+      },
+      {
+        "utc": "2026-10-24T17:17:26.647690+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503935
+      },
+      {
+        "utc": "2026-10-24T17:17:28.151336+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.502248
+      },
+      {
+        "utc": "2026-10-24T17:17:29.653873+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.503851
+      },
+      {
+        "utc": "2026-10-24T17:17:31.157722+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.500693
+      },
+      {
+        "utc": "2026-10-24T17:17:32.658369+00:00",
+        "method": "GET",
+        "url": "http://localhost:8088/api/chaos/slow?ms=1500",
+        "status": 200,
+        "body": {
+          "delayedMs": 1500
+        },
+        "seconds": 1.516835
+      }
+    ],
+    "firingSnapshots": {
+      "ApiSlowRequests": {
+        "utc": "2026-10-24T17:17:53.688605+00:00",
+        "method": "GET",
+        "url": "http://localhost:9090/api/v1/rules?type=alert",
+        "status": 200,
+        "body": {
+          "status": "success",
+          "data": {
+            "groups": [
+              {
+                "name": "containers",
+                "file": "/etc/prometheus/alerts.yml",
+                "rules": [
+                  {
+                    "state": "inactive",
+                    "name": "ContainerHighMemory",
+                    "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                    "duration": 15,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "{{ $labels.name }}: память выше 80% лимита"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000254112,
+                    "lastEvaluation": "2026-10-24T17:17:49.502087207Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "inactive",
+                    "name": "ContainerRestarted",
+                    "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                    "duration": 0,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000191709,
+                    "lastEvaluation": "2026-10-24T17:17:49.502350419Z",
+                    "type": "alerting"
+                  }
+                ],
+                "interval": 5,
+                "limit": 0,
+                "evaluationTime": 0.000486622,
+                "lastEvaluation": "2026-10-24T17:17:49.502057906Z"
+              },
+              {
+                "name": "demo-api",
+                "file": "/etc/prometheus/alerts.yml",
+                "rules": [
+                  {
+                    "state": "inactive",
+                    "name": "ApiDown",
+                    "query": "up{job=\"demo-api\"} == 0",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "critical"
+                    },
+                    "annotations": {
+                      "summary": "DemoApi не отвечает на /metrics"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000380517,
+                    "lastEvaluation": "2026-10-24T17:17:53.1349827Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "inactive",
+                    "name": "ApiHighErrorRate",
+                    "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "Доля 5xx выше 5%"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000693932,
+                    "lastEvaluation": "2026-10-24T17:17:53.135379317Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "firing",
+                    "name": "ApiSlowRequests",
+                    "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "p95 времени ответа больше 1 секунды"
+                    },
+                    "alerts": [
+                      {
+                        "labels": {
+                          "alertname": "ApiSlowRequests",
+                          "severity": "warning"
+                        },
+                        "annotations": {
+                          "summary": "p95 времени ответа больше 1 секунды"
+                        },
+                        "state": "firing",
+                        "activeAt": "2026-10-24T17:17:18.242515366Z",
+                        "value": "1.1193379310344806e+00"
+                      }
+                    ],
+                    "health": "ok",
+                    "evaluationTime": 0.00266212,
+                    "lastEvaluation": "2026-10-24T17:17:53.136089149Z",
+                    "type": "alerting"
+                  }
+                ],
+                "interval": 5,
+                "limit": 0,
+                "evaluationTime": 0.003882074,
+                "lastEvaluation": "2026-10-24T17:17:53.134877695Z"
+              }
+            ]
+          }
+        },
+        "seconds": 0.019326
+      }
+    },
+    "metricsAtFiring": {
+      "ApiSlowRequests": {
+        "p95": [
+          {
+            "metric": {},
+            "value": [
+              1792862273.71,
+              "0.23679999999999563"
+            ]
+          }
+        ],
+        "httpCodes": [
+          {
+            "metric": {
+              "code": "200"
+            },
+            "value": [
+              1792862273.712,
+              "6.527391407116493"
+            ]
+          },
+          {
+            "metric": {
+              "code": "201"
+            },
+            "value": [
+              1792862273.712,
+              "2.981872397679958"
+            ]
+          },
+          {
+            "metric": {
+              "code": "400"
+            },
+            "value": [
+              1792862273.712,
+              "0"
+            ]
+          },
+          {
+            "metric": {
+              "code": "404"
+            },
+            "value": [
+              1792862273.712,
+              "0"
+            ]
+          },
+          {
+            "metric": {
+              "code": "500"
+            },
+            "value": [
+              1792862273.712,
+              "0"
+            ]
+          }
+        ],
+        "memoryPercent": [
+          {
+            "metric": {
+              "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+              "container_label_com_docker_compose_container_number": "1",
+              "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+              "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+              "container_label_com_docker_compose_oneoff": "False",
+              "container_label_com_docker_compose_project": "devops-labs",
+              "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+              "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+              "container_label_com_docker_compose_replace": "api-1",
+              "container_label_com_docker_compose_service": "api",
+              "container_label_com_docker_compose_version": "5.5.1",
+              "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+              "container_label_desktop_docker_io_ports_scheme": "v2",
+              "container_label_org_opencontainers_image_version": "24.04",
+              "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+              "image": "devops-labs-demo-api:lab14-7d78755",
+              "instance": "cadvisor:8080",
+              "job": "cadvisor",
+              "name": "devops-labs-api-1"
+            },
+            "value": [
+              1792862273.715,
+              "27.069091796875"
+            ]
+          }
+        ]
+      }
+    },
+    "after": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:12:25.098026382Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 0,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "endUtc": "2026-10-24T17:18:08.765903+00:00",
+    "endEpoch": 1792862288.7659037
+  },
+  {
+    "name": "c-crash",
+    "startUtc": "2026-10-24T17:18:08.846020+00:00",
+    "startEpoch": 1792862288.8460207,
+    "before": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:12:25.098026382Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 0,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "expectedAlerts": [
+      "ContainerRestarted"
+    ],
+    "requests": [
+      {
+        "utc": "2026-10-24T17:18:08.891378+00:00",
+        "method": "POST",
+        "url": "http://localhost:8088/api/chaos/crash",
+        "status": 202,
+        "body": "",
+        "seconds": 0.006429
+      }
+    ],
+    "firingSnapshots": {
+      "ContainerRestarted": {
+        "utc": "2026-10-24T17:18:25.028163+00:00",
+        "method": "GET",
+        "url": "http://localhost:9090/api/v1/rules?type=alert",
+        "status": 200,
+        "body": {
+          "status": "success",
+          "data": {
+            "groups": [
+              {
+                "name": "containers",
+                "file": "/etc/prometheus/alerts.yml",
+                "rules": [
+                  {
+                    "state": "inactive",
+                    "name": "ContainerHighMemory",
+                    "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                    "duration": 15,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "{{ $labels.name }}: память выше 80% лимита"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000192309,
+                    "lastEvaluation": "2026-10-24T17:18:24.500275632Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "firing",
+                    "name": "ContainerRestarted",
+                    "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                    "duration": 0,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                    },
+                    "alerts": [
+                      {
+                        "labels": {
+                          "alertname": "ContainerRestarted",
+                          "name": "devops-labs-api-1",
+                          "severity": "warning"
+                        },
+                        "annotations": {
+                          "summary": "devops-labs-api-1 перезапускался за последние 5 минут"
+                        },
+                        "state": "firing",
+                        "activeAt": "2026-10-24T17:18:19.609224133Z",
+                        "value": "1e+00"
+                      }
+                    ],
+                    "health": "ok",
+                    "evaluationTime": 0.000241211,
+                    "lastEvaluation": "2026-10-24T17:18:24.500472441Z",
+                    "type": "alerting"
+                  }
+                ],
+                "interval": 5,
+                "limit": 0,
+                "evaluationTime": 0.000476621,
+                "lastEvaluation": "2026-10-24T17:18:24.500240531Z"
+              },
+              {
+                "name": "demo-api",
+                "file": "/etc/prometheus/alerts.yml",
+                "rules": [
+                  {
+                    "state": "inactive",
+                    "name": "ApiDown",
+                    "query": "up{job=\"demo-api\"} == 0",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "critical"
+                    },
+                    "annotations": {
+                      "summary": "DemoApi не отвечает на /metrics"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000166608,
+                    "lastEvaluation": "2026-10-24T17:18:23.133873226Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "inactive",
+                    "name": "ApiHighErrorRate",
+                    "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "Доля 5xx выше 5%"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.000173608,
+                    "lastEvaluation": "2026-10-24T17:18:23.134047134Z",
+                    "type": "alerting"
+                  },
+                  {
+                    "state": "inactive",
+                    "name": "ApiSlowRequests",
+                    "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                    "duration": 30,
+                    "keepFiringFor": 0,
+                    "labels": {
+                      "severity": "warning"
+                    },
+                    "annotations": {
+                      "summary": "p95 времени ответа больше 1 секунды"
+                    },
+                    "alerts": [],
+                    "health": "ok",
+                    "evaluationTime": 0.00045352,
+                    "lastEvaluation": "2026-10-24T17:18:23.134223742Z",
+                    "type": "alerting"
+                  }
+                ],
+                "interval": 5,
+                "limit": 0,
+                "evaluationTime": 0.000838037,
+                "lastEvaluation": "2026-10-24T17:18:23.133842325Z"
+              }
+            ]
+          }
+        },
+        "seconds": 0.031172
+      }
+    },
+    "metricsAtFiring": {
+      "ContainerRestarted": {
+        "p95": [
+          {
+            "metric": {},
+            "value": [
+              1792862305.062,
+              "0.011636581541514566"
+            ]
+          }
+        ],
+        "httpCodes": [
+          {
+            "metric": {
+              "code": "200"
+            },
+            "value": [
+              1792862305.088,
+              "5.800519673572411"
+            ]
+          },
+          {
+            "metric": {
+              "code": "201"
+            },
+            "value": [
+              1792862305.088,
+              "2.8001527356037603"
+            ]
+          },
+          {
+            "metric": {
+              "code": "400"
+            },
+            "value": [
+              1792862305.088,
+              "0"
+            ]
+          },
+          {
+            "metric": {
+              "code": "404"
+            },
+            "value": [
+              1792862305.088,
+              "0"
+            ]
+          },
+          {
+            "metric": {
+              "code": "500"
+            },
+            "value": [
+              1792862305.088,
+              "0"
+            ]
+          }
+        ],
+        "memoryPercent": [
+          {
+            "metric": {
+              "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+              "container_label_com_docker_compose_container_number": "1",
+              "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+              "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+              "container_label_com_docker_compose_oneoff": "False",
+              "container_label_com_docker_compose_project": "devops-labs",
+              "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+              "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+              "container_label_com_docker_compose_replace": "api-1",
+              "container_label_com_docker_compose_service": "api",
+              "container_label_com_docker_compose_version": "5.5.1",
+              "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+              "container_label_desktop_docker_io_ports_scheme": "v2",
+              "container_label_org_opencontainers_image_version": "24.04",
+              "container_label_restartcount": "1",
+              "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+              "image": "devops-labs-demo-api:lab14-7d78755",
+              "instance": "cadvisor:8080",
+              "job": "cadvisor",
+              "name": "devops-labs-api-1"
+            },
+            "value": [
+              1792862305.09,
+              "17.40875244140625"
+            ]
+          }
+        ]
+      }
+    },
+    "after": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:18:09.415031709Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 1,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "endUtc": "2026-10-24T17:18:40.141102+00:00",
+    "endEpoch": 1792862320.1411023
+  },
+  {
+    "name": "d-memory",
+    "startUtc": "2026-10-24T17:23:20.484904+00:00",
+    "startEpoch": 1792862600.4849045,
+    "before": {
+      "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+      "image": "devops-labs-demo-api:lab14-7d78755",
+      "startedAt": "2026-10-24T17:18:09.415031709Z",
+      "running": true,
+      "health": "healthy",
+      "restartCount": 1,
+      "memory": 268435456,
+      "swap": 268435456,
+      "restartPolicy": "unless-stopped"
+    },
+    "expectedAlerts": [
+      "ContainerHighMemory",
+      "ContainerRestarted"
+    ],
+    "requests": [
+      {
+        "utc": "2026-10-24T17:23:20.529653+00:00",
+        "method": "POST",
+        "url": "http://localhost:8088/api/chaos/leak?mb=80",
+        "status": 200,
+        "body": {
+          "leakedMb": 80
+        },
+        "seconds": 0.039586
+      },
+      {
+        "utc": "2026-10-24T17:23:20.569022+00:00",
+        "method": "POST",
+        "url": "http://localhost:8088/api/chaos/leak?mb=100",
+        "status": 200,
+        "body": {
+          "leakedMb": 180
+        },
+        "seconds": 0.04341
+      },
+      {
+        "utc": "2026-10-24T17:23:32.615712+00:00",
+        "method": "POST",
+        "url": "http://localhost:8088/api/chaos/leak?mb=20",
+        "status": 200,
+        "body": {
+          "leakedMb": 20
+        },
+        "seconds": 0.033511
+      }
+    ],
+    "memoryAfter180MiB": [
+      {
+        "metric": {
+          "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+          "container_label_com_docker_compose_container_number": "1",
+          "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+          "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+          "container_label_com_docker_compose_oneoff": "False",
+          "container_label_com_docker_compose_project": "devops-labs",
+          "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+          "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+          "container_label_com_docker_compose_replace": "api-1",
+          "container_label_com_docker_compose_service": "api",
+          "container_label_com_docker_compose_version": "5.5.1",
+          "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+          "container_label_desktop_docker_io_ports_scheme": "v2",
+          "container_label_org_opencontainers_image_version": "24.04",
+          "container_label_restartcount": "2",
+          "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+          "image": "devops-labs-demo-api:lab14-7d78755",
+          "instance": "cadvisor:8080",
+          "job": "cadvisor",
+          "name": "devops-labs-api-1"
+        },
+        "value": [
+          1792862612.615,
+          "16.04461669921875"
+        ]
+      }
+    ]
+  }
+]

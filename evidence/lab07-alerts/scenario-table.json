@@ -1,0 +1,80 @@
+[
+  {
+    "scenario": "a-errors",
+    "alert": "ApiHighErrorRate",
+    "startUtc": "2026-10-24T17:14:53.813027+00:00",
+    "pendingObservedUtc": "2026-10-24T17:15:33.861289+00:00",
+    "activeAt": "2026-10-24T17:15:28.242515366Z",
+    "firingObservedUtc": "2026-10-24T17:16:03.627377+00:00",
+    "firingEvaluationUtc": "2026-10-24T17:16:03.141399818Z",
+    "secondsStartToFiringObservation": 69.814,
+    "secondsActiveToFiringEvaluation": 34.899,
+    "forSeconds": 30,
+    "pendingNotObservedReason": null
+  },
+  {
+    "scenario": "b-slow",
+    "alert": "ApiSlowRequests",
+    "startUtc": "2026-10-24T17:16:33.694748+00:00",
+    "pendingObservedUtc": "2026-10-24T17:17:23.571645+00:00",
+    "activeAt": "2026-10-24T17:17:18.242515366Z",
+    "firingObservedUtc": "2026-10-24T17:17:53.189629+00:00",
+    "firingEvaluationUtc": "2026-10-24T17:17:53.136089149Z",
+    "secondsStartToFiringObservation": 79.495,
+    "secondsActiveToFiringEvaluation": 34.894,
+    "forSeconds": 30,
+    "pendingNotObservedReason": null
+  },
+  {
+    "scenario": "c-crash",
+    "alert": "ContainerRestarted",
+    "startUtc": "2026-10-24T17:18:08.846020+00:00",
+    "pendingObservedUtc": null,
+    "activeAt": "2026-10-24T17:18:19.609224133Z",
+    "firingObservedUtc": "2026-10-24T17:18:24.770976+00:00",
+    "firingEvaluationUtc": "2026-10-24T17:18:24.500472441Z",
+    "secondsStartToFiringObservation": 15.925,
+    "secondsActiveToFiringEvaluation": 4.891,
+    "forSeconds": 0,
+    "pendingNotObservedReason": "No for: direct inactive to firing"
+  },
+  {
+    "scenario": "d-memory",
+    "alert": "ContainerHighMemory",
+    "startUtc": "2026-10-24T17:28:35.433030+00:00",
+    "pendingObservedUtc": "2026-10-24T17:28:55.460217+00:00",
+    "activeAt": "2026-10-24T17:28:49.609224133Z",
+    "firingObservedUtc": "2026-10-24T17:29:09.804754+00:00",
+    "firingEvaluationUtc": "2026-10-24T17:29:09.471850727Z",
+    "secondsStartToFiringObservation": 34.372,
+    "secondsActiveToFiringEvaluation": 19.863,
+    "forSeconds": 15,
+    "pendingNotObservedReason": null
+  },
+  {
+    "scenario": "d-memory",
+    "alert": "ContainerRestarted",
+    "startUtc": "2026-10-24T17:28:35.433030+00:00",
+    "pendingObservedUtc": null,
+    "activeAt": "2026-10-24T17:29:34.609224133Z",
+    "firingObservedUtc": "2026-10-24T17:29:40.476446+00:00",
+    "firingEvaluationUtc": "2026-10-24T17:29:39.470501872Z",
+    "secondsStartToFiringObservation": 65.043,
+    "secondsActiveToFiringEvaluation": 4.861,
+    "forSeconds": 0,
+    "pendingNotObservedReason": "No for: direct inactive to firing"
+  },
+  {
+    "scenario": "e-down",
+    "alert": "ApiDown",
+    "startUtc": "2026-10-24T17:29:56.101857+00:00",
+    "pendingObservedUtc": "2026-10-24T17:30:08.123856+00:00",
+    "activeAt": "2026-10-24T17:30:03.242515366Z",
+    "firingObservedUtc": "2026-10-24T17:30:38.877577+00:00",
+    "firingEvaluationUtc": "2026-10-24T17:30:38.101119559Z",
+    "secondsStartToFiringObservation": 42.776,
+    "secondsActiveToFiringEvaluation": 34.859,
+    "forSeconds": 30,
+    "pendingNotObservedReason": null
+  }
+]

@@ -10,12 +10,13 @@ from datetime import datetime,timezone
 from urllib.request import Request,urlopen
 from urllib.parse import urlencode
 from urllib.error import HTTPError
-import argparse,json,subprocess,threading,time
+import argparse,json,subprocess,threading,time,shutil
 
 API='http://localhost:8088';PROM='http://localhost:9090';NAME='devops-labs-api-1'
 def utc():return datetime.now(timezone.utc).isoformat()
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--tag',required=True);parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--resume-after-crash',type=Path,help='Retain completed a-c from a prior run where the initial fixed leak sizes OOMed too early; rerun d-e after restart rule clears.')
     args=parser.parse_args();repo=Path(__file__).resolve().parents[1];out=args.output.resolve();out.mkdir(parents=True,exist_ok=False)
     if not args.tag.startswith('lab14-'):raise ValueError('Only explicit local lab14 tag allowed')
     def save(n,v):(out/(n+'.json')).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
@@ -55,8 +56,23 @@ def main():
     save('business-counter',{'before':before,'afterSuccess':after,'afterRejected':raw_counter(),'project':project,'created':created,'bad':bad,'missing':missing})
     save('initial',{'utc':utc(),'inspection':initial,'info':http(API+'/')})
     stop=threading.Event();observations=[];lock=threading.Lock();observer_errors=[];phase='warmup';phases=[]
+    if args.resume_after_crash:
+        prior=args.resume_after_crash.resolve();old_phases=json.loads((prior/'phases.json').read_text(encoding='utf-8'))
+        phases=[p for p in old_phases if p['name'] in ['a-errors','b-slow','c-crash'] and 'endEpoch' in p]
+        assert len(phases)==3
+        # Preserve the failed attempt as evidence, without assigning its restart
+        # to the later successful memory warning -> OOM sequence.
+        for line in (prior/'alerts-timeline.jsonl').read_text(encoding='utf-8').splitlines():
+            row=json.loads(line)
+            if row['phase']=='d-memory':row['phase']='d-initial-premature-oom'
+            observations.append(row)
+        for name in ['a-errors','b-slow','c-crash']:
+            for suffix in ['.json','-logs.txt']:shutil.copy2(prior/(name+suffix),out/(name+suffix))
+        for name in ['docker-events.jsonl','final.json','phases.json','load-console.txt','load-stderr.txt','business-counter.json']:
+            shutil.copy2(prior/name,out/('initial-attempt-'+name))
     def observer():
         with (out/'alerts-timeline.jsonl').open('w',encoding='utf-8',buffering=1) as f:
+            for row in observations:f.write(json.dumps(row,ensure_ascii=False)+'\n')
             while not stop.is_set():
                 try:
                     r=http(PROM+'/api/v1/rules?type=alert');assert r['status']==200
@@ -98,32 +114,34 @@ def main():
         assert p.returncode==0;(out/(v['name']+'-logs.txt')).write_text(p.stdout+p.stderr,encoding='utf-8');save(v['name'],v)
     try:
         wait(lambda:state('ApiDown')=='inactive');time.sleep(65)
-        a=start('a-errors',['ApiHighErrorRate'])
-        for _ in range(60):
-            r=http(API+'/api/chaos/error');a['requests'].append(r);assert r['status']==500;time.sleep(1)
-        fired(a,'ApiHighErrorRate');finish(a);wait(lambda:state('ApiHighErrorRate')=='inactive')
-        b=start('b-slow',['ApiSlowRequests'])
-        for _ in range(40):
-            r=http(API+'/api/chaos/slow?ms=1500');b['requests'].append(r);assert r['status']==200 and r['seconds']>=1.4
-        fired(b,'ApiSlowRequests');finish(b);wait(lambda:state('ApiSlowRequests')=='inactive')
-        # A new local deployment can itself make the rolling restart rule fire.
-        # The crash trial must begin from inactive to attribute its new firing.
-        live('baseline-before-crash','waiting for ContainerRestarted inactive')
-        wait(lambda:state('ContainerRestarted')=='inactive',360)
-        c=start('c-crash',['ContainerRestarted']);c['requests'].append(http(API+'/api/chaos/crash','POST'))
-        wait(lambda:inspect()['running'] and inspect()['health']=='healthy' and inspect()['restartCount']>c['before']['restartCount'])
-        fired(c,'ContainerRestarted');finish(c)
+        if not args.resume_after_crash:
+            a=start('a-errors',['ApiHighErrorRate'])
+            for _ in range(60):
+                r=http(API+'/api/chaos/error');a['requests'].append(r);assert r['status']==500;time.sleep(1)
+            fired(a,'ApiHighErrorRate');finish(a);wait(lambda:state('ApiHighErrorRate')=='inactive')
+            b=start('b-slow',['ApiSlowRequests'])
+            for _ in range(40):
+                r=http(API+'/api/chaos/slow?ms=1500');b['requests'].append(r);assert r['status']==200 and r['seconds']>=1.4
+            fired(b,'ApiSlowRequests');finish(b);wait(lambda:state('ApiSlowRequests')=='inactive')
+            # A new local deployment can itself make the rolling restart rule fire.
+            live('baseline-before-crash','waiting for ContainerRestarted inactive')
+            wait(lambda:state('ContainerRestarted')=='inactive',360)
+            c=start('c-crash',['ContainerRestarted']);c['requests'].append(http(API+'/api/chaos/crash','POST'))
+            wait(lambda:inspect()['running'] and inspect()['health']=='healthy' and inspect()['restartCount']>c['before']['restartCount'])
+            fired(c,'ContainerRestarted');finish(c)
         live('between-c-d','waiting for ContainerRestarted inactive');print('Waiting full restart window before d',flush=True)
         wait(lambda:state('ContainerRestarted')=='inactive',380)
         d=start('d-memory',['ContainerHighMemory','ContainerRestarted'])
-        for mb in [80,100]:
+        d['allocationMethod']='80MiB then measured20MiB steps until Docker working set>=84%, rather than assuming a fixed baseline.'
+        d['memorySamples']=[]
+        for mb in [80]+[20]*9:
             r=http(API+'/api/chaos/leak?mb='+str(mb),'POST');d['requests'].append(r);assert r['status']==200
-        # Follow the lab's extra20MiB clause only when measured memory is low.
-        time.sleep(12)
-        pct=query('100 * container_memory_working_set_bytes{name="devops-labs-api-1"} / (container_spec_memory_limit_bytes{name="devops-labs-api-1"}>0)')
-        d['memoryAfter180MiB']=pct
-        if pct and float(pct[-1]['value'][1])<80:
-            d['requests'].append(http(API+'/api/chaos/leak?mb=20','POST'))
+            time.sleep(2)
+            pct=float(run('docker','stats',NAME,'--no-stream','--format','{{.MemPerc}}').strip().rstrip('%'))
+            d['memorySamples'].append({'utc':utc(),'dockerMemoryPercent':pct})
+            assert inspect()['restartCount']==d['before']['restartCount'],'Unexpected early OOM; retain attempt and retry with smaller allocations'
+            if pct>=84:break
+        else:raise RuntimeError('Memory threshold not reached with bounded allocation')
         fired(d,'ContainerHighMemory')
         d['requests'].append(http(API+'/api/chaos/leak?mb=60','POST'))
         wait(lambda:inspect()['running'] and inspect()['health']=='healthy' and inspect()['restartCount']>d['before']['restartCount'])

@@ -1,0 +1,79 @@
+{
+  "pages": 10,
+  "language": "kk",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "links": 29,
+  "visualReviewPages": [
+    {
+      "page": 1,
+      "characters": 1356,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 2,
+      "characters": 1839,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 3,
+      "characters": 1752,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 4,
+      "characters": 1589,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 5,
+      "characters": 1333,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 6,
+      "characters": 1591,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 7,
+      "characters": 1550,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 8,
+      "characters": 1946,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 9,
+      "characters": 1951,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    },
+    {
+      "page": 10,
+      "characters": 1868,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final rendered PNG reviewed: readable, no overlap or clipping"
+    }
+  ],
+  "sha256": "ab23d08a21773546cb0c748a6caf1a4788e49b966a553c2778509131027e1b3b"
+}

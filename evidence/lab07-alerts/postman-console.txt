@@ -1,0 +1,86 @@
+No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+Lab07 alerts - recovered real API
+
+Root Ready restored
+
+  GET http://localhost:8088/health/ready [200 OK, 227 B, 19 ms]
+  Pass  Ready 200
+
+Root Counter before
+
+  GET http://localhost:8088/metrics [200 OK, 134.66 KB, 6 ms]
+  Pass  Metrics 200
+  Pass  Counter finite
+
+Root Create counter project
+
+  POST http://localhost:8088/api/projects [201 Created, 318 B, 19 ms]
+  Pass  Project 201
+
+Root Create counted task
+
+  POST http://localhost:8088/api/tasks [201 Created, 404 B, 7 ms]
+  Pass  Task 201
+  Pass  Todo persisted
+
+Root Counter incremented
+
+  GET http://localhost:8088/metrics [200 OK, 143.4 KB, 14 ms]
+  Pass  Metrics 200
+  Pass  Exactly one persisted event
+
+Root Rejected empty title
+
+  POST http://localhost:8088/api/tasks [400 Bad Request, 401 B, 14 ms]
+  Pass  Invalid task 400
+
+Root Missing project
+
+  POST http://localhost:8088/api/tasks [404 Not Found, 370 B, 6 ms]
+  Pass  Unknown project 404
+
+Root Counter unchanged by rejected requests
+
+  GET http://localhost:8088/metrics [200 OK, 159.96 KB, 5 ms]
+  Pass  Metrics 200
+  Pass  Rejected operations not counted
+
+Root Targets recovered
+
+  GET http://localhost:9090/api/v1/targets [200 OK, 697 B, 7 ms]
+  Pass  Targets 200
+  Pass  Three targets UP
+
+Root Rules ready
+
+  GET http://localhost:9090/api/v1/rules?type=alert [200 OK, 1.14 KB, 12 ms]
+  Pass  Rules 200
+  Pass  Five rules healthy
+  Pass  Availability alert cleared
+
+--------------------------------------------------------------------
+|                         |           executed |            failed |
+--------------------------+--------------------+--------------------
+|              iterations |                  1 |                 0 |
+--------------------------+--------------------+--------------------
+|                requests |                 10 |                 0 |
+--------------------------+--------------------+--------------------
+|            test-scripts |                 10 |                 0 |
+--------------------------+--------------------+--------------------
+|      prerequest-scripts |                  0 |                 0 |
+--------------------------+--------------------+--------------------
+|              assertions |                 17 |                 0 |
+--------------------------------------------------------------------
+| total run duration: 579 ms                                       |
+--------------------------------------------------------------------
+| total data received: 439.82 KB (approx)                          |
+--------------------------------------------------------------------
+| average response time: 10 ms [min: 5 ms, max: 19 ms, s.d.: 5 ms] |
+--------------------------------------------------------------------
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

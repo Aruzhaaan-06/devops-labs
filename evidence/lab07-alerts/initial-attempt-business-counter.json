@@ -1,0 +1,66 @@
+{
+  "before": 1.0,
+  "afterSuccess": 2.0,
+  "afterRejected": 2.0,
+  "project": {
+    "utc": "2026-10-24T17:13:48.009888+00:00",
+    "method": "POST",
+    "url": "http://localhost:8088/api/projects",
+    "status": 201,
+    "body": {
+      "id": 29,
+      "name": "lab14-counter-1792862028",
+      "createdAt": "2026-10-24T17:13:48.1009+00:00"
+    },
+    "seconds": 0.116159
+  },
+  "created": {
+    "utc": "2026-10-24T17:13:48.168941+00:00",
+    "method": "POST",
+    "url": "http://localhost:8088/api/tasks",
+    "status": 201,
+    "body": {
+      "id": 1231,
+      "projectId": 29,
+      "title": "counted",
+      "description": null,
+      "status": "Todo",
+      "dueDate": null,
+      "createdAt": "2026-10-24T17:13:48.182435+00:00",
+      "updatedAt": "2026-10-24T17:13:48.182435+00:00"
+    },
+    "seconds": 0.017476
+  },
+  "bad": {
+    "utc": "2026-10-24T17:13:48.191012+00:00",
+    "method": "POST",
+    "url": "http://localhost:8088/api/tasks",
+    "status": 400,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Title": [
+          "The Title field is required."
+        ]
+      },
+      "traceId": "00-4f4c801b9938df8a5d4fbb94eb809e5d-d70f7b91de887258-00"
+    },
+    "seconds": 0.047517
+  },
+  "missing": {
+    "utc": "2026-10-24T17:13:48.238630+00:00",
+    "method": "POST",
+    "url": "http://localhost:8088/api/tasks",
+    "status": 404,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+      "title": "Not Found",
+      "status": 404,
+      "detail": "Проект 2147483647 не найден",
+      "traceId": "00-ee27e6c9330a6cca1a5b97cfe42dc02d-700f6cb68eb4173d-00"
+    },
+    "seconds": 0.004353
+  }
+}

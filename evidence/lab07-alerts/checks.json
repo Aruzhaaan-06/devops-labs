@@ -1,0 +1,127 @@
+{
+  "passed": 30,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Five completed scenarios",
+      "passed": true
+    },
+    {
+      "name": "Six actual firings",
+      "passed": true
+    },
+    {
+      "name": "Pending retained for timed rules",
+      "passed": true
+    },
+    {
+      "name": "No invented pending for restart rule",
+      "passed": true
+    },
+    {
+      "name": "Each timed firing exceeds configured for",
+      "passed": true
+    },
+    {
+      "name": "Timeline retains original failed memory attempt",
+      "passed": true
+    },
+    {
+      "name": "Observer error free",
+      "passed": true
+    },
+    {
+      "name": "a sixty real500",
+      "passed": true
+    },
+    {
+      "name": "a no process restart",
+      "passed": true
+    },
+    {
+      "name": "b forty real slow200",
+      "passed": true
+    },
+    {
+      "name": "c accepted then same-container restart",
+      "passed": true
+    },
+    {
+      "name": "c ApiDown never firing in retained interval",
+      "passed": true
+    },
+    {
+      "name": "d begins after prior restart alert inactive",
+      "passed": true
+    },
+    {
+      "name": "d measured high memory before OOM",
+      "passed": true
+    },
+    {
+      "name": "d warning firing precedes restart firing",
+      "passed": true
+    },
+    {
+      "name": "d restarts same API once",
+      "passed": true
+    },
+    {
+      "name": "Actual new OOM and137",
+      "passed": true
+    },
+    {
+      "name": "Actual original crash1 and prematureOOM137",
+      "passed": true
+    },
+    {
+      "name": "e intentional stop and start healthy",
+      "passed": true
+    },
+    {
+      "name": "Final healthy live ready and load stopped",
+      "passed": true
+    },
+    {
+      "name": "Final3UP",
+      "passed": true
+    },
+    {
+      "name": "Business counter increments successful persistence only",
+      "passed": true
+    },
+    {
+      "name": "Loaded7panels and UID retained",
+      "passed": true
+    },
+    {
+      "name": "Provisioned expressions match Git file",
+      "passed": true
+    },
+    {
+      "name": "Filesystem polling fix verified",
+      "passed": true
+    },
+    {
+      "name": "InMemory40andfocused1passed",
+      "passed": true
+    },
+    {
+      "name": "Postman10requests17assertions nofailures",
+      "passed": true
+    },
+    {
+      "name": "Historical markers and1200tasks retained",
+      "passed": true
+    },
+    {
+      "name": "Permanent Compose alert config workflow unchanged",
+      "passed": true
+    },
+    {
+      "name": "Expected Error and Critical actual logs",
+      "passed": true
+    }
+  ],
+  "scope": "Saved real observations, not a current monitor. UI export/visual observation unavailable and not claimed."
+}

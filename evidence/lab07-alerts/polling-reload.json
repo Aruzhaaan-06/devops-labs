@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-24T17:21:46.177356+00:00",
+  "beforePanels": 5,
+  "afterPanels": 7,
+  "uid": "demo-api",
+  "updateIntervalSeconds": 20,
+  "observedFileEditDelaySeconds": 19.429,
+  "fileDescriptionPropagatedWithoutSecondRestart": true
+}

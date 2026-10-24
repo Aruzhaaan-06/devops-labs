@@ -1,0 +1,45 @@
+Project 32. Load on http://localhost:8088, press Ctrl+C to stop
+iterations: 20
+iterations: 40
+iterations: 60
+iterations: 80
+iterations: 100
+iterations: 120
+iterations: 140
+iterations: 160
+iterations: 180
+iterations: 200
+iterations: 220
+iterations: 240
+iterations: 260
+iterations: 280
+iterations: 300
+iterations: 320
+iterations: 340
+iterations: 360
+iterations: 380
+iterations: 400
+error: An error occurred while sending the request.
+error: An error occurred while sending the request.
+iterations: 420
+iterations: 440
+iterations: 460
+iterations: 480
+iterations: 500
+error: An error occurred while sending the request.
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (localhost:8088)
+error: An error occurred while sending the request.
+error: An error occurred while sending the request.
+iterations: 540

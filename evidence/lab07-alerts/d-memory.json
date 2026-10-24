@@ -1,0 +1,559 @@
+{
+  "name": "d-memory",
+  "startUtc": "2026-10-24T17:28:35.433030+00:00",
+  "startEpoch": 1792862915.4330308,
+  "before": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:23:26.132036632Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 2,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "expectedAlerts": [
+    "ContainerHighMemory",
+    "ContainerRestarted"
+  ],
+  "requests": [
+    {
+      "utc": "2026-10-24T17:28:35.488462+00:00",
+      "method": "POST",
+      "url": "http://localhost:8088/api/chaos/leak?mb=80",
+      "status": 200,
+      "body": {
+        "leakedMb": 100
+      },
+      "seconds": 0.064131
+    },
+    {
+      "utc": "2026-10-24T17:28:39.284322+00:00",
+      "method": "POST",
+      "url": "http://localhost:8088/api/chaos/leak?mb=20",
+      "status": 200,
+      "body": {
+        "leakedMb": 120
+      },
+      "seconds": 0.030212
+    },
+    {
+      "utc": "2026-10-24T17:28:43.305197+00:00",
+      "method": "POST",
+      "url": "http://localhost:8088/api/chaos/leak?mb=20",
+      "status": 200,
+      "body": {
+        "leakedMb": 140
+      },
+      "seconds": 0.017835
+    },
+    {
+      "utc": "2026-10-24T17:28:47.329270+00:00",
+      "method": "POST",
+      "url": "http://localhost:8088/api/chaos/leak?mb=20",
+      "status": 200,
+      "body": {
+        "leakedMb": 160
+      },
+      "seconds": 0.020501
+    },
+    {
+      "utc": "2026-10-24T17:29:24.955173+00:00",
+      "method": "POST",
+      "url": "http://localhost:8088/api/chaos/leak?mb=60",
+      "status": null,
+      "error": "RemoteDisconnected: Remote end closed connection without response",
+      "seconds": 0.046482
+    }
+  ],
+  "allocationMethod": "80MiB then measured20MiB steps until Docker working set>=84%, rather than assuming a fixed baseline.",
+  "memorySamples": [
+    {
+      "utc": "2026-10-24T17:28:39.239725+00:00",
+      "dockerMemoryPercent": 64.86
+    },
+    {
+      "utc": "2026-10-24T17:28:43.261931+00:00",
+      "dockerMemoryPercent": 73.1
+    },
+    {
+      "utc": "2026-10-24T17:28:47.284150+00:00",
+      "dockerMemoryPercent": 81.49
+    },
+    {
+      "utc": "2026-10-24T17:28:51.316474+00:00",
+      "dockerMemoryPercent": 88.63
+    }
+  ],
+  "firingSnapshots": {
+    "ContainerHighMemory": {
+      "utc": "2026-10-24T17:29:09.874630+00:00",
+      "method": "GET",
+      "url": "http://localhost:9090/api/v1/rules?type=alert",
+      "status": 200,
+      "body": {
+        "status": "success",
+        "data": {
+          "groups": [
+            {
+              "name": "containers",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "firing",
+                  "name": "ContainerHighMemory",
+                  "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                  "duration": 15,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }}: память выше 80% лимита"
+                  },
+                  "alerts": [
+                    {
+                      "labels": {
+                        "alertname": "ContainerHighMemory",
+                        "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+                        "container_label_com_docker_compose_container_number": "1",
+                        "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+                        "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+                        "container_label_com_docker_compose_oneoff": "False",
+                        "container_label_com_docker_compose_project": "devops-labs",
+                        "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+                        "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+                        "container_label_com_docker_compose_replace": "api-1",
+                        "container_label_com_docker_compose_service": "api",
+                        "container_label_com_docker_compose_version": "5.5.1",
+                        "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+                        "container_label_desktop_docker_io_ports_scheme": "v2",
+                        "container_label_org_opencontainers_image_version": "24.04",
+                        "container_label_restartcount": "2",
+                        "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+                        "image": "devops-labs-demo-api:lab14-7d78755",
+                        "instance": "cadvisor:8080",
+                        "job": "cadvisor",
+                        "name": "devops-labs-api-1",
+                        "severity": "warning"
+                      },
+                      "annotations": {
+                        "summary": "devops-labs-api-1: память выше 80% лимита"
+                      },
+                      "state": "firing",
+                      "activeAt": "2026-10-24T17:28:49.609224133Z",
+                      "value": "8.842315673828125e-01"
+                    }
+                  ],
+                  "health": "ok",
+                  "evaluationTime": 0.00045912,
+                  "lastEvaluation": "2026-10-24T17:29:09.471850727Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ContainerRestarted",
+                  "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                  "duration": 0,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000110905,
+                  "lastEvaluation": "2026-10-24T17:29:09.472316547Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.000603326,
+              "lastEvaluation": "2026-10-24T17:29:09.471828426Z"
+            },
+            {
+              "name": "demo-api",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "inactive",
+                  "name": "ApiDown",
+                  "query": "up{job=\"demo-api\"} == 0",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "critical"
+                  },
+                  "annotations": {
+                    "summary": "DemoApi не отвечает на /metrics"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000155307,
+                  "lastEvaluation": "2026-10-24T17:29:08.104711925Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiHighErrorRate",
+                  "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "Доля 5xx выше 5%"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000196409,
+                  "lastEvaluation": "2026-10-24T17:29:08.104874132Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiSlowRequests",
+                  "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "p95 времени ответа больше 1 секунды"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000422718,
+                  "lastEvaluation": "2026-10-24T17:29:08.105073041Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.000810535,
+              "lastEvaluation": "2026-10-24T17:29:08.104688124Z"
+            }
+          ]
+        }
+      },
+      "seconds": 0.022476
+    },
+    "ContainerRestarted": {
+      "utc": "2026-10-24T17:29:40.934909+00:00",
+      "method": "GET",
+      "url": "http://localhost:9090/api/v1/rules?type=alert",
+      "status": 200,
+      "body": {
+        "status": "success",
+        "data": {
+          "groups": [
+            {
+              "name": "containers",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "inactive",
+                  "name": "ContainerHighMemory",
+                  "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                  "duration": 15,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }}: память выше 80% лимита"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.00023671,
+                  "lastEvaluation": "2026-10-24T17:29:39.470251861Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "firing",
+                  "name": "ContainerRestarted",
+                  "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                  "duration": 0,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                  },
+                  "alerts": [
+                    {
+                      "labels": {
+                        "alertname": "ContainerRestarted",
+                        "name": "devops-labs-api-1",
+                        "severity": "warning"
+                      },
+                      "annotations": {
+                        "summary": "devops-labs-api-1 перезапускался за последние 5 минут"
+                      },
+                      "state": "firing",
+                      "activeAt": "2026-10-24T17:29:34.609224133Z",
+                      "value": "1e+00"
+                    }
+                  ],
+                  "health": "ok",
+                  "evaluationTime": 0.00023031,
+                  "lastEvaluation": "2026-10-24T17:29:39.470501872Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.000534723,
+              "lastEvaluation": "2026-10-24T17:29:39.470199059Z"
+            },
+            {
+              "name": "demo-api",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "inactive",
+                  "name": "ApiDown",
+                  "query": "up{job=\"demo-api\"} == 0",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "critical"
+                  },
+                  "annotations": {
+                    "summary": "DemoApi не отвечает на /metrics"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000522422,
+                  "lastEvaluation": "2026-10-24T17:29:38.104352086Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiHighErrorRate",
+                  "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "Доля 5xx выше 5%"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000708531,
+                  "lastEvaluation": "2026-10-24T17:29:38.104900209Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiSlowRequests",
+                  "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "p95 времени ответа больше 1 секунды"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.002015886,
+                  "lastEvaluation": "2026-10-24T17:29:38.10562274Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.003440747,
+              "lastEvaluation": "2026-10-24T17:29:38.10420518Z"
+            }
+          ]
+        }
+      },
+      "seconds": 0.002974
+    }
+  },
+  "metricsAtFiring": {
+    "ContainerHighMemory": {
+      "p95": [
+        {
+          "metric": {},
+          "value": [
+            1792862949.899,
+            "0.008240000000000013"
+          ]
+        }
+      ],
+      "httpCodes": [
+        {
+          "metric": {
+            "code": "200"
+          },
+          "value": [
+            1792862949.927,
+            "6.2182948780886935"
+          ]
+        },
+        {
+          "metric": {
+            "code": "201"
+          },
+          "value": [
+            1792862949.927,
+            "3.0182366952126407"
+          ]
+        },
+        {
+          "metric": {
+            "code": "400"
+          },
+          "value": [
+            1792862949.927,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "code": "404"
+          },
+          "value": [
+            1792862949.927,
+            "0"
+          ]
+        }
+      ],
+      "memoryPercent": [
+        {
+          "metric": {
+            "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+            "container_label_com_docker_compose_container_number": "1",
+            "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+            "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+            "container_label_com_docker_compose_oneoff": "False",
+            "container_label_com_docker_compose_project": "devops-labs",
+            "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+            "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+            "container_label_com_docker_compose_replace": "api-1",
+            "container_label_com_docker_compose_service": "api",
+            "container_label_com_docker_compose_version": "5.5.1",
+            "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+            "container_label_desktop_docker_io_ports_scheme": "v2",
+            "container_label_org_opencontainers_image_version": "24.04",
+            "container_label_restartcount": "2",
+            "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+            "image": "devops-labs-demo-api:lab14-7d78755",
+            "instance": "cadvisor:8080",
+            "job": "cadvisor",
+            "name": "devops-labs-api-1"
+          },
+          "value": [
+            1792862949.953,
+            "88.4490966796875"
+          ]
+        }
+      ]
+    },
+    "ContainerRestarted": {
+      "p95": [
+        {
+          "metric": {},
+          "value": [
+            1792862980.939,
+            "0.007891141053459118"
+          ]
+        }
+      ],
+      "httpCodes": [
+        {
+          "metric": {
+            "code": "200"
+          },
+          "value": [
+            1792862980.943,
+            "5.5811495454545454"
+          ]
+        },
+        {
+          "metric": {
+            "code": "201"
+          },
+          "value": [
+            1792862980.943,
+            "2.727272727272727"
+          ]
+        },
+        {
+          "metric": {
+            "code": "400"
+          },
+          "value": [
+            1792862980.943,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "code": "404"
+          },
+          "value": [
+            1792862980.943,
+            "0"
+          ]
+        }
+      ],
+      "memoryPercent": [
+        {
+          "metric": {
+            "container_label_com_docker_compose_config_hash": "668ce183d98b10b89e04b5b9dca70b9941eb5d7a4b59e2ef9718efb3344d0798",
+            "container_label_com_docker_compose_container_number": "1",
+            "container_label_com_docker_compose_depends_on": "db:service_healthy:false",
+            "container_label_com_docker_compose_image": "sha256:84943c9d2bcb726d7c7077dded4c8c99674dae25367f6e65a4dc8de49a48ebf9",
+            "container_label_com_docker_compose_oneoff": "False",
+            "container_label_com_docker_compose_project": "devops-labs",
+            "container_label_com_docker_compose_project_config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+            "container_label_com_docker_compose_project_working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+            "container_label_com_docker_compose_replace": "api-1",
+            "container_label_com_docker_compose_service": "api",
+            "container_label_com_docker_compose_version": "5.5.1",
+            "container_label_desktop_docker_io_ports_8080_tcp": "127.0.0.1:8088",
+            "container_label_desktop_docker_io_ports_scheme": "v2",
+            "container_label_org_opencontainers_image_version": "24.04",
+            "container_label_restartcount": "3",
+            "id": "/docker/c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+            "image": "devops-labs-demo-api:lab14-7d78755",
+            "instance": "cadvisor:8080",
+            "job": "cadvisor",
+            "name": "devops-labs-api-1"
+          },
+          "value": [
+            1792862980.946,
+            "16.412353515625"
+          ]
+        }
+      ]
+    }
+  },
+  "after": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:29:25.304927085Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 3,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "endUtc": "2026-10-24T17:29:55.999064+00:00",
+  "endEpoch": 1792862995.9990642
+}

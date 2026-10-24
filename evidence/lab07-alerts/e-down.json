@@ -1,0 +1,224 @@
+{
+  "name": "e-down",
+  "startUtc": "2026-10-24T17:29:56.101857+00:00",
+  "startEpoch": 1792862996.1018574,
+  "before": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:29:25.304927085Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 3,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "expectedAlerts": [
+    "ApiDown"
+  ],
+  "requests": [],
+  "stopCompletedUtc": "2026-10-24T17:29:56.579598+00:00",
+  "firingSnapshots": {
+    "ApiDown": {
+      "utc": "2026-10-24T17:30:39.121173+00:00",
+      "method": "GET",
+      "url": "http://localhost:9090/api/v1/rules?type=alert",
+      "status": 200,
+      "body": {
+        "status": "success",
+        "data": {
+          "groups": [
+            {
+              "name": "containers",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "inactive",
+                  "name": "ContainerHighMemory",
+                  "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+                  "duration": 15,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }}: память выше 80% лимита"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000291912,
+                  "lastEvaluation": "2026-10-24T17:30:34.469781792Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "firing",
+                  "name": "ContainerRestarted",
+                  "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+                  "duration": 0,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+                  },
+                  "alerts": [
+                    {
+                      "labels": {
+                        "alertname": "ContainerRestarted",
+                        "name": "devops-labs-api-1",
+                        "severity": "warning"
+                      },
+                      "annotations": {
+                        "summary": "devops-labs-api-1 перезапускался за последние 5 минут"
+                      },
+                      "state": "firing",
+                      "activeAt": "2026-10-24T17:29:34.609224133Z",
+                      "value": "1e+00"
+                    }
+                  ],
+                  "health": "ok",
+                  "evaluationTime": 0.000354915,
+                  "lastEvaluation": "2026-10-24T17:30:34.470079705Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.00070043,
+              "lastEvaluation": "2026-10-24T17:30:34.46973779Z"
+            },
+            {
+              "name": "demo-api",
+              "file": "/etc/prometheus/alerts.yml",
+              "rules": [
+                {
+                  "state": "firing",
+                  "name": "ApiDown",
+                  "query": "up{job=\"demo-api\"} == 0",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "critical"
+                  },
+                  "annotations": {
+                    "summary": "DemoApi не отвечает на /metrics"
+                  },
+                  "alerts": [
+                    {
+                      "labels": {
+                        "alertname": "ApiDown",
+                        "instance": "host.docker.internal:8088",
+                        "job": "demo-api",
+                        "severity": "critical"
+                      },
+                      "annotations": {
+                        "summary": "DemoApi не отвечает на /metrics"
+                      },
+                      "state": "firing",
+                      "activeAt": "2026-10-24T17:30:03.242515366Z",
+                      "value": "0e+00"
+                    }
+                  ],
+                  "health": "ok",
+                  "evaluationTime": 0.000363815,
+                  "lastEvaluation": "2026-10-24T17:30:38.101119559Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiHighErrorRate",
+                  "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "Доля 5xx выше 5%"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000143706,
+                  "lastEvaluation": "2026-10-24T17:30:38.101490674Z",
+                  "type": "alerting"
+                },
+                {
+                  "state": "inactive",
+                  "name": "ApiSlowRequests",
+                  "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+                  "duration": 30,
+                  "keepFiringFor": 0,
+                  "labels": {
+                    "severity": "warning"
+                  },
+                  "annotations": {
+                    "summary": "p95 времени ответа больше 1 секунды"
+                  },
+                  "alerts": [],
+                  "health": "ok",
+                  "evaluationTime": 0.000204408,
+                  "lastEvaluation": "2026-10-24T17:30:38.10163728Z",
+                  "type": "alerting"
+                }
+              ],
+              "interval": 5,
+              "limit": 0,
+              "evaluationTime": 0.00075013,
+              "lastEvaluation": "2026-10-24T17:30:38.101092958Z"
+            }
+          ]
+        }
+      },
+      "seconds": 0.016869
+    }
+  },
+  "metricsAtFiring": {
+    "ApiDown": {
+      "p95": [
+        {
+          "metric": {},
+          "value": [
+            1792863039.141,
+            "0.010099999999999994"
+          ]
+        }
+      ],
+      "httpCodes": [
+        {
+          "metric": {
+            "code": "200"
+          },
+          "value": [
+            1792863039.146,
+            "2.0282266666666664"
+          ]
+        },
+        {
+          "metric": {
+            "code": "201"
+          },
+          "value": [
+            1792863039.146,
+            "0.9813999999999999"
+          ]
+        }
+      ],
+      "memoryPercent": []
+    }
+  },
+  "startCompletedUtc": "2026-10-24T17:30:55.003928+00:00",
+  "after": {
+    "id": "c313d9dbde27e7aa67a274799a019882a111679ccda9096d6ad2ef9945240686",
+    "image": "devops-labs-demo-api:lab14-7d78755",
+    "startedAt": "2026-10-24T17:30:54.832897397Z",
+    "running": true,
+    "health": "healthy",
+    "restartCount": 0,
+    "memory": 268435456,
+    "swap": 268435456,
+    "restartPolicy": "unless-stopped"
+  },
+  "endUtc": "2026-10-24T17:31:03.586985+00:00",
+  "endEpoch": 1792863063.5869849
+}

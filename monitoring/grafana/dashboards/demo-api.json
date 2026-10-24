@@ -200,7 +200,8 @@
           "unit": "short"
         },
         "overrides": []
-      }
+      },
+      "description": "HTTP 201 responses for Tasks/Create, extrapolated over the last minute."
     },
     {
       "id": 7,
@@ -228,7 +229,8 @@
           "unit": "short"
         },
         "overrides": []
-      }
+      },
+      "description": "Successfully persisted tasks, counted before the HTTP response is completed. Resets on process restart."
     }
   ]
 }

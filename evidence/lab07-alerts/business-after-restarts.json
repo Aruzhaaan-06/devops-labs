@@ -1,0 +1,34 @@
+{
+  "utc": "2026-10-24T17:31:03.675718+00:00",
+  "counter": 24.0,
+  "resetExpected": true,
+  "projectRetained": {
+    "utc": "2026-10-24T17:31:03.689322+00:00",
+    "method": "GET",
+    "url": "http://localhost:8088/api/projects/31",
+    "status": 200,
+    "body": {
+      "id": 31,
+      "name": "lab14-counter-1792862826",
+      "createdAt": "2026-10-24T17:27:06.731316+00:00"
+    },
+    "seconds": 0.012335
+  },
+  "taskRetained": {
+    "utc": "2026-10-24T17:31:03.701725+00:00",
+    "method": "GET",
+    "url": "http://localhost:8088/api/tasks/3464",
+    "status": 200,
+    "body": {
+      "id": 3464,
+      "projectId": 31,
+      "title": "counted",
+      "description": null,
+      "status": "Todo",
+      "dueDate": null,
+      "createdAt": "2026-10-24T17:27:06.768891+00:00",
+      "updatedAt": "2026-10-24T17:27:06.768891+00:00"
+    },
+    "seconds": 0.030121
+  }
+}
