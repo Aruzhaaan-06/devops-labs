@@ -1,0 +1,6 @@
+
+Write-Error: C:\Users\Админ\Documents\Codex\2026-10-21\referenced-chatgpt-conversation-this-is-an\work\demo-api\scripts\diag.ps1:67
+Line |
+  67 |      Write-Error (Protect-LogText $_.Exception.Message)
+     |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Docker inspect failed for 'devops-labs-missing-lab12':  error: no such object: devops-labs-missing-lab12

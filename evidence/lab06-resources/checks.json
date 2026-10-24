@@ -1,0 +1,159 @@
+{
+  "passed": 38,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Local current main image",
+      "passed": true
+    },
+    {
+      "name": "Initial API healthy and restart enabled",
+      "passed": true
+    },
+    {
+      "name": "OOM limited to256MiB no extra swap",
+      "passed": true
+    },
+    {
+      "name": "Native leaks80and160MB returned",
+      "passed": true
+    },
+    {
+      "name": "OOM request connection interrupted",
+      "passed": true
+    },
+    {
+      "name": "Actual OOM event",
+      "passed": true
+    },
+    {
+      "name": "Actual exit137 event",
+      "passed": true
+    },
+    {
+      "name": "OOM event order then die then start",
+      "passed": true
+    },
+    {
+      "name": "OOM restarts same container once",
+      "passed": true
+    },
+    {
+      "name": "OOM recovered healthy",
+      "passed": true
+    },
+    {
+      "name": "OOMKilled reset after restart",
+      "passed": true
+    },
+    {
+      "name": "DB outage live200 ready503 data500",
+      "passed": true
+    },
+    {
+      "name": "DB outage API remains healthy",
+      "passed": true
+    },
+    {
+      "name": "DB outage no restart or recreation",
+      "passed": true
+    },
+    {
+      "name": "DB error logged",
+      "passed": true
+    },
+    {
+      "name": "DB restored without API restart",
+      "passed": true
+    },
+    {
+      "name": "Broken healthcheck targets nonexistent endpoint",
+      "passed": true
+    },
+    {
+      "name": "Broken check unhealthy after40s",
+      "passed": true
+    },
+    {
+      "name": "Unhealthy event recorded",
+      "passed": true
+    },
+    {
+      "name": "Failed health probes retained",
+      "passed": true
+    },
+    {
+      "name": "Unhealthy still serves live and ready200",
+      "passed": true
+    },
+    {
+      "name": "Unhealthy does not restart",
+      "passed": true
+    },
+    {
+      "name": "Dependency and unhealthy no lifecycle restart events",
+      "passed": true
+    },
+    {
+      "name": "Slow response and normal request200",
+      "passed": true
+    },
+    {
+      "name": "Slow3000ms actually measured",
+      "passed": true
+    },
+    {
+      "name": "Slow response healthy without restart",
+      "passed": true
+    },
+    {
+      "name": "Original compose restored",
+      "passed": true
+    },
+    {
+      "name": "Final live and ready200 healthy",
+      "passed": true
+    },
+    {
+      "name": "Marker preserved across all recoveries",
+      "passed": true
+    },
+    {
+      "name": "Named PostgreSQL volume preserved",
+      "passed": true
+    },
+    {
+      "name": "Original live healthcheck restored",
+      "passed": true
+    },
+    {
+      "name": "T2 stderr empty",
+      "passed": true
+    },
+    {
+      "name": "T3 actual samples retained",
+      "passed": true
+    },
+    {
+      "name": "diag positive and negative paths checked",
+      "passed": true
+    },
+    {
+      "name": "diag read-only identity preserved",
+      "passed": true
+    },
+    {
+      "name": "diag contains pastOOM and137 with reset current state",
+      "passed": true
+    },
+    {
+      "name": "Historical scenarios2-5 exact source hashes",
+      "passed": true
+    },
+    {
+      "name": "Live Postman5requests11assertions",
+      "passed": true
+    }
+  ],
+  "scope": "Retained real experiments6-9 and historical2-5, plus diag and Postman. Not a live status monitor."
+}

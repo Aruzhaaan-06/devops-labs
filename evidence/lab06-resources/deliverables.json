@@ -1,0 +1,31 @@
+{
+  "totalReports": 11,
+  "totalPages": 84,
+  "reportPages": {
+    "lab01-part1-report.pdf": 8,
+    "lab01-part2-report.pdf": 12,
+    "lab02-part1-report.pdf": 6,
+    "lab03-compose-report.pdf": 7,
+    "lab03-postgres-report.pdf": 7,
+    "lab04-git-report.pdf": 7,
+    "lab04-release-report.pdf": 8,
+    "lab05-cd-report.pdf": 8,
+    "lab05-ci-report.pdf": 6,
+    "lab06-failures-report.pdf": 7,
+    "lab06-resources-report.pdf": 8
+  },
+  "historicalPdfSha256": {
+    "lab01-part1-report.pdf": "15fe4633e516c282ac6f4966099e2038db636751513e2b4f7b46635e33c1e023",
+    "lab01-part2-report.pdf": "eaf0e519f0fb1fa745d369f047732e3899178014e3d250f9a5a62254c960ea0c",
+    "lab02-part1-report.pdf": "ceb6bb1e6b681f7269a3a7d0077075c491e1dc6fa7dd592b975d9c6a38328f66",
+    "lab03-compose-report.pdf": "c68d632deecb0ed73ece9dd7384a2da333731f0e5f6f934d6aacdbecf69c5f59",
+    "lab03-postgres-report.pdf": "8f4a693b9e2f30a566bdb46bffd9ad3c864c424d7cbceb0df400774250962715",
+    "lab04-git-report.pdf": "513eb7e6bcf96ca732383eb2c7946acebb704c9290f8b39f469c95ae8b46b30a",
+    "lab04-release-report.pdf": "250cf8a4f89ad62e4c5565752ef1b35f4f80c25af0cd202c3750e617d1016bc7",
+    "lab05-cd-report.pdf": "b2f7989fcb826bbe2c6eb4d4131f00729002725de94265988571cb08da9d4d2b",
+    "lab05-ci-report.pdf": "3ddb2cbf359aaf14927f1c7aa0d9ce23f08a0c88f716852237b5270806d19745",
+    "lab06-failures-report.pdf": "5a6e6132658e97294b90e92b47ee41c15e9027396617f364329850fa28493e3a"
+  },
+  "newReportSha256": "9bd38648c85a819a7ccb0d85856d2b738a850aaadc68dbe50265994de6283dc3",
+  "zipVerified": true
+}

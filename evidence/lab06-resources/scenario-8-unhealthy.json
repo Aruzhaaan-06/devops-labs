@@ -1,0 +1,287 @@
+{
+  "name": "scenario-8-unhealthy",
+  "startUtc": "2026-10-24T16:03:31.533417+00:00",
+  "startNs": 1792857811533417400,
+  "before": {
+    "utc": "2026-10-24T16:03:31.533417+00:00",
+    "id": "6f60aaa2f4df3f31c766fdd9e0145d440be41ae222aa7ef50c115a4d7610d6fe",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "FailingStreak": 0,
+        "Log": [],
+        "Status": "starting"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 4321,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:03:31.405977846Z",
+      "Status": "running"
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 5000000000,
+      "Retries": 2,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD",
+        "curl",
+        "-fsS",
+        "http://localhost:8080/no-such-endpoint"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "healthObserved": {
+    "utc": "2026-10-24T16:04:11.582467+00:00",
+    "id": "6f60aaa2f4df3f31c766fdd9e0145d440be41ae222aa7ef50c115a4d7610d6fe",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "FailingStreak": 5,
+        "Log": [
+          {
+            "End": "2026-10-24T16:03:51.472028777Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:03:51.440405824Z"
+          },
+          {
+            "End": "2026-10-24T16:03:56.504054168Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:03:56.472658218Z"
+          },
+          {
+            "End": "2026-10-24T16:04:01.537168939Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:04:01.505068559Z"
+          },
+          {
+            "End": "2026-10-24T16:04:06.570874378Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:04:06.537963209Z"
+          },
+          {
+            "End": "2026-10-24T16:04:11.610685966Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:04:11.571858958Z"
+          }
+        ],
+        "Status": "unhealthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 4321,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:03:31.405977846Z",
+      "Status": "running"
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 5000000000,
+      "Retries": 2,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD",
+        "curl",
+        "-fsS",
+        "http://localhost:8080/no-such-endpoint"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "live": {
+    "utc": "2026-10-24T16:04:11.639917+00:00",
+    "method": "GET",
+    "path": "/health/live",
+    "status": 200,
+    "body": "Healthy",
+    "seconds": 0.007195
+  },
+  "ready": {
+    "utc": "2026-10-24T16:04:11.647153+00:00",
+    "method": "GET",
+    "path": "/health/ready",
+    "status": 200,
+    "body": "Healthy",
+    "seconds": 0.061862
+  },
+  "ps": "NAME                IMAGE                                COMMAND                  SERVICE   CREATED          STATUS                      PORTS\ndevops-labs-api-1   devops-labs-demo-api:lab12-2dd5a9f   \"dotnet DemoApi.dll\"     api       44 seconds ago   Up 40 seconds (unhealthy)   127.0.0.1:8088->8080/tcp\ndevops-labs-db-1    postgres:18-alpine                   \"docker-entrypoint.s…\"   db        2 minutes ago    Up 45 seconds (healthy)     127.0.0.1:15432->5432/tcp\n",
+  "after": {
+    "utc": "2026-10-24T16:04:11.852118+00:00",
+    "id": "6f60aaa2f4df3f31c766fdd9e0145d440be41ae222aa7ef50c115a4d7610d6fe",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "FailingStreak": 5,
+        "Log": [
+          {
+            "End": "2026-10-24T16:03:51.472028777Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:03:51.440405824Z"
+          },
+          {
+            "End": "2026-10-24T16:03:56.504054168Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:03:56.472658218Z"
+          },
+          {
+            "End": "2026-10-24T16:04:01.537168939Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:04:01.505068559Z"
+          },
+          {
+            "End": "2026-10-24T16:04:06.570874378Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:04:06.537963209Z"
+          },
+          {
+            "End": "2026-10-24T16:04:11.610685966Z",
+            "ExitCode": 22,
+            "Output": "curl: (22) The requested URL returned error: 404\n",
+            "Start": "2026-10-24T16:04:11.571858958Z"
+          }
+        ],
+        "Status": "unhealthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 4321,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:03:31.405977846Z",
+      "Status": "running"
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 5000000000,
+      "Retries": 2,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD",
+        "curl",
+        "-fsS",
+        "http://localhost:8080/no-such-endpoint"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "endUtc": "2026-10-24T16:04:11.898118+00:00",
+  "endNs": 1792857851898118100,
+  "logs": [
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "DemoApi",
+      "Message": "Хранилище: PostgreSQL",
+      "State": {
+        "Storage": "PostgreSQL",
+        "{OriginalFormat}": "Хранилище: {Storage}"
+      }
+    },
+    {
+      "EventId": 14,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Now listening on: http://[::]:8080",
+      "State": {
+        "address": "http://[::]:8080",
+        "{OriginalFormat}": "Now listening on: {address}"
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Application started. Press Ctrl+C to shut down.",
+      "State": {
+        "{OriginalFormat}": "Application started. Press Ctrl+C to shut down."
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Hosting environment: Production",
+      "State": {
+        "EnvName": "Production",
+        "{OriginalFormat}": "Hosting environment: {EnvName}"
+      }
+    },
+    {
+      "EventId": 0,
+      "LogLevel": "Information",
+      "Category": "Microsoft.Hosting.Lifetime",
+      "Message": "Content root path: /app",
+      "State": {
+        "ContentRoot": "/app",
+        "{OriginalFormat}": "Content root path: {ContentRoot}"
+      }
+    }
+  ],
+  "events": [
+    {
+      "Type": "container",
+      "Action": "health_status: unhealthy",
+      "Actor": {
+        "ID": "6f60aaa2f4df3f31c766fdd9e0145d440be41ae222aa7ef50c115a4d7610d6fe",
+        "Attributes": {
+          "com.docker.compose.config-hash": "3ade8bb44645fabbe1059cc1463d3ed3efa00c34aa261163c37a13070c5f3930",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "db:service_healthy:false",
+          "com.docker.compose.image": "sha256:194ba8463361f716f8def6dd069e5347a2a7e60c35fb986a1e41646150b2a8f2",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "devops-labs",
+          "com.docker.compose.project.config_files": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api\\compose.yaml",
+          "com.docker.compose.project.working_dir": "C:\\Users\\Админ\\Documents\\Codex\\2026-10-21\\referenced-chatgpt-conversation-this-is-an\\work\\demo-api",
+          "com.docker.compose.replace": "api-1",
+          "com.docker.compose.service": "api",
+          "com.docker.compose.version": "5.5.1",
+          "desktop.docker.io/ports.scheme": "v2",
+          "desktop.docker.io/ports/8080/tcp": "127.0.0.1:8088",
+          "image": "devops-labs-demo-api:lab12-2dd5a9f",
+          "name": "devops-labs-api-1",
+          "org.opencontainers.image.version": "24.04"
+        }
+      },
+      "scope": "local",
+      "time": 1792857836,
+      "timeNano": 1792857836504370581
+    }
+  ]
+}

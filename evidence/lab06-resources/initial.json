@@ -1,0 +1,69 @@
+{
+  "utc": "2026-10-24T16:03:08.845061+00:00",
+  "id": "214389e314395b4d2d13034a7daf47d1b29c81f6cf84097947d0abed8710d291",
+  "state": {
+    "Dead": false,
+    "Error": "",
+    "ExitCode": 0,
+    "FinishedAt": "0001-01-01T00:00:00Z",
+    "Health": {
+      "FailingStreak": 0,
+      "Log": [
+        {
+          "End": "2026-10-24T16:02:20.304278614Z",
+          "ExitCode": 0,
+          "Output": "Healthy",
+          "Start": "2026-10-24T16:02:20.270843457Z"
+        },
+        {
+          "End": "2026-10-24T16:02:30.33796389Z",
+          "ExitCode": 0,
+          "Output": "Healthy",
+          "Start": "2026-10-24T16:02:30.305665286Z"
+        },
+        {
+          "End": "2026-10-24T16:02:40.37090393Z",
+          "ExitCode": 0,
+          "Output": "Healthy",
+          "Start": "2026-10-24T16:02:40.338755957Z"
+        },
+        {
+          "End": "2026-10-24T16:02:50.404102199Z",
+          "ExitCode": 0,
+          "Output": "Healthy",
+          "Start": "2026-10-24T16:02:50.370693827Z"
+        },
+        {
+          "End": "2026-10-24T16:03:00.436326694Z",
+          "ExitCode": 0,
+          "Output": "Healthy",
+          "Start": "2026-10-24T16:03:00.405413612Z"
+        }
+      ],
+      "Status": "healthy"
+    },
+    "OOMKilled": false,
+    "Paused": false,
+    "Pid": 2837,
+    "Restarting": false,
+    "Running": true,
+    "StartedAt": "2026-10-24T16:01:24.871691438Z",
+    "Status": "running"
+  },
+  "restartCount": 0,
+  "image": "devops-labs-demo-api:lab12-2dd5a9f",
+  "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+  "memoryLimit": 268435456,
+  "memorySwapLimit": 268435456,
+  "restartPolicy": "unless-stopped",
+  "healthcheck": {
+    "Interval": 10000000000,
+    "Retries": 3,
+    "StartPeriod": 15000000000,
+    "Test": [
+      "CMD-SHELL",
+      "curl -fsS http://localhost:8080/health/live || exit 1"
+    ],
+    "Timeout": 3000000000
+  }
+}

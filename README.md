@@ -8,7 +8,7 @@
 
 [Работы и статус](docs/README.md) · [Отчеты и исходники](reports/README.md) · [Результаты проверок](evidence/lab01/README.md) · [Разбор лабораторной 1](docs/lab01.md)
 
-Все десять отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
+Все одиннадцать отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
 
 ## Выполненные работы
 
@@ -24,6 +24,7 @@
 | Лабораторная 5, часть 1 · материал 09 | GitHub Actions: 38/38, намеренный красный test с блокировкой merge, восстановление 38/38; runner Idle и DB_PASSWORD готовы | [PDF · 6 страниц](reports/lab05-ci-report.pdf) |
 | Лабораторная 5, часть 2 · материал 10 | GHCR, deploy, Message, два отката, Environment local, Job summary и [v1.0.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.0.0) | [PDF · 8 страниц](reports/lab05-cd-report.pdf) |
 | Лабораторная 6, часть 1 · материал 11 | Четыре сценария сбоев: HTTP500, crash, restart no и штатная остановка; events/exit/logs, 35 проверок | [PDF · 7 страниц](reports/lab06-failures-report.pdf) |
+| Лабораторная 6, часть 2 · материал 12 | OOM137, DB ready503, unhealthy без restart, slow3000ms и diag.ps1; полная таблица2–8, пять ответов | [PDF · 8 страниц](reports/lab06-resources-report.pdf) |
 
 Код и проверки первой лабораторной подготовлены. Для полного комплекта сдачи остаются скриншоты коллекции Postman и Test Explorer, а также ручная пошаговая отладка с Locals и Call Stack. Подробности — в [чек-листе сдачи](docs/lab01.md#что-приложить-к-двум-отчётам). SQL-реализация проверена на настоящей PostgreSQL в [лабораторной 3](docs/lab03-postgres.md).
 
@@ -34,6 +35,8 @@
 Материал 10: **39/39 тестов, Postman 38/103**, полный `test → image → deploy`, GET / с `hello from CI/CD`, идемпотентный повторный deploy, ручной откат **12,823 с** и кнопочный откат **57,696 с** с сохранением контрольных данных. Выпущен **v1.0.0**; тег публикует образ без deploy. Настроены `local` с approval и Job summary. [Выполнение](docs/lab05-cd.md) · [34 проверки и доказательства](evidence/lab05-cd/README.md). Финальная сверка последнего main с живым API размещается в релизе как `lab10-final-verification.json`.
 
 Материал 11: **четыре сценария и 35 проверок**, Postman **4 запроса / 10 assertions**. Временный `restart: no` отменен, исходный Compose восстановлен, API healthy и данные сохранены. Вкладки Docker Desktop просмотрены пользователем. [Выполнение и ответы](docs/lab06-failures.md) · [Доказательства](evidence/lab06-failures/README.md).
+
+Материал 12: **OOM → die137 → start**, БД недоступна при live200/ready503/tasks500, unhealthy без restart, slow HTTP200 за 3,027 с. **38 проверок**, Postman **5/11**. Добавлен read-only `scripts/diag.ps1`, Compose восстановлен, данные сохранены. [Выполнение](docs/lab06-resources.md) · [Доказательства](evidence/lab06-resources/README.md).
 
 Сохраненные результаты предыдущих этапов от 22 октября 2026 года:
 
@@ -147,4 +150,4 @@ pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -I
 | `reports` | PDF-отчеты и архив исходников для сдачи |
 | `evidence/lab01`, `evidence/lab02`, `evidence/lab03`, `evidence/lab03-compose` | Сохраненные результаты проверок и скриншоты |
 
-Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD с GHCR, локальным deploy и откатом проверен в материалах 09–10. Четыре сценария отказов и остановки проверены в материале 11. Работы 12–15 еще не начаты.
+Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD с GHCR, локальным deploy и откатом проверен в материалах 09–10. Четыре сценария отказов и остановки проверены в материале 11. Материал 12 завершает разбор сбоев и добавляет diag.ps1. Работы 13–15 еще не начаты.

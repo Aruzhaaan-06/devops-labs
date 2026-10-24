@@ -1,0 +1,17 @@
+{
+  "project": {
+    "id": 25,
+    "name": "lab12-retained-4be66504d51f4b30841cdb6be9400c48",
+    "createdAt": "2026-10-24T16:03:09.003333+00:00"
+  },
+  "task": {
+    "id": 27,
+    "projectId": 25,
+    "title": "Lab12 retained through OOM and DB outage",
+    "description": null,
+    "status": "Todo",
+    "dueDate": null,
+    "createdAt": "2026-10-24T16:03:09.064687+00:00",
+    "updatedAt": "2026-10-24T16:03:09.064687+00:00"
+  }
+}

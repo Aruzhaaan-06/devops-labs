@@ -1,0 +1,202 @@
+{
+  "name": "scenario-7-db-unavailable",
+  "startUtc": "2026-10-24T16:03:21.412526+00:00",
+  "startNs": 1792857801412526100,
+  "before": {
+    "utc": "2026-10-24T16:03:21.412526+00:00",
+    "id": "214389e314395b4d2d13034a7daf47d1b29c81f6cf84097947d0abed8710d291",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-24T16:03:12.80377177Z",
+      "Health": {
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "End": "2026-10-24T16:02:40.37090393Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:02:40.338755957Z"
+          },
+          {
+            "End": "2026-10-24T16:02:50.404102199Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:02:50.370693827Z"
+          },
+          {
+            "End": "2026-10-24T16:03:00.436326694Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:00.405413612Z"
+          },
+          {
+            "End": "2026-10-24T16:03:10.475078812Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:10.436821342Z"
+          },
+          {
+            "End": "2026-10-24T16:03:18.302815696Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:18.210781387Z"
+          }
+        ],
+        "Status": "healthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3875,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:03:13.096091934Z",
+      "Status": "running"
+    },
+    "restartCount": 1,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 10000000000,
+      "Retries": 3,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD-SHELL",
+        "curl -fsS http://localhost:8080/health/live || exit 1"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "live": {
+    "utc": "2026-10-24T16:03:21.974639+00:00",
+    "method": "GET",
+    "path": "/health/live",
+    "status": 200,
+    "body": "Healthy",
+    "seconds": 0.00418
+  },
+  "ready": {
+    "utc": "2026-10-24T16:03:21.978917+00:00",
+    "method": "GET",
+    "path": "/health/ready",
+    "status": 503,
+    "body": "Unhealthy",
+    "seconds": 3.461356
+  },
+  "tasks": {
+    "utc": "2026-10-24T16:03:25.440213+00:00",
+    "method": "GET",
+    "path": "/api/tasks",
+    "status": 500,
+    "body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.6.1",
+      "title": "An error occurred while processing your request.",
+      "status": 500,
+      "traceId": "00-9b06cb7628b0bddbbfa4cd216244eb41-60c3d23d3cfb53e2-00"
+    },
+    "seconds": 0.053667
+  },
+  "ps": "NAME                    IMAGE                                COMMAND                  SERVICE   CREATED         STATUS                     PORTS\ndevops-labs-adminer-1   adminer:latest                       \"entrypoint.sh docke…\"   adminer   2 days ago      Exited (0) 2 days ago      \ndevops-labs-api-1       devops-labs-demo-api:lab12-2dd5a9f   \"dotnet DemoApi.dll\"     api       2 minutes ago   Up 12 seconds (healthy)    127.0.0.1:8088->8080/tcp\ndevops-labs-db-1        postgres:18-alpine                   \"docker-entrypoint.s…\"   db        2 minutes ago   Exited (0) 3 seconds ago   \n",
+  "after": {
+    "utc": "2026-10-24T16:03:25.641837+00:00",
+    "id": "214389e314395b4d2d13034a7daf47d1b29c81f6cf84097947d0abed8710d291",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-24T16:03:12.80377177Z",
+      "Health": {
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "End": "2026-10-24T16:02:40.37090393Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:02:40.338755957Z"
+          },
+          {
+            "End": "2026-10-24T16:02:50.404102199Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:02:50.370693827Z"
+          },
+          {
+            "End": "2026-10-24T16:03:00.436326694Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:00.405413612Z"
+          },
+          {
+            "End": "2026-10-24T16:03:10.475078812Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:10.436821342Z"
+          },
+          {
+            "End": "2026-10-24T16:03:18.302815696Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:03:18.210781387Z"
+          }
+        ],
+        "Status": "healthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3875,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:03:13.096091934Z",
+      "Status": "running"
+    },
+    "restartCount": 1,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 10000000000,
+      "Retries": 3,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD-SHELL",
+        "curl -fsS http://localhost:8080/health/live || exit 1"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "endUtc": "2026-10-24T16:03:25.687674+00:00",
+  "endNs": 1792857805687674200,
+  "logs": [
+    {
+      "EventId": 103,
+      "LogLevel": "Error",
+      "Category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+      "Message": "Health check db with status Unhealthy completed after 3436.5816ms with message 'Name or service not known'",
+      "Exception": "Npgsql.NpgsqlException (0x80004005): Name or service not known\n ---> System.Net.Sockets.SocketException (00000005, 0xFFFDFFFF): Name or service not known\n   at System.Net.Dns.GetHostEntryOrAddressesCore(String hostName, Boolean justAddresses, AddressFamily addressFamily, Nullable`1 activityOrDefault)\n   at System.Net.Dns.<>c.<GetHostEntryOrAddressesCoreAsync>b__34_0(Object s, NameResolutionActivity activity)\n   at System.Net.Dns.<>c__DisplayClass40_0`1.<RunAsync>b__0(Task <p0>, Object <p1>)\n   at System.Threading.Tasks.ContinuationResultTaskFromTask`1.InnerInvoke()\n   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)\n--- End of stack trace from previous location ---\n   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)\n   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)\n--- End of stack trace from previous location ---\n   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)\n   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)\n   at Npgsql.Internal.NpgsqlConnector.RawOpen(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)\n   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|209_0(NpgsqlConnector conn, String username, SslMode sslMode, GssEncryptionMode gssEncMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)\n   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)\n   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)\n   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)\n   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)\n   at HealthChecks.NpgSql.NpgSqlHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.NpgSql/NpgSqlHealthCheck.cs:line 31\n   at HealthChecks.NpgSql.NpgSqlHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.NpgSql/NpgSqlHealthCheck.cs:line 37",
+      "State": {
+        "HealthCheckName": "db",
+        "HealthStatus": "Unhealthy",
+        "ElapsedMilliseconds": 3436.5816,
+        "HealthCheckDescription": "Name or service not known",
+        "{OriginalFormat}": "Health check {HealthCheckName} with status {HealthStatus} completed after {ElapsedMilliseconds}ms with message '{HealthCheckDescription}'"
+      }
+    },
+    {
+      "EventId": 1,
+      "LogLevel": "Error",
+      "Category": "Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware",
+      "Message": "An unhandled exception has occurred while executing the request.",
+      "Exception": "Npgsql.PostgresException (0x80004005): 57P01: terminating connection due to administrator command\n   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)\n   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)\n   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)\n   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)\n   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)\n   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)\n   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)\n   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)\n   at Npgsql.NpgsqlDataSourceCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)\n   at Npgsql.NpgsqlDataSourceCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)\n   at DemoApi.Data.TaskRepository.ReadAllAsync(NpgsqlCommand cmd, CancellationToken ct) in /src/src/DemoApi/Data/TaskRepository.cs:line 90\n   at DemoApi.Data.TaskRepository.ListAsync(Nullable`1 projectId, Nullable`1 status, CancellationToken ct) in /src/src/DemoApi/Data/TaskRepository.cs:line 31\n   at DemoApi.Data.TaskRepository.ListAsync(Nullable`1 projectId, Nullable`1 status, CancellationToken ct) in /src/src/DemoApi/Data/TaskRepository.cs:line 31\n   at lambda_method25(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)\n  Exception data:\n    Severity: FATAL\n    SqlState: 57P01\n    MessageText: terminating connection due to administrator command\n    File: postgres.c\n    Line: 3354\n    Routine: ProcessInterrupts",
+      "State": {
+        "{OriginalFormat}": "An unhandled exception has occurred while executing the request."
+      }
+    }
+  ],
+  "events": []
+}

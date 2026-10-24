@@ -1,0 +1,118 @@
+{
+  "info": {
+    "name": "Lab6 part2 - restored availability and response time",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Local coursework GET checks after recovery. Slow request waits 3s. No leak/crash/stop; failure experiments and actual Docker evidence are collected separately."
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8088"
+    },
+    {
+      "key": "expectedVersion",
+      "value": "lab12-2dd5a9f"
+    }
+  ],
+  "item": [
+    {
+      "name": "Service version",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Service\",()=>pm.expect(pm.response.json().service).to.eql(\"DemoApi\"));",
+              "pm.test(\"Version\",()=>pm.expect(pm.response.json().version).to.eql(pm.variables.get(\"expectedVersion\")));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Live",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/live"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP200\",()=>pm.response.to.have.status(200));",
+              "pm.test(\"Healthy\",()=>pm.expect(pm.response.text()).to.eql(\"Healthy\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ready",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/ready"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP200\",()=>pm.response.to.have.status(200));",
+              "pm.test(\"Healthy\",()=>pm.expect(pm.response.text()).to.eql(\"Healthy\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data restored",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/tasks"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP200\",()=>pm.response.to.have.status(200));",
+              "pm.test(\"Task list\",()=>pm.expect(pm.response.json()).to.be.an(\"array\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delayed but available",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/chaos/slow?ms=3000"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP200\",()=>pm.response.to.have.status(200));",
+              "pm.test(\"Delay payload\",()=>pm.expect(pm.response.json().delayedMs).to.eql(3000));",
+              "pm.test(\"At least configured delay\",()=>pm.expect(pm.response.responseTime).to.be.at.least(2900));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

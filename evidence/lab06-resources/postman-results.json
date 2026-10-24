@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:8088",
+  "version": "lab12-2dd5a9f",
+  "storage": "PostgreSQL",
+  "requests": 5,
+  "assertions": 11,
+  "failed": 0,
+  "exitCode": 0,
+  "cloudPublished": false
+}

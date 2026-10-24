@@ -1,0 +1,7 @@
+{
+  "exitCode": 1,
+  "wrongTagRejected": true,
+  "apiAndDbIdentityStartedAtRestartCountUnchanged": true,
+  "composeUnchanged": true,
+  "guard": "Validation fails before any recovery mutation; full experiment results were collected before this guard-only refinement."
+}

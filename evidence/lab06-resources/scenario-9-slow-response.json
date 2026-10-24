@@ -1,0 +1,346 @@
+{
+  "name": "scenario-9-slow-response",
+  "startUtc": "2026-10-24T16:04:18.864787+00:00",
+  "startNs": 1792857858864787800,
+  "before": {
+    "utc": "2026-10-24T16:04:18.864787+00:00",
+    "id": "a947bf41c1bc4f0c51556e030f1811d455cf97b800202f70ca744fa8876e59d0",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "End": "2026-10-24T16:04:18.374773676Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:04:18.2855319Z"
+          }
+        ],
+        "Status": "healthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 4826,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:04:13.167753816Z",
+      "Status": "running"
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 10000000000,
+      "Retries": 3,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD-SHELL",
+        "curl -fsS http://localhost:8080/health/live || exit 1"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "normal": {
+    "utc": "2026-10-24T16:04:18.908627+00:00",
+    "method": "GET",
+    "path": "/api/tasks",
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "projectId": 1,
+        "title": "Установить Docker Desktop",
+        "description": null,
+        "status": "Done",
+        "dueDate": null,
+        "createdAt": "2026-10-22T13:42:52.755467+00:00",
+        "updatedAt": "2026-10-22T13:42:52.755467+00:00"
+      },
+      {
+        "id": 2,
+        "projectId": 1,
+        "title": "Запустить БД в контейнере",
+        "description": null,
+        "status": "InProgress",
+        "dueDate": "2026-10-23",
+        "createdAt": "2026-10-22T13:42:52.755467+00:00",
+        "updatedAt": "2026-10-22T13:42:52.755467+00:00"
+      },
+      {
+        "id": 3,
+        "projectId": 1,
+        "title": "Написать Dockerfile",
+        "description": null,
+        "status": "Todo",
+        "dueDate": "2026-10-29",
+        "createdAt": "2026-10-22T13:42:52.755467+00:00",
+        "updatedAt": "2026-10-22T13:42:52.755467+00:00"
+      },
+      {
+        "id": 4,
+        "projectId": 2,
+        "title": "Купить продукты",
+        "description": null,
+        "status": "Todo",
+        "dueDate": "2026-10-21",
+        "createdAt": "2026-10-22T13:42:52.755467+00:00",
+        "updatedAt": "2026-10-22T13:42:52.755467+00:00"
+      },
+      {
+        "id": 10,
+        "projectId": 6,
+        "title": "Dockerfile подготовлен",
+        "description": "Проверка PUT в лабораторной 1",
+        "status": "Done",
+        "dueDate": null,
+        "createdAt": "2026-10-22T13:46:29.7625+00:00",
+        "updatedAt": "2026-10-22T13:46:30.745328+00:00"
+      },
+      {
+        "id": 11,
+        "projectId": 6,
+        "title": "Проверка запрета Todo → Done",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-22T13:46:30.369741+00:00",
+        "updatedAt": "2026-10-22T13:46:30.369741+00:00"
+      },
+      {
+        "id": 12,
+        "projectId": 7,
+        "title": "Todo без срока",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-22T13:46:31.021746+00:00",
+        "updatedAt": "2026-10-22T13:46:31.021746+00:00"
+      },
+      {
+        "id": 13,
+        "projectId": 7,
+        "title": "Задача в работе",
+        "description": null,
+        "status": "InProgress",
+        "dueDate": null,
+        "createdAt": "2026-10-22T13:46:31.118579+00:00",
+        "updatedAt": "2026-10-22T13:46:31.224778+00:00"
+      },
+      {
+        "id": 14,
+        "projectId": 7,
+        "title": "Просроченная Todo",
+        "description": "UTC: позавчера",
+        "status": "Todo",
+        "dueDate": "2026-10-20",
+        "createdAt": "2026-10-22T13:46:31.31896+00:00",
+        "updatedAt": "2026-10-22T13:46:31.39828+00:00"
+      },
+      {
+        "id": 15,
+        "projectId": 13,
+        "title": "Dockerfile подготовлен",
+        "description": "Проверка PUT в лабораторной 1",
+        "status": "Done",
+        "dueDate": null,
+        "createdAt": "2026-10-23T07:42:27.403645+00:00",
+        "updatedAt": "2026-10-23T07:42:28.37543+00:00"
+      },
+      {
+        "id": 16,
+        "projectId": 13,
+        "title": "Проверка запрета Todo → Done",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T07:42:28.002907+00:00",
+        "updatedAt": "2026-10-23T07:42:28.002907+00:00"
+      },
+      {
+        "id": 17,
+        "projectId": 14,
+        "title": "Todo без срока",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T07:42:28.638162+00:00",
+        "updatedAt": "2026-10-23T07:42:28.638162+00:00"
+      },
+      {
+        "id": 18,
+        "projectId": 14,
+        "title": "Задача в работе",
+        "description": null,
+        "status": "InProgress",
+        "dueDate": null,
+        "createdAt": "2026-10-23T07:42:28.731204+00:00",
+        "updatedAt": "2026-10-23T07:42:28.825176+00:00"
+      },
+      {
+        "id": 19,
+        "projectId": 14,
+        "title": "Просроченная Todo",
+        "description": "UTC: позавчера",
+        "status": "Todo",
+        "dueDate": "2026-10-21",
+        "createdAt": "2026-10-23T07:42:28.916858+00:00",
+        "updatedAt": "2026-10-23T07:42:29.010617+00:00"
+      },
+      {
+        "id": 20,
+        "projectId": 18,
+        "title": "Lab10: retained across both rollbacks",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T08:45:38.281214+00:00",
+        "updatedAt": "2026-10-23T08:45:38.281214+00:00"
+      },
+      {
+        "id": 21,
+        "projectId": 19,
+        "title": "Dockerfile подготовлен",
+        "description": "Проверка PUT в лабораторной 1",
+        "status": "Done",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:00:18.428819+00:00",
+        "updatedAt": "2026-10-23T09:00:19.519726+00:00"
+      },
+      {
+        "id": 22,
+        "projectId": 19,
+        "title": "Проверка запрета Todo → Done",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:00:19.070695+00:00",
+        "updatedAt": "2026-10-23T09:00:19.070695+00:00"
+      },
+      {
+        "id": 23,
+        "projectId": 20,
+        "title": "Todo без срока",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:00:19.803455+00:00",
+        "updatedAt": "2026-10-23T09:00:19.803455+00:00"
+      },
+      {
+        "id": 24,
+        "projectId": 20,
+        "title": "Задача в работе",
+        "description": null,
+        "status": "InProgress",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:00:19.925944+00:00",
+        "updatedAt": "2026-10-23T09:00:20.018177+00:00"
+      },
+      {
+        "id": 25,
+        "projectId": 20,
+        "title": "Просроченная Todo",
+        "description": "UTC: позавчера",
+        "status": "Todo",
+        "dueDate": "2026-10-21",
+        "createdAt": "2026-10-23T09:00:20.130024+00:00",
+        "updatedAt": "2026-10-23T09:00:20.251109+00:00"
+      },
+      {
+        "id": 26,
+        "projectId": 24,
+        "title": "Lab11: persists across process failures",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-23T09:22:15.293224+00:00",
+        "updatedAt": "2026-10-23T09:22:15.293224+00:00"
+      },
+      {
+        "id": 27,
+        "projectId": 25,
+        "title": "Lab12 retained through OOM and DB outage",
+        "description": null,
+        "status": "Todo",
+        "dueDate": null,
+        "createdAt": "2026-10-24T16:03:09.064687+00:00",
+        "updatedAt": "2026-10-24T16:03:09.064687+00:00"
+      }
+    ],
+    "seconds": 0.114133
+  },
+  "delayed": {
+    "utc": "2026-10-24T16:04:19.022955+00:00",
+    "method": "GET",
+    "path": "/api/chaos/slow?ms=3000",
+    "status": 200,
+    "body": {
+      "delayedMs": 3000
+    },
+    "seconds": 3.027295
+  },
+  "ready": {
+    "utc": "2026-10-24T16:04:22.050281+00:00",
+    "method": "GET",
+    "path": "/health/ready",
+    "status": 200,
+    "body": "Healthy",
+    "seconds": 0.03481
+  },
+  "after": {
+    "utc": "2026-10-24T16:04:22.084943+00:00",
+    "id": "a947bf41c1bc4f0c51556e030f1811d455cf97b800202f70ca744fa8876e59d0",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "End": "2026-10-24T16:04:18.374773676Z",
+            "ExitCode": 0,
+            "Output": "Healthy",
+            "Start": "2026-10-24T16:04:18.2855319Z"
+          }
+        ],
+        "Status": "healthy"
+      },
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 4826,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-24T16:04:13.167753816Z",
+      "Status": "running"
+    },
+    "restartCount": 0,
+    "image": "devops-labs-demo-api:lab12-2dd5a9f",
+    "imageId": "sha256:f60feceecc994cacf0fec0fb9419d236a3310505346b2c904e47572485979e28",
+    "memoryLimit": 268435456,
+    "memorySwapLimit": 268435456,
+    "restartPolicy": "unless-stopped",
+    "healthcheck": {
+      "Interval": 10000000000,
+      "Retries": 3,
+      "StartPeriod": 15000000000,
+      "Test": [
+        "CMD-SHELL",
+        "curl -fsS http://localhost:8080/health/live || exit 1"
+      ],
+      "Timeout": 3000000000
+    }
+  },
+  "endUtc": "2026-10-24T16:04:22.134565+00:00",
+  "endNs": 1792857862134565600,
+  "logs": [],
+  "events": []
+}

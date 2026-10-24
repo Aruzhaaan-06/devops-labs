@@ -1,0 +1,24 @@
+{
+  "material": 12,
+  "archive": "Devops (1).zip",
+  "required": "Sections6-9, table scenarios2-8, all5 submission answers, extra diag.ps1 through PR.",
+  "files": [
+    {
+      "name": "59.pdf",
+      "sha256": "43196477973b4decbc4a674c700fc0fafb0b54f64b96fefd281c4bc15f64c4ce"
+    },
+    {
+      "name": "88.pdf",
+      "sha256": "c5e95b84c56f425110789cab9e38e2f1837945e91d85b28c32c43108a29ccc43"
+    },
+    {
+      "name": "89.pdf",
+      "sha256": "e48241b8eef6cb345631a5cefec4367a142666201abc1634b2321f2a75722165"
+    }
+  ],
+  "officialDocs": [
+    "https://docs.docker.com/engine/containers/resource_constraints/",
+    "https://docs.docker.com/reference/dockerfile/#healthcheck",
+    "https://docs.docker.com/reference/cli/docker/system/events/"
+  ]
+}
