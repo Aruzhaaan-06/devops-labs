@@ -1,0 +1,144 @@
+{
+  "observedUtc": "2026-10-24T18:14:18.726369+00:00",
+  "epoch": 1792865658.7263699,
+  "phase": "bad-deploy",
+  "groups": [
+    {
+      "name": "containers",
+      "file": "/etc/prometheus/alerts.yml",
+      "rules": [
+        {
+          "state": "inactive",
+          "name": "ContainerHighMemory",
+          "query": "container_memory_working_set_bytes{name=\"devops-labs-api-1\"} / (container_spec_memory_limit_bytes{name=\"devops-labs-api-1\"} > 0) > 0.8",
+          "duration": 15,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "{{ $labels.name }}: память выше 80% лимита"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.000557831,
+          "lastEvaluation": "2026-10-24T18:14:14.32263171Z",
+          "type": "alerting"
+        },
+        {
+          "state": "firing",
+          "name": "ContainerRestarted",
+          "query": "changes((max by (name) (container_start_time_seconds{name=\"devops-labs-api-1\"}))[5m:5s]) > 0",
+          "duration": 0,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "{{ $labels.name }} перезапускался за последние 5 минут"
+          },
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "ContainerRestarted",
+                "name": "devops-labs-api-1",
+                "severity": "warning"
+              },
+              "annotations": {
+                "summary": "devops-labs-api-1 перезапускался за последние 5 минут"
+              },
+              "state": "firing",
+              "activeAt": "2026-10-24T18:13:24.609224133Z",
+              "value": "1e+00"
+            }
+          ],
+          "health": "ok",
+          "evaluationTime": 0.000854448,
+          "lastEvaluation": "2026-10-24T18:14:14.323211743Z",
+          "type": "alerting"
+        }
+      ],
+      "interval": 5,
+      "limit": 0,
+      "evaluationTime": 0.001496184,
+      "lastEvaluation": "2026-10-24T18:14:14.322578907Z"
+    },
+    {
+      "name": "demo-api",
+      "file": "/etc/prometheus/alerts.yml",
+      "rules": [
+        {
+          "state": "inactive",
+          "name": "ApiDown",
+          "query": "up{job=\"demo-api\"} == 0",
+          "duration": 30,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "critical"
+          },
+          "annotations": {
+            "summary": "DemoApi не отвечает на /metrics"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.000138429,
+          "lastEvaluation": "2026-10-24T18:14:17.955218617Z",
+          "type": "alerting"
+        },
+        {
+          "state": "inactive",
+          "name": "ApiHighErrorRate",
+          "query": "sum(rate(http_requests_received_total{code=~\"5..\",job=\"demo-api\"}[1m])) / sum(rate(http_requests_received_total{job=\"demo-api\"}[1m])) > 0.05",
+          "duration": 30,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "Доля 5xx выше 5%"
+          },
+          "alerts": [],
+          "health": "ok",
+          "evaluationTime": 0.00014473,
+          "lastEvaluation": "2026-10-24T18:14:17.955361047Z",
+          "type": "alerting"
+        },
+        {
+          "state": "firing",
+          "name": "ApiSlowRequests",
+          "query": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"demo-api\"}[1m]))) > 1",
+          "duration": 30,
+          "keepFiringFor": 0,
+          "labels": {
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "p95 времени ответа больше 1 секунды"
+          },
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "ApiSlowRequests",
+                "severity": "warning"
+              },
+              "annotations": {
+                "summary": "p95 времени ответа больше 1 секунды"
+              },
+              "state": "firing",
+              "activeAt": "2026-10-24T18:13:43.242515366Z",
+              "value": "1.8756774958748448e+00"
+            }
+          ],
+          "health": "ok",
+          "evaluationTime": 0.000521608,
+          "lastEvaluation": "2026-10-24T18:14:17.955508377Z",
+          "type": "alerting"
+        }
+      ],
+      "interval": 5,
+      "limit": 0,
+      "evaluationTime": 0.000892485,
+      "lastEvaluation": "2026-10-24T18:14:17.955140501Z"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "requests": 6,
+  "assertions": 13,
+  "failed": 0,
+  "exitCode": 0,
+  "cloudPublished": false,
+  "expectedVersion": "sha-21b953a",
+  "allFiveRulesInactive": true,
+  "readOnly": true
+}

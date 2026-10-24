@@ -1,0 +1,143 @@
+{
+  "passed": 34,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "T0 T1 T2 ordered",
+      "passed": true
+    },
+    {
+      "name": "Detection arithmetic",
+      "passed": true
+    },
+    {
+      "name": "Recovery arithmetic",
+      "passed": true
+    },
+    {
+      "name": "Actual slow firing at T1",
+      "passed": true
+    },
+    {
+      "name": "Configured30s for satisfied",
+      "passed": true
+    },
+    {
+      "name": "Observer retained first firing",
+      "passed": true
+    },
+    {
+      "name": "Initial slow state inactive",
+      "passed": true
+    },
+    {
+      "name": "No observer errors and owned load stopped",
+      "passed": true
+    },
+    {
+      "name": "Manual version probe after alarm",
+      "passed": true
+    },
+    {
+      "name": "Manual latency probe after alarm",
+      "passed": true
+    },
+    {
+      "name": "PromQL culprit Tasks List",
+      "passed": true
+    },
+    {
+      "name": "Bad exact version identified",
+      "passed": true
+    },
+    {
+      "name": "Exact slow source line identified",
+      "passed": true
+    },
+    {
+      "name": "Functional200 yet slow",
+      "passed": true
+    },
+    {
+      "name": "Four PostgreSQL CI runs40passed",
+      "passed": true
+    },
+    {
+      "name": "Rollback workflow success",
+      "passed": true
+    },
+    {
+      "name": "Rollback selected previous SHA",
+      "passed": true
+    },
+    {
+      "name": "T2 confirms old version and inactive",
+      "passed": true
+    },
+    {
+      "name": "Genuine GitHub generated Revert PR",
+      "passed": true
+    },
+    {
+      "name": "Bad and revert PRs merged",
+      "passed": true
+    },
+    {
+      "name": "Bad delay present fixed delay absent",
+      "passed": true
+    },
+    {
+      "name": "Application restored exactly",
+      "passed": true
+    },
+    {
+      "name": "Fixed observed p95 finite below1",
+      "passed": true
+    },
+    {
+      "name": "Old permanent configs unchanged",
+      "passed": true
+    },
+    {
+      "name": "Bad latency gate fails honestly",
+      "passed": true
+    },
+    {
+      "name": "Fixed latency gate3samples pass",
+      "passed": true
+    },
+    {
+      "name": "Gate code matches tested code",
+      "passed": true
+    },
+    {
+      "name": "Postman6requests13assertions nofailures",
+      "passed": true
+    },
+    {
+      "name": "Historical data retained",
+      "passed": true
+    },
+    {
+      "name": "Load task set retained",
+      "passed": true
+    },
+    {
+      "name": "Five transport errors preserved",
+      "passed": true
+    },
+    {
+      "name": "One issue per action",
+      "passed": true
+    },
+    {
+      "name": "Postmortem actual comment retained",
+      "passed": true
+    },
+    {
+      "name": "UI limits explicitly declared",
+      "passed": true
+    }
+  ],
+  "scope": "Recorded actual evidence, not a current monitor or teacher grading. UI screenshot and defense limitations are not counted as completed rubric points."
+}

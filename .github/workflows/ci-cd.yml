@@ -139,6 +139,9 @@ jobs:
       - name: Smoke test
         run: docker compose exec -T api curl -fsS http://localhost:8080/health/ready
 
+      - name: Tasks list latency smoke
+        run: ./scripts/smoke-tasks-latency.ps1 -BaseUrl "http://127.0.0.1:$env:API_PORT"
+
       - name: Job summary
         run: |
           $version = (Invoke-RestMethod "http://127.0.0.1:$env:API_PORT/" -TimeoutSec 10).version

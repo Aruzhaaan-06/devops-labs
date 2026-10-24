@@ -1,0 +1,7 @@
+{
+  "pid": 21932,
+  "startedUtc": "2026-10-24T18:09:54.652317+00:00",
+  "iterationsLimit": 20000,
+  "delayMs": 300,
+  "baseUrl": "http://localhost:8088"
+}

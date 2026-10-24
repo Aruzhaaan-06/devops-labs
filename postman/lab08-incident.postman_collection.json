@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Lab08 incident - fixed real deployment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Read-only final verification on real local API/Prometheus. Set expectedVersion=sha-xxxxxxx. Wait until controlled deployment restart alert5m window has cleared. Does not create or delete data."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8088"
+    },
+    {
+      "key": "promUrl",
+      "value": "http://localhost:9090"
+    },
+    {
+      "key": "expectedVersion",
+      "value": "set-at-run-time"
+    }
+  ],
+  "item": [
+    {
+      "name": "Exact deployed version",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Root 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Exact expected version',()=>pm.expect(pm.response.json().version).to.eql(pm.variables.get('expectedVersion')));",
+              "pm.test('CI/CD message retained',()=>pm.expect(pm.response.json().message).to.eql('hello from CI/CD'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Liveness",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/live"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Live 200',()=>pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Readiness",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/ready"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Ready 200',()=>pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fast Tasks List",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/tasks?projectId=2147483647&status=Todo"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Tasks List 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Tasks List under1000ms',()=>pm.expect(pm.response.responseTime).to.be.below(1000));",
+              "pm.test('Filtered result empty',()=>pm.expect(pm.response.json()).to.eql([]));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Three monitoring targets",
+      "request": {
+        "method": "GET",
+        "url": "{{promUrl}}/api/v1/targets"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Targets 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Three targets UP',()=>{const t=pm.response.json().data.activeTargets;pm.expect(t.length).to.eql(3);pm.expect(t.every(x=>x.health==='up')).to.eql(true);});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "All five alert rules inactive",
+      "request": {
+        "method": "GET",
+        "url": "{{promUrl}}/api/v1/rules?type=alert"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Rules 200',()=>pm.response.to.have.status(200));",
+              "const rules=pm.response.json().data.groups.flatMap(g=>g.rules);",
+              "pm.test('Five rules healthy',()=>{pm.expect(rules.length).to.eql(5);pm.expect(rules.every(r=>r.health==='ok')).to.eql(true);});",
+              "pm.test('No pending or firing rules',()=>pm.expect(rules.every(r=>r.state==='inactive')).to.eql(true));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

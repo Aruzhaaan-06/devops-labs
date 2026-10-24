@@ -1,0 +1,94 @@
+{
+  "pages": 12,
+  "language": "kk",
+  "author": "Есімханова Аружан Түсіпханқызы",
+  "links": 25,
+  "visualReviewPages": [
+    {
+      "page": 1,
+      "characters": 1373,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 2,
+      "characters": 1401,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 3,
+      "characters": 1296,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 4,
+      "characters": 1252,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 5,
+      "characters": 1253,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 6,
+      "characters": 1301,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 7,
+      "characters": 1269,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 8,
+      "characters": 1552,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 9,
+      "characters": 1329,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 10,
+      "characters": 1436,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 11,
+      "characters": 2250,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    },
+    {
+      "page": 12,
+      "characters": 1556,
+      "boundsPassed": true,
+      "identityPresent": true,
+      "visualReview": "Final PNG inspected; readable, no overlap or clipping"
+    }
+  ],
+  "graph": "Actual Prometheus range data, explicitly not a UI screenshot",
+  "sha256": "d2bf2cec2354faade1067c7f8b2cbdedc600889261e8fab1f754141cde4ea728"
+}
