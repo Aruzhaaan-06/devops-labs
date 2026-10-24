@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 1,
+  "file": "lab02-part1-report.pdf",
+  "originalPdfSha256": "ceb6bb1e6b681f7269a3a7d0077075c491e1dc6fa7dd592b975d9c6a38328f66",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "DEVOPS · 2-БАҚЫЛАУ НҮКТЕСІ · 3-АПТА",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "2-зертханалық жұмыс<br/>Dockerfile және құрастыру кэші",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "1-бөлім: 1-5-тармақтар. 03-материал.",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "<b>Орындаған:</b> Есімханова Аружан Түсіпханқызы<br/><b>Тобы:</b> 25-ИСТК-2о<br/><b>Күні:</b> 2026 жылғы 22 қазан",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Жұмыстың мақсаты",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "ASP.NET Core / .NET 10 негізіндегі DemoApi сервисін екі кезеңді құрастыру арқылы Linux бейнесіне жинақтау, артық файлдарды алып тастау және бастапқы код өзгергеннен кейін NuGet қабатының қайта пайдаланылуын растау.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Орта",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты мәні",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker Client / Server",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "29.8.0 / 29.8.0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындау ортасы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker Desktop, Linux x86_64, WSL 2 қосылған",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker ресурстары",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "12 CPU, 7.62 GiB жад (кемінде 4 GB талап етіледі)",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "PowerShell",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "7.6.5",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Негізгі бейнелер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "dotnet/sdk:10.0 және dotnet/aspnet:10.0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Тапсыру материалдары",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dockerfile және .dockerignore толық берілген; екінші құрастыру шығысында restore қадамы үшін CACHED көрсетілген. hello-world іске қосылуы, Dockerfile, нақты контейнер және API тексерілді. Settings → General ішіндегі WSL 2 параметрінің міндетті экран суреті әлі қажет: терезені автоматты түсіру уақыты асып кеткен. Конфигурация WSL 2 қосылғанын растайды, бірақ мәтін экран суретін алмастырмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs\" color=\"#175E9A\">Ашық репозиторий және барлық бастапқы код</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Dockerfile: екі кезең",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-листинг. Репозиторий түбіріндегі толық Dockerfile. Алдымен тәуелділіктер, содан кейін бастапқы код көшіріледі; соңғы бейнеге publish нәтижесі қосылады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "# syntax=docker/dockerfile:1\n \nFROM mcr.microsoft.com/dotnet/sdk:10.0 AS build\nWORKDIR /src\nCOPY src/DemoApi/DemoApi.csproj src/DemoApi/\nRUN dotnet restore src/DemoApi/DemoApi.csproj\nCOPY src/ src/\nRUN dotnet publish src/DemoApi/DemoApi.csproj -c Release -o /app --no-restore\n \nFROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime\nRUN apt-get update \\\n    && apt-get install -y --no-install-recommends curl \\\n    && rm -rf /var/lib/apt/lists/*\nWORKDIR /app\nCOPY --from=build /app .\nARG APP_VERSION=dev\nENV APP_VERSION=$APP_VERSION\nUSER $APP_UID\nEXPOSE 8080\nHEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=3 \\\n    CMD curl -fsS http://localhost:8080/health/live || exit 1\nENTRYPOINT [\"dotnet\", \"DemoApi.dll\"]"
+    },
+    {
+      "type": "paragraph",
+      "text": "build кезеңі SDK пайдаланып, Release режимінде restore/publish орындайды. runtime кезеңі ASP.NET орындалу ортасын, жарияланған қолданбаны және жұмыс күйін тексеруге арналған curl құралын қамтиды. curl орнату мен apt тазалау бір қабатта біріктірілген.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "USER $APP_UID сервисті app пайдаланушысы атынан іске қосады. EXPOSE ішкі 8080 портын құжаттайды. HEALTHCHECK /health/live маршрутын шақырады. ARG құрастырудың ашық нұсқасын береді, ENV оны GET / арқылы қолжетімді етеді. ENTRYPOINT dotnet-ті негізгі процесс ретінде іске қосады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/Dockerfile\" color=\"#175E9A\">GitHub-тағы Dockerfile</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Алып тасталатын файлдар және негізгі бейне",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "2-листинг. Толық .dockerignore. Нұсқаулықтағы үлгіге қосымша есептер, дәлелдер, құжаттама, Postman және ішкі каталогтардағы орта / сертификат файлдары алынып тасталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "**/bin/\n**/obj/\n**/TestResults/\n.git\n.github\n.vs\n.vscode\n.idea\ntests/\nmonitoring/\nscripts/\ndb/\ndocs/\nreports/\nevidence/\npostman/\n*.md\nDockerfile\ncompose*.yaml\ncompose*.yml\n.env\n.env.*\n**/.env\n**/.env.*\n**/*.pfx\n**/*.p12"
+    },
+    {
+      "type": "paragraph",
+      "text": "bin/obj ішінде Linux құрастыруына кірмеуі тиіс жергілікті Windows артефактілері бар. Қолданбаны жариялау үшін Git, IDE, тестілер және есептер қажет емес. .env және сертификаттар уақытша қабаттарға да түспеуі үшін құрастыру контекстінен алынып тасталады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Дайындық тексерулері: docker version Client және Server деректерін көрсетті; hello-world сәтті іске қосылды. Негізгі runtime бөлек жүктеліп, оның қабаттары мен өлшемдері image history және image ls командаларымен тіркелді. Docker build --check ескертусіз аяқталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab02/README.md\" color=\"#175E9A\">Дайындық пен тексерудің толық журналдары</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. Құрастыру және кэшті қайта пайдалану",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Алдымен 1.0 нұсқасы құрастырылды. Кейін TaskService.cs ішінде тек тапсырма жасау хабарламасы өзгертілді; жоба файлы мен пакеттер тізімі өзгерген жоқ. Екінші құрастыруға 1.1 тегі және APP_VERSION=lab02-1.1 мәні берілді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "docker build --progress=plain -t devops-labs-demo-api:lab02-1.0 .\ndocker build --progress=plain --build-arg APP_VERSION=lab02-1.1 `\n    -t devops-labs-demo-api:lab02-1.1 ."
+    },
+    {
+      "type": "heading",
+      "text": "Хабарламаның өзгерісі (соңғы кодта сақталған):",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "Создана задача {TaskId} в проекте {ProjectId}\nСоздана новая задача {TaskId} в проекте {ProjectId}"
+    },
+    {
+      "type": "heading",
+      "text": "3-листинг. Екінші docker build командасының нақты үзіндісі:",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "#12 [build 3/6] COPY src/DemoApi/DemoApi.csproj src/DemoApi/\n#12 CACHED\n#13 [build 4/6] RUN dotnet restore src/DemoApi/DemoApi.csproj\n#13 CACHED\n#14 [build 5/6] COPY src/ src/\n#14 DONE 0.0s\n#15 [build 6/6] RUN dotnet publish src/DemoApi/DemoApi.csproj -c Release -o /app --no-restore\n#15 3.234   DemoApi -> /src/src/DemoApi/bin/Release/net10.0/DemoApi.dll\n#15 3.289   DemoApi -> /app/\n#15 DONE 3.4s"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жоба файлы мен restore нәтижесі кэштен алынды; бастапқы кодты көшіру және publish қайта орындалды. Демек, кодтың өзгеруі NuGet пакеттерін қайта жүктеуді қажет етпеді. Өзгеріске дейінгі және кейінгі SHA-256, сондай-ақ қадамдардың тексеру нәтижелері cache-check.json файлында сақталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Артефакт",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты мәні",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Соңғы бейне",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "devops-labs-demo-api:lab02-1.1",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бейне өлшемі (image inspect)",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "354,253,942 байт (337.8 MiB)",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Платформа / пайдаланушы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "linux/amd64, UID 1654",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. Құрастырылған қолданбаны тексеру",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл тексерулер міндетті 1-5-тармақтарды толықтырады. API нақты Linux контейнерінде localhost:8089 → 8080 арқылы іске қосылды. Тексеру үшін басқа сервистер мен контейнерлер пайдаланылмады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Тексеру",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Контейнердің жұмыс күйі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "healthy; /health/live контейнер ішінен орындалады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қолданба нұсқасы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "GET / → 200, version=lab02-1.1",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Процесс пайдаланушысы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "uid=1654(app) gid=1654(app) groups=1654(app)",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Соңғы бейнедегі SDK",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "dotnet --list-sdks: бос шығыс",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бейнедегі бастапқы код және тестілер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "/app ішінде C# бастапқы кодтары, csproj және шешім файлы жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Live және ready",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Екі маршрут та → 200",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Production ортасындағы Swagger",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /swagger/index.html → 404",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "InMemory қайта іске қосылуы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Сол контейнерде: stop/start алдында 1 жоба, кейін 0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қайта құрастырмай Swagger қосу",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Сол бейне Development ортасында: /swagger/index.html → 200",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Development ортасындағы OpenAPI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /openapi/v1.json → 200, stats бар",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Оқу ақаулары өшірілген",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Chaos__Enabled=false, /api/chaos/error → 404",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "API HTTP сценарийлері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "26 сұрау: 23 сценарий және тестілік жобаларды жоюға арналған 3 сұрау",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI коллекциясы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24 сұрау, 73 тексеру, 0 қате; аяқталу коды 0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": ".NET Release регрессиялық тексеруі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "28/28 тест, 0 қате, 0 өткізіп жіберілген; InMemory",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        212.08818897637798,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "GET / жауабы:",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "{\n  \"service\": \"DemoApi\",\n  \"version\": \"lab02-1.1\",\n  \"host\": \"e7ee83006c4d\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Толық сұраулар мен жауаптар, контейнер журналдары, жұмыс күйі және Postman нәтижелері evidence/lab02 каталогында сақталған. API жергілікті тексерілді; нәтижелер Postman бұлтына жарияланбаған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Сұрақтарға жауап және қорытынды",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "Контейнер неге виртуалды машинадан жылдам іске қосылады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бөлек ядро мен толық операциялық жүйені жүктеу қажет емес. WSL 2 ішінде Linux ядросы жұмыс істеп тұр; Docker namespaces/cgroups жасайды, қабаттарды тіркейді және қолданба процесін іске қосады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Неге алдымен csproj, содан кейін код көшіріледі?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тәуелділіктер тізімі C# файлдарына қарағанда сирек өзгереді. Код өзгергеннен кейін restore-дың бөлек қабаты кэште қалады. Бұл екінші құрастырумен расталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Көп кезеңді құрастырудан кейін соңғы бейнеге не кіреді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "ASP.NET орындалу ортасы, жарияланған DLL файлдары мен тәуелділіктер, конфигурация және curl. SDK, бастапқы кодтар мен аралық obj файлдары build кезеңінде қалады. SDK жоқтығы dotnet --list-sdks арқылы тексерілген.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Контейнерде Swagger неге жоқ? Оны қалай қосуға болады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әдепкі орта - Production; Program.cs Swagger-ді тек Development ортасында тіркейді. Сол бейнеден ASPNETCORE_ENVIRONMENT=Development мәнімен жасалған жаңа контейнер Swagger-ді қайта құрастырусыз ашты. Chaos__Enabled=false оқу ақауларын өшіреді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "docker stop/start орындалғаннан кейін жобаларға не болады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "InMemory процесс жедел жадында сақталады. Процесс аяқталғанда контейнер сол күйі қалса да, жобалар жоғалады. Нақты тексеруде жоба жасалып, контейнер тоқтатылып / іске қосылды, содан кейін бос тізім алынды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қорытынды және шектеу",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "03-материалдың техникалық бөлігі орындалды және сақталған іске қосу нәтижелерімен расталды. Бақылау нүктесін толық рәсімдеу үшін Docker Desktop Settings → General бөліміндегі WSL 2 қосылғанын көрсететін шынайы экран суреті қажет. Бөлек 2-бөлім (04-материал) бастапқы мұрағатта жоқ және орындалды деп көрсетілмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Дереккөздер және материалдар",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Шарттар: жүктелген Devops (1).zip мұрағатындағы 03-материал, «Неделя 3 - Контрольная точка 2», 2-зертханалық жұмыстың 1-бөлімі және 2-дәріс.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://docs.docker.com/build/cache/invalidation/\" color=\"#175E9A\">Docker: кэш ережелері</link> · <link href=\"https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/building-net-docker-images?view=aspnetcore-10.0\" color=\"#175E9A\">Microsoft: ASP.NET Core бейнелері</link>",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/lab02.md\" color=\"#175E9A\">Репозиторийдегі нұсқаулар мен жауаптар</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab02/README.md\" color=\"#175E9A\">Сақталған дәлелдер</link>",
+      "originalStyle": "Small"
+    }
+  ]
+}

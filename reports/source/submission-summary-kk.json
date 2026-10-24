@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "file": "submission-summary-kk.pdf",
+  "originalPdfSha256": "a29019c6c476b58cef6ed49524ae37c22082abae3c08b383c956011a6a9e85c9",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "DevOps жұмыстарын тапсыру<br/>Қорытынды толықтыру",
+      "originalStyle": "Head"
+    },
+    {
+      "type": "paragraph",
+      "text": "2026 жылғы 25 қазан · Қазақ тіліндегі есептерге қосымша",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Мәлімет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мәні",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Университет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ВКТУ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындаған",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Есімханова Аружан Түсіпханқызы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тобы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "25-ИСТК-2о",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Негізгі жинақ",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "14 зертханалық есеп, 116 бет; v1.1.0 релизі",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        147.96850393700788,
+        345.25984251968504
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Жинақтың мақсаты",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл толықтыру бұрынғы есептерді алмастырмайды. Ол код, тест және сақталған тәжірибе нәтижелерін тапсыру кезінде жетіспейтін интерфейс дәлелдері мен ұйымдастыру қадамдарынан ажыратады. Жұмыстар толық қабылданды немесе белгілі бір бағаға кепілдік берілді деп мәлімделмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қайта тексерілген нәтижелер",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Нұсқа / қойма",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жиынтық",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нәтиже",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "lab01-required-24 / InMemory",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Міндетті 24",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24/24; қате 0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "lab03-postgres / Postgres",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Міндетті 24",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24/24; қате 0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "lab03-postgres / Postgres",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Толық 28",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "28/28; қате 0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        246.6141732283465,
+        123.30708661417324,
+        123.30708661417324
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл тестілер dotnet test арқылы орындалды. TRX қорытындысында нақты уақыт, бастапқы код SHA және жергілікті түпнұсқаның SHA-256 мәні бар. Test Explorer интерфейсінде орындау және оның суреті әзірге расталмаған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "SQL тексеруі жеке demo_ui_checks дерекқорында орындалды. Екі іске қосудан кейінгі тек оқу тексеруінде 24 жоба мен 21 тапсырма болды. Негізгі demo дерекқоры пайдаланылмады. Қосылу құпиясы Git сыртындағы .NET User Secrets қоймасында сақталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/submission-readiness/checks.json\" color=\"#175E9A\">Тест қорытындысы</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0\" color=\"#175E9A\">Негізгі релиз</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/33\" color=\"#175E9A\">Толықтыру PR №33</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "Жетіспейтін интерфейс дәлелдері",
+      "originalStyle": "Head"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жұмыс",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Қажет дәлел",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "1, 1-бөлім",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman: demo-api коллекциясының атауы, сұраулар тізімі және нақты жауап. Бөлек көшірме: localhost:8094.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "1, 2-бөлім",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "lab01-required-24 шешіміндегі 24 жасыл тест; екі stats тесті көрінуі керек.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "1, 2-бөлім",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "F9/F10/F11 арқылы екі сұрау: Todo → Done (409), бөлек Todo → InProgress (200). Locals және Call Stack.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "2 · 03-материал",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker Desktop → Settings → General: Use the WSL 2 based engine қосылғанының шынайы суреті.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "3 · 05-материал",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Visual Studio іске қосу шығысында Хранилище: PostgreSQL; SQL Test Explorer-де 24 міндетті және бөлек 28 толық тест.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "4 · 07-материал",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Қабылданбаған push терезесінің шынайы суреті. GH013 мәтіндік журналы бұрыннан сақталған.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "7 · 14-материал",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Grafana UI арқылы JSON экспорты және ақау кезіндегі Grafana/Dozzle бақылауы. Қазіргі API/файл дәлелдері UI әрекеті ретінде саналмайды.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "8 · 15-материал",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты инциденттің Grafana p95 және ALERTS firing тарихының көріністері; кейін ашылған тарихи сурет ретінде белгілеу.",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        118.37480314960631,
+        374.8535433070867
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Құралдың нақты шектеуі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Терезені қайта белсендіргеннен кейін де Visual Studio суреті FrameArrived timed out қатесімен аяқталды. Браузер құралы Local browser use is disabled in Work settings қатесін берді. Жаңа UI суреттері алынған немесе қолмен жөндеу орындалған деп көрсетілмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жөндеу кезінде 409 тармағында жаңарту шақырылмайды. 200 тармағы ChangeStatusAsync → SetStatusAsync → Replace арқылы өтеді. Суреттер нақты іске қосу мен бастапқы код нұсқасына сәйкес келуі керек.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "Тапсыру реті және ашық тармақтар",
+      "originalStyle": "Head"
+    },
+    {
+      "type": "heading",
+      "text": "1. Бірінші жұмыстың бөлек шешімін ашу",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "lab01-required-24/DemoApi.slnx; Debug және http профилі; localhost:8094. Міндетті 24 тестіні іске қосып, Postman мен екі жөндеу сценарийінің суреттерін сақтау.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "2. PostgreSQL дәлелдерін толықтыру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "lab03-postgres/DemoApi.slnx; localhost:8095. Міндетті жиынтық үшін postgres-required24.runsettings, толық жиынтық үшін postgres-full28.runsettings таңдалады. Қосылу құпиясын кадрда ашуға болмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "3. Мониторингтің тарихи көрінісі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "2026 жылғы 24 қазан, 18:10-18:24 UTC; жергілікті уақыт 23:10-23:24 UTC+5. Grafana-да Latency p95; Prometheus-те ALERTS{alertname=\"ApiSlowRequests\",alertstate=\"firing\"}. Тарихи көріністі инцидент кезінде түсірілген түпнұсқа сурет деп беруге болмайды. Қазіргі inactive күйі өткен firing-ті дәлелдемейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Инциденттің сақталған уақыты: T0 18:10:54 UTC, T1 18:14:18.726 UTC, T2 18:15:58.875 UTC. Ақаулы релиз сурет алу үшін қайта орнатылмайды; нақты JSON және есептегі деректер сақталған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "4. Оқытушының немесе студенттің қатысуы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Оқытушының GitHub атауы әлі берілмеген. Екі ревью аккаунты бір адамға тиесілі: оны тәуелсіз жұптық жұмыс деп көрсетуге болмайды. Жеке B репозиторийінің орындалмаған кезеңін оқытушымен келісу қажет. 04-материалдың шарты жоқ; бұл оның орындалғанын білдірмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Курс форумында слотқа жазылу, 10 минуттық онлайн қорғауда экранды көрсету және екі сұраққа жауап беру, есептерді СДО-ға жүктеу студенттің қатысуын талап етеді. Осы құжат бұл әрекеттердің орнына жүрмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Жинақ және оның шекарасы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бастапқы жариялау кезеңінде негізгі 14 PDF өзгертілмеген. Қосымшаның бастапқы нұсқасы үш бет болған; рәсімделген нұсқаның көлемі есептер каталогында берілген. Қорытынды архивте есептер, бірінші жұмыстың тарихи бастапқы коды, тексеру қорытындылары және SHA-256 тізімі болады. Құпиялар, .env, жергілікті тіркелгі файлдары және пайдаланушы жолдары архивке кірмейді. Performance baseline №30 осы аяқтау кезеңінің құрамына кірмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/submission-checklist.md\" color=\"#175E9A\">Толық чек-парақ</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/reports/README.md\" color=\"#175E9A\">Барлық есептер</link>",
+      "originalStyle": "Body"
+    }
+  ]
+}

@@ -1,0 +1,755 @@
+{
+  "schemaVersion": 1,
+  "file": "lab05-ci-report.pdf",
+  "originalPdfSha256": "3ddb2cbf359aaf14927f1c7aa0d9ce23f08a0c88f716852237b5270806d19745",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "ВКТУ · DEVOPS · 09-МАТЕРИАЛ",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "5-зертханалық жұмыс<br/>Үздіксіз интеграция",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "1-бөлім: пайплайн, міндетті тест және жергілікті runner",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Мәлімет",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Мәні",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындаған",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Есімханова Аружан Түсіпханқызы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тобы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "25-ИСТК-2о",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Университет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ВКТУ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Күні",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2026 жылғы 23 қазан",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тапсырма",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "09-материал, 1-5-тармақтар",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Мақсаты",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әр PR үшін PostgreSQL қатысатын автоматты тестілерді іске қосу, қызыл test бар кезде main тармағына біріктіруге тыйым салу және келесі бөлімге жергілікті Windows runner мен құпия деректі дайындау.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Нақты нәтиже",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жергілікті Release құрастыруы сәтті: 0 ескерту, 0 қате; PostgreSQL тестілері 38/38. GitHub-та үш нақты кезең орындалды: жасыл 38/38, әдейі бұзылған бір тестпен қызыл 37/38 және тест қалпына келтірілгеннен кейін жасыл 38/38. 24 техникалық тексеру сәтті өтті.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/17\" color=\"#175E9A\">Workflow және бес жауап берілген PR #17</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/ci/pipeline\" color=\"#175E9A\">Жұмыс тармағы ci/pipeline</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әдістемелік нұсқаулық бойынша PR осы бөлімде ашық қалдырылды. Біріктіру, GHCR-ға бейне жіберу, жергілікті deploy және rollback 10-материалға жатады. Олардың орындалғаны осы есепте мәлімделмейді.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "Екі GitHub аккаунты бір адамға тиесілі. Ревью - GitHub механизмінің техникалық тексеруі; ол тәуелсіз студенттің тексеруі ретінде көрсетілмейді. Код, командалар, лог жолдары және шынайы суреттер бастапқы тілінде сақталды.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Workflow және бес сұраққа жауап",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "1. PR, main push және v1.0.0 тегі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Оқиға",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Орындалатын жұмыстар",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "main тармағына PR",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "test; image және deploy skipped",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "main push",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "test → image → deploy; келесі job алдыңғысына тәуелді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "v1.0.0 тегі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "test → image; deploy skipped, себебі ref main емес",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл кесте workflow шарттарын түсіндіреді. Осы бөлімде нақты PR жолы тексерілді; push және тег арқылы жариялау келесі бөлімде тексеріледі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "2. PostgreSQL қайдан алынады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "test job GitHub-hosted Ubuntu runner-де орындалады. services.postgres postgres:18-alpine контейнерін іске қосып, pg_isready арқылы оның дайындығын күтеді. Storage=Postgres және ConnectionStrings__Db тестілерді localhost:5432 мекенжайындағы уақытша demo дерекқорына бағыттайды. CI-дегі demo паролі жергілікті томның құпиясөзі емес.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "3. image ішіндегі GITHUB_TOKEN құқықтары",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "contents: read бастапқы кодты алуға, packages: write бейнені GHCR-ға жіберуге қажет. Қосымша write құқығы тек image job үшін берілген; негізгі workflow contents: read пайдаланады. Жеке PAT workflow файлына енгізілмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "4. deploy қайда орындалады және неге?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "self-hosted, Windows, X64, devops-labs белгілері бар жергілікті орындаушы агентте орындалады. Ол осы компьютердің Docker Desktop қызметіне қол жеткізеді; GitHub-hosted runner жергілікті Docker-ді көрмейді. deploy тек осы репозиторийдің main push оқиғасына арналған.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "5. Жаңа контейнер healthy болмаса не болады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "docker compose up командасындегі --wait --wait-timeout 90 сәтсіз аяқталып, job қызыл болады. Кейінгі readiness smoke test орындалмайды. Smoke test орындалған кезде HTTP қатесі де job-ты сәтсіз етеді. Workflow автоматты rollback жасамайды; кері қайтару келесі материалда тексеріледі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Осы бес жауап PR #17 сипаттамасына да енгізілген. Жасыл CI тек тексерілген кодқа қатысты; ол жариялау немесе deploy автоматты түрде орындалды дегенді білдірмейді.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Жергілікті тексеру және бейімдеу",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Алдымен Docker Compose дерекқоры іске қосылды. Жергілікті .env құпиясөзін өзгертпей, тек тестілерге арналған demo_lab09_tests дерекқоры дайындалды. Дерекқор құпиясөзі тек процесс ортасы арқылы берілді, журналға жазылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "docker compose up -d --wait db\ndotnet restore DemoApi.slnx\ndotnet build DemoApi.slnx --no-restore -c Release\ndotnet test DemoApi.slnx --no-build -c Release"
+    },
+    {
+      "type": "paragraph",
+      "text": "SQL тестілерін орындағанда Storage=Postgres және ConnectionStrings__Db айнымалылары бөлек тест дерекқорын көрсетті. Нәтиже: барлық 38 тест өтті, оның 7-еуі модульдік, 31-і интеграциялық.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Оқу kit файлы қалай өзгертілді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Бейімдеу",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Себебі",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "DemoApi.slnx нақты көрсетілді",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Runner дұрыс шешімді restore/build/test етуі үшін",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "6 action нақты SHA-ға бекітілді",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Әр іске қосуда сол ресми action коды пайдаланылуы үшін",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "persist-credentials: false",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Checkout-тан кейін Git тіркелгі деректерін сақтамау үшін",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Windows/X64/devops-labs белгілері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Deploy дұрыс жергілікті runner-ге түсуі үшін",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "15432, 8088 және 10.254.54.0/24",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Қолданыстағы Compose порттары мен желісіне сәйкестендіру үшін",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Тесті merge шартына айналдыру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бірінші GitHub Actions run сәтті өткен соң, қолданыстағы main ruleset-ке required_status_checks ережесі қосылды. Контекст - test, дереккөзі - GitHub Actions қолданбасы. Соңғы main кодымен тексеруді талап ету қосылды. Бұрынғы PR, code owner мақұлдауы, force-push пен жоюға тыйым сақталды; bypass тізімі бос қалды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ревьюердің Approve-ы тест әдейі бұзылмай тұрып алынды. Қызыл кезеңде мақұлдау сақталғанымен, міндетті test сәтсіз болғандықтан merge қолжетімсіз болды. Осылайша блоктау тек ревьюдің жоқтығынан емес, нақты тесттен болғаны расталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жергілікті тексеру, CI және GitHub ruleset нәтижелері бөлек JSON және мәтіндік журналдарда сақталған.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. Қызыл test merge-ті бұғаттады",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Create_DuplicateName_ReturnsConflict тестіндегі күтілетін Conflict уақытша OK мәніне ауыстырылды. API дұрыс 409 қайтарды; әдейі қате күту тестті құлатты. Қате коммит: bfd8617.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/81bfc6bd7bd6fd8f.jpg",
+      "caption": "merge-blocked.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-сурет. PR #17: 1 approval бар; ci-cd / test қызыл және Required деп белгіленген; Merge pull request түймесі қолжетімсіз. Сурет браузерден тікелей алынды.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "code",
+      "text": "Create_DuplicateName_ReturnsConflict [FAIL]\nExpected: OK\nActual:   Conflict\nFailed: 1, Passed: 37, Total: 38\nProcess completed with exit code 1."
+    },
+    {
+      "type": "paragraph",
+      "text": "Жоғарыдағы жолдар GitHub Actions журналынан алынған; уақыт белгілері мен қадам атауы ықшамдалған. Толық журнал evidence/lab05-ci/failure-ci-log.txt ішінде сақталған. Күтілген HTTP 200 мен нақты HTTP 409 айырмасы анық көрінеді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39922922366\" color=\"#175E9A\">Қызыл GitHub Actions run</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/17/commits/bfd861774f93526fcddf7e1f0c987413ff24146f\" color=\"#175E9A\">Әдейі қате тест коммиті</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "GitHub REST күйі де mergeable_state=blocked болды. Серверге қате кодты біріктіру сұрауы жіберілген жоқ: интерфейс пен API блоктауды нақты көрсетті.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. Runner және DB_PASSWORD",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ресми actions-runner-win-x64-2.338.0.zip архиві жүктеліп, оның SHA-256 сомасы GitHub берген мәнмен салыстырылды. Runner C:\\actions-runner каталогына, репозиторийден тыс орнатылды. Тіркеу токені журналға не Git-ке жазылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/35c86b131b2f432a.jpg",
+      "caption": "runner-idle.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "2-сурет. Settings → Actions → Runners: devops-labs-windows, Windows/X64/devops-labs белгілері және Idle күйі. API тексеруі status=online және busy=false мәндерін көрсетті.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Параметр",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты күйі",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Іске қосу",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "run.cmd фондық процесте; Windows қызметі ретінде орнатылмаған",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Репозиторий құпия дерегі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "DB_PASSWORD атауымен сақталған; мәні көрсетілмейді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Құпиясөздің көзі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жергілікті .env файлының қолданыстағы томға сәйкес мәні",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Deploy ортасы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PowerShell 7, API_PORT=8088, DB_PORT=15432",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Құпия дерек GitHub CLI-ге stdin арқылы берілді. GitHub API тек secret атауы мен уақыт метадеректерін қайтарады; құпиясөз мәнін қайтармайды. Есепте оның мәні көрсетілмейді. Runner тіркелгі файлдары C:\\actions-runner ішінде ғана қалады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қауіпсіздік шекарасы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қоғамдық репозиторийдегі self-hosted runner жергілікті пайдаланушы құқықтарымен код орындайды. Сыртқы қатысушылардың workflow-лары үшін all_external_contributors мақұлдауы сақталды. PR тестілері hosted Ubuntu-да қалады. Бұл толық оқшаулау емес: сыртқы кодты тексермей мақұлдауға болмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Компьютер немесе runner процесі тоқтаса, ол Offline болады. Осы есеп дайындалған кезде агент Online/Idle күйінде келесі зертханалық жұмысқа қалдырылды.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Қалпына келтіру және қорытынды",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Күтілетін код жеке коммитпен Conflict мәніне қайтарылды: 07ef056. Бастапқы және қалпына келтірілген коммиттердің src, tests және workflow файлдары бірдей екені тексерілді. Қате күту түпкілікті нұсқада қалған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/6e7d0355286d61e2.jpg",
+      "caption": "restored-green.jpg",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "3-сурет. Тест қалпына келтірілгеннен кейінгі GitHub Actions run: Success. API мен толық логта test=success, image/deploy=skipped және 38 өткен тест көрсетілген.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Кезең",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Коммит және нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бастапқы CI",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "4052ddb - 38/38, success",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Әдейі қате тест",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "bfd8617 - 37/38, failure; merge blocked",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қалпына келтіру",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "07ef056 - 38/38, success",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39922701822\" color=\"#175E9A\">Бастапқы жасыл run</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/actions/runs/39923354322\" color=\"#175E9A\">Қалпына келген жасыл run</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/17\" color=\"#175E9A\">Бес жауабы бар PR #17</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "09-материалдың нәтижесі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Workflow жарияланды, 24 тексеру сәтті өтті, міндетті test пен қызыл кезде merge блокталуы дәлелденді, тест қалпына келтірілді, runner және secret дайындалды. Есепте талап етілген сілтемелер, қате жолы және шынайы суреттер берілген.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "PR әдейі ашық қалдырылды: 10-материалда оны біріктіріп, image → GHCR → жергілікті deploy → readiness smoke test және rollback орындалады. Есеп пен дәлелдер ci/pipeline тармағында жарияланады; олар main тармағына осы кезеңде біріктірілмейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Шектеу: ревью үшін бір адамның екі тіркелгісі қолданылды. Оқытушыны қосу және алдыңғы есептердің қолмен жөндеу/сурет тармақтары өз чек-парағында қалады.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ресми анықтама: <link href=\"https://docs.github.com/en/actions/tutorials/build-and-test-code/net\" color=\"#175E9A\">GitHub Actions .NET</link>; <link href=\"https://docs.github.com/en/actions/reference/security/secure-use\" color=\"#175E9A\">runner қауіпсіздігі</link>. Есеп жинақтаушы скрипт арқылы сақталған дәлелдерден қайта құрастырылады; скрипт CI-ді іске қоспайды.",
+      "originalStyle": "Small"
+    }
+  ]
+}

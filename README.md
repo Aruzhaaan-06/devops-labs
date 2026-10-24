@@ -1,164 +1,148 @@
-# DevOps Labs — DemoApi: проекты и задачи
+# DevOps зертханалық жұмыстары
 
-Учебные работы по DevOps на базе DemoApi — REST API на ASP.NET Core / .NET 10. Проекты, задачи, переходы статусов и статистика; хранение в памяти или PostgreSQL.
+## Жоба туралы
 
-**Университет:** ВКТУ
+DemoApi - ASP.NET Core негізіндегі жобалар мен тапсырмаларға арналған оқу API-і. Репозиторий HTTP сұрауларынан бастап контейнерлеу, PostgreSQL, GitHub Actions, мониторинг және инцидентті қалпына келтіруге дейінгі нақты жұмыстарды біріктіреді.
 
-**Студент:** Есімханова Аружан Түсіпханқызы · **Группа:** 25-ИСТК-2о
+Код пен тәжірибе нәтижелері сақталған. Есептерді рәсімдеу техникалық тапсырманың барлық тармағы орындалды дегенді білдірмейді: [жетіспейтін дәлелдер мен тапсыру шектері](docs/REPORT_COMPLETENESS.md) бөлек берілген.
 
-[Работы и статус](docs/README.md) · [Отчеты и исходники](reports/README.md) · [Результаты проверок](evidence/lab01/README.md) · [Разбор лабораторной 1](docs/lab01.md)
+## Пән туралы ақпарат
 
-Все четырнадцать отчетов оформлены на казахском языке: [PDF и общий архив](reports/README.md). В отчетах указаны ВКТУ и полное ФИО.
-
-[Итоговый чек-лист сдачи](docs/submission-checklist.md) и [дополнение на казахском, 3 страницы](reports/submission-summary-kk.pdf) перечисляют оставшиеся UI-доказательства и действия студента. Основные 14 PDF сохранены. Консольные проверки и опубликованный код не означают, что скриншоты, ручная отладка или защита уже выполнены.
-
-## Выполненные работы
-
-| Работа | Результат | Отчет |
-|---|---|---|
-| Лабораторная 1, часть 1 | Запуск InMemory, запросы, ошибки API, потеря данных после перезапуска | [PDF · 8 страниц](reports/lab01-part1-report.pdf) |
-| Лабораторная 1, часть 2 | Статистика проекта, тесты, ответы по коду; дополнительно — проверка срока новой задачи | [PDF · 12 страниц](reports/lab01-part2-report.pdf) |
-| Лабораторная 2, часть 1 · материал 03 | Multi-stage Dockerfile, кэш restore и проверка Linux-контейнера; нужен скриншот WSL 2 | [PDF · 6 страниц](reports/lab02-part1-report.pdf) |
-| Лабораторная 3, части 1–2 · материал 05 | PostgreSQL, сохранение данных, две ошибки подключения и SQL-тесты; нужны скриншоты консоли Visual Studio и Test Explorer | [PDF · 7 страниц](reports/lab03-postgres-report.pdf) |
-| Лабораторная 3, часть 3 · материал 06 | Docker Compose, 3 → 3 → 2, отказ БД, Windows-разработка и Adminer | [PDF · 7 страниц](reports/lab03-compose-report.pdf) |
-| Лабораторная 4, часть 1 · материал 07 | Защита main, Board, ревью README и конфликт; два аккаунта одного владельца, преподаватель пока не добавлен | [PDF · 7 страниц](reports/lab04-git-report.pdf) |
-| Лабораторная 4, часть 2 · материал 08 | Переименование проекта, PR template, Dependabot, CODEOWNERS и [релиз v0.1.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v0.1.0) | [PDF · 8 страниц](reports/lab04-release-report.pdf) |
-| Лабораторная 5, часть 1 · материал 09 | GitHub Actions: 38/38, намеренный красный test с блокировкой merge, восстановление 38/38; runner Idle и DB_PASSWORD готовы | [PDF · 6 страниц](reports/lab05-ci-report.pdf) |
-| Лабораторная 5, часть 2 · материал 10 | GHCR, deploy, Message, два отката, Environment local, Job summary и [v1.0.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.0.0) | [PDF · 8 страниц](reports/lab05-cd-report.pdf) |
-| Лабораторная 6, часть 1 · материал 11 | Четыре сценария сбоев: HTTP500, crash, restart no и штатная остановка; events/exit/logs, 35 проверок | [PDF · 7 страниц](reports/lab06-failures-report.pdf) |
-| Лабораторная 6, часть 2 · материал 12 | OOM137, DB ready503, unhealthy без restart, slow3000ms и diag.ps1; полная таблица2–8, пять ответов | [PDF · 8 страниц](reports/lab06-resources-report.pdf) |
-| Лабораторная 7, часть 1 · материал 13 | Prometheus/Grafana/cAdvisor/Dozzle, 3UP, 9PromQL, 13скриншотов, нагрузка1200/0 и Postman5/15 | [PDF · 10 страниц](reports/lab07-metrics-report.pdf) |
-| Лабораторная 7, часть 2 · материал 14 | Две панели, бизнес-счётчик, пять сценариев / шесть срабатываний, тесты 40/40 и Postman 10/17; UI-экспорт остаётся ограничением | [PDF · 10 страниц](reports/lab07-alerts-report.pdf) |
-| Лабораторная 8 · материал 15 | Настоящий bad release → alert → rollback → GitHub Revert PR, постмортем, latency gate, v1.1.0; UI снимки и онлайн защита остаются | [PDF · 12 страниц](reports/lab08-incident-report.pdf) |
-
-Код и проверки первой лабораторной подготовлены. Для полного комплекта сдачи остаются скриншоты коллекции Postman и Test Explorer, а также ручная пошаговая отладка с Locals и Call Stack. Подробности — в [чек-листе сдачи](docs/lab01.md#что-приложить-к-двум-отчётам). SQL-реализация проверена на настоящей PostgreSQL в [лабораторной 3](docs/lab03-postgres.md).
-
-Материал 08 проверен 23 октября 2026 года: **38/38 тестов в InMemory и 38/38 в PostgreSQL**, полная коллекция Postman — **37 запросов и 99 проверок**. [Описание API и выполнения](docs/lab04-release.md) · [Доказательства](evidence/lab04-release/README.md).
-
-Материал 09: **настоящий CI GitHub Actions с PostgreSQL, 38/38**. Обязательный `test` заблокировал merge при намеренной ошибке; после восстановления CI снова зеленый. PR #17 объединен при выполнении материала 10. [Подробности](docs/lab05-ci.md) · [Доказательства](evidence/lab05-ci/README.md).
-
-Материал 10: **39/39 тестов, Postman 38/103**, полный `test → image → deploy`, GET / с `hello from CI/CD`, идемпотентный повторный deploy, ручной откат **12,823 с** и кнопочный откат **57,696 с** с сохранением контрольных данных. Выпущен **v1.0.0**; тег публикует образ без deploy. Настроены `local` с approval и Job summary. [Выполнение](docs/lab05-cd.md) · [34 проверки и доказательства](evidence/lab05-cd/README.md). Финальная сверка последнего main с живым API размещается в релизе как `lab10-final-verification.json`.
-
-Материал 11: **четыре сценария и 35 проверок**, Postman **4 запроса / 10 assertions**. Временный `restart: no` отменен, исходный Compose восстановлен, API healthy и данные сохранены. Вкладки Docker Desktop просмотрены пользователем. [Выполнение и ответы](docs/lab06-failures.md) · [Доказательства](evidence/lab06-failures/README.md).
-
-Материал 12: **OOM → die137 → start**, БД недоступна при live200/ready503/tasks500, unhealthy без restart, slow HTTP200 за 3,027 с. **38 проверок**, Postman **5/11**. Добавлен read-only `scripts/diag.ps1`, Compose восстановлен, данные сохранены. [Выполнение](docs/lab06-resources.md) · [Доказательства](evidence/lab06-resources/README.md).
-
-Материал 13: **3/3 UP, 9 PromQL, 13 настоящих снимков**, нагрузка1200/0, Postman5/15. [Мониторинг и повторение](docs/lab07-metrics.md) · [Доказательства](evidence/lab07-metrics/README.md) · [PR #22](https://github.com/Aruzhaaan-06/devops-labs/pull/22). Все UI только localhost; основной Compose не меняется.
-
-Материал 14: **пять реальных сценариев, шесть срабатываний, 30 проверок доказательств**. Счётчик `demo_tasks_created_total`, две панели, локальные InMemory 40/40 и Postman 10/17. Учтена первая неудачная OOM-попытка; API восстановлен, данные сохранены. [Выполнение и ограничения UI](docs/lab07-alerts.md) · [Доказательства](evidence/lab07-alerts/README.md) · [PR #23](https://github.com/Aruzhaaan-06/devops-labs/pull/23).
-
-Материал 15: **реальный инцидент, обнаружение 204,726 с от merge и восстановление 100,149 с от firing**. [Плохой PR #26](https://github.com/Aruzhaaan-06/devops-labs/pull/26), [GitHub Revert PR #28](https://github.com/Aruzhaaan-06/devops-labs/pull/28), [инцидент/постмортем #27](https://github.com/Aruzhaaan-06/devops-labs/issues/27). PostgreSQL 40/40 до и после; read-only Postman 6/13; 34 проверки доказательств. Deploy latency gate отклоняет >=1000 мс; 1771 задача нагрузки и прежние данные сохранены. [Runbook, ограничения и защита](docs/lab08-incident.md) · [v1.1.0](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0).
-
-Сохраненные результаты предыдущих этапов от 22 октября 2026 года:
-
-| Проверка | Результат |
+| Мәлімет | Мәні |
 |---|---|
-| Обязательный этап | 24/24 теста; [тег lab01-required-24](https://github.com/Aruzhaaan-06/devops-labs/tree/lab01-required-24) |
-| Версия с дополнительным правилом | 28/28 тестов: 7 юнит и 21 интеграционный |
-| Итоговая коллекция Postman CLI | 24 запроса, 73 проверки, без ошибок |
-| Перезапуск InMemory | 4 проекта до остановки, 0 после запуска |
-| PostgreSQL, лабораторная 3 | 24/24 обязательных и 28/28 полных тестов; данные пережили перезапуски |
+| Университет | Д. Серікбаев атындағы Шығыс Қазақстан техникалық университеті (ШҚТУ / ВКТУ) |
+| Пән | DevOps құралдары |
+| Оқу кезеңі | 2025-2026, пайдаланушы берген дерек |
+| Нақты тәжірибелер | 2026 жылғы 22-25 қазан; журналдардың бастапқы уақыттары сақталған |
+| Есеп тілі | Қазақ тілі; код, командалар, API жауаптары мен шынайы интерфейс мәтіні бастапқы тілінде |
+| Оқытушы | Аты-жөні мен GitHub атауы берілмеген; ойдан қосылмаған |
 
-Все журналы, сводки и два настоящих скриншота Swagger доступны в [каталоге результатов](evidence/lab01/README.md). Это результаты записанных запусков; текущий код можно проверить командами ниже.
+## Қолданылған технологиялар
 
-## Быстрый запуск
+| Құрал | Қолданылуы |
+|---|---|
+| .NET 10, ASP.NET Core, C# | REST API, контроллерлер және сервистер |
+| PostgreSQL 18, Npgsql | Тұрақты деректер мен SQL репозиторийлері |
+| Docker, Compose | Linux контейнерлері, желі, атаулы томдар және іске қосу |
+| Git, GitHub Actions, GHCR | PR, міндетті CI, бейне жариялау және жергілікті орналастыру |
+| xUnit, WebApplicationFactory, Postman | Юнит, интеграциялық және HTTP тексерулер |
+| Prometheus, Grafana, cAdvisor, Dozzle | Метрикалар, алерттер, ресурстар және журналдар |
+| Python, ReportLab, pypdf, pdfplumber | Есептерді қайта құру және техникалық PDF тексеруі |
 
-Нужен .NET 10 SDK. Для отладки и Test Explorer — Visual Studio 2026 с компонентом «ASP.NET и разработка веб-приложений». В текущем режиме отдельная база данных не нужна.
+## Зертханалық жұмыстар
+
+Түгендеу файлдардан автоматты алынды: **14 зертханалық есеп, 8 негізгі зертханалық жұмыс және бөлек тапсыру қосымшасы**. 04-материалдың шарты жоқ; ол орындалған жұмыс ретінде қосылмаған. Бастапқы 1.1/1.3 файлдары дәрістерді, 1.2/1.4 файлдары практиканы қамтиды; олардың нәтижесі бірінші жұмыстың екі есебінде жинақталған.
+
+| № / бөлім | Зертханалық жұмыстың тақырыбы | Есеп | Бастапқы код |
+|---|---|---|---|
+| 1.1 | Тапсырмалар сервисінің API интерфейсі | [PDF · 14 бет](reports/lab01-part1-report.pdf) | [Есеп JSON](reports/source/lab01-part1-report.json) · [Код және кезең](docs/lab01.md) |
+| 1.2 | Сұрауды талдау және жоба статистикасы | [PDF · 22 бет](reports/lab01-part2-report.pdf) | [Есеп JSON](reports/source/lab01-part2-report.json) · [Код және кезең](docs/lab01.md) |
+| 2.1 | Dockerfile және құрастыру кэші | [PDF · 13 бет](reports/lab02-part1-report.pdf) | [Есеп JSON](reports/source/lab02-part1-report.json) · [Код және кезең](docs/lab02.md) |
+| 3.1-3.2 | Сервиске арналған PostgreSQL | [PDF · 15 бет](reports/lab03-postgres-report.pdf) | [Есеп JSON](reports/source/lab03-postgres-report.json) · [Код және кезең](docs/lab03-postgres.md) |
+| 3.3 | Docker Compose және деректердің өмірлік циклі | [PDF · 14 бет](reports/lab03-compose-report.pdf) | [Есеп JSON](reports/source/lab03-compose-report.json) · [Код және кезең](docs/lab03-compose.md) |
+| 4.1 | Git және GitHub-та бірлескен жұмыс | [PDF · 16 бет](reports/lab04-git-report.pdf) | [Есеп JSON](reports/source/lab04-git-report.json) · [Код және кезең](docs/lab04-git.md) |
+| 4.2 | GitHub ережелері және шығарылым | [PDF · 17 бет](reports/lab04-release-report.pdf) | [Есеп JSON](reports/source/lab04-release-report.json) · [Код және кезең](docs/lab04-release.md) |
+| 5.1 | GitHub Actions арқылы үздіксіз интеграция | [PDF · 14 бет](reports/lab05-ci-report.pdf) | [Есеп JSON](reports/source/lab05-ci-report.json) · [Код және кезең](docs/lab05-ci.md) |
+| 5.2 | Үздіксіз жеткізу және кері қайтару | [PDF · 15 бет](reports/lab05-cd-report.pdf) | [Есеп JSON](reports/source/lab05-cd-report.json) · [Код және кезең](docs/lab05-cd.md) |
+| 6.1 | Қолданба ақаулары және қайта іске қосу | [PDF · 14 бет](reports/lab06-failures-report.pdf) | [Есеп JSON](reports/source/lab06-failures-report.json) · [Код және кезең](docs/lab06-failures.md) |
+| 6.2 | Ресурстар, тәуелділік және диагностика | [PDF · 15 бет](reports/lab06-resources-report.pdf) | [Есеп JSON](reports/source/lab06-resources-report.json) · [Код және кезең](docs/lab06-resources.md) |
+| 7.1 | Метрикалар және PromQL | [PDF · 18 бет](reports/lab07-metrics-report.pdf) | [Есеп JSON](reports/source/lab07-metrics-report.json) · [Код және кезең](docs/lab07-metrics.md) |
+| 7.2 | Grafana панельдері және алерттер | [PDF · 18 бет](reports/lab07-alerts-report.pdf) | [Есеп JSON](reports/source/lab07-alerts-report.json) · [Код және кезең](docs/lab07-alerts.md) |
+| 8 | Инцидентті анықтау және қалпына келтіру | [PDF · 20 бет](reports/lab08-incident-report.pdf) | [Есеп JSON](reports/source/lab08-incident-report.json) · [Код және кезең](docs/lab08-incident.md) |
+
+[Тапсыру қосымшасы](reports/submission-summary-kk.pdf) · [Барлық есептер](reports/README.md) · [Бірыңғай архив](reports/devops-reports-kk.zip) · [Сапа аудиті](docs/REPORT_AUDIT.md).
+
+## Репозиторий құрылымы
+
+```text
+src/DemoApi/       API, сервис, модельдер және InMemory/PostgreSQL қоймалары
+tests/            Юнит және интеграциялық тестілер
+postman/          Негізгі және тақырыптық HTTP коллекциялар
+db/               Бастапқы схема мен оқу деректері
+monitoring/       Prometheus, Grafana, cAdvisor және Dozzle
+.github/          CI/CD, PR үлгісі, Dependabot және CODEOWNERS
+docs/             Жұмыс нұсқаулықтары, рәсімдеу негізі және аудит
+evidence/         Нақты журналдар, JSON, өлшемдер және шынайы суреттер
+reports/          Соңғы PDF есептер мен архив
+  source/         Өңделетін JSON мәтіні және каталог
+  assets/         Өзгертілмеген түпнұсқа суреттер
+scripts/          Диагностика, тексерулер және есеп жинақтаушысы
+```
+
+Тарихи нәтижелер өшірілмейді. Бұрынғы PDF нұсқалары Git тарихында және [v1.1.0 бастапқы архивінде](https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0) сақталған. Олардың бет саны мен SHA мәндерін жаңа рәсімделген PDF-пен шатастырмау керек.
+
+## Жобаны іске қосу
+
+### InMemory режимі
+
+.NET 10 SDK қажет. 8088 порты бос болуы тиіс; осы порттағы Compose API мен жергілікті процесті қатар іске қоспаңыз.
 
 ```powershell
 git clone https://github.com/Aruzhaaan-06/devops-labs.git
 cd devops-labs
 dotnet restore DemoApi.slnx
+$env:Storage = 'InMemory'
 dotnet run --project src/DemoApi/DemoApi.csproj --launch-profile http
 ```
 
-Откройте [Swagger](http://localhost:8088/swagger). В Visual Studio можно открыть `DemoApi.slnx`, выбрать проект `DemoApi`, профиль `http` и нажать F5. Порт 8088 выбран потому, что в исходной рабочей среде порт 8080 занят Oracle. Настройка — `src/DemoApi/Properties/launchSettings.json`.
+[Swagger](http://localhost:8088/swagger) тек Development ортасында ашылады. [Postman коллекциясының](postman/demo-api.postman_collection.json) `baseUrl` мәні - `http://localhost:8088`. InMemory деректері процесс аяқталғанға дейін ғана сақталады. Visual Studio 2026 үшін `DemoApi.slnx`, DemoApi жобасы және `http` профилі қолданылады.
 
-Для Postman импортируйте [готовую коллекцию](postman/demo-api.postman_collection.json). Переменная `baseUrl` равна `http://localhost:8088`; при последовательном запуске коллекция сохраняет идентификаторы созданных объектов. Запросы также есть в [DemoApi.http](src/DemoApi/DemoApi.http).
+### API және PostgreSQL арқылы Compose
 
-## Запуск сервиса и БД через Compose
-
-Нужны Docker Desktop с Linux-контейнерами и Docker Compose v2+. Из корня репозитория при первом запуске:
+Docker Desktop Linux containers және Docker Compose v2 қажет.
 
 ```powershell
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
-# Задайте DB_PASSWORD в .env, затем:
+# .env ішінде өз DB_PASSWORD мәнін орнатыңыз; бар файлды қайта жазбаңыз.
 docker compose config --quiet
 docker compose up -d --build --wait
 curl.exe http://localhost:8088/health/ready
 ```
 
-Существующий `.env` повторно не перезаписывайте: пароль должен соответствовать сохраненному тому PostgreSQL. `.env` исключен из Git; полный вывод `docker compose config` содержит пароль и не предназначен для публикации. API доступен на localhost:8088, БД — localhost:15432. Обычная остановка `docker compose stop` сохраняет данные. Полная инструкция — [материал 06](docs/lab03-compose.md).
+API - localhost:8088; PostgreSQL - localhost:15432. `.env` Git-тен алынып тасталған. Бос емес томда тек орта айнымалысын өзгерту дерекқор пайдаланушысының құпиясөзін өзгертпейді. Қалыпты тоқтату `docker compose stop` арқылы деректерді сақтайды. Толық `docker compose config` шығысын жарияламаңыз: құпия мәндер көрінуі мүмкін.
 
-## Разработка с PostgreSQL в Visual Studio
-
-Остановите API-контейнер, чтобы освободить порт 8088, и оставьте БД запущенной:
+Мониторингті бөлек іске қосу:
 
 ```powershell
-docker compose stop api
-docker compose up -d --wait db
-dotnet user-secrets set "Storage" "Postgres" --project src/DemoApi/DemoApi.csproj
-dotnet user-secrets set "ConnectionStrings:Db" "Host=localhost;Port=15432;Database=demo;Username=demo;Password=<пароль из .env>" --project src/DemoApi/DemoApi.csproj
+docker compose -f monitoring/compose.yaml up -d
 ```
 
-Введите собственный пароль вместо примера. Секреты сохраняются локально вне репозитория. Затем откройте `DemoApi.slnx` в Visual Studio 2026, выберите DemoApi и профиль `http`, нажмите F5. В Development доступен Swagger. После завершения отладки остановите процесс и верните контейнер командой `docker compose up -d --wait`.
+Prometheus - localhost:9090, Grafana - localhost:3000, cAdvisor - localhost:8081, Dozzle - localhost:8888. Интерфейстер 127.0.0.1-ге байланған. Оқу ақауларын іске қосатын скрипттер әдейі crash/OOM/stop жасайды; олар әдеттегі тексеруге автоматты қосылмайды. [Орналастыру және кері қайтару](docs/lab05-cd.md), [мониторинг](docs/lab07-metrics.md), [инцидент нұсқаулығы](docs/lab08-incident.md).
 
-При возвращении к InMemory удалите обе локальные настройки:
-
-```powershell
-dotnet user-secrets remove "Storage" --project src/DemoApi/DemoApi.csproj
-dotnet user-secrets remove "ConnectionStrings:Db" --project src/DemoApi/DemoApi.csproj
-```
-
-## Проверка
-
-Запуск в Docker и результаты лабораторной 2: [инструкции](docs/lab02.md), [сборки и проверки контейнера](evidence/lab02/README.md).
-
-PostgreSQL, сохраненный том и команды повторного запуска: [лабораторная 3](docs/lab03-postgres.md), [результаты SQL-проверок](evidence/lab03/README.md). Пароль хранится только в игнорируемом `.env`; [.env.example](.env.example) содержит пустой шаблон.
-
-Весь стек через Docker Compose: [команды и ответы материала 06](docs/lab03-compose.md), [14 технических проверок и Adminer](evidence/lab03-compose/README.md). При первом запуске скопируйте `.env.example` в `.env`, задайте DB_PASSWORD и выполните `docker compose up -d --build --wait`. API: localhost:8088; PostgreSQL: localhost:15432. Adminer включается профилем `tools` на localhost:8083. Обычный запуск сохраняет именованный том.
-
-Остановите отладку приложения перед пересборкой, затем из корня репозитория:
+### Құрастыру және тестілеу
 
 ```powershell
+dotnet build DemoApi.slnx -c Release
 $env:Storage = 'InMemory'
-dotnet test DemoApi.slnx
+dotnet test DemoApi.slnx -c Release --no-build
 Remove-Item Env:Storage
 ```
 
-Для проверки отдельно запущенного API нужен PowerShell 7:
+SQL тестілері жеке тест дерекқорын қажет етеді. `Storage=Postgres` және `ConnectionStrings__Db` мәнін жергілікті ортада қауіпсіз беріңіз; негізгі оқу дерекқорын тестке көрсетпеңіз. [PostgreSQL нұсқаулығы](docs/lab03-postgres.md). GitHub CI уақытша PostgreSQL сервисін қолданады; main үшін `test` мәртебесі міндетті.
+
+## Нәтижелер
+
+- Бірінші жұмыстың міндетті тарихи нұсқасы - **24/24**, қосымша ережесі бар нұсқасы - **28/28**. Қазіргі кодта **40 тест** бар; олардың іске қосу деректері [сақталған дәлелдерде](evidence/submission-readiness/README.md) және CI журналдарында берілген. Бұл сандар тест қамтуының пайызы емес.
+- CI/CD, екі rollback, PostgreSQL деректерінің сақталуы және нақты GitHub Revert PR орындалған. [15-материал инциденті](docs/lab08-incident.md): анықтау 204,726 с, қалпына келтіру 100,149 с; өлшеу шекарасы есепте түсіндірілген.
+- [13-материалда](evidence/lab07-metrics/README.md) 13 шынайы мониторинг суреті бар. Кейінгі UI экспорты/скриншоттары мен Visual Studio қолмен жөндеуі орындалды деп көрсетілмейді.
+- Бір адамның екі аккаунтымен техникалық ревью жасалған. Бұл тәуелсіз топтас студенттің ревьюін дәлелдемейді.
+
+## Есептерді қарау және редакциялау
+
+[Есеп каталогы](reports/README.md), [рәсімдеу негізі](docs/FORMATTING_STANDARDS.md), [аудит](docs/REPORT_AUDIT.md), [толықтық шектері](docs/REPORT_COMPLETENESS.md), [өзгерістер](docs/CHANGELOG.md).
 
 ```powershell
-pwsh -File scripts/verify-lab01.ps1 -Phase All -BaseUrl http://localhost:8088 -IncludePastDueValidation
+python -m pip install -r scripts/requirements-reports.txt
+python scripts/build_reports.py
+python scripts/check_reports.py
 ```
 
-Скрипт создает тестовые проекты, проверяет ответы и удаляет созданные им проекты; `-KeepData` сохраняет их для демонстрации. Каждый запуск записывает результаты в новый подкаталог `evidence/lab01/`.
+Өңделетін түпнұсқалар - `reports/source/*.json`. [Толық редакциялау нұсқаулығы](reports/source/README.md). Қаріптер репозиторийге таратылмайды; Times New Roman/Consolas каталогы `--font-dir` арқылы беріледі. PDF тексеруінің сәтті өтуі толық ГОСТ сертификаты немесе оқытушы бағасы емес.
 
-## API и конфигурация
+## Пайдаланылған дереккөздер
 
-| Адрес | Назначение |
-|---|---|
-| `/` | service, version, host и сообщение hello from CI/CD |
-| `/api/projects`, `/api/tasks` | Создание, чтение, удаление; изменение и фильтрация задач |
-| `/api/tasks/{id}/status` | Смена статуса задачи |
-| `/api/projects/{id}/stats` | Статистика задач проекта; отсутствующий проект — 404 |
-| `/health/live`, `/health/ready` | Жизнеспособность и готовность |
-| `/metrics` | Метрики Prometheus |
-| `/swagger`, `/openapi/v1.json` | Интерфейс запросов и контракт OpenAPI в Development |
+[ШҚТУ](https://www.ektu.kz/?lang=kz) · [Docker multi-stage builds](https://docs.docker.com/build/building/multi-stage/) · [PostgreSQL 18](https://www.postgresql.org/docs/18/index.html) · [GitHub Actions .NET](https://docs.github.com/en/actions/tutorials/build-and-test-code/net) · [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) · [Grafana экспорт нұсқаулығы](https://grafana.com/docs/grafana/latest/visualizations/dashboards/share-dashboards-panels/). Нормативтік дереккөздер мен тексеру күні [бөлек құжатта](docs/FORMATTING_STANDARDS.md) көрсетілген.
 
-`Storage=InMemory` используется по умолчанию: данные существуют только до завершения процесса. Для SQL-режима нужны работающий PostgreSQL, `Storage=Postgres` и `ConnectionStrings__Db` в конфигурации окружения. При старте создается схема. Секреты в репозиторий не добавляются.
+## Автор туралы ақпарат
 
-Статусы: Todo ↔ InProgress ↔ Done; прямой переход Todo ↔ Done возвращает 409. Статистика считает просроченными незавершенные задачи со сроком раньше текущего дня UTC. POST задачи с прошедшим сроком возвращает 400 с `errors.DueDate`; PUT позволяет изменить срок существующей задачи. Детали и примеры — в [разборе работы](docs/lab01.md).
-
-## Структура
-
-| Каталог | Содержимое |
-|---|---|
-| `src/DemoApi` | Контроллеры, сервисы, модели и два варианта хранилища |
-| `tests/DemoApi.Tests` | Юнит- и интеграционные тесты |
-| `postman`, `scripts` | Коллекция запросов и повторяемая HTTP-проверка |
-| `docs` | Навигация по работам и пояснения |
-| `reports` | PDF-отчеты и архив исходников для сдачи |
-| `evidence/lab01`, `evidence/lab02`, `evidence/lab03`, `evidence/lab03-compose` | Сохраненные результаты проверок и скриншоты |
-
-Карта компонентов и путь запроса — в [STRUCTURE.md](STRUCTURE.md). Dockerfile, PostgreSQL, том, общая сеть и Compose проверены. [Git/GitHub: материал 07](docs/lab04-git.md) содержит ссылки на PR, доску, правила и ограничения формальной сдачи. `main` принимает изменения через PR с одним одобрением. CI/CD с GHCR, локальным deploy и откатом проверен в материалах 09–10. Четыре сценария отказов и остановки проверены в материале 11. Материал 12 завершает разбор сбоев и добавляет diag.ps1. Материал 13 добавляет отдельный стек мониторинга и четыре собственных PromQL графика. Материал 14 содержит панели и опыты с алертами; UI-экспорт не выполнен из-за ограничения управления браузером. Материал 15 прошёл технический цикл инцидента и добавляет latency smoke в deploy; UI снимки и онлайн защита остаются ручными условиями. Условия материала 04 не получены; расширенный performance baseline #30 остаётся follow-up.
+Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о · ШҚТУ / ВКТУ. Репозиторий - оқу жұмыстарының нақты нәтижелері мен шектеулері сақталған жинақ.

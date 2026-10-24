@@ -1,0 +1,1380 @@
+{
+  "schemaVersion": 1,
+  "file": "lab07-alerts-report.pdf",
+  "originalPdfSha256": "ab23d08a21773546cb0c748a6caf1a4788e49b966a553c2778509131027e1b3b",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "ВКТУ · DEVOPS · 14-МАТЕРИАЛ",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "7-зертханалық жұмыс<br/>Дашбордтар және алерттер",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "2-бөлім: 5-7-тармақтар және бизнес-метрика қосымшасы",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Мәлімет",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Мәні",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындаған",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Есімханова Аружан Түсіпханқызы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тобы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "25-ИСТК-2о",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Университет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ВКТУ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Күні",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2026 жылғы 24 қазан",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тапсырма",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "14-материал; 7-зертханалық жұмыс, 2-бөлім",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Мақсаты",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Дашбордты Git-тегі конфигурация ретінде дамыту, нақты ақаулар арқылы алерттердің pending және firing күйлерін өлшеу. HTTP сұрауларының метрикасын сәтті сақталған тапсырмалардың бизнес-санауышымен салыстыру.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Нәтиже",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "«Tasks created per minute» және бизнес-метрика панельдері қосылды; UID demo-api сақталды. a-e бес сценарий орындалды: 500 қателері, баяу жауап, процесс ақауы, жадтың таусылуы және API қолжетімсіздігі. Алты қажетті firing ауысуы бастапқы алерт күйлерінің журналымен расталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жад тәжірибесінің бірінші әрекетінде OOM ескертуден ерте болды; бұл нәтиже жасырылмай сақталды. Қайталанған d сценарийінде алдымен ContainerHighMemory firing, кейін OOM (exit code 137) және ContainerRestarted алынды. API қалпына келді, PostgreSQL деректері сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/23\" color=\"#175E9A\">PR #23</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab07-alerts\" color=\"#175E9A\">Бастапқы дәлелдер</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/lab07-alerts.md\" color=\"#175E9A\">Қайта орындау нұсқаулығы</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тәжірибе нұсқасы - lab14-7d78755. Кестелердегі уақыт UTC: жергілікті уақытқа 5 сағат қосылады. Есеп тек нақты алынған нәтижелерді сипаттайды; соңғы main deploy бөлек тексеру файлына жазылады.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Дашбордты код ретінде сақтау",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Файл: monitoring/grafana/dashboards/demo-api.json. Дашборд UID - demo-api, бума - DevOps course. Бастапқы бес панель сақталды; id=6 және id=7 жаңа панельдері қосылды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Tasks created per minute",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "sum(increase(http_requests_received_total{\n  job=\"demo-api\", controller=\"Tasks\",\n  action=\"Create\", code=\"201\"}[1m]))"
+    },
+    {
+      "type": "paragraph",
+      "text": "Соңғы минутта HTTP 201 жауабын берген Tasks/Create сұраулары есептеледі. increase өлшем терезесінің шеттерін экстраполяциялайды, сондықтан нәтиже бөлшек болуы мүмкін. Панельдің өлшемі - тапсырма/мин.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Business tasks created per minute",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "sum(increase(demo_tasks_created_total{job=\"demo-api\"}[1m]))"
+    },
+    {
+      "type": "paragraph",
+      "text": "Екінші панель HTTP жауаптарын емес, TaskService арқылы сәтті сақталған тапсырмаларды санайды. Екі панельдің дереккөзі - Prometheus, UID prometheus. Екі сұрау да Git ішінде болғандықтан, Grafana қайта жасалғанда да қалпына келеді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Docker Desktop-тағы нақты түзету",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Файл контейнер ішінде жаңарды, бірақ Grafana-дағы панель саны 5 болып қалды. Себебі bind mount арқылы файл өзгерісі туралы watch оқиғасы жетпеді. Provisioning ішіне updateIntervalSeconds:20 қосылып, тек Grafana қайта іске қосылды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "providers:\n  - name: default\n    folder: DevOps course\n    type: file\n    updateIntervalSeconds: 20\n    options:\n      path: /var/lib/grafana/dashboards"
+    },
+    {
+      "type": "paragraph",
+      "text": "Нәтиже: 7 панель жүктелді. Кейін description өзгертіліп, 19,429 секундтан соң екінші restart жасамай API арқылы тексерілді. Файлдағы панель ID/title/PromQL жүктелген спецификациямен дәл сәйкес.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Орындау тәсілінің шегі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Work браузерді басқаруға рұқсат бермеді. Сондықтан панель Classic JSON файлына тікелей енгізіліп, нақты Grafana API арқылы тексерілді. UI ішіндегі Add/Export/Copy to clipboard қадамдары орындалды деп көрсетілмейді; интерфейс суреттері ойдан жасалған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/monitoring/grafana/dashboards/demo-api.json\" color=\"#175E9A\">Дашборд JSON</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/polling-reload.json\" color=\"#175E9A\">Нақты polling тексеруі</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/grafana-provisioned.json\" color=\"#175E9A\">Grafana жауабы</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Барлық сценарийдің уақыт кестесі",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "Күйлер Prometheus /api/v1/rules?type=alert адресінен шамамен әр секунд сайын оқылды. Кестеде алғашқы pending және firing бақылаулары берілген. Ереженің lastEvaluation және activeAt уақыттары толық JSON ішінде сақталған. Бақылау дәлдігі - шамамен бір poll аралығы; subsecond цифрлары дәл абсолют шекараға кепіл болмайды.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Сценарий / алерт",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Басталуы UTC",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "pending байқалды",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "firing байқалды",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Басталудан firing-ке, с",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "a-errors ApiHighErrorRate",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:14:53.813",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:15:33.861",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:16:03.627",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "69,814",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "b-slow ApiSlowRequests",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:16:33.694",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:17:23.571",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:17:53.189",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "79,495",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "c-crash ContainerRestarted",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:18:08.846",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "-",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:18:24.770",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "15,925",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "d-memory ContainerHighMemory",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:28:35.433",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:28:55.460",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:29:09.804",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "34,372",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "d-memory ContainerRestarted",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:28:35.433",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "-",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:29:40.476",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "65,043",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "e-down ApiDown",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:29:56.101",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:30:08.123",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:30:38.877",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "42,776",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        147.96850393700788,
+        83.84881889763781,
+        83.84881889763781,
+        83.84881889763781,
+        93.71338582677167
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "ContainerRestarted ережесінде for жоқ: бірінші true evaluation кезінде бірден firing болады. Сондықтан c және d/restart жолдарындағы pending ұяшығы «-»; жасанды уақыт қойылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Сценарийлердің оқшаулануы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "a аяқталған соң ApiHighErrorRate inactive болғаны, b аяқталған соң ApiSlowRequests inactive болғаны күтілді. c алдында бастапқы deploy-дан қалған ContainerRestarted сөнді. c мен d арасында толық бес минуттық терезе бітіп, ереже inactive-ке қайтқанша күтілді. Жадтың ерте OOM әрекетінен кейін де жаңа таза терезе күтілді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "a-c - бірінші іске қосудың өзгертілмеген сәтті тәжірибелері; d-e - бөлек жалғастыруда орындалды. Екі журнал бір хронологияда сақталды. Алғашқы сәтсіз d өлшемі d-initial-premature-oom деп жеке белгіленді; кестеге сәтті d сценарийінің уақыттары енгізілді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/scenario-table.json\" color=\"#175E9A\">Уақыттар, activeAt және lastEvaluation</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/alerts-timeline.jsonl\" color=\"#175E9A\">Толық бастапқы күй журналы</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. a-b: қателер және баяу жауаптар",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "a. ApiHighErrorRate",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "1..60 | ForEach-Object {\n  curl.exe -s -o NUL http://localhost:8088/api/chaos/error\n  Start-Sleep 1\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "60 нақты сұраудың бәрі HTTP 500 берді. Процесс жұмысын жалғастырды: before/after ID және RestartCount бірдей. Ереже 5xx үлесі 5%-дан асқанда pending болды; for=30s орындалған соң firing-ке өтті. RPS панелінде 500 қатары мәселені көрсетеді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сақталған API журналында Error, InvalidOperationException және «Chaos: искусственная ошибка» бар. Осы іске қосуда UI автоматты түрде қаралмады; docker logs шығысы бастапқы тілінде сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "b. ApiSlowRequests",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "1..40 | ForEach-Object {\n  curl.exe -s -o NUL \"http://localhost:8088/api/chaos/slow?ms=1500\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "40 сұрау HTTP 200 берді; ең аз өлшенген жауап 1,501 с. Жауап дұрыс болғанымен, жалпы p95 >1 с шарты for=30s бойы сақталып, алерт firing болды. Latency p95 панелі бұрын ps/logs көрсете алмаған пайдаланушы күтуін анықтайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Маңызды айырма",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "ApiHighErrorRate - сервер қателерінің үлесін, ApiSlowRequests - уақыт гистограммасының 95-процентилін бақылайды. Баяу сұрау міндетті түрде 500 бермейді және application Error жазбасын жасамайды. p95 үшін баяу сұраулардың үлесі жеткілікті болуы керек; бір жалғыз баяу сұрау жалпы p95-ті өзгерте бермейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қалпына келу",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қате және баяу сұрау циклдері тоқтаған соң қате немесе баяу сұрау үлгілері минуттық терезеден бірден шықпайды. Сондықтан алерттер де бірден сөнбейді. Екі ереже inactive болғаннан кейін ғана келесі тәжірибеге көшілді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/a-errors.json\" color=\"#175E9A\">a: HTTP жауаптары және firing кесіндісі</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/a-errors-logs.txt\" color=\"#175E9A\">a: Error журналы</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/b-slow.json\" color=\"#175E9A\">b: өлшенген кідірістер</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. c: процестің авариялық аяқталуы",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "code",
+      "text": "curl.exe -X POST http://localhost:8088/api/chaos/crash"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Белгі",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP жауабы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "202 Accepted; одан кейін процесс аяқталады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker оқиғалары",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "die(exitCode=1) → start → healthy",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Контейнер ID",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "RestartCount",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0 → 1",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ContainerRestarted",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "firing; for жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ApiDown",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Күй журналында inactive; firing жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Журнал мен метрика",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Application журналы Critical деңгейінде авариялық аяқталуды, кейін жаңа процестің startup хабарларын көрсетеді. cAdvisor container_start_time_seconds мәнінің өзгеруін жазады; ереже max by(name) арқылы қатарларды біріктіріп, соңғы бес минуттағы changes мәнін есептейді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "changes((max by (name) (\n  container_start_time_seconds{name=\"devops-labs-api-1\"}\n))[5m:5s]) > 0"
+    },
+    {
+      "type": "heading",
+      "text": "Неге бірден pending жоқ?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Restart - болған оқиға. for параметрі берілмеген, сондықтан ереже оны бірінші evaluation кезінде firing деп белгілейді. Бес минуттық терезе оқиғаны біршама уақыт көрінетін етеді. Процестің жаңа іске қосылу уақыты терезеден ескі мән толық шыққанша өзгеріс ретінде сақталады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "d-ге дейін күту",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл firing кезеңі келесі OOM-мен шатаспау үшін ереже inactive-ке оралғанша күтілді. Қауіпсіздікті әлсірету, for уақытын қысқарту немесе алертті қолмен өшіру қолданылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/c-crash.json\" color=\"#175E9A\">c: before/after және уақыттар</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/c-crash-logs.txt\" color=\"#175E9A\">c: Critical/startup журналы</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/initial-attempt-docker-events.jsonl\" color=\"#175E9A\">c және алғашқы OOM оқиғалары</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. d: жад ескертуі және OOM",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "Алғашқы әрекет неге қайталанды?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әдістемедегі 80+100 MiB бөлінгенде, жүктемеден қалыптасқан бастапқы жад қосылып, процесс ContainerHighMemory үшін for=15s өтпей OOM арқылы аяқталды. Docker-де oom және die (exit code 137) бар, ал ескерту firing болмады. Бұл сәтсіз әрекет жеке дәлел ретінде толық сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қайталанған тәжірибе",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Алдыңғы ContainerRestarted inactive болғаннан кейін 80 MiB, кейін 20 MiB қадамдар бөлінді. Әр қадамнан кейін docker stats өлшенді; жад кемінде 84%-ға жеткенде бөлу тоқтатылды. Ескерту нақты firing болғанша күтіліп, содан кейін қосымша 60 MiB арқылы OOM жасалды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Өлшем",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бөлінген порциялар, MiB",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "80 + 20 + 20 + 20 + 60",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "OOM алдындағы соңғы stats",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "88,63%",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ContainerHighMemory",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "pending → firing, for=15s",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Оқиға тізбегі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "oom → die (exit code 137) → start → healthy",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "RestartCount",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2 → 3",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Контейнер және БД",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "API ID сақталды; PostgreSQL тоқтатылған жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Панель мен журнал",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Working set / limit панелі жадтың сатылы өсуін, 256 MiB шегін және restart-тен кейін төмендеуін көрсетеді. OOM кезінде application соңғы Error жазбасын қалдыруға үлгермеуі мүмкін; себептің шешуші дәлелі - Docker oom/die (exit code 137). Кейін startup журналы жаңа процестің басталғанын растайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл сценарийде ешбір шек өзгертілген жоқ: API 256 MiB, RAM+swap 256 MiB, ескерту 80% / 15 с. Өзгергені - ақауға дейінгі жадты ескеретін бөлу порциялары. Бастапқы әрекетті сәтті ескерту тәжірибесі ретінде көрсетуге болмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/d-memory.json\" color=\"#175E9A\">d: өлшемдер, порциялар және firing</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/docker-events.jsonl\" color=\"#175E9A\">Сәтті d-e Docker оқиғалары</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/initial-attempt-phases.json\" color=\"#175E9A\">Алғашқы аяқталмаған d әрекеті</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "6. e: қолжетімсіздік және қалпына келу",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "code",
+      "text": "docker compose stop api\n# ApiDown pending, кейін firing болғанша күту\ndocker compose start api"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл жолы API әдейі тоқтатылып, /metrics қолжетімсіз күйінде 30 с-тан ұзақ ұсталды. Prometheus up=0 арқылы ApiDown pending және firing күйлерін тіркеді. API up панелі 0 көрсетеді; тоқтау кезінде жаңа application сұрау логтары болмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Кезең",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "UTC уақыты немесе нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "stop аяқталды",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:29:56.579",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "start аяқталды",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "17:30:55.003",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Соңғы Docker health",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "healthy",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "/health/live",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "/health/ready",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ApiDown",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "API қайта басталғаннан кейін inactive",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Деректердің сақталуы",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "10-12-материалдардың үш бақылау жобасы мен тапсырмасы бастапқы объектілерімен дәл салыстырылды. 13-материалдың 1200 InProgress тапсырмасы сақталды. Осы жұмыстың бизнес-санауыш тексеру объектілері және екі жүктеме жобасының тапсырмалары да PostgreSQL-де қалды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Жүктеме мен диагностика",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Екі іске қосуда фондық load.ps1 қолданылды. Crash/stop/OOM кезінде байланыс үзілуі күтіледі; бұл жолдар load-console ішінде сақталған және сәтті сұрау ретінде саналмайды. Тәжірибе біткенде тек осы скрипт іске қосқан жүктеме процесі тоқтатылды. Өзге жобаның PostgreSQL контейнері өзгертілген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Нәтижені түсіндіру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "unless-stopped қолмен stop жасалған контейнерді өздігінен қайта көтермейді. Оның healthy күйге қайтуы - нақты start командасының нәтижесі. Ал c және d кезінде процестің авариялық аяқталуы restart саясаты арқылы қалпына келді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/e-down.json\" color=\"#175E9A\">e: күй және уақыттар</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/final.json\" color=\"#175E9A\">Тәжірибеден кейінгі API/targets</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/retained-data.json\" color=\"#175E9A\">Сақталған бақылау деректері</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "7. Тапсырудағы үш сұраққа жауап",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "1. Ақау басталғаннан firing-ке дейін неге уақыт өтеді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Prometheus алдымен келесі scrape кезінде жаңа метриканы алуы керек: стендте аралығы 5 с. rate/increase және p95 минуттық терезеге сүйенеді, сондықтан қателер не баяу сұраулар жеткілікті үлеске жетуі тиіс. Кейін келесі evaluation күтіледі: оның аралығы да 5 с. Шарт true болғанда for=30s немесе for=15s таймері басталады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл әрқашан «5+60+5+30» деген тұрақты қосынды емес. Минуттық терезе алдын ала толы болуы мүмкін; шекті үлес 60 с аяқталмай-ақ жиналады. for кезінде шарт жоғалса, таймер тасталады. Бақылаудың бір секундтық poll аралығы да көрген уақытқа қосымша айырма береді. Кестеде осы нақты тәжірибенің уақыттары келтірілген.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "2. c сценарийінде ApiDown неге firing болмады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Процесс die (exit code 1) арқылы аяқталды, бірақ unless-stopped оны тез қайта бастады. ApiDown шарты up=0 күйін 30 с бойы үздіксіз талап етеді. Үзіліс бұдан қысқа болғандықтан, ұзақ қолжетімсіздік расталмады. Осы тәжірибенің күй журналында c кезінде ApiDown үнемі inactive болды; өте қысқа үзілісті scrape мүлде байқамауы да мүмкін. Restart фактісін ContainerRestarted ережесі for-сіз ұстап алды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "3. 6-зертханалық жұмыстың 9-тармағындағы қай мәселе енді көрінеді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Баяу, бірақ HTTP 200 қайтаратын сұрау. Бұрын контейнер healthy, процесс тірі, application Error жоқ болып, пайдаланушының ұзақ күтуі ps пен error log арқылы көрінбеді. Енді http_request_duration_seconds гистограммасы мен Latency p95 панелі кешігуді көрсетеді; p95 > 1 с / 30 с шарты ApiSlowRequests алертін іске қосады. controller/action бойынша p95 сұрауы Chaos/Slow әрекетін бөлек табуға мүмкіндік береді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Код, контейнер ресурсы және пайдаланушы байқайтын белгі әртүрлі дерек береді: HTTP 500 - сұрау қатесі, die1 - процесс аяқталуы, OOM (exit code 137) - жад шегінен асып тоқтау, up=0 - метриканы ала алмау. Диагноз үшін оларды бір оқиға деп араластыруға болмайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "8. Қосымша: бизнес-санауыш",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "code",
+      "text": "private static readonly Counter TasksCreated = Metrics.CreateCounter(\n  \"demo_tasks_created_total\",\n  \"Successfully persisted tasks created by TaskService.\");\n \nvar task = await tasks.CreateAsync(projectId, title, description, dueDate, ct);\nTasksCreated.Inc();"
+    },
+    {
+      "type": "paragraph",
+      "text": "TaskService ішіндегі Inc репозиторий тапсырманы сәтті сақтағаннан кейін ғана орындалады. Егер жоба жоқ болса, сервис оған жетпей null қайтарады. Сұрауды тексеру қатесі контроллерге дейін кері қайтарылады. Деректерді сақтау сәтсіз болғанда де Inc орындалмайды. Жаңа тәуелділік қосылмады: prometheus-net бұрыннан бар.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Нақты тексеру",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Санауыш",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бастапқы мән",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "503.0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бір 201 сәтті құрудан кейін",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "504.0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "400 және 404 жауаптарынан кейін",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "504.0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Процесс қайта басталса",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жаңа процестің санауышы нөлден басталады; БД тапсырмалары сақталады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "HTTP 201 санауышымен қашан айырма болады?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қалыпты HTTP жолында екі өсім жақын болуы тиіс. Бизнес-санауыш тапсырма сақталған сәтте өседі, HTTP метрикасы жауап аяқталған кезде жазылады. Сақтаудан кейін жауапты жазу/сериализациялау сәтсіз болса немесе клиент байланысын үзсе, бизнес оқиғасы болды, бірақ сәтті 201 жауап клиентке жетпеуі мүмкін. Кейін HTTP-ден тыс фондық тапсырма осы сервисті шақырса да бизнес-санауыш өседі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл ерекше ақау осы жұмыста әдейі жасалған жоқ; ол семантикалық айырманы түсіндіреді. Екі counter да process lifetime-ға тиесілі; олар БД-дағы барлық тарихи тапсырманың санын білдірмейді. Өсімді rate/increase арқылы оқу restart reset-ін ескереді. TaskId/email сияқты мәндерінің саны өте көп белгілер қосылмады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Тест және Postman",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жаңа интеграциялық тест нақты /metrics мәнінің өзгерісін тексерді: бір сәтті сақтауда +1, 400/404 кезінде өзгеріс жоқ. Толық InMemory 40/40. Жүктеме тоқтаған соң нақты Postman 10 сұрау / 17 тексеру, қате 0, exit code 0. Коллекция бұлтқа жарияланған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/src/DemoApi/Services/TaskService.cs\" color=\"#175E9A\">TaskService коды</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/tests/DemoApi.Tests/Integration/TasksApiTests.cs\" color=\"#175E9A\">Санауыш тесті</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/business-range.json\" color=\"#175E9A\">Бизнес өсімінің нақты қатары</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/http-range.json\" color=\"#175E9A\">HTTP 201 өсімінің нақты қатары</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "9. Жинақталған дәлелдер және шектеулер",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "Бірінші бөлімнен сақталған Target health",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/cf37b61a096976a7.png",
+      "caption": "targets-up.png",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-сурет. 13-материалдағы бастапқы шынайы Chrome суреті: 3 UP. Бұл 14-материалдың жаңа скриншоты деп көрсетілмейді.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "13-материалдағы төрт жеке PromQL сұрауы, графиктері және түсіндірмелері сол бөлімнің PDF-інде және evidence/lab07-metrics каталогында сақталды. Осы бөлімнің соңғы targets JSON-ы қалпына келген 3 UP күйін жаңадан растайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қайта орындау",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "docker compose -f monitoring/compose.yaml up -d\npython scripts/verify-lab14.py --tag lab14-<functional-sha> --output <new-directory>\n# Жүктеме тоқтап, API қалпына келгеннен кейін:\npostman collection run postman/lab07-alerts.postman_collection.json --no-report-events"
+    },
+    {
+      "type": "paragraph",
+      "text": "Скрипт тек devops-labs-api-1 және нақты lab14 жергілікті тегін қабылдайды. API 256 MiB және swap 256 MiB шегін тексереді. Ол әдейі crash/OOM/stop жасайды; deploy-мен қатар іске қосуға болмайды. finally API-ді қайта іске қосып, өзі ашқан бақылау/жүктеме процестерін жабады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Жариялау және адал есеп беру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "PR #23 міндетті PostgreSQL test арқылы тексеріледі, содан кейін main CI/CD іске қосылады. Техникалық ревью бір адамның екі тіркелгісімен жасалады; бұл тәуелсіз жұптық ревью емес. Жергілікті мақұлдау ассистент тарапынан пайдаланушының тапсырмасы бойынша орындалады. Соңғы main/runtime, файл хештері және деректердің сақталуы lab14-final-verification.json релиз asset-інде тіркеледі.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Браузер рұқсаты болмағандықтан UI арқылы экспорттау және a-e кезінде Grafana/Dozzle-ны автоматты визуалды қарау орындалмады. Олардың орнына жүктелген Grafana спецификациясы, Prometheus жауаптары және контейнер журналдары берілді. Алғашқы OOM, жүктеме кезінде күтілетін байланыс қателері және сәтті жалғастыру бір-бірінен нақты ажыратылды.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/23\" color=\"#175E9A\">PR #23</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/postman-results.json\" color=\"#175E9A\">Postman нәтижесі</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.0.0\" color=\"#175E9A\">Релиз және соңғы тексеру</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/\" color=\"#175E9A\">Prometheus alerting rules</link> · <link href=\"https://grafana.com/docs/grafana/latest/administration/provisioning/\" color=\"#175E9A\">Grafana provisioning / polling</link>",
+      "originalStyle": "Small"
+    }
+  ]
+}

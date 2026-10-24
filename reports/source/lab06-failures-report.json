@@ -1,0 +1,1105 @@
+{
+  "schemaVersion": 1,
+  "file": "lab06-failures-report.pdf",
+  "originalPdfSha256": "5a6e6132658e97294b90e92b47ee41c15e9027396617f364329850fa28493e3a",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "ВКТУ · DEVOPS · 11-МАТЕРИАЛ",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "heading",
+      "text": "6-зертханалық жұмыс<br/>Контейнер ақауларын талдау",
+      "originalStyle": "Title"
+    },
+    {
+      "type": "heading",
+      "text": "1-бөлім: 1-5-тармақтар, бақылау нүктесі 6",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Мәлімет",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Мәні",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындаған",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Есімханова Аружан Түсіпханқызы",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тобы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "25-ИСТК-2о",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Университет",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ВКТУ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Күні",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2026 жылғы 23 қазан",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тапсырма",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "11-материал, 6-зертханалық жұмыстың 1-бөлімі",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Мақсаты",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "HTTP сұрауының қатесін процестің тоқтауынан ажырату; Docker оқиғалары, exit code, JSON логтары және RestartCount арқылы төрт сценарийді дәлелдеу. restart: no мен unless-stopped саясатын салыстырып, штаттық тоқтаудың себебін түсіндіру.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Нақты орындалған жұмыс",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ағымдағы main коды 89a0e2b негізінде жергілікті Docker бейнесі құрастырылды. HTTP 500, автоматты қайта іске қосу, қайта іске қосуды өшіру және штаттық тоқтату нақты орындалды. Үш параллель CLI арнасы сақталды. 35 дәлел тексеруі сәтті өтті; Postman 4 сұрау мен 10 тексеруді қатесіз орындады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab06-failures\" color=\"#175E9A\">Дәлелдер</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/scripts/verify-lab11.py\" color=\"#175E9A\">Қайта орындау скрипті</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/docs/lab06-failures.md\" color=\"#175E9A\">Орындау тәртібі</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "API мекенжайы - http://localhost:8088, контейнер ішіндегі порт - 8080. Бұл компьютерде 8080 портын басқа қызмет қолданады. 12-материалдың OOM, БД ақауы және unhealthy тәжірибелері осы есепке кірмейді.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Дайындау және контейнерді қарау",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "paragraph",
+      "text": "CI бейнесіның орнына әдістеме талабына сай жергілікті main құрастыруы қолданылды: devops-labs-demo-api:lab11-89a0e2b. compose.yaml тек api.restart параметрін уақытша ауыстыру үшін өзгертілді; файлдың бастапқы байттары соңында толық қайтарылды. Атаулы PostgreSQL томы жойылған жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "git switch main\ngit pull --ff-only\n$env:API_IMAGE = \"devops-labs-demo-api\"\n$env:API_TAG = \"lab11-89a0e2b\"\ndocker compose up -d --build --wait --wait-timeout 120\n$api = \"http://localhost:8088\"\ndocker compose ps\ndocker compose logs api --tail 20"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Параметр",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нақты мән",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "API контейнері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "devops-labs-api-1; running, healthy",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Restart policy",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "unless-stopped",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Лог драйвері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "json-file; max-size=10m; max-file=3",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Ресурс шектері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Memory=268435456 байт (256 MiB); swap-пен жалпы шек 256 MiB; CPU=1",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ENTRYPOINT",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "[&quot;dotnet&quot;, &quot;DemoApi.dll&quot;] - exec пішімі",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бастапқы RestartCount",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "T1, T2, T3 бақылау арналары",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "T1 командалар мен HTTP жауаптарын жазады; T2 docker events ағынын нақты API атымен сүзеді; T3 API мен БД ресурстарын қатар өлшейді. Үш бөлек көрінетін терминал терезесінің суреті жасалмады: үш CLI арнасы параллель процестер мен файлдар арқылы тіркелді. T3 контейнер қайта жасалғанда жаңа ID-ді атауы бойынша табуы үшін --no-stream өлшемін қайталайды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "docker events --filter container=devops-labs-api-1 --filter event=start\n  --filter event=kill --filter event=die --filter event=oom\n  --filter event=stop --filter event=health_status\ndocker stats --no-stream devops-labs-api-1 devops-labs-db-1"
+    },
+    {
+      "type": "paragraph",
+      "text": "T2 командасы терминалда бір жолмен енгізіледі; exec_* оқиғалары сүзілді. T3: 25 топтама, API бойынша 24 өлшем. Контейнерді қайта жасау кезінде бір stats командасы EOF/exit1 берді; қате сақталды, келесі өлшемдер жалғасты.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Тапсыру кестесі: сценарийлер 2-5",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Сценарий",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "T2 оқиғалары",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Exit code",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Қайта іске қосу",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Логтағы дерек",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "2. Сұрау қатесі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "die/start/kill/stop/oom жоқ",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Процесс аяқталған жоқ",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жоқ; ID, StartedAt және RestartCount өзгермеді",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Error; exception және стек",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "3. Процестің құлауы",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "die(exit=1) → start → health_status: healthy",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1; die оқиғасынан алынды",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Иә; сол контейнердің RestartCount мәні 0 → 1",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Critical; кейін PostgreSQL және іске қосылу логтары",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "4. restart: no",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "die(exit=1); start жоқ",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1; State мәні",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жоқ; 5 с бақылаудан кейін Exited (1), RestartCount=0",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Critical; жаңа іске қосылу логы жоқ",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "5. Штаттық тоқтату",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "kill(signal=15) → stop → die(exit=0)",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0; State мәні",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жоқ; қолмен start жасалғанға дейін stopped",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Information: Application is shutting down...",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        83.84881889763781,
+        118.37480314960631,
+        69.05196850393702,
+        113.44251968503939,
+        108.51023622047245
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Кесте нақты сақталған оқиғаларға сүйенеді. Штаттық тоқтауда T2 файлы stop оқиғасын die-дан бұрын жеткізді; бұл рет әдейі өзгертілмеді. Негізгі белгілер - SIGTERM=15, exit=0, stop және автоматты start болмауы.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Exit code пен HTTP коды екі бөлек өлшем",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "HTTP 500 бір сұраудың нәтижесін білдіреді. Ол контейнер процесінің exit code-ы емес. 2-сценарийде процесс тірі болғандықтан, оның аяқталу коды жоқ. 3-сценарийде қайта іске қосылған контейнердің ағымдағы State.ExitCode мәні 0 болуы мүмкін; бұрынғы 1 коды die оқиғасында сақталады.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Дәлел сілтемелері",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab06-failures/scenario-2-request-error.json\" color=\"#175E9A\">2: сұрау қатесі</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab06-failures/scenario-3-auto-restart.json\" color=\"#175E9A\">3: автоматты қайта іске қосу</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab06-failures/scenario-4-no-restart.json\" color=\"#175E9A\">4: no саясаты</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab06-failures/scenario-5-graceful-stop.json\" color=\"#175E9A\">5: штаттық тоқтату</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Әр JSON файлында UTC аралығы, контейнердің before/after күйі, HTTP жауабы, лог жазбалары және сол уақыт аралығындағы нақты оқиғалар бар. Бөлек толық T2 ағыны Compose қайта жасаған кездегі қосымша оқиғаларды да сақтайды.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. Сұрау қатесі және процестің авариялық аяқталуы",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "2-сценарий: HTTP 500, процесс тірі",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "curl.exe -s -w \" [%{http_code}]`n\" \"$api/api/chaos/error\"\ndocker compose logs api --tail 3 --no-log-prefix"
+    },
+    {
+      "type": "code",
+      "text": "{\n  \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.6.1\",\n  \"title\": \"An error occurred while processing your request.\",\n  \"status\": 500,\n  \"traceId\": \"00-11be4563175ace3df3d4f1b6cb7cd9e7-7d84eaf95437df08-00\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жауап application/problem+json пішімінде, status=500. Ішкі Chaos хабарламасы мен exception stack trace клиентке шыққан жоқ. Олар сервер логында Error деңгейімен сақталған:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "LogLevel: Error\nCategory: Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware\nException: System.InvalidOperationException: Chaos: искусственная ошибка\n  at DemoApi.Controllers.ChaosController.Error()"
+    },
+    {
+      "type": "paragraph",
+      "text": "Толық стек бөлек лог файлында берілген; бұл қысқа үзінді негізгі белгілерін ғана көрсетеді. API контейнерінің ID-і, StartedAt және RestartCount өзгермеді; /health/live 200 қайтарды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "3-сценарий: exit 1 және автоматты қайта іске қосу",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "curl.exe -X POST \"$api/api/chaos/crash\"\ndocker inspect devops-labs-api-1 --format \"{{.RestartCount}}\"\ndocker compose logs api --since 2m --no-log-prefix"
+    },
+    {
+      "type": "paragraph",
+      "text": "POST /api/chaos/crash алдымен 202 қайтарады; шамамен 200 мс кейін қолданба Environment.Exit(1) шақырады. Critical логы жазылып, процесс тоқтайды. unless-stopped саясаты сол контейнерді қайта іске қосады. T2 тізбегі:",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "die (exit=1) → start → health_status: healthy"
+    },
+    {
+      "type": "paragraph",
+      "text": "RestartCount 0-ден 1-ге өсті, контейнер ID-і өзгермеді, StartedAt жаңарды. Readiness 200-ге оралды; бақылау жобасы мен тапсырмасы PostgreSQL-де сақталды. Бұл Compose арқылы контейнерді жаңадан жасаудан бөлек жағдай.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. no саясаты және штаттық тоқтату",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "4-сценарий: автоматты қайта іске қосуды өшіру",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "compose.yaml ішінде тек api қызметінің restart мәні уақытша \"no\" деп өзгертілді. DB мен Adminer саясаттары сол қалпында қалды. Compose up --no-build --wait контейнерді жаңа конфигурациямен қайта жасады; содан кейін crash сұрауы жіберілді.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "code",
+      "text": "restart: \"no\"\ndocker compose up -d --no-build --wait --wait-timeout 90\ncurl.exe -X POST \"$api/api/chaos/crash\"\nStart-Sleep 5\ndocker compose ps -a"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Өлшем",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Нәтиже",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "State.Status",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "exited",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "State.ExitCode",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "RestartCount",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Оқиға",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "die (exit=1)",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Лог",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Critical: Chaos: аварийное завершение процесса",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Параметр unless-stopped мәніне қайтарылып, API қайта іске қосылды. Бақылау деректері сақталды. Compose файлының бастапқы және соңғы SHA-256 мәндері бірдей; уақытша no параметрі Git-ке енгізілген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "5-сценарий: SIGTERM арқылы штаттық тоқтату",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "code",
+      "text": "docker compose stop api\ndocker compose logs api --tail 5 --no-log-prefix\ndocker compose start api"
+    },
+    {
+      "type": "paragraph",
+      "text": "Оқиғалар: kill (signal=15) → stop → die (exit=0). Лог: Application is shutting down...; State.ExitCode=0. SIGKILL=9 тіркелген жоқ. Контейнер қолмен start жасалғанға дейін 5 секундтық бақылауда stopped күйінде қалды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "docker compose start api командасынан кейін API healthy болды, live/ready 200 қайтарды. Кері қайтару немесе down/up қолданылған жоқ; дәлел ретінде бастапқы ақау логтары мен оқиғалары сақталды.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Тапсырудағы екі сұраққа жауап",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "heading",
+      "text": "1. 2-сценарий 3-сценарийден пайдаланушы және Docker үшін несімен ерекшеленеді?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Өлшем",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "2: сұрау қатесі",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "3: процесс тоқтайды",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Пайдаланушыға әсері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бір сұрау HTTP 500 қайтарады; басқа сұраулар орындала береді",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Crash сұрауы 202 алуы мүмкін; қайта іске қосылу кезінде жаңа сұраулар үзіледі не қосылу қатесін алады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker күйі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Процесс running/healthy; қайта іске қосу жоқ",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Процесс exit 1 береді; policy рұқсат етсе, Docker қайта іске қосады",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Негізгі дәлел",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Error және exception stack; lifecycle оқиғасы жоқ",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Critical, die(exit=1), start, RestartCount өсімі",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        108.51023622047245,
+        192.35905511811026,
+        192.35905511811026
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Осылайша, HTTP 500 саны мен контейнердің авариялық аяқталу саны бірдей емес. Тек docker compose ps-ке қарап 2-сценарийді анықтау мүмкін емес: контейнер healthy көрінеді. Сұрау логтары мен HTTP нәтижесі қажет.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "2. docker compose stop api орындалғанда unless-stopped неге қайта іске қоспайды?",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл - әкімшінің әдейі тоқтатуы. unless-stopped саясаты мұндай контейнерді автоматты көтермейді; әйтпесе оны қолмен өшіру мүмкін болмас еді. Контейнерді қайта қосу үшін docker compose start api сияқты нақты команда қажет. Docker daemon қайта іске қосылса да unless-stopped қолмен тоқтатылған контейнерді көтермейді; always саясатының осы жағдайда айырмасы бар.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Процестің өзі қателікпен аяқталғанда қолмен тоқтату белгісі қойылмайды: 3-сценарийде сондықтан автоматты қайта іске қосу болды. 5-сценарийде SIGTERM-ді ASP.NET өңдеп, қолданбаны exit 0 арқылы аяқтады; бұл error crash емес.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Ресми анықтамалар",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://docs.docker.com/engine/containers/start-containers-automatically/\" color=\"#175E9A\">Docker restart policies</link> · <link href=\"https://docs.docker.com/reference/cli/docker/container/stop/\" color=\"#175E9A\">Docker stop және сигналдар</link> · <link href=\"https://docs.docker.com/reference/cli/docker/system/events/\" color=\"#175E9A\">Docker events</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұлар механизмді түсіндіретін ресми дереккөздер; кестедегі нақты нәтижелер репозиторийдегі өлшенген JSON/лог файлдарынан алынған.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "6. Қорытынды және тапсыру құрамы",
+      "originalStyle": "Heading"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "heading",
+              "text": "Талап",
+              "originalStyle": "Head"
+            }
+          ],
+          [
+            {
+              "type": "heading",
+              "text": "Күйі",
+              "originalStyle": "Head"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "1: бастапқы қарау",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ps, logs, LogConfig, restart policy, ресурстар және ENTRYPOINT сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "2-5: төрт сценарий",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP, events, exit code, logs және restart нақты тексерілді",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тапсыру кестесі",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Осы есептің 3-бетінде бес бағанмен берілген",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Сұрақтар 1 және 2",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Осы есептің 6-бетінде жауап берілген",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Дәлел тексерулері",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "35 сәтті, қате 0",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "4 сұрау, 10 assertion, қате 0; нақты localhost API",
+              "originalStyle": "Cell"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Compose және деректер",
+              "originalStyle": "Cell"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бастапқы файл толық қайтарылды; атаулы том, жоба және тапсырма сақталды",
+              "originalStyle": "Cell"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        177.56220472440947,
+        315.6661417322835
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Docker Desktop арқылы қарау",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Docker Desktop ішіндегі Containers → devops-labs → api-1 бөлімінің Logs, Inspect, Exec және Stats қойындыларын пайдаланушы өзі қарап, «вкладки просмотрены» деп растады. Ассистенттің басқару құралы сурет түсіре алмағандықтан, экран суреті берілмеді; бұл тармақ пайдаланушының растауы ретінде белгіленді. Техникалық мәндер CLI арқылы бөлек дәлелденген.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Тапсыру файлдары",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл қазақша PDF, жұмыс нұсқаулығы, қайта орындау скрипті, бөлек Postman коллекциясы және evidence/lab06-failures ішіндегі T1/T2/T3 файлдары жария репозиторийге қосылады. Бастапқы код пен тұрақты Compose конфигурациясына мінез-құлық өзгерісі енгізілген жоқ.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "Есеп жарияланатын PR PostgreSQL қатысатын міндетті CI-ден өтеді. Біріктірілген main үшін CI/CD қайта орындалып, соңғы API version мен main SHA сәйкестігі қосымша lab11-final-verification.json файлында беріледі. Есептегі lab11-89a0e2b - жергілікті тәжірибе нұсқасы, соңғы deploy SHA-ы емес.",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/reports\" color=\"#175E9A\">Қазақша есептер мен ортақ мұрағат</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab06-failures/checks.json\" color=\"#175E9A\">35 тексеру</link>",
+      "originalStyle": "Body"
+    },
+    {
+      "type": "heading",
+      "text": "Қауіпсіздік және шектеулер",
+      "originalStyle": "Sub"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тәжірибелер тек localhost-тағы оқу Compose жобасында жасалды. DB_PASSWORD пен GitHub токендері есепке қосылған жоқ. Chaos crash сұрауы негізгі Postman коллекциясына енгізілмеді; оны тек айқын таңдалған тексеру скрипті орындайды. Құпия деректер көрінуі мүмкін толық inspect Config.Env жарияланбады.",
+      "originalStyle": "Small"
+    },
+    {
+      "type": "paragraph",
+      "text": "Екі GitHub аккаунты бір адамға тиесілі; техникалық Approve тәуелсіз студенттің ревьюі емес. Оқытушы логині берілмеген; бұрынғы жұмыстардың қолмен жөндеу/сурет тармақтары өз чек-парағында қалады. Осы есеп 12-15-материалдардың орындалғанын мәлімдемейді.",
+      "originalStyle": "Small"
+    }
+  ]
+}

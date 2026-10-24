@@ -1,0 +1,1957 @@
+{
+  "schemaVersion": 1,
+  "file": "lab01-part2-report.pdf",
+  "originalPdfSha256": "eaf0e519f0fb1fa745d369f047732e3899178014e3d250f9a5a62254c960ea0c",
+  "originalCommit": "b3655fec340990bf37cdf002c7c84c817b87561a",
+  "contentLanguage": "kk",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "«DEVOPS ҚҰРАЛДАРЫ» ПӘНІ",
+      "originalStyle": "KickerRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-зертханалық жұмыс<br/>2-бөлім",
+      "originalStyle": "CoverRu"
+    },
+    {
+      "type": "heading",
+      "text": "Сұрауды талдау және жоба статистикасы",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "2-апта. 5-8-бөлімдер және 1-зертханалық жұмыстың толық қорытынды тапсыру тізімі.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Мәлімет",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мәні",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орындаған",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Есімханова Аружан Түсіпханқызы",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тобы",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "25-ИСТК-2о",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Есеп күні",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22.10.2026",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жоба",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "DemoApi - жобалар мен тапсырмалар сервисі",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Деректерді сақтау режимі",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "InMemory",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        157.83307086614175,
+        335.39527559055125
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "НӘТИЖЕЛЕРДІ РАСТАУ ШЕКТЕРІ",
+              "originalStyle": "KickerRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Есепте нақты HTTP жауаптары мен CLI тексерулерінің нәтижелері, бастапқы кодты талдау және Postman / Visual Studio ортасында қолмен тексеруді қажет ететін әрекеттер бөлек көрсетілген. Техникалық нәтижелер сақталған деректермен расталған; интерфейсте орындалған әрекеттерді дәлелдейтін міндетті материалдардың толық жиынтығы әлі жиналмаған.",
+              "originalStyle": "SmallRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        493.228346456693
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs\" color=\"#1D6656\"><u>Жобаның ашық репозиторийі</u></link>",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тексерулердің күні мен уақыты UTC+05:00 уақыт белдеуімен берілген. Тапсырманың орындалу мерзімі мен мерзімінен кешігу шегі UTC бойынша анықталады.",
+      "originalStyle": "SmallRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "1. Бірінші бөлімді қайта тексеру",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қорытынды тізімге бірінші аптаның нәтижелері кіреді. demo-api коллекциясы JSON пішімінде сақталған; оның baseUrl мәні мен нақты тексеру http://localhost:8088 мекенжайын пайдаланады. Оқу нұсқаулығындағы 8080 портын Oracle пайдаланатындықтан, осы кезеңдегі нұсқаның барлық баптауларында 8088 көрсетілген. Postman графикалық интерфейсінің экран суреті әлі алынбаған.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Сәтті сценарий",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Күтілген және нақты жауап",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /api/projects",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200; бастапқы тізім []",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "POST /api/projects",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "201; id=1; Location /api/projects/1",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "POST /api/tasks",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "201; id=1; projectId=1; status=Todo; Location /api/tasks/1",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /api/tasks?projectId=1",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200; жасалған бір тапсырма",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "PATCH /api/tasks/1/status",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200; Todo -&gt; InProgress",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /api/projects/1",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200; жасалған жоба",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        231.8173228346457,
+        261.4110236220473
+      ]
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тексеру",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Код",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жауаптың нақты деректері",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "POST /api/projects, name мәні бос",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "400",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "errors.Name: &quot;The Name field is required.&quot;",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жоба атауының қайталануы",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "409",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Проект «lab01-20261021T194046965Z-all-7024bbae-part1» уже существует",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жаңа Todo тапсырмасын бірден Done күйіне ауыстыру",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "409",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нельзя перевести задачу 2 из Todo в Done",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /api/tasks/2147483647",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "404",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "title: &quot;Not Found&quot;; status: 404",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        157.83307086614175,
+        54.255118110236225,
+        281.140157480315
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "<b>errors</b> сұрау моделінің өрістеріндегі қателерді сипаттайды. <b>detail</b> күй қақтығысының себебін түсіндіреді. name валидациясын ASP.NET Core автоматты орындайды, ал 409 жауаптарының мәтінін контроллер береді. Жоқ тапсырманы тексеру үшін int.MaxValue таңдалды: қайта пайдаланылатын стендте ол тұрақты 999 мысалынан сенімдірек.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "Жадтағы деректер",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Процесс аяқталғанға дейін: HTTP 200, 4 жоба (22.10.2026 00:34:34). Қайта іске қосылғаннан кейін: HTTP 200, жауап денесі [] (22.10.2026 00:40:46). Бұл - процесті қайта іске қосудың нақты тексеруі; Visual Studio ортасында Shift+F5 / F5 пернелерінің басылғанын растамайды.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "InMemoryStore бір процестің сұрауларына ортақ. Процесс аяқталғанда тізімдер жойылады, ал жаңа іске қосылым бос қойма жасайды; InMemory режимінде файлға немесе дерекқорға сақтау орындалмайды.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "2. Сұрауды өңдеудің екі шақыру тізбегі",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "КОДТЫ ТАЛДАУ + НАҚТЫ HTTP НӘТИЖЕСІ",
+              "originalStyle": "KickerRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Төмендегі тізбектер ағымдағы бастапқы кодты оқу арқылы анықталған және HTTP жауаптарына сәйкес келеді. Visual Studio ортасында F9 / F10 / F11 арқылы қадамдау, Locals терезесінің мәндері және Call Stack қолмен тексерілмеген. Бұл мәтін жөндегішпен жұмыс істеудің нәтижесі ретінде ұсынылмайды.",
+              "originalStyle": "SmallRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        493.228346456693
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2.1. Тыйым салынған Todo -> Done ауысуы",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "TasksController.ChangeStatus\n-> TaskService.GetAsync\n-> InMemoryTaskRepository.GetAsync\n-> табылған Todo тапсырмасын қайтару\n-> StatusRules.CanTransition(Todo, Done): false\n-> return Problem(..., statusCode: 409)"
+    },
+    {
+      "type": "paragraph",
+      "text": "409 коды TasksController.ChangeStatus әдісіндегі !StatusRules.CanTransition(task.Status, status) тармағында таңдалады. {\"status\":\"Done\"} денесімен жіберілген нақты PATCH /api/tasks/2/status сұрауы 409 кодын қайтарды; detail: «Нельзя перевести задачу 2 из Todo в Done».",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл тармақта TaskService.ChangeStatusAsync және InMemoryTaskRepository.SetStatusAsync шақырылмайды. Бастапқы кодқа сәйкес, күй Todo болып қалады. 409 кодының қайтарылуы тыйым салынған ауысуға арналған интеграциялық тестімен де тексеріледі.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "2.2. Рұқсат етілген Todo -> InProgress ауысуы",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "TasksController.ChangeStatus\n-> TaskService.GetAsync\n-> InMemoryTaskRepository.GetAsync\n-> StatusRules.CanTransition(Todo, InProgress): true\n-> TaskService.ChangeStatusAsync\n-> InMemoryTaskRepository.SetStatusAsync\n-> InMemoryTaskRepository.Replace\n-> return updated: HTTP 200"
+    },
+    {
+      "type": "paragraph",
+      "text": "Replace lock(store.Sync) ішінде жазбаны Status және UpdatedAt мәндері жаңартылған көшірмемен алмастырады. Қайтарылған тапсырма сервис арқылы контроллерге беріледі; return updated 200 жауабын қалыптастырады. Жаңарту null қайтарса, алдыңғы тармақ 404 қайтарады. 1-тапсырмаға InProgress мәнімен жіберілген нақты PATCH 200 кодын және status=InProgress мәнін қайтарды.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қолмен тексеру үшін бір жаңа Todo тапсырмасын жасап, алдымен Done, содан кейін InProgress жіберу және екі сұрау үшін де Locals пен Call Stack көріністерін сақтау керек. Сақталған ортақ HTTP тексеруі бұл ауысуларды екі бөлек тапсырмада тексерген, сондықтан бір тапсырманы жөндегіште тексеру талабын алмастырмайды.",
+      "originalStyle": "SmallRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "3. Код бойынша алты сұраққа жауап",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "heading",
+      "text": "1. api/tasks/{id}/status маршруты қайда берілген?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Controllers/TasksController.cs файлында: [Route(\"api/tasks\")] класс префиксін береді, ал ChangeStatus үстіндегі [HttpPatch(\"{id:int}/status\")] идентификаторды, /status бөлігін және PATCH әдісін қосады. :int шектеуі бүтін сан түріндегі id мәніне рұқсат береді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "2. title бос болғанда 400 кодын кім қайтарады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "[ApiController] қолданылған ASP.NET Core әрекет әдісі шақырылғанға дейін модельді тексереді. CreateTaskRequest.Title және UpdateTaskRequest.Title өрістерінде [Required, StringLength(200)] атрибуттары бар. Бос атау errors өрісінде қателер тізімі бар 400 жауабына әкеледі.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "3. Күй ауысу ережесі қайда және оны HTTP-сіз қалай тексеруге болады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Domain/StatusRules.cs файлында: Allowed сөздігі және CanTransition әдісі. Todo &lt;-> InProgress &lt;-> Done көршілес ауысуларына және ағымдағы күйді сақтауға рұқсат етіледі; тікелей Todo &lt;-> Done ауысуына тыйым салынған. Unit/StatusRulesTests.cs ережені HTTP мен дерекқорсыз, жеті деректер жиынтығымен тікелей шақырады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "4. 404 коды қайда таңдалады және 409 жауабының detail мәні қайдан алынады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "HTTP кодын контроллер анықтайды: оқу немесе жаңарту нәтижесіндегі null NotFound() жауабына әкеледі. Күй қақтығысында TasksController.ChangeStatus түсіндірмені Problem(..., 409) арқылы береді; жоба атауы қайталанғанда мұны ProjectsController.Create орындайды. detail аргументі JSON-ның аттас өрісіне айналады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "5. Деректер қоймасы қайда таңдалады және қайсысы қолданылады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Program.cs ішінде builder.Configuration[\"Storage\"] мәні Postgres мәнімен салыстырылады. Сәйкес келсе SQL репозиторийлері, әйтпесе InMemoryStore және InMemory іске асырылымдары тіркеледі. Бұл іске қосылымда InMemory қолданылды; оның жұмысы API жауаптарымен және қайта іске қосқаннан кейін деректердің тазаруымен расталған. Орта айнымалылары JSON баптауларын қайта анықтай алады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "6. PostgreSQL қолданылғанда TaskService неге өзгермейді?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "TaskService ITaskRepository және IProjectRepository интерфейстерін қабылдайды. Екі сақтау тәсілі де бірдей интерфейстерді іске асырады; баптау өзгергенде тәуелділіктер контейнері басқа класты береді. Сервис сол әдістерді шақыруды жалғастырады және оның ішінде SQL жоқ.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "ТЕКСЕРУ ШЕКТЕРІ",
+              "originalStyle": "KickerRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Жауаптар есепке енгізілген нұсқаның бастапқы кодына негізделген. 1-зертханалық жұмыста PostgreSQL іске асырылымдарының сыртқы дерекқормен жұмыс істеуі тексерілмеген.",
+              "originalStyle": "SmallRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        493.228346456693
+      ]
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "Өзін-өзі тексеру. Дәрістің алты сұрағы",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл сұрақтар «Лаба 1,3.pdf» дәрісіне қатысты және алдыңғы бөлімдегі алты практикалық сұрақты толықтырады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "1. Frontend, backend және сервис клиенттері",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Frontend пайдаланушыға интерфейсті көрсетеді, ал backend логиканы орындайды және деректермен жұмыс істейді. DemoApi жеке пайдаланушы беттерінсіз JSON API ұсынады. Оған веб-сайт, мобильді қолданба, басқа сервистер, Postman, Swagger және командалық жол клиенттері сұрау жібере алады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "2. PUT пен PATCH айырмашылығы қандай және жасау операциясы неге 201 қайтарады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "PUT ресурстың өңделетін өрістерін толық алмастырады: тапсырма үшін бұлар - атауы, сипаттамасы және мерзімі. PATCH жеке бөлігін, мысалы күйін өзгертеді. 201 Created жауабы жаңа ресурстың жасалғанын білдіреді, оның мекенжайы Location арқылы беріледі; 200 коды ресурстың жасалғанын арнайы білдірмейді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "3. POST неге TaskItem емес, CreateTaskRequest қабылдайды?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сұрау моделі тек рұқсат етілген projectId, title, description және dueDate өрістерін қамтиды. Идентификаторды, бастапқы Todo күйін және жасалу / жаңартылу уақытын сервер тағайындайды. TaskItem толық қабылданса, клиент бұл мәндерді өзгертіп, ережелерді айналып өтуге әрекеттене алар еді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "4. PATCH /status сұрауында status берілмесе не болады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "ChangeStatusRequest.Status nullable түріне және [Required] атрибутына ие. Жоқ мән әдепкі Todo күйіне айналмайды: [ApiController] контроллер әрекеті орындалғанға дейін модель қатесі бар 400 жауабын автоматты қайтарады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "5. TaskService кодын өзгертпей деректер қоймасы қалай таңдалады?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Program.cs Storage мәнін оқып, DI контейнерінде ITaskRepository және IProjectRepository интерфейстерінің InMemory немесе SQL іске асырылымдарын тіркейді. TaskService интерфейстерді шақыратындықтан, конфигурацияны ауыстыру оның кодын өзгертуді қажет етпейді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "6. UseHttpMetrics неге UseExceptionHandler алдында орналасқан?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Метрикалар middleware-і қателер өңдегішін сыртынан қамтып, жауаптың соңғы HTTP кодын көреді. Өңдегіш ерекшелікті 500 жауабына айналдырса, қолданбаның HTTP метрикаларына дәл сол код тіркеледі.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "4. Жоба статистикасын іске асыру",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "<b>GET /api/projects/{id}/stats</b> операциясы қосылды. Ол көрсетілген жоба тапсырмаларының санын күйлері мен мерзімдеріне қарай қайтарады. Санауға дейін контроллер жобаның бар-жоғын тексереді: белгісіз id үшін 404, ал бар, бірақ бос жоба үшін санауыштары нөлге тең 200 жауабы беріледі.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Компонент",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Өзгеріс",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Domain/Project.cs",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "ProjectStats: ProjectId, Total, Todo, InProgress, Done, Overdue; өрістердің XML сипаттамалары",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Data/ProjectRepository.cs",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Интерфейстегі және SQL іске асырылымындағы GetStatsAsync; параметрленген COUNT FILTER",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Data/InMemory/InMemoryProjectRepository.cs",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "lock(store.Sync) ішінде тек өз жобасын қамтитын LINQ есептеулері",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Services/ProjectService.cs",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "GetStatsAsync шақыруды репозиторийге береді",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Controllers/ProjectsController.cs",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "/{id:int}/stats маршруты; жобаның бар-жоғы; 200/404; XML құжаттамасы",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "DemoApi.http және ProjectsApiTests.cs",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP сұрау мысалы және екі жаңа интеграциялық тест",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        231.8173228346457,
+        261.4110236220473
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Мерзімінен кешігу ережесі және уақыт белдеуі",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "dueDate < DateOnly.FromDateTime(DateTime.UtcNow)\n&& status != TaskItemStatus.Done"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бүгінгі күн мерзімінен кешіккен болып саналмайды; мерзімнің көрсетілмеуі және аяқталған тапсырма overdue санын арттырмайды. Екі іске асырылымда да күн шегі UTC бойынша алынады. SQL-де сессия баптауына тәуелді current_date орнына UTC күні параметр ретінде беріледі. Осылайша, InMemory және PostgreSQL үшін нәтиженің мағынасы бірдей сақталады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "SQL-де projectId және күн сұрау мәтініне біріктірілмей, параметрлер арқылы беріледі. COUNT bigint қайтарады; оқу GetInt64 арқылы, int түріне checked түрлендіруімен орындалады. Жаңа тәуелділіктер мен архитектуралық қабаттар қосылған жоқ.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "5. Статистиканың нақты жауабы",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Бөлек id=2 жобасы үшін үш тапсырма жасалды: мерзімсіз Todo, InProgress және UTC бойынша алдыңғы күннен бір күн бұрынғы мерзімі бар Todo. Соңғысының мерзімі әдеттегі жасау операциясынан кейін PUT арқылы қойылды. Осылайша, overdue көрсетілімі тек POST кезінде өткен күнге тыйым салатын қосымша ережемен үйлеседі.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тапсырма",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Күйі",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мерзімі / overdue санына қосатын үлесі",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Todo without a due date",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Todo",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "null / 0",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Task in progress",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "InProgress",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "null / 0",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Overdue Todo task",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Todo",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2026-10-19 / 1; сұраудың UTC күні 2026-10-21",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        202.2236220472441,
+        98.6456692913386,
+        192.35905511811026
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Серверден алынған мән",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "GET /api/projects/2/stats\nHTTP 200 OK\n{\n\"projectId\": 2,\n\"total\": 3,\n\"todo\": 2,\n\"inProgress\": 1,\n\"done\": 0,\n\"overdue\": 1\n}"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Өріс",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мағынасы",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Күтілген",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "projectId",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жоба идентификаторы",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "total",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жобаның барлық тапсырмасы",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "todo",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Todo тапсырмалары",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "2",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "inProgress",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "InProgress тапсырмалары",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "done",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Аяқталған тапсырмалар",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "overdue",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мерзімінен кешіккен аяқталмаған тапсырмалар",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        103.57795275590551,
+        241.68188976377957,
+        73.98425196850394,
+        73.98425196850394
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Алты мәннің барлығы сәйкес келді. GET /api/projects/2147483647/stats 404 кодын қайтарды. HTTP тексеруінің уақыты: 22.10.2026 00:40:46 (UTC+05:00). Толық сұраулар, жауаптар және тексерулер қоса берілген дәлелдерде сақталған.",
+      "originalStyle": "SmallRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "Көрсету. Swagger-дегі нақты сұрау",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Браузердегі Swagger арқылы GET /api/projects/2/stats орындалды: алдымен Try it out, содан кейін Execute таңдалды. Шынайы суретте Request URL, Server response 200 және 3 / 2 / 1 / 0 / 1 мәндері бар JSON көрінеді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "image",
+      "path": "reports/assets/3ab7056a7c102015.png",
+      "caption": "swagger-stats.png",
+      "evidenceKind": "original-image"
+    },
+    {
+      "type": "paragraph",
+      "text": "1-сурет. Swagger UI: 2-жобаның статистика сұрауына сервердің нақты жауабы. Date тақырыбы: 21.10.2026 19:42:24 GMT, яғни 22.10.2026 00:42:24 UTC+05:00.",
+      "originalStyle": "SmallRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Суретте localhost:8088 мекенжайына орындалған сұраудың нәтижесі көрсетілген. Бұл операцияның Swagger арқылы жұмыс істеуін растайды. Сурет Postman коллекциясының, жөндегіш терезесінің немесе Test Explorer-дің экран суреті емес және сол жеке тапсыру тармақтарын жаппайды.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "API құжаттамасы",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Статистика операциясы контроллер маршруты және XML түсіндірмелері арқылы OpenAPI/Swagger құжаттамасына енгізілген. ProjectStats өрістері бастапқы кодта құжатталған. Swagger және /openapi/v1.json Development ортасында қосылады; бұл - сервистің жеке frontend бөлігі емес, техникалық HTTP клиенті.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "6. Тестілер және қайталанатын тексерулер",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Төмендегі нәтижелер нақты TRX файлдарынан алынған сақтаулы жиынтықтардан оқылды. Тестілеу CLI арқылы орындалған; Test Explorer экран суреті алынбаған. Интеграциялық тестілер WebApplicationFactory және InMemory қоймасы бар қолданбаның нақты HTTP өңдеу тізбегін пайдаланады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Кезең",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Барлығы / сәтті / қате",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "UTC+05:00 бойынша уақыт",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бастапқы шешім",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22 / 22 / 0",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22.10.2026 00:15:12",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Міндетті статистика",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24 / 24 / 0",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22.10.2026 00:37:54",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI: міндетті бумалар",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22 сұрау; 67 тексеру; 0 қате",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22.10.2026, бөлек сақталған іске қосылым",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI: толық коллекция",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24 сұрау; 73 тексеру; 0 қате",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22.10.2026, бөлек сақталған іске қосылым",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP скрипті: All",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "23 сұрау; passed=true",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "22.10.2026 00:40:46",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        187.42677165354334,
+        167.69763779527563,
+        138.10393700787404
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Екі жаңа міндетті тест",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "ProjectsApiTests.Stats_ReturnsProjectCountsAndOverdueTasks\nProjectsApiTests.Stats_UnknownProject_ReturnsNotFound"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сәтті сценарий тестісі санауыштар мен мерзімінен кешігуді, сондай-ақ бос жобаны, бүгінгі мерзімді, мерзімнің жоқтығын, басқа жоба тапсырмаларының оқшаулануын және аяқталған кешіккен тапсырманың есепке алынбауын тексереді. Екінші тест белгісіз жоба үшін 404 кодын тексереді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Міндетті 24 жағдай күй ережелерінің юнит-тестісіндегі 7 нұсқадан және 17 интеграциялық тексеруден тұрады. Бұрыннан бар TasksApiTests.ChangeStatus_TodoToDone_ReturnsConflict тікелей Todo -> Done ауысуына тыйымды тексереді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "Міндетті нәтиженің нұсқасы",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/lab01-required-24\" color=\"#1D6656\"><u>lab01-required-24 тегі / f93b123 коммиті</u></link> қосымша ережеге дейінгі міндетті 24 тесті бар күйді бекітеді. Бастапқы код мұрағаты бұл нәтижені кеңейтілген нұсқадан бөлек тексеруге мүмкіндік береді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "БҰЛ ТЕКСЕРУЛЕР НЕНІ РАСТАМАЙДЫ?",
+              "originalStyle": "KickerRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "TRX және Postman CLI нәтижелері Test Explorer немесе Postman экран суреттерінің барын, F9 / F10 / F11 қолданылғанын және Visual Studio ортасындағы Send Request батырмасымен сұрау орындалғанын дәлелдемейді. PostgreSQL-де SQL орындау да бұл нәтижелерге кірмейді.",
+              "originalStyle": "SmallRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        493.228346456693
+      ]
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "7. Мерзімге қатысты қосымша ереже",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қосымша тапсырма нұсқаулықта жұлдызшамен белгіленген: тапсырманы жасағанда өткен күн көрсетілсе, 400 қайтарылуы керек. Кеңейтілген жиынтық сақталған міндетті 24 тестінің нәтижесінен бөлек тексерілді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ереже TasksController.Create ішінде анық іске асырылған. DueDate ағымдағы UTC күнінен ерте болса, контроллер ModelState ішіне DueDate қатесін қосып, тапсырманы жасамай ValidationProblem(ModelState) қайтарады. Уақытқа тәуелді бір шартты осылай жергілікті тексеру жаңа атрибутты қажет етпейді және рұқсат етілген PUT әрекетін өзгертпейді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тексеру",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Күтілетін жұмыс тәртібі",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "POST сұрауындағы өткен күн",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "400; жаңа тапсырма жасалмайды",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Мерзімі бүгін",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Рұқсат етіледі",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Болашақ күн",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Рұқсат етіледі",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Мерзім көрсетілмеген",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Рұқсат етіледі",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        217.0204724409449,
+        276.2078740157481
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Кеңейтілген тексерудің нақты нәтижесі",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "Барлығы: 28\nСәтті орындалғаны: 28\nҚателер: 0\nРежимі: InMemory"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сақталған жиынтық бойынша аяқталу уақыты: 22.10.2026 00:39:59 (UTC+05:00). Бұл - бөлек нәтиже; ол бұрын бекітілген міндетті 24 тестінің нәтижесін алмастырмайды.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Қорытынды HTTP тексеруінде dueDate=2026-10-19 мәнімен жіберілген POST 400 қайтарды. Нақты errors.DueDate: «Срок новой задачи не может быть в прошлом (дата UTC).». Қабылдамау тестісі жазбаның жасалмағанын да тексереді; қосымша үш жағдай null, бүгін және ертең мәндерінің жарамдылығын тексереді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "Мерзімінен кешіккен тапсырмалар статистикасы неге қажет?",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жасалу кезінде күні жарамды болған тапсырманың өзі уақыт өте келе мерзімінен кешігуі мүмкін. Қайталанатын тест үшін бар тапсырманың мерзімі PUT арқылы өткен күнге ауыстырылады. Сондықтан POST валидациясы мен overdue санау ережесі әртүрлі міндет атқарады және бір-біріне кедергі жасамауы керек.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "heading",
+      "text": "Графикалық құралдарды қолмен тексеру",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Талаптарды толық орындау үшін demo-api коллекциясын Postman-ға импорттап, оның шынайы экран суретін сақтау; Visual Studio жөндегішінде екі сұрауды Locals / Call Stack арқылы қадамдап өту; Test Explorer-де міндетті нұсқаның барлық 24 тестісін көрсету керек. Бұл әрекеттер мен суреттер әлі расталмаған.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "8. Қорытынды тапсыру тізімі және тұжырым",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Әдістемелік нұсқаулық талабы",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты күйі",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman ішіндегі demo-api коллекциясы",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "JSON және Postman CLI іске қосылымы расталған; интерфейс суреті жоқ",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "3-бөлімдегі кодтар, errors және detail",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты жауаптардың мәндері өзгеріссіз берілген",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Сақтау және қайта іске қосу туралы жауап",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Түсіндірілген; HTTP деректері расталған",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Екі шақыру тізбегі",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Код пен HTTP арқылы талданған; қолмен жөндеу, Locals / Call Stack расталмаған",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бастапқы код бойынша алты жауап",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3-бөлімде берілген",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /api/projects/{id}/stats жауабы",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200; 3 / 2 / 1 / 0 / 1; белгісіз id үшін 404",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Барлық міндетті 24 тест",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "CLI арқылы 24 тест сәтті, 0 қате; Test Explorer суреті әлі қажет",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Функция коды мұрағатпен немесе мәтінмен",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бөлек lab01-source.zip және ашық репозиторий",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Өткен күнге қойылған қосымша тыйым",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бөлек тексеруде 28 тест сәтті, 0 қате",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        217.0204724409449,
+        276.2078740157481
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Қорытынды",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Жоба статистикасы іске асырылды: тапсырмалар күйлері және мерзімінен кешіккен аяқталмаған тапсырмалар саналады. InMemory жұмысы HTTP тексерулерімен және міндетті 24 тестімен расталған; коллекция, сұрау нәтижелері және бастапқы код сақталған. SQL іске асырылымы жобаға енгізілген, бірақ оны PostgreSQL-де орындау кейінгі тексеруге жатады.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Зертханалық жұмыстың толық тапсырылғаны әзірге мәлімделмейді: Postman коллекциясының шынайы экран суреті, жөндегіште екі сұрауды қолмен қадамдап орындау және Test Explorer-де міндетті 24 тестінің экран суреті қажет. Бұл әрекеттер орындалғаннан кейін нақты интерфейс дәлелдерін есепке қосу керек.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "originalPageBreak"
+    },
+    {
+      "type": "heading",
+      "text": "Қосымша. Бастапқы код және тексеруді қайталау",
+      "originalStyle": "H1Ru"
+    },
+    {
+      "type": "heading",
+      "text": "Материалдар және нұсқалар",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "paragraph",
+      "text": "Негізі: «Лаба 1,1.pdf» және «Лаба 1,3.pdf» - дәрістер; «Лаба 1,2.pdf» - 1-практикалық бөлім; «Лаба 1,4.pdf» - 2-практикалық бөлім. Фотосуреттердегі шарттар бақылау нүктелерінің құрамын нақтылайды. Екінші бөлімге бірінші бөлімнің қорытынды тапсыру тізімі де кіреді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs\" color=\"#1D6656\"><u>Бастапқы код және құжаттама</u></link><br/><link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/lab01-required-24\" color=\"#1D6656\"><u>Міндетті нұсқа: lab01-required-24 тегі, f93b123 коммиті</u></link>",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/reports/lab01-source.zip\" color=\"#1D6656\"><u>Репозиторийдегі бастапқы код мұрағаты</u></link>",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Есептерге бөлек <b>lab01-source.zip</b> мұрағаты қоса беріледі: src және tests бастапқы кодтары, Postman коллекциясы, тексеруді қайталау скрипті және сақталған дәлелдер. Мұрағатқа орнатылған тәуелділіктер мен құрастыру нәтижелері кірмейді.",
+      "originalStyle": "BodyRu"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Мұрағаттағы / репозиторийдегі дәлел",
+              "originalStyle": "CellHeadRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мазмұны",
+              "originalStyle": "CellHeadRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "evidence/lab01/20261021T194046965Z-all-7024bbae/<br/>http-evidence.json",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "API сұраулары мен жауаптары; кодтар, Location тақырыптары, JSON денелері және тексерулер",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "evidence/lab01/postman-required/console.txt",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI жергілікті іске қосылымы: 22 сұрау, 67 тексеру, 0 қате",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "evidence/lab01/postman-final/console.txt",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI толық коллекциясы: 24 сұрау, 73 тексеру, 0 қате",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "evidence/lab01/baseline/summary.json",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "TRX файлынан алынған бастапқы 22 тестінің жиынтық нәтижесі",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "evidence/lab01/required-24/summary.json",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "TRX файлынан алынған міндетті 24 тестінің жиынтық нәтижесі",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "evidence/lab01/restart/",
+              "originalStyle": "CellRu"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Процесс қайта іске қосылғанға дейін төрт жоба; кейін бос тізім",
+              "originalStyle": "CellRu"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        291.00472440944884,
+        202.2236220472441
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Тест нәтижелерінен жергілікті пайдаланушы мен компьютер туралы қызметтік мәліметтер алынып тасталған. Postman CLI шығысы жергілікті сұрауларды растайды; нәтижелер Postman бұлтқа жарияланбаған.",
+      "originalStyle": "SmallRu"
+    },
+    {
+      "type": "heading",
+      "text": "Міндетті тексеруді қайталау",
+      "originalStyle": "H2Ru"
+    },
+    {
+      "type": "code",
+      "text": "git checkout lab01-required-24\ndotnet test DemoApi.slnx\n\n# Сервис алдын ала іске қосылған жағдайда:\npwsh -File scripts/verify-lab01.ps1 -Phase Part2 `\n-BaseUrl http://localhost:8088 -KeepData"
+    },
+    {
+      "type": "paragraph",
+      "text": "Postman-да /stats іске асырылғаннан кейін «Часть 2 - статистика проекта» бумасы іске қосылады. Қосымша бума тиісті ереже қосылғаннан кейін ғана бөлек орындалады. Компьютердің жергілікті жолдары мен тіркелгі деректері есепке енгізілмейді.",
+      "originalStyle": "BodyRu"
+    }
+  ]
+}
