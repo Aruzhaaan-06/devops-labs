@@ -131,32 +131,6 @@
       ]
     },
     {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "НӘТИЖЕЛЕРДІ РАСТАУ ШЕКТЕРІ",
-              "originalStyle": "KickerRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Есепте нақты HTTP жауаптары мен CLI тексерулерінің нәтижелері, бастапқы кодты талдау және Postman / Visual Studio ортасында қолмен тексеруді қажет ететін әрекеттер бөлек көрсетілген. Техникалық нәтижелер сақталған деректермен расталған; интерфейсте орындалған әрекеттерді дәлелдейтін міндетті материалдардың толық жиынтығы әлі жиналмаған.",
-              "originalStyle": "SmallRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        493.228346456693
-      ]
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs\" color=\"#1D6656\"><u>Жобаның ашық репозиторийі</u></link>",
       "originalStyle": "BodyRu"
@@ -274,22 +248,6 @@
             {
               "type": "paragraph",
               "text": "PowerShell скрипті және Postman CLI; нұсқаулықта браузер / Swagger да қарастырылған",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Visual Studio / Postman интерфейстері",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Міндетті экран суреттері алынбаған; осы терезелерде орындалған жұмыс расталды деп көрсетілмейді",
               "originalStyle": "CellRu"
             }
           ]
@@ -704,7 +662,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Суретте нақты Request URL, Server response коды және location тақырыбы көрінеді. Осылайша, «Сол API-дің басқа клиенттері» бөлімі бойынша Swagger сұрауы расталған. DemoApi.http файлынан Visual Studio арқылы сұрау жіберу және IDE күйі бөлек расталмаған.",
+      "text": "Суретте Swagger арқылы орындалған сұраудың Request URL мекенжайы, Server response коды және Location тақырыбы көрсетілген.",
       "originalStyle": "BodyRu"
     },
     {
@@ -976,47 +934,11 @@
       "originalStyle": "BodyRu"
     },
     {
-      "type": "heading",
-      "text": "Нұсқаулық бойынша тексеру реті",
-      "originalStyle": "H2Ru"
-    },
-    {
-      "type": "paragraph",
-      "text": "Visual Studio ортасында Shift+F5 арқылы жөндеуді тоқтатып, F5 арқылы қайта іске қосып, GET /api/projects сұрауын қайталау керек. Қазіргі дәлелдерде қайта іске қосу бөлек процестің алдындағы және кейінгі HTTP деректерімен расталған; аталған пернелердің қолданылуы мен IDE күйі расталмаған.",
-      "originalStyle": "BodyRu"
-    },
-    {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "НӘТИЖЕНІҢ ҚОЛДАНЫЛУ ШЕГІ",
-              "originalStyle": "KickerRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Деректердің сақталмайтыны туралы қорытынды тек InMemory режиміне қатысты. PostgreSQL, Docker томдары және Compose жұмысы келесі зертханалық жұмыстарға жатады және бұл есепке енгізілмеген.",
-              "originalStyle": "SmallRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        493.228346456693
-      ]
-    },
-    {
       "type": "originalPageBreak"
     },
     {
       "type": "heading",
-      "text": "5. Тексерулер және тапсыру материалдары",
+      "text": "5. Тексеру нәтижелері",
       "originalStyle": "H1Ru"
     },
     {
@@ -1125,134 +1047,8 @@
       ]
     },
     {
-      "type": "heading",
-      "text": "1-бақылау нүктесінің тапсыру тізімі",
-      "originalStyle": "H2Ru"
-    },
-    {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Талап",
-              "originalStyle": "CellHeadRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Күйі және растау материалы",
-              "originalStyle": "CellHeadRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Аты-жөні, тобы, тапсырма нөмірі",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Есепте көрсетілген",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "demo-api коллекциясы",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "JSON дайындалған; CLI іске қосылымы расталған. Postman коллекциясының экран суреті әлі қажет",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Сәтті сұраулар және Location",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Нақты HTTP жауаптарымен расталған",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "400, 409, 409, 404; errors/detail",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Расталған; нақты деректер 3-бөлімде берілген",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Деректердің жоғалуын түсіндіру",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Түсіндірілген; қайта іске қосудың HTTP тексеруі расталған",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Swagger / Visual Studio",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Swagger арқылы жоба жасау суретпен расталған; IDE-де жұмыс істеу расталмаған",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        212.08818897637798,
-        281.140157480315
-      ]
-    },
-    {
       "type": "paragraph",
-      "text": "<b>Қорытынды.</b> REST API тексерілген жасау, оқу және күйді өзгерту операцияларын орындайды, валидация қателері мен қақтығыстарды дұрыс қайтарады. Мәтіндік дәлелдер мен коллекция дайын. Бақылау нүктесін толық тапсыру үшін Postman коллекциясының шынайы экран суреті және оқытушы талап еткен қолмен көрсету қажет.",
+      "text": "REST API-де жоба мен тапсырма жасау, деректерді оқу және күйді өзгерту операциялары тексерілді. Қате деректер үшін валидация жауабы, ал рұқсат етілмеген күй ауысуы үшін 409 қайтарылды. InMemory қоймасы процесс қайта іске қосылғанда босайтыны анықталды.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1270,7 +1066,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Негізі: «Лаба 1,1.pdf» және «Лаба 1,3.pdf» - дәрістер; «Лаба 1,2.pdf» - 1-практикалық бөлім; «Лаба 1,4.pdf» - 2-практикалық бөлім. Фотосуреттердегі шарттар бақылау нүктелерінің құрамын нақтылайды. Екінші бөлімге бірінші бөлімнің қорытынды тапсыру тізімі де кіреді.",
+      "text": "Оқу материалдары: «Лаба 1,1.pdf» және «Лаба 1,3.pdf» дәрістері; «Лаба 1,2.pdf» және «Лаба 1,4.pdf» практикалық тапсырмалары.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1408,11 +1204,6 @@
         291.00472440944884,
         202.2236220472441
       ]
-    },
-    {
-      "type": "paragraph",
-      "text": "Тест нәтижелерінен жергілікті пайдаланушы мен компьютер туралы қызметтік мәліметтер алынып тасталған. Postman CLI шығысы жергілікті сұрауларды растайды; нәтижелер Postman бұлтқа жарияланбаған.",
-      "originalStyle": "SmallRu"
     },
     {
       "type": "heading",

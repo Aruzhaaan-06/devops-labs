@@ -18,10 +18,10 @@
 | 7.1 | Метрикалар және PromQL | [Нұсқаулық](lab07-metrics.md) | [PDF](../reports/lab07-metrics-report.pdf) |
 | 7.2 | Grafana панельдері және алерттер | [Нұсқаулық](lab07-alerts.md) | [PDF](../reports/lab07-alerts-report.pdf) |
 | 8 | Инцидентті анықтау және қалпына келтіру | [Нұсқаулық](lab08-incident.md) | [PDF](../reports/lab08-incident-report.pdf) |
-| Қосымша | Жұмыстарды тапсыруға дайындау | [Нұсқаулық](submission-checklist.md) | [PDF](../reports/submission-summary-kk.pdf) |
+| Қосымша | Жұмыстардың қорытынды нәтижелері | [Нұсқаулық](submission-checklist.md) | [PDF](../reports/submission-summary-kk.pdf) |
 
-[Рәсімдеу талаптары](FORMATTING_STANDARDS.md) · [Аудит және бағалау шектері](REPORT_AUDIT.md) · [Жетіспейтін дәлелдер](REPORT_COMPLETENESS.md) · [Құжаттама өзгерістері](CHANGELOG.md) · [Редакциялау](../reports/source/README.md).
+[Рәсімдеу параметрлері](FORMATTING_STANDARDS.md) · [Файлдарды тексеру](REPORT_AUDIT.md) · [Жұмыстардың мәртебесі](REPORT_COMPLETENESS.md) · [Құжаттама өзгерістері](CHANGELOG.md) · [Редакциялау](../reports/source/README.md).
 
-Қазіргі қолданба мен CI-де 40 тест бар. Тарихи 24/28/38/39 нәтижелері тиісті жұмыс кезеңін сипаттайды. Тапсырудың UI, оқытушы және қорғау тармақтары рәсімдеу арқылы автоматты жабылмайды.
+Қазіргі қолданба мен CI-де 40 тест бар. Тарихи 24/28/38/39 нәтижелері тиісті жұмыс кезеңін сипаттайды. Ұйымдастыру тармақтары жеке жұмыс мәртебесінде берілген.
 
 [GitHub мәтіндерінің қазақша редакциясы](GITHUB_LANGUAGE.md).

@@ -22,7 +22,7 @@
     },
     {
       "type": "paragraph",
-      "text": "2-апта. 5-8-бөлімдер және 1-зертханалық жұмыстың толық қорытынды тапсыру тізімі.",
+      "text": "2-апта. Сұрауды өңдеу, жоба статистикасы және тестілеу.",
       "originalStyle": "BodyRu"
     },
     {
@@ -131,32 +131,6 @@
       ]
     },
     {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "НӘТИЖЕЛЕРДІ РАСТАУ ШЕКТЕРІ",
-              "originalStyle": "KickerRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Есепте нақты HTTP жауаптары мен CLI тексерулерінің нәтижелері, бастапқы кодты талдау және Postman / Visual Studio ортасында қолмен тексеруді қажет ететін әрекеттер бөлек көрсетілген. Техникалық нәтижелер сақталған деректермен расталған; интерфейсте орындалған әрекеттерді дәлелдейтін міндетті материалдардың толық жиынтығы әлі жиналмаған.",
-              "originalStyle": "SmallRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        493.228346456693
-      ]
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs\" color=\"#1D6656\"><u>Жобаның ашық репозиторийі</u></link>",
       "originalStyle": "BodyRu"
@@ -176,7 +150,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Қорытынды тізімге бірінші аптаның нәтижелері кіреді. demo-api коллекциясы JSON пішімінде сақталған; оның baseUrl мәні мен нақты тексеру http://localhost:8088 мекенжайын пайдаланады. Оқу нұсқаулығындағы 8080 портын Oracle пайдаланатындықтан, осы кезеңдегі нұсқаның барлық баптауларында 8088 көрсетілген. Postman графикалық интерфейсінің экран суреті әлі алынбаған.",
+      "text": "Бірінші бөлімдегі HTTP сценарийлері қайта тексерілді. demo-api коллекциясының baseUrl мәні http://localhost:8088 мекенжайына бағытталған. 8080 портын Oracle пайдаланатындықтан, DemoApi үшін 8088 порты таңдалды.",
       "originalStyle": "BodyRu"
     },
     {
@@ -454,30 +428,9 @@
       "originalStyle": "H1Ru"
     },
     {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "КОДТЫ ТАЛДАУ + НАҚТЫ HTTP НӘТИЖЕСІ",
-              "originalStyle": "KickerRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Төмендегі тізбектер ағымдағы бастапқы кодты оқу арқылы анықталған және HTTP жауаптарына сәйкес келеді. Visual Studio ортасында F9 / F10 / F11 арқылы қадамдау, Locals терезесінің мәндері және Call Stack қолмен тексерілмеген. Бұл мәтін жөндегішпен жұмыс істеудің нәтижесі ретінде ұсынылмайды.",
-              "originalStyle": "SmallRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        493.228346456693
-      ]
+      "type": "paragraph",
+      "text": "Төмендегі шақыру тізбектері бастапқы код бойынша талданып, нақты HTTP жауаптарымен салыстырылды.",
+      "originalStyle": "SmallRu"
     },
     {
       "type": "heading",
@@ -584,32 +537,6 @@
       "type": "paragraph",
       "text": "TaskService ITaskRepository және IProjectRepository интерфейстерін қабылдайды. Екі сақтау тәсілі де бірдей интерфейстерді іске асырады; баптау өзгергенде тәуелділіктер контейнері басқа класты береді. Сервис сол әдістерді шақыруды жалғастырады және оның ішінде SQL жоқ.",
       "originalStyle": "BodyRu"
-    },
-    {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "ТЕКСЕРУ ШЕКТЕРІ",
-              "originalStyle": "KickerRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Жауаптар есепке енгізілген нұсқаның бастапқы кодына негізделген. 1-зертханалық жұмыста PostgreSQL іске асырылымдарының сыртқы дерекқормен жұмыс істеуі тексерілмеген.",
-              "originalStyle": "SmallRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        493.228346456693
-      ]
     },
     {
       "type": "originalPageBreak"
@@ -1197,7 +1124,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Браузердегі Swagger арқылы GET /api/projects/2/stats орындалды: алдымен Try it out, содан кейін Execute таңдалды. Шынайы суретте Request URL, Server response 200 және 3 / 2 / 1 / 0 / 1 мәндері бар JSON көрінеді.",
+      "text": "Браузердегі Swagger арқылы GET /api/projects/2/stats орындалды: алдымен Try it out, содан кейін Execute таңдалды. Нақты суретте Request URL, Server response 200 және 3 / 2 / 1 / 0 / 1 мәндері бар JSON көрінеді.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1213,7 +1140,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Суретте localhost:8088 мекенжайына орындалған сұраудың нәтижесі көрсетілген. Бұл операцияның Swagger арқылы жұмыс істеуін растайды. Сурет Postman коллекциясының, жөндегіш терезесінің немесе Test Explorer-дің экран суреті емес және сол жеке тапсыру тармақтарын жаппайды.",
+      "text": "Суретте localhost:8088 мекенжайындағы GET /api/projects/2/stats сұрауы, HTTP 200 жауабы және 3 / 2 / 1 / 0 / 1 статистикасы көрсетілген.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1236,7 +1163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Төмендегі нәтижелер нақты TRX файлдарынан алынған сақтаулы жиынтықтардан оқылды. Тестілеу CLI арқылы орындалған; Test Explorer экран суреті алынбаған. Интеграциялық тестілер WebApplicationFactory және InMemory қоймасы бар қолданбаның нақты HTTP өңдеу тізбегін пайдаланады.",
+      "text": "Тестілеу dotnet test арқылы орындалды. Интеграциялық тесттер WebApplicationFactory көмегімен InMemory қоймасы бар қолданбаның HTTP өңдеу тізбегін тексереді. Нәтижелер TRX файлдарына сақталды.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1417,32 +1344,6 @@
       "originalStyle": "BodyRu"
     },
     {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "БҰЛ ТЕКСЕРУЛЕР НЕНІ РАСТАМАЙДЫ?",
-              "originalStyle": "KickerRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "TRX және Postman CLI нәтижелері Test Explorer немесе Postman экран суреттерінің барын, F9 / F10 / F11 қолданылғанын және Visual Studio ортасындағы Send Request батырмасымен сұрау орындалғанын дәлелдемейді. PostgreSQL-де SQL орындау да бұл нәтижелерге кірмейді.",
-              "originalStyle": "SmallRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        493.228346456693
-      ]
-    },
-    {
       "type": "originalPageBreak"
     },
     {
@@ -1579,191 +1480,7 @@
       "originalStyle": "BodyRu"
     },
     {
-      "type": "heading",
-      "text": "Графикалық құралдарды қолмен тексеру",
-      "originalStyle": "H2Ru"
-    },
-    {
-      "type": "paragraph",
-      "text": "Талаптарды толық орындау үшін demo-api коллекциясын Postman-ға импорттап, оның шынайы экран суретін сақтау; Visual Studio жөндегішінде екі сұрауды Locals / Call Stack арқылы қадамдап өту; Test Explorer-де міндетті нұсқаның барлық 24 тестісін көрсету керек. Бұл әрекеттер мен суреттер әлі расталмаған.",
-      "originalStyle": "BodyRu"
-    },
-    {
       "type": "originalPageBreak"
-    },
-    {
-      "type": "heading",
-      "text": "8. Қорытынды тапсыру тізімі және тұжырым",
-      "originalStyle": "H1Ru"
-    },
-    {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Әдістемелік нұсқаулық талабы",
-              "originalStyle": "CellHeadRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Нақты күйі",
-              "originalStyle": "CellHeadRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Postman ішіндегі demo-api коллекциясы",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "JSON және Postman CLI іске қосылымы расталған; интерфейс суреті жоқ",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "3-бөлімдегі кодтар, errors және detail",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Нақты жауаптардың мәндері өзгеріссіз берілген",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Сақтау және қайта іске қосу туралы жауап",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Түсіндірілген; HTTP деректері расталған",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Екі шақыру тізбегі",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Код пен HTTP арқылы талданған; қолмен жөндеу, Locals / Call Stack расталмаған",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Бастапқы код бойынша алты жауап",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "3-бөлімде берілген",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "GET /api/projects/{id}/stats жауабы",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "200; 3 / 2 / 1 / 0 / 1; белгісіз id үшін 404",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Барлық міндетті 24 тест",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "CLI арқылы 24 тест сәтті, 0 қате; Test Explorer суреті әлі қажет",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Функция коды мұрағатпен немесе мәтінмен",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Бөлек lab01-source.zip және ашық репозиторий",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Өткен күнге қойылған қосымша тыйым",
-              "originalStyle": "CellRu"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Бөлек тексеруде 28 тест сәтті, 0 қате",
-              "originalStyle": "CellRu"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        217.0204724409449,
-        276.2078740157481
-      ]
     },
     {
       "type": "heading",
@@ -1777,7 +1494,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Зертханалық жұмыстың толық тапсырылғаны әзірге мәлімделмейді: Postman коллекциясының шынайы экран суреті, жөндегіште екі сұрауды қолмен қадамдап орындау және Test Explorer-де міндетті 24 тестінің экран суреті қажет. Бұл әрекеттер орындалғаннан кейін нақты интерфейс дәлелдерін есепке қосу керек.",
+      "text": "Зертханалық жұмыстың толық тапсырылғаны әзірге мәлімделмейді: Postman коллекциясының нақты экран суреті, жөндегіште екі сұрауды қолмен қадамдап орындау және Test Explorer-де міндетті 24 тестінің экран суреті қажет. Бұл әрекеттер орындалғаннан кейін нақты интерфейс дәлелдерін есепке қосу керек.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1795,7 +1512,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Негізі: «Лаба 1,1.pdf» және «Лаба 1,3.pdf» - дәрістер; «Лаба 1,2.pdf» - 1-практикалық бөлім; «Лаба 1,4.pdf» - 2-практикалық бөлім. Фотосуреттердегі шарттар бақылау нүктелерінің құрамын нақтылайды. Екінші бөлімге бірінші бөлімнің қорытынды тапсыру тізімі де кіреді.",
+      "text": "Оқу материалдары: «Лаба 1,1.pdf» және «Лаба 1,3.pdf» дәрістері; «Лаба 1,2.pdf» және «Лаба 1,4.pdf» практикалық тапсырмалары.",
       "originalStyle": "BodyRu"
     },
     {
@@ -1933,11 +1650,6 @@
         291.00472440944884,
         202.2236220472441
       ]
-    },
-    {
-      "type": "paragraph",
-      "text": "Тест нәтижелерінен жергілікті пайдаланушы мен компьютер туралы қызметтік мәліметтер алынып тасталған. Postman CLI шығысы жергілікті сұрауларды растайды; нәтижелер Postman бұлтқа жарияланбаған.",
-      "originalStyle": "SmallRu"
     },
     {
       "type": "heading",

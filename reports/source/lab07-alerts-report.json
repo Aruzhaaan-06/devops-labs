@@ -221,16 +221,6 @@
       "originalStyle": "Body"
     },
     {
-      "type": "heading",
-      "text": "Орындау тәсілінің шегі",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Work браузерді басқаруға рұқсат бермеді. Сондықтан панель Classic JSON файлына тікелей енгізіліп, нақты Grafana API арқылы тексерілді. UI ішіндегі Add/Export/Copy to clipboard қадамдары орындалды деп көрсетілмейді; интерфейс суреттері ойдан жасалған жоқ.",
-      "originalStyle": "Body"
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/monitoring/grafana/dashboards/demo-api.json\" color=\"#175E9A\">Дашборд JSON</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/polling-reload.json\" color=\"#175E9A\">Нақты polling тексеруі</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/lab07-alerts/grafana-provisioned.json\" color=\"#175E9A\">Grafana жауабы</link>",
       "originalStyle": "Body"
@@ -521,7 +511,7 @@
     },
     {
       "type": "paragraph",
-      "text": "ContainerRestarted ережесінде for жоқ: бірінші true evaluation кезінде бірден firing болады. Сондықтан c және d/restart жолдарындағы pending ұяшығы «-»; жасанды уақыт қойылған жоқ.",
+      "text": "ContainerRestarted ережесінде for жоқ: шарт алғаш true болған бағалауда firing күйі басталады. Сондықтан c және d/restart жолдарындағы pending ұяшығы «-» белгісімен берілген.",
       "originalStyle": "Body"
     },
     {
@@ -1129,7 +1119,7 @@
     },
     {
       "type": "heading",
-      "text": "7. Тапсырудағы үш сұраққа жауап",
+      "text": "7. Бақылау сұрақтарына жауап",
       "originalStyle": "Heading"
     },
     {
@@ -1313,7 +1303,7 @@
     },
     {
       "type": "heading",
-      "text": "9. Жинақталған дәлелдер және шектеулер",
+      "text": "9. Нәтижелерді тексеру",
       "originalStyle": "Heading"
     },
     {
@@ -1329,7 +1319,7 @@
     },
     {
       "type": "paragraph",
-      "text": "1-сурет. 13-материалдағы бастапқы шынайы Chrome суреті: 3 UP. Бұл 14-материалдың жаңа скриншоты деп көрсетілмейді.",
+      "text": "1-сурет. 13-материалдағы бастапқы нақты Chrome суреті: 3 UP. Бұл 14-материалдың жаңа скриншоты деп көрсетілмейді.",
       "originalStyle": "Small"
     },
     {
@@ -1350,21 +1340,6 @@
       "type": "paragraph",
       "text": "Скрипт тек devops-labs-api-1 және нақты lab14 жергілікті тегін қабылдайды. API 256 MiB және swap 256 MiB шегін тексереді. Ол әдейі crash/OOM/stop жасайды; deploy-мен қатар іске қосуға болмайды. finally API-ді қайта іске қосып, өзі ашқан бақылау/жүктеме процестерін жабады.",
       "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Жариялау және адал есеп беру",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "PR #23 міндетті PostgreSQL test арқылы тексеріледі, содан кейін main CI/CD іске қосылады. Техникалық ревью бір адамның екі тіркелгісімен жасалады; бұл тәуелсіз жұптық ревью емес. Жергілікті мақұлдау ассистент тарапынан пайдаланушының тапсырмасы бойынша орындалады. Соңғы main/runtime, файл хештері және деректердің сақталуы lab14-final-verification.json релиз asset-інде тіркеледі.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "Браузер рұқсаты болмағандықтан UI арқылы экспорттау және a-e кезінде Grafana/Dozzle-ны автоматты визуалды қарау орындалмады. Олардың орнына жүктелген Grafana спецификациясы, Prometheus жауаптары және контейнер журналдары берілді. Алғашқы OOM, жүктеме кезінде күтілетін байланыс қателері және сәтті жалғастыру бір-бірінен нақты ажыратылды.",
-      "originalStyle": "Small"
     },
     {
       "type": "paragraph",

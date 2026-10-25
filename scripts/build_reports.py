@@ -72,7 +72,7 @@ class Cover(Flowable):
         label='ЗЕРТХАНАЛЫҚ ЖҰМЫС № '+parts[0]
         if len(parts)>1: label+=', '+'.'.join(parts[1:])+'-бөлім'
         if number=='3.1-3.2':label='ЗЕРТХАНАЛЫҚ ЖҰМЫС № 3, 1-2-бөлімдер'
-        if self.meta['kind']!='lab':label='ТАПСЫРУҒА АРНАЛҒАН ҚОСЫМША'
+        if self.meta['kind']!='lab':label='ҚОРЫТЫНДЫ ЕСЕП'
         at('<b>'+label+'</b>',HEIGHT-83*mm)
         at(self.meta['title'],HEIGHT-102*mm)
         at('Орындаған: '+CAT['author'],HEIGHT-150*mm,REF)
@@ -179,21 +179,19 @@ def build(meta,output):
     if meta['kind']=='lab':
         section('2 Теориялық мәліметтер');story.append(p(meta['theory']))
         section('3 Жұмыстың орындалу барысы',True)
-    else: section('2 Тапсыруға дайындық барысы',True)
-    story.append(p('Бұл бөлім бастапқы тәжірибе кезеңінің сақталған нәтижелерін береді. Ондағы уақыттар, нұсқалар, командалар, API жауаптары мен шынайы суреттер өзгертілмеген. Кейінгі құжаттамалық түзету бұрынғы тәжірибені қайта орындау болып саналмайды.'))
+    else: section('2 Орындау барысы',True)
     story.extend(render_nodes(data['blocks'],stats))
     offset=0 if meta['kind']=='lab' else -1
     section(str(4+offset)+' Жұмыс нәтижелері',True);story.append(p(meta['results']))
-    story.append(p(f'<link href="{PUBLIC+meta["evidence"]}/README.md" color="#000000">Сақталған нәтижелер мен дәлелдер</link> [1]. Нақты іске қосу шарттары мен шектеулері <link href="{PUBLIC+meta["doc"]}" color="#000000">жұмыс нұсқаулығында</link> берілген [2].'))
-    section(str(5+offset)+' Талдау');story.append(p(meta['limitations']))
-    story.append(p('Командалық жолдағы тексеру интерфейстегі қолмен орындалған әрекетті дәлелдемейді. Екі тіркелгі бір адамға тиесілі болса, олардың техникалық мақұлдауы тәуелсіз жұптық тексеру болып саналмайды. Рәсімдеу мен техникалық толықтық бөлек бағаланады.'))
-    section(str(6+offset)+' Қорытынды');story.append(p('Сақталған дәлелдер жұмыстың техникалық нәтижесін растайды. '+meta['results']+' '+meta['limitations']))
+    story.append(p(f'Тест нәтижелері мен журналдар <link href="{PUBLIC+meta["evidence"]}/README.md" color="#000000">жұмыс материалдарында</link> [1], іске қосу командалары <link href="{PUBLIC+meta["doc"]}" color="#000000">нұсқаулықта</link> [2] берілген.'))
+    section(str(5+offset)+' Талдау');story.append(p(meta['analysis']))
+    section(str(6+offset)+' Қорытынды');story.append(p(meta['conclusion']))
     section(str(7+offset)+' Пайдаланылған әдебиеттер тізімі',True)
     refs=[(PUBLIC+meta['evidence']+'/README.md','DemoApi оқу репозиторийі. Нақты тексерулер мен сақталған дәлелдер'),(PUBLIC+meta['doc'],'DemoApi оқу репозиторийі. Жұмыстың орындалу тәртібі')]+external_sources(data)
     for i,(url,label) in enumerate(refs,1):
         story.append(p(f'[{i}] {escape(label)}. Электрондық ресурс. <link href="{escape(url,quote=True)}" color="#000000">{escape(url)}</link>. Қаралған күні: 25.10.2026.',REF))
-    story.append(p('Тапсырма шарты: пайдаланушы берген Devops (1).zip оқу мұрағаты және бақылау нүктелерінің екі фотосуреті. Бастапқы файл атаулары орындау бөлімінде сақталған; авторы мен жарияланған жылы анықталмағандықтан, олар ойдан толықтырылмады.',REF))
-    story.append(p('Рәсімдеу негізі: ГОСТ 7.32-2017, 6-бөлім - ғылыми-зерттеу есебінің ережелері оқу үлгісіне бейімделді. Стандарт барлық зертханалық есепке міндетті деп көрсетілмейді; қабылданған параметрлер мен ресми дереккөздер <link href="'+PUBLIC+'docs/FORMATTING_STANDARDS.md" color="#000000">FORMATTING_STANDARDS.md</link> құжатында берілген.',REF))
+    story.append(p('DevOps пәнінің оқу материалдары: Devops (1).zip мұрағаты, зертханалық тапсырмалар және бақылау нүктелерінің шарттары.',REF))
+    story.append(p('ГОСТ 7.32-2017. Ғылыми-зерттеу жұмысы туралы есеп. Құрылымы және рәсімдеу ережелері. 6-бөлім.',REF))
     output.mkdir(parents=True,exist_ok=True)
     path=output/meta['file'];ReportDoc(path,meta).multiBuild(story)
     return {'file':meta['file'],'source':meta['source'],'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'elements':stats}
