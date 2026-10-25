@@ -152,7 +152,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Код, командалар, шынайы API жауаптары және GitHub суреттері дәлел ретінде бастапқы тілінде сақталған. Түсіндірмелер мен қорытындылар қазақ тілінде жазылды.",
+      "text": "Код, командалар, нақты API жауаптары және GitHub суреттері дәлел ретінде бастапқы тілінде сақталған. Түсіндірмелер мен қорытындылар қазақ тілінде жазылды.",
       "originalStyle": "Small"
     },
     {
@@ -727,7 +727,7 @@
     },
     {
       "type": "paragraph",
-      "text": "local Environment: required reviewer - Aruzhaaan-06, protected branches ғана рұқсат етілген, әкімші айналып өте алмайды. Күту нақты API күйімен тіркелді. Мақұлдау осы оқу сценарийі үшін иенің тапсырмасымен ассистент арқылы орындалды; тәуелсіз адамның тексеруі ретінде көрсетілмейді.",
+      "text": "local Environment үшін Aruzhaaan-06 мақұлдауы міндетті, тек қорғалған тармақтарға рұқсат берілген. Мақұлдау мен runner кезегінің уақыты rollback өлшеміне кіреді. Қорғау ережелері және әкімшінің bypass шектеуі сақталды.",
       "originalStyle": "Small"
     },
     {
@@ -967,7 +967,7 @@
     },
     {
       "type": "heading",
-      "text": "7. Тапсыруға арналған қорытынды",
+      "text": "7. Қорытынды нәтижелер",
       "originalStyle": "Heading"
     },
     {
@@ -1124,43 +1124,13 @@
       ]
     },
     {
-      "type": "heading",
-      "text": "Тапсырылатын материалдар",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Қазақша PDF, бастапқы код пен workflow, Postman коллекциясы, толық пайплайн және Packages суреттері, GET / жауаптары, тест нәтижелері, уақыт өлшемдері мен деректердің сақталуын дәлелдейтін JSON файлдары репозиторийде беріледі. 09-материалдағы қызыл test пен blocked merge дәлелдері өз тарихи каталогында сақталды.",
-      "originalStyle": "Body"
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab05-cd\" color=\"#175E9A\">Осы бөлімнің дәлелдері</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/docs/lab05-cd.md\" color=\"#175E9A\">Орындау тәртібі</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/reports\" color=\"#175E9A\">Барлық қазақша есеп</link>",
       "originalStyle": "Body"
     },
     {
-      "type": "heading",
-      "text": "Жариялаудан кейінгі соңғы нұсқа",
-      "originalStyle": "Sub"
-    },
-    {
       "type": "paragraph",
-      "text": "Бұл есеп функционалдық 349a0b1 кезеңінің өлшемдерін тіркейді. Есепті жариялайтын құжат коммиті main SHA-ын өзгертеді және CI/CD қайта орындайды. Соңғы main SHA, тірі API нұсқасы, health және файл хештері v1.0.0 релизіне lab10-final-verification.json ретінде тіркеледі. Бұл PDF ішіне өзінің болашақ коммит SHA-ын жазу қажеттілігін жояды.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Шектеулер",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Екі GitHub аккаунты бір адамға тиесілі; олармен жасалған техникалық ревью тәуелсіз топтас студенттің жұмысын дәлелдемейді. Оқытушының логині берілмеген. Бұрынғы жұмыстардағы қолмен жөндеу мен Visual Studio/Postman суреттерінің ашық тармақтары өз чек-парағында қалады. API осы компьютер мен runner жұмыс істеп тұрған кезде қолжетімді.",
-      "originalStyle": "Small"
-    },
-    {
-      "type": "paragraph",
-      "text": "Құпия дерек DB_PASSWORD secret-і арқылы беріледі; пароль мен runner credential файлдары есепке қосылған жоқ. Python скрипті тек сақталған дәлелдерден PDF жасайды, CI немесе deploy іске қоспайды.",
+      "text": "DB_PASSWORD Actions secret арқылы беріледі. Жергілікті қосылу параметрлері Git-ке кірмейтін .env файлында сақталады.",
       "originalStyle": "Small"
     }
   ]

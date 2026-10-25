@@ -1,4 +1,4 @@
-"""PDF есептерін автоматты тексеру. ГОСТ-қа толық сәйкестік сертификаты емес."""
+"""PDF есептерінің пішімін, мәтінін және суреттерін тексеру."""
 from pathlib import Path
 from html import unescape
 import argparse, hashlib, io, json, re, sys
@@ -68,7 +68,7 @@ def inspect(path,root,strict):
         if number_errors:problems.append('Бет нөмірі/орны: '+str(number_errors))
         if nonembedded:problems.append('Қаріп енгізілмеген: '+str(sorted(set(nonembedded))))
         if not body14:problems.append('14 pt Times New Roman мәтіні табылмады')
-        required=['1 Жұмыстың мақсаты','3 Жұмыстың орындалу барысы','4 Жұмыс нәтижелері','5 Талдау','6 Қорытынды','7 Пайдаланылған әдебиеттер тізімі'] if path.name.startswith('lab') else ['1 Жұмыстың мақсаты','2 Тапсыруға дайындық барысы','3 Жұмыс нәтижелері','4 Талдау','5 Қорытынды','6 Пайдаланылған әдебиеттер тізімі']
+        required=['1 Жұмыстың мақсаты','3 Жұмыстың орындалу барысы','4 Жұмыс нәтижелері','5 Талдау','6 Қорытынды','7 Пайдаланылған әдебиеттер тізімі'] if path.name.startswith('lab') else ['1 Жұмыстың мақсаты','2 Орындау барысы','3 Жұмыс нәтижелері','4 Талдау','5 Қорытынды','6 Пайдаланылған әдебиеттер тізімі']
         for section in required:
             if compact(section) not in flat:problems.append('Бөлім жоқ: '+section)
         if path.name.startswith('lab') and compact('2 Теориялық мәліметтер') not in flat:problems.append('Теория бөлімі жоқ')
@@ -100,7 +100,7 @@ def main():
     for path in paths:
         try:rows.append(inspect(path,ROOT,not args.baseline))
         except Exception as error:rows.append({'file':path.name,'automaticPass':False,'problems':[str(error)]})
-    result={'scope':'Автоматты техникалық тексеру; ГОСТ сертификаты немесе ресми баға емес','pdfCount':len(rows),'labReportCount':sum(r['file'].startswith('lab') for r in rows),'totalPages':sum(r.get('pages',0) for r in rows),'passed':sum(r['automaticPass'] for r in rows),'failed':sum(not r['automaticPass'] for r in rows),'reports':rows}
+    result={'scope':'PDF пішімі, мәтін және суреттер','pdfCount':len(rows),'labReportCount':sum(r['file'].startswith('lab') for r in rows),'totalPages':sum(r.get('pages',0) for r in rows),'passed':sum(r['automaticPass'] for r in rows),'failed':sum(not r['automaticPass'] for r in rows),'reports':rows}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:result[k] for k in ['pdfCount','labReportCount','totalPages','passed','failed']},ensure_ascii=True))
     for row in rows:

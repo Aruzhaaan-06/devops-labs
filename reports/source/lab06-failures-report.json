@@ -317,7 +317,7 @@
     },
     {
       "type": "heading",
-      "text": "2. Тапсыру кестесі: сценарийлер 2-5",
+      "text": "2. Ақау сценарийлерінің нәтижелері",
       "originalStyle": "Heading"
     },
     {
@@ -766,7 +766,7 @@
     },
     {
       "type": "heading",
-      "text": "5. Тапсырудағы екі сұраққа жауап",
+      "text": "5. Бақылау сұрақтарына жауап",
       "originalStyle": "Heading"
     },
     {
@@ -916,7 +916,7 @@
     },
     {
       "type": "heading",
-      "text": "6. Қорытынды және тапсыру құрамы",
+      "text": "6. Қорытынды нәтижелер",
       "originalStyle": "Heading"
     },
     {
@@ -974,14 +974,14 @@
           [
             {
               "type": "paragraph",
-              "text": "Тапсыру кестесі",
+              "text": "Сценарийлер кестесі",
               "originalStyle": "Cell"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Осы есептің 3-бетінде бес бағанмен берілген",
+              "text": "Сценарийлер кестесінде бес бағанмен берілген",
               "originalStyle": "Cell"
             }
           ]
@@ -997,7 +997,7 @@
           [
             {
               "type": "paragraph",
-              "text": "Осы есептің 6-бетінде жауап берілген",
+              "text": "Бақылау сұрақтары бөлімінде жауап берілген",
               "originalStyle": "Cell"
             }
           ]
@@ -1057,48 +1057,18 @@
       ]
     },
     {
-      "type": "heading",
-      "text": "Docker Desktop арқылы қарау",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Docker Desktop ішіндегі Containers → devops-labs → api-1 бөлімінің Logs, Inspect, Exec және Stats қойындыларын пайдаланушы өзі қарап, «вкладки просмотрены» деп растады. Ассистенттің басқару құралы сурет түсіре алмағандықтан, экран суреті берілмеді; бұл тармақ пайдаланушының растауы ретінде белгіленді. Техникалық мәндер CLI арқылы бөлек дәлелденген.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Тапсыру файлдары",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Бұл қазақша PDF, жұмыс нұсқаулығы, қайта орындау скрипті, бөлек Postman коллекциясы және evidence/lab06-failures ішіндегі T1/T2/T3 файлдары жария репозиторийге қосылады. Бастапқы код пен тұрақты Compose конфигурациясына мінез-құлық өзгерісі енгізілген жоқ.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "Есеп жарияланатын PR PostgreSQL қатысатын міндетті CI-ден өтеді. Біріктірілген main үшін CI/CD қайта орындалып, соңғы API version мен main SHA сәйкестігі қосымша lab11-final-verification.json файлында беріледі. Есептегі lab11-89a0e2b - жергілікті тәжірибе нұсқасы, соңғы deploy SHA-ы емес.",
-      "originalStyle": "Body"
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/reports\" color=\"#175E9A\">Қазақша есептер мен ортақ мұрағат</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab06-failures/checks.json\" color=\"#175E9A\">35 тексеру</link>",
       "originalStyle": "Body"
     },
     {
       "type": "heading",
-      "text": "Қауіпсіздік және шектеулер",
+      "text": "Қауіпсіздік",
       "originalStyle": "Sub"
     },
     {
       "type": "paragraph",
       "text": "Тәжірибелер тек localhost-тағы оқу Compose жобасында жасалды. DB_PASSWORD пен GitHub токендері есепке қосылған жоқ. Chaos crash сұрауы негізгі Postman коллекциясына енгізілмеді; оны тек айқын таңдалған тексеру скрипті орындайды. Құпия деректер көрінуі мүмкін толық inspect Config.Env жарияланбады.",
-      "originalStyle": "Small"
-    },
-    {
-      "type": "paragraph",
-      "text": "Екі GitHub аккаунты бір адамға тиесілі; техникалық Approve тәуелсіз студенттің ревьюі емес. Оқытушы логині берілмеген; бұрынғы жұмыстардың қолмен жөндеу/сурет тармақтары өз чек-парағында қалады. Осы есеп 12-15-материалдардың орындалғанын мәлімдемейді.",
       "originalStyle": "Small"
     }
   ]

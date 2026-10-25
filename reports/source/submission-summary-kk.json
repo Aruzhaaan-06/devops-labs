@@ -7,116 +7,7 @@
   "blocks": [
     {
       "type": "heading",
-      "text": "DevOps жұмыстарын тапсыру<br/>Қорытынды толықтыру",
-      "originalStyle": "Head"
-    },
-    {
-      "type": "paragraph",
-      "text": "2026 жылғы 25 қазан · Қазақ тіліндегі есептерге қосымша",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Мәлімет",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Мәні",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Университет",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "ВКТУ",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Орындаған",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Есімханова Аружан Түсіпханқызы",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Тобы",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "25-ИСТК-2о",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Негізгі жинақ",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "14 зертханалық есеп, 116 бет; v1.1.0 релизі",
-              "originalStyle": "Cell"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        147.96850393700788,
-        345.25984251968504
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "Жинақтың мақсаты",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Бұл толықтыру бұрынғы есептерді алмастырмайды. Ол код, тест және сақталған тәжірибе нәтижелерін тапсыру кезінде жетіспейтін интерфейс дәлелдері мен ұйымдастыру қадамдарынан ажыратады. Жұмыстар толық қабылданды немесе белгілі бір бағаға кепілдік берілді деп мәлімделмейді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Қайта тексерілген нәтижелер",
+      "text": "Нұсқалар бойынша қайта тексеру нәтижелері",
       "originalStyle": "Sub"
     },
     {
@@ -223,7 +114,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Бұл тестілер dotnet test арқылы орындалды. TRX қорытындысында нақты уақыт, бастапқы код SHA және жергілікті түпнұсқаның SHA-256 мәні бар. Test Explorer интерфейсінде орындау және оның суреті әзірге расталмаған.",
+      "text": "Тесттер dotnet test арқылы орындалып, нәтижелер TRX файлдарына сақталды. Әр қорытындыда бастапқы код нұсқасы, тест саны және нәтиже көрсетілген.",
       "originalStyle": "Body"
     },
     {
@@ -232,17 +123,18 @@
       "originalStyle": "Body"
     },
     {
-      "type": "paragraph",
-      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/evidence/submission-readiness/checks.json\" color=\"#175E9A\">Тест қорытындысы</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0\" color=\"#175E9A\">Негізгі релиз</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/33\" color=\"#175E9A\">Толықтыру PR №33</link>",
-      "originalStyle": "Body"
+      "type": "heading",
+      "text": "API күй ауысуын талдау",
+      "originalStyle": "Sub"
     },
     {
-      "type": "originalPageBreak"
+      "type": "paragraph",
+      "text": "Todo → Done сұрауында контроллер 409 қайтарады және жаңарту әдісі шақырылмайды. Todo → InProgress сұрауы ChangeStatusAsync → SetStatusAsync → Replace тізбегімен орындалады."
     },
     {
       "type": "heading",
-      "text": "Жетіспейтін интерфейс дәлелдері",
-      "originalStyle": "Head"
+      "text": "Жұмыстардың жалпы нәтижелері",
+      "originalStyle": "Sub"
     },
     {
       "type": "table",
@@ -251,15 +143,13 @@
           [
             {
               "type": "paragraph",
-              "text": "Жұмыс",
-              "originalStyle": "Cell"
+              "text": "Жұмыс"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Қажет дәлел",
-              "originalStyle": "Cell"
+              "text": "Нәтиже"
             }
           ]
         ],
@@ -267,15 +157,13 @@
           [
             {
               "type": "paragraph",
-              "text": "1, 1-бөлім",
-              "originalStyle": "Cell"
+              "text": "1.1 · Тапсырмалар сервисінің API интерфейсі"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Postman: demo-api коллекциясының атауы, сұраулар тізімі және нақты жауап. Бөлек көшірме: localhost:8094.",
-              "originalStyle": "Cell"
+              "text": "Нақты HTTP жауаптары мен Swagger суреті сақталған. Міндетті Postman CLI жиынтығы 22 сұрау мен 67 тексеруден қатесіз өтті; кеңейтілген жиынтықта 24 сұрау және 73 тексеру бар."
             }
           ]
         ],
@@ -283,15 +171,13 @@
           [
             {
               "type": "paragraph",
-              "text": "1, 2-бөлім",
-              "originalStyle": "Cell"
+              "text": "1.2 · Сұрауды талдау және жоба статистикасы"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "lab01-required-24 шешіміндегі 24 жасыл тест; екі stats тесті көрінуі керек.",
-              "originalStyle": "Cell"
+              "text": "Міндетті жиынтық 24/24, қосымша мерзім ережесі бар жиынтық 28/28 өтті. Статистика үшін нақты 3/2/1/0/1 жауабы және Swagger суреті сақталған."
             }
           ]
         ],
@@ -299,15 +185,13 @@
           [
             {
               "type": "paragraph",
-              "text": "1, 2-бөлім",
-              "originalStyle": "Cell"
+              "text": "2.1 · Dockerfile және құрастыру кэші"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "F9/F10/F11 арқылы екі сұрау: Todo → Done (409), бөлек Todo → InProgress (200). Locals және Call Stack.",
-              "originalStyle": "Cell"
+              "text": "Linux контейнері, API, hello-world және restore кезеңіндегі CACHED нәтижесі сақталған. Контейнер қайта іске қосылғанда InMemory деректерінің жоғалуы нақты тексерілген."
             }
           ]
         ],
@@ -315,15 +199,13 @@
           [
             {
               "type": "paragraph",
-              "text": "2 · 03-материал",
-              "originalStyle": "Cell"
+              "text": "3.1-3.2 · Сервиске арналған PostgreSQL"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Docker Desktop → Settings → General: Use the WSL 2 based engine қосылғанының шынайы суреті.",
-              "originalStyle": "Cell"
+              "text": "PostgreSQL-де міндетті 24/24 және толық 28/28 тест өтті. Контейнерді қайта жасағаннан кейін деректер сақталды; қосылудың екі қатесі нақты қайталанды."
             }
           ]
         ],
@@ -331,15 +213,13 @@
           [
             {
               "type": "paragraph",
-              "text": "3 · 05-материал",
-              "originalStyle": "Cell"
+              "text": "3.3 · Docker Compose және деректердің өмірлік циклі"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Visual Studio іске қосу шығысында Хранилище: PostgreSQL; SQL Test Explorer-де 24 міндетті және бөлек 28 толық тест.",
-              "originalStyle": "Cell"
+              "text": "14 техникалық тексеру, 3 → 3 → 2 деректер тәжірибесі және Adminer-дің екі нақты суреті сақталған. Резервтік көшірме бөлек дерекқорда қалпына келтіріліп тексерілген."
             }
           ]
         ],
@@ -347,15 +227,13 @@
           [
             {
               "type": "paragraph",
-              "text": "4 · 07-материал",
-              "originalStyle": "Cell"
+              "text": "4.1 · Git және GitHub-та бірлескен жұмыс"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Қабылданбаған push терезесінің шынайы суреті. GH013 мәтіндік журналы бұрыннан сақталған.",
-              "originalStyle": "Cell"
+              "text": "13 техникалық тексеру, GH013 қабылдамауы, inline пікір мен түзету, нақты қақтығыс және Git тарихы сақталған."
             }
           ]
         ],
@@ -363,15 +241,13 @@
           [
             {
               "type": "paragraph",
-              "text": "7 · 14-материал",
-              "originalStyle": "Cell"
+              "text": "4.2 · GitHub ережелері және шығарылым"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Grafana UI арқылы JSON экспорты және ақау кезіндегі Grafana/Dozzle бақылауы. Қазіргі API/файл дәлелдері UI әрекеті ретінде саналмайды.",
-              "originalStyle": "Cell"
+              "text": "InMemory және PostgreSQL орталарында 38/38 тест өтті. Postman: 37 сұрау, 99 тексеру; v0.1.0 шығарылымы мен Done тақтасы сақталған."
             }
           ]
         ],
@@ -379,111 +255,105 @@
           [
             {
               "type": "paragraph",
-              "text": "8 · 15-материал",
-              "originalStyle": "Cell"
+              "text": "5.1 · GitHub Actions арқылы үздіксіз интеграция"
             }
           ],
           [
             {
               "type": "paragraph",
-              "text": "Нақты инциденттің Grafana p95 және ALERTS firing тарихының көріністері; кейін ашылған тарихи сурет ретінде белгілеу.",
-              "originalStyle": "Cell"
+              "text": "PostgreSQL CI 38/38 өтті. Әдейі бұзылған тест merge әрекетін бұғаттады; түзетілген іске қосу қайта сәтті аяқталды. PR №17 кейінгі CD кезеңінде біріктірілді."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "5.2 · Үздіксіз жеткізу және кері қайтару"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "39/39 тест, Postman 38 сұрау/103 тексеру, test → image → deploy тізбегі және екі rollback сақталған. Қолмен rollback 12,823 с, workflow rollback 57,696 с; v1.0.0 жарияланған."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "6.1 · Қолданба ақаулары және қайта іске қосу"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Төрт сценарий және 35 тексеру, T1/T2/T3 уақыттары, Postman 4 сұрау/10 тексеру сақталған. Уақытша restart: no конфигурациясы қайтарылған."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "6.2 · Ресурстар, тәуелділік және диагностика"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "38 тексеру: OOM exit137, live200/ready503/tasks500, unhealthy кезінде restart болмауы және slow200 өлшемі 3,027 с. Postman 5 сұрау/11 тексеру; diag.ps1 қосылған."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "7.1 · Метрикалар және PromQL"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "3/3 UP, тоғыз PromQL сұрауы, 13 нақты сурет, 1200 итерация және Postman 5 сұрау/15 тексеру сақталған."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "7.2 · Grafana панельдері және алерттер"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бес сценарийдегі алты firing ауысуы, 30 сақталған дәлел тексеруі, InMemory 40/40 және Postman 10 сұрау/17 тексеру бар. Алғашқы сәтсіз OOM әрекеті бөлек сақталған."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "8 · Инцидентті анықтау және қалпына келтіру"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "PostgreSQL CI 40/40, нақты rollback және Revert PR №28, Postman 6 сұрау/13 тексеру, 34 дәлел тексеруі сақталған. T1-T0 204,726 с; T2-T1 100,149 с. 1771 тапсырма сақталған."
             }
           ]
         ]
-      ],
-      "widths": [
-        118.37480314960631,
-        374.8535433070867
       ]
     },
     {
-      "type": "heading",
-      "text": "Құралдың нақты шектеуі",
-      "originalStyle": "Sub"
-    },
-    {
       "type": "paragraph",
-      "text": "Терезені қайта белсендіргеннен кейін де Visual Studio суреті FrameArrived timed out қатесімен аяқталды. Браузер құралы Local browser use is disabled in Work settings қатесін берді. Жаңа UI суреттері алынған немесе қолмен жөндеу орындалған деп көрсетілмейді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "Жөндеу кезінде 409 тармағында жаңарту шақырылмайды. 200 тармағы ChangeStatusAsync → SetStatusAsync → Replace арқылы өтеді. Суреттер нақты іске қосу мен бастапқы код нұсқасына сәйкес келуі керек.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "originalPageBreak"
-    },
-    {
-      "type": "heading",
-      "text": "Тапсыру реті және ашық тармақтар",
-      "originalStyle": "Head"
-    },
-    {
-      "type": "heading",
-      "text": "1. Бірінші жұмыстың бөлек шешімін ашу",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "lab01-required-24/DemoApi.slnx; Debug және http профилі; localhost:8094. Міндетті 24 тестіні іске қосып, Postman мен екі жөндеу сценарийінің суреттерін сақтау.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "2. PostgreSQL дәлелдерін толықтыру",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "lab03-postgres/DemoApi.slnx; localhost:8095. Міндетті жиынтық үшін postgres-required24.runsettings, толық жиынтық үшін postgres-full28.runsettings таңдалады. Қосылу құпиясын кадрда ашуға болмайды.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "3. Мониторингтің тарихи көрінісі",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "2026 жылғы 24 қазан, 18:10-18:24 UTC; жергілікті уақыт 23:10-23:24 UTC+5. Grafana-да Latency p95; Prometheus-те ALERTS{alertname=\"ApiSlowRequests\",alertstate=\"firing\"}. Тарихи көріністі инцидент кезінде түсірілген түпнұсқа сурет деп беруге болмайды. Қазіргі inactive күйі өткен firing-ті дәлелдемейді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "Инциденттің сақталған уақыты: T0 18:10:54 UTC, T1 18:14:18.726 UTC, T2 18:15:58.875 UTC. Ақаулы релиз сурет алу үшін қайта орнатылмайды; нақты JSON және есептегі деректер сақталған.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "4. Оқытушының немесе студенттің қатысуы",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Оқытушының GitHub атауы әлі берілмеген. Екі ревью аккаунты бір адамға тиесілі: оны тәуелсіз жұптық жұмыс деп көрсетуге болмайды. Жеке B репозиторийінің орындалмаған кезеңін оқытушымен келісу қажет. 04-материалдың шарты жоқ; бұл оның орындалғанын білдірмейді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "Курс форумында слотқа жазылу, 10 минуттық онлайн қорғауда экранды көрсету және екі сұраққа жауап беру, есептерді СДО-ға жүктеу студенттің қатысуын талап етеді. Осы құжат бұл әрекеттердің орнына жүрмейді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Жинақ және оның шекарасы",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Бастапқы жариялау кезеңінде негізгі 14 PDF өзгертілмеген. Қосымшаның бастапқы нұсқасы үш бет болған; рәсімделген нұсқаның көлемі есептер каталогында берілген. Қорытынды архивте есептер, бірінші жұмыстың тарихи бастапқы коды, тексеру қорытындылары және SHA-256 тізімі болады. Құпиялар, .env, жергілікті тіркелгі файлдары және пайдаланушы жолдары архивке кірмейді. Performance baseline №30 осы аяқтау кезеңінің құрамына кірмейді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/submission-checklist.md\" color=\"#175E9A\">Толық чек-парақ</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/reports/README.md\" color=\"#175E9A\">Барлық есептер</link>",
-      "originalStyle": "Body"
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs\">Бастапқы код пен тексеру нәтижелері</link>"
     }
   ]
 }

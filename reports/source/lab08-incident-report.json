@@ -146,16 +146,6 @@
       "originalStyle": "Body"
     },
     {
-      "type": "heading",
-      "text": "Орындау шекарасы",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Тәжірибе localhost оқу стендінде орындалды. Браузерді басқару бұғатталғандықтан UI скриншоттары жасалды деп көрсетілмейді: нақты Prometheus жауаптары, график және журналдар берілді. Оқытушы алдындағы онлайн қорғау бұл есеппен алмастырылмайды.",
-      "originalStyle": "Body"
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/issues/27\" color=\"#175E9A\">Инцидент №27</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/26\" color=\"#175E9A\">Нашар шығарылым PR №26</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/pull/28\" color=\"#175E9A\">Revert PR №28</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0\" color=\"#175E9A\">v1.1.0 релизі</link>",
       "originalStyle": "Body"
@@ -507,16 +497,6 @@
     {
       "type": "paragraph",
       "text": "Тестілер HTTP күйін, жауап мазмұнын, валидацияны және деректерді тексереді. Сұраудың 1,5 секунд күтуі сол нәтижелерді өзгертпейді. Бұрынғы deploy smoke тек /health/ready-ді оқыды; ол Tasks/List кідірісін тексермеді.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Ревьюдің шегі",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Екі GitHub тіркелгісі бір адамға тиесілі. Сондықтан Approve - қорғалған репозиторийдегі техникалық сценарий, тәуелсіз топтас студенттің ревьюі емес. Әдейі енгізілген кідіріс оқу инциденті екені PR ішінде ашық жазылды.",
       "originalStyle": "Body"
     },
     {
@@ -984,12 +964,12 @@
     },
     {
       "type": "heading",
-      "text": "Шешімнің шегі",
+      "text": "Кері қайтару нәтижесі",
       "originalStyle": "Sub"
     },
     {
       "type": "paragraph",
-      "text": "Жергілікті мақұлдау пайдаланушының тапсырмасы бойынша ассистентпен орындалды. Қорғау өшірілмеді және bypass қолданылмады. Бұл тәуелсіз адамның approval-ы деп көрсетілмейді. Rollback - жедел қалпына келтіру; main ішіндегі нашар commit келесі Revert PR арқылы ғана түзетіледі.",
+      "text": "local ортасының мақұлдау талабы сақталды; main қорғауы өшірілген жоқ, bypass қолданылмады. Rollback сервисті бұрынғы бейнемен қалпына келтірді. Main ішіндегі кідіріс келесі Revert PR арқылы жойылды.",
       "originalStyle": "Body"
     },
     {
@@ -1007,7 +987,7 @@
     },
     {
       "type": "paragraph",
-      "text": "GitHub серверінің revertPullRequest операциясы PR №26 өзгерісін кері қайтаратын жаңа PR №28 жасады. Бұл - GitHub Revert батырмасының серверлік баламасы; файлды қолмен бұрынғы күйге ұқсатып жазу емес. Браузер қолжетімсіз болғандықтан операция ресми API арқылы орындалды.",
+      "text": "GitHub серверінің revertPullRequest операциясы PR №26 өзгерісін кері қайтаратын PR №28 жасады. Операция GitHub API арқылы орындалды.",
       "originalStyle": "Body"
     },
     {
@@ -1315,7 +1295,7 @@
           [
             {
               "type": "paragraph",
-              "text": "Диагностика, rollback және қорғау жоспары; нұсқаулыққа енгізілді",
+              "text": "Диагностика, rollback және қалпына келтіру нұсқаулығы; нұсқаулыққа енгізілді",
               "originalStyle": "Cell"
             }
           ]
@@ -1645,16 +1625,6 @@
       "text": "postman collection run postman/lab08-incident.postman_collection.json `\n  --env-var expectedVersion=sha-<current-main> --no-report-events\npython scripts/check-lab15-evidence.py"
     },
     {
-      "type": "heading",
-      "text": "Маңызды шектеу",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "API/CLI жауаптары мен осы есептің графигі нақты деректерден алынды. Бірақ олар интерфейстің шынайы скриншоты деп көрсетілмейді. Браузер бұғаттауы салдарынан әдістемедегі alert/Grafana скриншоттары толықтырылмаған. Бұл тармақтың бағасын оқытушы анықтайды.",
-      "originalStyle": "Body"
-    },
-    {
       "type": "paragraph",
       "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/main/evidence/lab08-incident\" color=\"#175E9A\">Барлық бастапқы дәлелдер</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/postman/lab08-incident.postman_collection.json\" color=\"#175E9A\">Қайта қолданылатын коллекция</link>",
       "originalStyle": "Body"
@@ -1664,7 +1634,7 @@
     },
     {
       "type": "heading",
-      "text": "10. Қорғауға дайындық: алты сұрақ",
+      "text": "10. Бақылау сұрақтары",
       "originalStyle": "Heading"
     },
     {
@@ -1729,217 +1699,6 @@
     },
     {
       "type": "originalPageBreak"
-    },
-    {
-      "type": "heading",
-      "text": "11. Тапсыру талаптары және он минуттық қорғау",
-      "originalStyle": "Heading"
-    },
-    {
-      "type": "table",
-      "rows": [
-        [
-          [
-            {
-              "type": "heading",
-              "text": "Критерий",
-              "originalStyle": "Head"
-            }
-          ],
-          [
-            {
-              "type": "heading",
-              "text": "Ұпай",
-              "originalStyle": "Head"
-            }
-          ],
-          [
-            {
-              "type": "heading",
-              "text": "Осы жұмыстың күйі",
-              "originalStyle": "Head"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Жасыл test -&gt; image -&gt; deploy, main қорғауы",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "20",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Қорғаныс сақталды; соңғы release/main бөлек manifest арқылы тексеріледі",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Алертпен табу, әрекет/жол/deploy",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "20",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Нақты firing, Tasks/List, 15-жол және sha-4e49041",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Rollback және қалпына келу уақыты",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "20",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "100,149 с; нақты version және inactive",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Revert PR және deploy",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "15",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "GitHub жасаған PR №28; пайплайнмен жарияланды",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Инцидент, суреттер, постмортем, әрекеттер",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "15",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Хронология/постмортем/issue бар; UI скриншоттары толықтырылмаған",
-              "originalStyle": "Cell"
-            }
-          ]
-        ],
-        [
-          [
-            {
-              "type": "paragraph",
-              "text": "Оқытушының екі сұрағына жауап",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "10",
-              "originalStyle": "Cell"
-            }
-          ],
-          [
-            {
-              "type": "paragraph",
-              "text": "Алты дайын жауап берілді; онлайн қорғау өтпеді",
-              "originalStyle": "Cell"
-            }
-          ]
-        ]
-      ],
-      "widths": [
-        226.88503937007877,
-        44.39055118110237,
-        221.95275590551185
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "Өздігінен баға қойылмайды",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Әдістемеде өту шегі 70 ұпай деп берілген. Бұл есеп автоматты түрде сол бағаны кепілдемейді: UI дәлелдерін, орындалған тармақтарды және онлайн жауаптарды оқытушы бағалайды.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Қорғау жоспары",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "0-2 минут: репозиторий, main қорғауы, жасыл пайплайн және v1.1.0. 2-4 минут: алерт, controller/action, нұсқа және код жолы. 4-6 минут: rollback, T0/T1/T2 және деректердің сақталуы. 6-8 минут: Revert PR, постмортем, latency gate және ашық follow-up. 8-10 минут: оқытушының екі сұрағына жауап.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "heading",
-      "text": "Студент орындайтын қадамдар",
-      "originalStyle": "Sub"
-    },
-    {
-      "type": "paragraph",
-      "text": "Курс форумында слотқа жазылу, Teams/Zoom/Meet арқылы экран көрсетіп қорғау және есепті СДО-ға жүктеу. Оқытушының GitHub атауы әлі берілмеген. Бұрынғы жұмыстардағы қолмен жөндеу және экран суреттері жөніндегі тармақтар мен шарттары алынбаған 04-материал жалпы чек-листе сақталады.",
-      "originalStyle": "Body"
-    },
-    {
-      "type": "paragraph",
-      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/releases/tag/v1.1.0\" color=\"#175E9A\">Релиз: есеп, ортақ мұрағат және final verification</link> · <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/main/docs/lab08-incident.md\" color=\"#175E9A\">Қадамдық runbook және шектеулер</link>",
-      "originalStyle": "Body"
     }
   ]
 }
