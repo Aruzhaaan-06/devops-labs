@@ -1,27 +1,104 @@
-# Материал 15 / лабораторная 8: доказательства
+# Инцидентті анықтау және қалпына келтіру — орындалу дәлелдері
 
-ВКТУ · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о.
+Д. Серікбаев атындағы Шығыс Қазақстан техникалық университеті · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о.
 
-[Инцидент #27](https://github.com/Aruzhaaan-06/devops-labs/issues/27) · [постмортем](https://github.com/Aruzhaaan-06/devops-labs/issues/27#issuecomment-6387899631) · [PR #26](https://github.com/Aruzhaaan-06/devops-labs/pull/26) · [GitHub Revert PR #28](https://github.com/Aruzhaaan-06/devops-labs/pull/28) · [отчёт](../../reports/lab08-incident-report.pdf) · [runbook](../../docs/lab08-incident.md).
+2026 жылғы 24 қазан, 15-материал. Тек жергілікті оқу стенді. T0: 18:10:54 UTC, PR #26 біріктірілген; T1: 18:14:18.726369 UTC, алғашқы сақталған ApiSlowRequests firing; T2: 18:15:58.875623 UTC, sha-cf768be қайтарылған және алерт inactive. Анықтау: 204,726 с, оның ішінде CI/жинақтау/кезек/deploy бар. Қалпына келтіру: 100,149 с, оның ішінде диагностика/dispatch/мақұлдау/runner/растау бар.
 
-Это реальные измерения localhost стенда 24 октября 2026, UTC (местное UTC+5). Нет подставленных состояний, фальшивых screenshots или обещания преподавательской оценки.
+Tasks/List p95: 1,9968 с; алерттен кейінгі HTTP 200 сұрауы: 1,512395 с. Гистограмма бағасы мен нақты сұрау уақыты араластырылмайды. T1-ге дейін қолмен API сұрауы жасалмаған; CI smoke, жүктеме және Prometheus бақылаушысы жұмыс істеген. GitHub нақты Revert PR #28 жасаған, src/tests қалпына келген; кейінгі p95 шамамен 1,76 ms. Төрт тарихи PostgreSQL CI: 40/40.
 
-- `baseline.json`: исходный main/версия, 3 UP, inactive slow rule; сохранён `sha-cf768be`.
-- `T0/T1/T2.json`, `incident-metrics.json`: определения и реальные timestamps. T1-T0 204,726 с включает pipeline; T2-T1 100,149 с включает восстановление и подтверждение. Опрос около 1 с, это наблюдаемые границы.
-- `alerts-timeline.jsonl`, `first-firing.json`: полный реальный rule stream. Детектор не опрашивал приложение вручную, T1 записан раньше диагностических HTTP запросов.
-- `diagnosis.json`: action/controller PromQL, Tasks/List p95 1,9968 с, version `sha-4e49041`, исходная строка 15 и HTTP 200 после алерта за 1,512 с. Histogram и wall-clock не смешиваются.
-- `p95-global-range.json`, `p95-actions-range.json`, `alert-range.json`, `up-range.json`: сохранённые ответы Prometheus query_range. График PDF строится из них; NaN не заменяется нулём.
-- `ci-summary.json`: bad PR/main и Revert PR/main, четыре настоящих PostgreSQL CI с 40/40. Полные публичные runs доступны по сохранённым ссылкам; исходные archives проверены на `Passed40/Total40`.
-- `revert-operation.json`, `source-proof.json`, `revert-recovered.json`: GitHub **сам сгенерировал Revert PR** через официальный API; src/tests точно восстановлены, p95 Tasks/List около 1,76 мс. Permanent Compose/alerts/scrape не менялись.
-- `latency-guard.json`, `bad-latency-guard.txt`, `good-latency-guard.txt`: тот же PowerShell smoke отклонил 1615,960 мс (exit 1) и пропустил 98,281 / 4,096 / 2,590 мс (exit 0). Локальный путь в ошибке заменён на `<work>`, лишние пустые строки в конце текстовых журналов убраны; значения не редактировались.
-- `github-links.json`, `postmortem.json`: фактические issue/PR/rollback links и опубликованный postmortem comment. Каждому действию соответствует отдельный issue 29/30/31.
-- `retained-data.json`, `load-tasks.json`: старые объекты и серии сохранены; 1771 InProgress задачи проекта 37, хеш точного набора. Пять ошибок транспорта при deploy не выданы за успешные запросы.
-- `load-console.txt`, `load-stderr.txt`, `owned-load.json`, `observer-final.json`: bounded load и наблюдатель остановлены; предел 20 000 не означает 20 000 завершённых циклов. Напечатанные итерации — прогресс, не точный счётчик successes.
-- `postman-console.txt`, `postman-results.json`: реальный read-only API/Prometheus, 6 запросов / 13 assertions / 0 failures, явный expectedVersion, все пять правил inactive; без Postman cloud.
-- `snapshot-after-revert.json`, `fixed-api-logs.txt`: исправленная версия, health, targets/rules и сохранённый stdout текущего исправленного контейнера. Это не журнал удалённого плохого контейнера.
-- `ui-status.json`: браузерная блокировка и отсутствие UI снимков объявлены явно. PDF содержит собственный график по API данным, не якобы снятый экран.
-- `checks.json`, `report-validation.json`, `deliverables.json`: проверка фактов, PDF и общего архива; прошлые 13 PDF сохраняются без изменений.
+Latency smoke нашар нұсқада 1615,960 ms нәтижесін қабылдамаған (exit 1); түзетілген нұсқада 98,281/4,096/2,590 ms өткен (exit 0). #29 және #31 жабылған; қосымша performance baseline #30 ашық. Жоба 37 ішінде 1771 InProgress тапсырмасы мен нақты жиынтық хэші сақталған. Бес көлік қатесі сәтті сұрау ретінде саналмаған. Жүктеме мен бақылаушы тоқтатылған; 20 000 шегі аяқталған цикл саны емес.
 
-В новом релизе v1.1.0 размещается `lab15-final-verification.json`: последний main/runtime, фактически выполненный deploy latency gate, 40/40, read-only Postman, все пять правил inactive, 3 UP, 7 панелей, сохранность данных, SHA256 PDF/ZIP и соответствие GitHub assets. Измерения инцидента в PDF относятся к более ранним bad/rollback/Revert этапам; manifest проверяет итоговый deploy, это разные моменты.
+Postman: тек оқу, 6 сұрау/13 тексеру/0 қате; бес ереже inactive. PDF графигі шынайы Prometheus деректерінен құрылған, UI скриншоты емес. UI суреттері, форум слоты, онлайн қорғау және СДО тармақтары ашық. Соңғы main/runtime релиздегі lab15-final-verification.json ішінде; ол инциденттің ертеректегі уақыттарынан бөлек.
 
-Остаются реальные ручные условия: UI screenshots, онлайн защита/слот в форуме/СДО, прежний чек-лист и неизвестный GitHub преподавателя. Второй аккаунт принадлежит тому же владельцу; reviews и assistant approvals не независимая человеческая работа. Issue #30 остаётся открытым расширением performance baseline.
+## Дәлел файлдары
+
+Төмендегі файл атаулары — өзгертілмеген техникалық идентификаторлар. JSON/TXT/JSONL ішіндегі нақты сұраулар, жауаптар, уақыттар, қателер және хэштер аударылмайды. Бұл каталогқа сілтемелерді қазақшалау бұрынғы тәжірибені қайта орындау немесе жетіспейтін суретті толықтыру болып саналмайды.
+
+- Құрылымдық дерек: [alert-range.json](alert-range.json)
+
+- Оқиғалар тізбегі: [alerts-timeline.jsonl](alerts-timeline.jsonl)
+
+- Бастапқы журнал: [bad-latency-guard.txt](bad-latency-guard.txt)
+
+- Құрылымдық дерек: [baseline.json](baseline.json)
+
+- Құрылымдық дерек: [checks.json](checks.json)
+
+- Құрылымдық дерек: [ci-summary.json](ci-summary.json)
+
+- Құрылымдық дерек: [deliverables.json](deliverables.json)
+
+- Құрылымдық дерек: [diagnosis.json](diagnosis.json)
+
+- Құрылымдық дерек: [first-firing.json](first-firing.json)
+
+- Бастапқы журнал: [fixed-api-logs.txt](fixed-api-logs.txt)
+
+- Құрылымдық дерек: [github-links.json](github-links.json)
+
+- Бастапқы журнал: [good-latency-guard.txt](good-latency-guard.txt)
+
+- Құрылымдық дерек: [incident-metrics.json](incident-metrics.json)
+
+- Құрылымдық дерек: [latency-guard.json](latency-guard.json)
+
+- Бастапқы журнал: [load-console.txt](load-console.txt)
+
+- Бастапқы журнал: [load-stderr.txt](load-stderr.txt)
+
+- Құрылымдық дерек: [load-tasks.json](load-tasks.json)
+
+- Құрылымдық дерек: [observer-final.json](observer-final.json)
+
+- Құрылымдық дерек: [owned-load.json](owned-load.json)
+
+- Құрылымдық дерек: [p95-actions-range.json](p95-actions-range.json)
+
+- Құрылымдық дерек: [p95-global-range.json](p95-global-range.json)
+
+- Бастапқы журнал: [postman-console.txt](postman-console.txt)
+
+- Құрылымдық дерек: [postman-results.json](postman-results.json)
+
+- Құрылымдық дерек: [postmortem.json](postmortem.json)
+
+- Құрылымдық дерек: [report-validation.json](report-validation.json)
+
+- Құрылымдық дерек: [retained-data.json](retained-data.json)
+
+- Құрылымдық дерек: [revert-operation.json](revert-operation.json)
+
+- Құрылымдық дерек: [revert-recovered.json](revert-recovered.json)
+
+- Құрылымдық дерек: [rollback-dispatch.json](rollback-dispatch.json)
+
+- Құрылымдық дерек: [snapshot-after-revert.json](snapshot-after-revert.json)
+
+- Құрылымдық дерек: [source-proof.json](source-proof.json)
+
+- Құрылымдық дерек: [T0.json](T0.json)
+
+- Құрылымдық дерек: [T1.json](T1.json)
+
+- Құрылымдық дерек: [T2.json](T2.json)
+
+- Құрылымдық дерек: [ui-status.json](ui-status.json)
+
+- Құрылымдық дерек: [up-range.json](up-range.json)
+
+## Нақты нәтижелерге бұрын берілген сілтемелер
+
+- [Дәлел 1](https://github.com/Aruzhaaan-06/devops-labs/issues/27)
+- [Дәлел 2](https://github.com/Aruzhaaan-06/devops-labs/issues/27#issuecomment-6387899631)
+- [Дәлел 3](https://github.com/Aruzhaaan-06/devops-labs/pull/26)
+- [Дәлел 4](https://github.com/Aruzhaaan-06/devops-labs/pull/28)
+- [Дәлел 5](../../reports/lab08-incident-report.pdf)
+- [Дәлел 6](../../docs/lab08-incident.md)
+
+## Есеп және қабылдау шектері
+
+[Есеп 8](../../reports/lab08-incident-report.pdf)
+
+[Нұсқаулық](../../docs/lab08-incident.md) · [Тапсырудың ашық тармақтары](../../docs/REPORT_COMPLETENESS.md) · [Барлық есептер](../../reports/README.md).
+
+Postman нәтижелері жергілікті тексеруден алынған; оларды бұл аударма бұлтқа жарияламайды. Екі ревью аккаунты бір иеге тиесілі. Кейінгі PDF рәсімдеуі бұрынғы checks/deliverables файлдарындағы тарихи бет саны мен хэшті алмастырмайды; түпнұсқа PDF Git тарихында сақталған.

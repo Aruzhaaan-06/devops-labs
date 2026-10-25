@@ -1,35 +1,120 @@
-# 12-материал: ресурстар және дайындық дәлелдері
+# Ресурстар, тәуелділік және диагностика — орындалу дәлелдері
 
-**ВКТУ · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о · 2026-10-24**
+Д. Серікбаев атындағы Шығыс Қазақстан техникалық университеті · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о.
 
-[38 шарт сәтті](checks.json), қате0. 6-9-тармақтар және қосымша diag.ps1 орындалды; толық 2-8 кестесі бұрынғы дәлелдермен біріктірілді. Осы күнгі жергілікті код - main2dd5a9f, APP_VERSION=lab12-2dd5a9f.
+12-материал: OOM → die 137 → start; БД тоқтағанда live 200/ready 503/tasks 500, API қайта қосылмаған; HTTP 404 healthcheck салдарынан unhealthy, автоматты restart жоқ; slow 3000 ms жауабы 200 және 3,027295 с. Compose қалпына келтіріліп, бақылау деректері сақталған. 38/38 тексеру; Postman: 5 сұрау/11 тексеру.
 
-| Дәлел | Нақты файл |
-|---|---|
-| Жергілікті build/up және бастапқы healthy | [build журналы](local-build-up.txt), [baseline](baseline.json), [initial](initial.json) |
-| T1 пәрмендер және HTTP | [t1-commands.txt](t1-commands.txt) |
-| T2 нақты үздіксіз events | [t2-events.jsonl](t2-events.jsonl), [stderr бос](t2-stderr.txt) |
-| T3 ресурс өлшемдері | [38 топтама](t3-stats.jsonl), [37 API үлгісі/78,58% максимум](resource-summary.json) |
-| 6: OOM | [80/160MB, transport error, before/after, cgroup, events](scenario-6-oom.json), [startup логтары](scenario-6-oom-logs.txt) |
-| 7: БД ақауы | [live200/ready503/tasks500, restart жоқ](scenario-7-db-unavailable.json), [Npgsql/Error](scenario-7-db-unavailable-logs.txt) |
-| БД қалпына келді | [сол API ID және сақталған деректер](db-restored.json) |
-| 8: unhealthy | [HTTP404/curl22 Health.Log және restart жоқ](scenario-8-unhealthy.json), [қолданба логы](scenario-8-unhealthy-logs.txt) |
-| 9: баяу жауап | [0,114133 с және 3,027295 с](scenario-9-slow-response.json), [лог](scenario-9-slow-response-logs.txt) |
-| Бақылау деректері | [marker](marker.json), [final-local healthy және том](final-local.json) |
-| Compose толық қайтарылды | [Бастапқы/соңғы байттар SHA-256](compose-restored.json) |
-| diag OOM тарихын тапты | [ағымдағы OOMKilled=false және тарихи oom/die137](diag-after-oom.txt) |
-| diag қалыпты/жоқ контейнер | [нәтиже](diag-tests.json), [healthy](diag-healthy.txt), [missing](diag-missing.txt) |
-| Тәжірибе скриптінің бастапқы қорғанысы | [Қате тег қабылданбады; API/DB ID, StartedAt, RestartCount және Compose өзгермеді](preflight-tests.json) |
-| Postman нақты API | [5/11, exit0](postman-results.json), [толық CLI шығысы](postman-resources.txt) |
-| Толық кестенің бұрынғы 2-5 бөлігі | [11-материал файлдарының SHA-256](part1-references.json) |
-| Әдістеме және ресми дереккөздер | [source-references.json](source-references.json) |
+diag.ps1 тек оқу режимінде күйді, health, RestartCount, жадыны, соңғы 20 журнал жолын және 15 минуттағы die/oom оқиғаларын береді. Config.Env оқылмайды; құпия пішімдері жасырылады. Жұмыс істейтін және жоқ контейнермен тексерілген. Қате тег өзгеріссіз қабылданбаған. 78,58% — өлшеу үлгісіндегі максимум, нақты OOM шыңы деп көрсетілмейді. Restart-тен кейінгі OOMKilled/cgroup сбросы тарихи oom оқиғасын жоққа шығармайды. Бір stats EOF сақталған; 2–5-сценарийлер алдыңғы кезеңнен, уақыттары ашық көрсетілген.
 
-OOM оқиғасы exit137 себебін растайды. Қайта іске қосылған State.OOMKilled=false/ExitCode0 және жаңа cgroup-тағы oom_kill0 бұрынғы өлімді жоққа шығармайды. T3 үлгілері жадтың шын шыңын өткізіп алуы мүмкін. Бір stats EOF/exit1 Compose recreation аралығында сақталды; келесі өлшемдер жалғасты.
+## Дәлел файлдары
 
-БД және unhealthy кезінде API процесі аяқталған жоқ; HTTP500 мен healthcheck exit22 процесс exit code-ына тең емес. Health.Log404 - қате тексерудің белгісі, ал нақты live/ready сол уақытта200 болған. Баяу жауап - жеке сұраудың өлшемі; load benchmark/p95/p99 өлшемі ретінде берілмейді.
+Төмендегі файл атаулары — өзгертілмеген техникалық идентификаторлар. JSON/TXT/JSONL ішіндегі нақты сұраулар, жауаптар, уақыттар, қателер және хэштер аударылмайды. Бұл каталогқа сілтемелерді қазақшалау бұрынғы тәжірибені қайта орындау немесе жетіспейтін суретті толықтыру болып саналмайды.
 
-2-5-сценарийлер 2026-10-23 тәжірибесінен, осы күнгі 6-9 тәжірибелерінен бөлек көрсетілген. Docker daemon оқиғаларының буфері тарихи архив емес. Үш CLI арнасы параллель процестерде орындалды; үш көрінетін терезе суреті ретінде көрсетілмейді.
+- Құрылымдық дерек: [baseline.json](baseline.json)
 
-DB_PASSWORD пен GitHub токендері жарияланбады; Config.Env сақталмады. Postman cloud-қа жариялау орындалмады; CLI login ескертуі жергілікті 5/11 нәтижесін өзгертпейді. Негізгі src/tests/Dockerfile/compose.yaml мінез-құлқы өзгертілмеді. Бұрынғы оқытушы/тәуелсіз парлық ревью және қолмен сдача тармақтары сақталды.
+- Құрылымдық дерек: [checks.json](checks.json)
 
-[Орындау және жауаптар](../../docs/lab06-resources.md) · [Қазақша PDF](../../reports/lab06-resources-report.pdf) · [diag.ps1](../../scripts/diag.ps1) · [Офлайн тексеру](../../scripts/check-lab12-evidence.py)
+- Құрылымдық дерек: [compose-restored.json](compose-restored.json)
+
+- Құрылымдық дерек: [db-restored.json](db-restored.json)
+
+- Құрылымдық дерек: [deliverables.json](deliverables.json)
+
+- Бастапқы журнал: [diag-after-oom.txt](diag-after-oom.txt)
+
+- Бастапқы журнал: [diag-healthy.txt](diag-healthy.txt)
+
+- Бастапқы журнал: [diag-missing.txt](diag-missing.txt)
+
+- Құрылымдық дерек: [diag-tests.json](diag-tests.json)
+
+- Құрылымдық дерек: [final-local.json](final-local.json)
+
+- Құрылымдық дерек: [initial.json](initial.json)
+
+- Бастапқы журнал: [local-build-up.txt](local-build-up.txt)
+
+- Құрылымдық дерек: [marker.json](marker.json)
+
+- Құрылымдық дерек: [part1-references.json](part1-references.json)
+
+- Бастапқы журнал: [postman-resources.txt](postman-resources.txt)
+
+- Құрылымдық дерек: [postman-results.json](postman-results.json)
+
+- Құрылымдық дерек: [preflight-tests.json](preflight-tests.json)
+
+- Құрылымдық дерек: [report-validation.json](report-validation.json)
+
+- Құрылымдық дерек: [resource-summary.json](resource-summary.json)
+
+- Бастапқы журнал: [scenario-6-oom-logs.txt](scenario-6-oom-logs.txt)
+
+- Құрылымдық дерек: [scenario-6-oom.json](scenario-6-oom.json)
+
+- Бастапқы журнал: [scenario-7-db-unavailable-logs.txt](scenario-7-db-unavailable-logs.txt)
+
+- Құрылымдық дерек: [scenario-7-db-unavailable.json](scenario-7-db-unavailable.json)
+
+- Бастапқы журнал: [scenario-8-unhealthy-logs.txt](scenario-8-unhealthy-logs.txt)
+
+- Құрылымдық дерек: [scenario-8-unhealthy.json](scenario-8-unhealthy.json)
+
+- Бастапқы журнал: [scenario-9-slow-response-logs.txt](scenario-9-slow-response-logs.txt)
+
+- Құрылымдық дерек: [scenario-9-slow-response.json](scenario-9-slow-response.json)
+
+- Құрылымдық дерек: [source-references.json](source-references.json)
+
+- Бастапқы журнал: [t1-commands.txt](t1-commands.txt)
+
+- Оқиғалар тізбегі: [t2-events.jsonl](t2-events.jsonl)
+
+- Бастапқы журнал: [t2-stderr.txt](t2-stderr.txt)
+
+- Оқиғалар тізбегі: [t3-stats.jsonl](t3-stats.jsonl)
+
+## Нақты нәтижелерге бұрын берілген сілтемелер
+
+- [Дәлел 1](checks.json)
+- [Дәлел 2](local-build-up.txt)
+- [Дәлел 3](baseline.json)
+- [Дәлел 4](initial.json)
+- [Дәлел 5](t1-commands.txt)
+- [Дәлел 6](t2-events.jsonl)
+- [Дәлел 7](t2-stderr.txt)
+- [Дәлел 8](t3-stats.jsonl)
+- [Дәлел 9](resource-summary.json)
+- [Дәлел 10](scenario-6-oom.json)
+- [Дәлел 11](scenario-6-oom-logs.txt)
+- [Дәлел 12](scenario-7-db-unavailable.json)
+- [Дәлел 13](scenario-7-db-unavailable-logs.txt)
+- [Дәлел 14](db-restored.json)
+- [Дәлел 15](scenario-8-unhealthy.json)
+- [Дәлел 16](scenario-8-unhealthy-logs.txt)
+- [Дәлел 17](scenario-9-slow-response.json)
+- [Дәлел 18](scenario-9-slow-response-logs.txt)
+- [Дәлел 19](marker.json)
+- [Дәлел 20](final-local.json)
+- [Дәлел 21](compose-restored.json)
+- [Дәлел 22](diag-after-oom.txt)
+- [Дәлел 23](diag-tests.json)
+- [Дәлел 24](diag-healthy.txt)
+- [Дәлел 25](diag-missing.txt)
+- [Дәлел 26](preflight-tests.json)
+- [Дәлел 27](postman-results.json)
+- [Дәлел 28](postman-resources.txt)
+- [Дәлел 29](part1-references.json)
+- [Дәлел 30](source-references.json)
+- [Дәлел 31](../../docs/lab06-resources.md)
+- [Дәлел 32](../../reports/lab06-resources-report.pdf)
+- [Дәлел 33](../../scripts/diag.ps1)
+- [Дәлел 34](../../scripts/check-lab12-evidence.py)
+
+## Есеп және қабылдау шектері
+
+[Есеп 6.2](../../reports/lab06-resources-report.pdf)
+
+[Нұсқаулық](../../docs/lab06-resources.md) · [Тапсырудың ашық тармақтары](../../docs/REPORT_COMPLETENESS.md) · [Барлық есептер](../../reports/README.md).
+
+Postman нәтижелері жергілікті тексеруден алынған; оларды бұл аударма бұлтқа жарияламайды. Екі ревью аккаунты бір иеге тиесілі. Кейінгі PDF рәсімдеуі бұрынғы checks/deliverables файлдарындағы тарихи бет саны мен хэшті алмастырмайды; түпнұсқа PDF Git тарихында сақталған.

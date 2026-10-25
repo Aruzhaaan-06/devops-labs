@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Existing version tag: sha-xxxxxxx or release x.y.z"
+        description: "Бар нұсқа тегі: sha-xxxxxxx немесе x.y.z шығарылымы"
         required: true
         type: string
 
@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  # ---------- CI: сборка и тесты на каждый PR и push ----------
+  # ---------- CI: әр PR және push үшін құрастыру мен тестілеу ----------
   test:
     if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
       - run: dotnet build DemoApi.slnx --no-restore -c Release
       - run: dotnet test DemoApi.slnx --no-build -c Release
 
-  # ---------- Сборка образа и публикация в GHCR (не для PR) ----------
+  # ---------- Бейнені құрастыру және GHCR-ға жариялау (PR үшін орындалмайды) ----------
   image:
     needs: test
     if: github.event_name == 'push' && github.repository == 'Aruzhaaan-06/devops-labs'
@@ -100,7 +100,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  # ---------- CD: деплой на Docker Desktop через self-hosted runner ----------
+  # ---------- CD: self-hosted runner арқылы Docker Desktop ішіне орналастыру ----------
   deploy:
     needs: image
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'Aruzhaaan-06/devops-labs'
@@ -111,7 +111,7 @@ jobs:
       packages: read
     defaults:
       run:
-        shell: pwsh          # на машине с runner нужен PowerShell 7
+        shell: pwsh          # runner орнатылған компьютерге PowerShell 7 қажет
     env:
       API_IMAGE: ${{ needs.image.outputs.image }}
       API_TAG: ${{ needs.image.outputs.tag }}
@@ -130,19 +130,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pull image
+      - name: Бейнені жүктеу
         run: docker compose pull api
 
-      - name: Deploy
+      - name: Қолданбаны орналастыру
         run: docker compose up -d --no-build --wait --wait-timeout 90
 
-      - name: Smoke test
+      - name: Негізгі жұмысқа қабілеттілікті тексеру
         run: docker compose exec -T api curl -fsS http://localhost:8080/health/ready
 
-      - name: Tasks list latency smoke
+      - name: Тапсырмалар тізімінің жауап уақытын тексеру
         run: ./scripts/smoke-tasks-latency.ps1 -BaseUrl "http://127.0.0.1:$env:API_PORT"
 
-      - name: Job summary
+      - name: Орындалу қорытындысы
         run: |
           $version = (Invoke-RestMethod "http://127.0.0.1:$env:API_PORT/" -TimeoutSec 10).version
           if ($version -ne $env:API_TAG) { throw "Running version differs from requested tag" }
@@ -167,7 +167,7 @@ jobs:
       API_PORT: "8088"
       COMPOSE_SUBNET: "10.254.54.0/24"
     steps:
-      - name: Validate version tag
+      - name: Нұсқа тегін тексеру
         run: |
           if ($env:API_TAG -notmatch '^(sha-[0-9a-f]{7}|[0-9]+\.[0-9]+\.[0-9]+)$') {
             throw "Use an existing sha-xxxxxxx or release x.y.z tag; latest is not a rollback target"
@@ -180,13 +180,13 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pull existing image
+      - name: Бұрынғы бейнені жүктеу
         run: docker compose pull api
-      - name: Roll back
+      - name: Алдыңғы нұсқаға қайтару
         run: docker compose up -d --no-build --wait --wait-timeout 90
-      - name: Smoke test
+      - name: Негізгі жұмысқа қабілеттілікті тексеру
         run: docker compose exec -T api curl -fsS http://localhost:8080/health/ready
-      - name: Job summary
+      - name: Орындалу қорытындысы
         run: |
           $version = (Invoke-RestMethod "http://127.0.0.1:$env:API_PORT/" -TimeoutSec 10).version
           $imageEnv = docker image inspect "${env:API_IMAGE}:${env:API_TAG}" --format '{{range .Config.Env}}{{println .}}{{end}}'
