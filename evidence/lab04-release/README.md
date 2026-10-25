@@ -1,31 +1,123 @@
-# 08-материал: орындалған тексерулер
+# GitHub ережелері және шығарылым — орындалу дәлелдері
 
-**ВКТУ · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о · 2026 жылғы 23 қазан**
+Д. Серікбаев атындағы Шығыс Қазақстан техникалық университеті · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о.
 
-[Есеп](../../reports/lab04-release-report.pdf) · [Түсіндірме](../../docs/lab04-release.md) · [19 тексеру](checks.json).
+08-материал: PUT /api/projects/{id}, 200/400/404/409; бір атауды қайталау рұқсат етілген. Екі сақтау нұсқасында RenameAsync, SQL параметрлері және бәсекелес атау қақтығысы тексерілген. Жоба ID, createdAt және тапсырмалар сақталған. Жеке demo_lab08_tests базасында және InMemory режимінде 38/38; Postman: 37 сұрау/99 тексеру. Екі параллель сұрауда біреуі 200, екіншісі 409; апострофы бар атау дәл мәтін ретінде сақталған.
 
-| Нәтиже | Дәлел |
-|---|---|
-| InMemory 38/38 | [Тесттер тізімі](inmemory-tests.json), [журнал](inmemory-tests.txt) |
-| PostgreSQL 38/38 | [Тесттер тізімі](postgres-tests.json), [журнал](postgres-tests.txt) |
-| Postman: 37 сұрау, 99 тексеру | [Сәтті жергілікті іске қосу](postman-full-run.txt) |
-| 13 нақты HTTP сұрауы | [Сұраулар мен жауаптар](live-http.json) |
-| Compose құрастыруы, healthy | [Құрастыру журналы](compose-build.txt) |
-| OpenAPI 200/400/404/409 | [PUT әрекеті](openapi-rename.json) |
-| PR үлгісі, Dependabot, CODEOWNERS | [PR #9](config-pr.json), [мақұлдау](config-review.json) |
-| Пікір, жеке түзету және соңғы SHA мақұлдауы | [PR #14](rename-pr.json), [пікірлер](inline-comments-final.json), [Approve](rename-final-review.json) |
-| Үш issue жабылды | [Issue күйлері](issues-final.json), [Done суреті](screenshots/board-done.jpg), [интерфейс мәтіні](board-done-ui.txt) |
-| Code owner автоматты сұратылды | [Сұрату](codeowner-auto-request.json), [ruleset](ruleset-final.json), [синтаксис қатесі жоқ](codeowners-errors.json) |
-| Dependabot нақты PR жасады | [Бес ашық ұсыныс](dependabot-prs.json); жаңартулар осы жұмыста қабылданған жоқ |
-| v0.1.0 және автоматты release notes | [Шығарылым](release.json), [тег пен файл ағашын салыстыру](release-verification.json) |
-| PDF тексеруі мен SHA-256 | [Құжат нәтижесі](deliverables.json) |
+Ревью ескертуі 9b1780b коммитімен түзетілген. v0.1.0 және Done/PR/release нақты суреттері бар. 19 техникалық тексеру расталған. CI келесі 09-материалға жатады; қолмен жарияланған мәртебе CI ретінде көрсетілмейді. Оқытушы, жұп және B репозиторийі бойынша шектеулер сақталған.
 
-Тексерілген код: `9b1780b286c4098684285284ae632ebf1e708531`. Release тегі: `8e1371c67bbc0267947525e25d6cec88a569c8b9`. Squash біріктіруінен кейін файл ағаштары бірдей; қайта орындалмаған тесттер қайта орындалды деп көрсетілмейді.
+## Дәлел файлдары
 
-SQL тесттері тек `demo_lab08_tests` дерекқорына бағытталды. Бұрынғы томдар жойылған жоқ. PostgreSQL-дегі бұрынғы тесттер секілді .NET тесттері бірегей атаулармен жасаған жазбаларды қалдырады; HTTP жаңа қалтасы өзі жасаған жобаларды тазалайды. Ескі Postman қалталарының демонстрациялық деректері қарау үшін қалады.
+Төмендегі файл атаулары — өзгертілмеген техникалық идентификаторлар. JSON/TXT/JSONL ішіндегі нақты сұраулар, жауаптар, уақыттар, қателер және хэштер аударылмайды. Бұл каталогқа сілтемелерді қазақшалау бұрынғы тәжірибені қайта орындау немесе жетіспейтін суретті толықтыру болып саналмайды.
 
-Журналдардағы жергілікті репозиторий жолы `[REPO]` белгісімен ауыстырылған; парольдер жарияланбайды. TRX файлдары жергілікті жұмыс каталогында сақталған, Git-ке қосылмаған. `manual-status.json` - нақты нәтижелер бойынша қолмен жарияланған мәртебе, автоматты CI емес.
+- Бастапқы журнал: [board-done-ui.txt](board-done-ui.txt)
 
-Postman `--output` экспорты аккаунтқа кіруді талап етті ([хабарлама](postman-export-unavailable.txt)). Кәдімгі жергілікті іске қосу сәтті өтті; бұлтта жарияланған есеп бар деп айтылмайды.
+- Құрылымдық дерек: [checks.json](checks.json)
 
-Формалды шектеулер: оқытушының GitHub логині жоқ; екі аккаунт бір адамға тиесілі; бөлек B репозиторийінде жұптық рөл ауыстыру тексерілмеген. Бұрынғы қолмен жөндеу және сурет чек-парағы сақталады. Нақты файлдарға негізделген 19 техникалық тексерудің сәтті болуы оқытушының бағасын алмастырмайды.
+- Құрылымдық дерек: [codeowner-auto-request.json](codeowner-auto-request.json)
+
+- Құрылымдық дерек: [codeowners-errors.json](codeowners-errors.json)
+
+- Бастапқы журнал: [compose-build.txt](compose-build.txt)
+
+- Құрылымдық дерек: [config-merge.json](config-merge.json)
+
+- Құрылымдық дерек: [config-pr.json](config-pr.json)
+
+- Құрылымдық дерек: [config-review.json](config-review.json)
+
+- Құрылымдық дерек: [containers-final.json](containers-final.json)
+
+- Бастапқы журнал: [containers-final.txt](containers-final.txt)
+
+- Бастапқы журнал: [containers-stop.txt](containers-stop.txt)
+
+- Құрылымдық дерек: [deliverables.json](deliverables.json)
+
+- Құрылымдық дерек: [dependabot-prs.json](dependabot-prs.json)
+
+- Құрылымдық дерек: [inline-comments-final.json](inline-comments-final.json)
+
+- Құрылымдық дерек: [inmemory-tests.json](inmemory-tests.json)
+
+- Бастапқы журнал: [inmemory-tests.txt](inmemory-tests.txt)
+
+- Құрылымдық дерек: [issues-final.json](issues-final.json)
+
+- Құрылымдық дерек: [live-http.json](live-http.json)
+
+- Құрылымдық дерек: [manual-status.json](manual-status.json)
+
+- Бастапқы журнал: [openapi-container-start.txt](openapi-container-start.txt)
+
+- Бастапқы журнал: [openapi-container-stop.txt](openapi-container-stop.txt)
+
+- Құрылымдық дерек: [openapi-rename.json](openapi-rename.json)
+
+- Құрылымдық дерек: [postgres-tests.json](postgres-tests.json)
+
+- Бастапқы журнал: [postgres-tests.txt](postgres-tests.txt)
+
+- Бастапқы журнал: [postman-export-unavailable.txt](postman-export-unavailable.txt)
+
+- Бастапқы журнал: [postman-full-run.txt](postman-full-run.txt)
+
+- Құрылымдық дерек: [release-verification.json](release-verification.json)
+
+- Құрылымдық дерек: [release.json](release.json)
+
+- Құрылымдық дерек: [rename-final-review.json](rename-final-review.json)
+
+- Құрылымдық дерек: [rename-merge.json](rename-merge.json)
+
+- Құрылымдық дерек: [rename-pr.json](rename-pr.json)
+
+- Құрылымдық дерек: [ruleset-codeowners.json](ruleset-codeowners.json)
+
+- Құрылымдық дерек: [ruleset-final.json](ruleset-final.json)
+
+- Каталог: [screenshots](screenshots/)
+
+- Бастапқы журнал: [test-db-check.txt](test-db-check.txt)
+
+- Бастапқы журнал: [test-db-create.txt](test-db-create.txt)
+
+- Бастапқы журнал: [tested-commit.txt](tested-commit.txt)
+
+## Нақты нәтижелерге бұрын берілген сілтемелер
+
+- [Дәлел 1](../../reports/lab04-release-report.pdf)
+- [Дәлел 2](../../docs/lab04-release.md)
+- [Дәлел 3](checks.json)
+- [Дәлел 4](inmemory-tests.json)
+- [Дәлел 5](inmemory-tests.txt)
+- [Дәлел 6](postgres-tests.json)
+- [Дәлел 7](postgres-tests.txt)
+- [Дәлел 8](postman-full-run.txt)
+- [Дәлел 9](live-http.json)
+- [Дәлел 10](compose-build.txt)
+- [Дәлел 11](openapi-rename.json)
+- [Дәлел 12](config-pr.json)
+- [Дәлел 13](config-review.json)
+- [Дәлел 14](rename-pr.json)
+- [Дәлел 15](inline-comments-final.json)
+- [Дәлел 16](rename-final-review.json)
+- [Дәлел 17](issues-final.json)
+- [Дәлел 18](screenshots/board-done.jpg)
+- [Дәлел 19](board-done-ui.txt)
+- [Дәлел 20](codeowner-auto-request.json)
+- [Дәлел 21](ruleset-final.json)
+- [Дәлел 22](codeowners-errors.json)
+- [Дәлел 23](dependabot-prs.json)
+- [Дәлел 24](release.json)
+- [Дәлел 25](release-verification.json)
+- [Дәлел 26](deliverables.json)
+- [Дәлел 27](postman-export-unavailable.txt)
+
+## Есеп және қабылдау шектері
+
+[Есеп 4.2](../../reports/lab04-release-report.pdf)
+
+[Нұсқаулық](../../docs/lab04-release.md) · [Тапсырудың ашық тармақтары](../../docs/REPORT_COMPLETENESS.md) · [Барлық есептер](../../reports/README.md).
+
+Postman нәтижелері жергілікті тексеруден алынған; оларды бұл аударма бұлтқа жарияламайды. Екі ревью аккаунты бір иеге тиесілі. Кейінгі PDF рәсімдеуі бұрынғы checks/deliverables файлдарындағы тарихи бет саны мен хэшті алмастырмайды; түпнұсқа PDF Git тарихында сақталған.

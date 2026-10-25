@@ -1,62 +1,159 @@
-# Результаты лабораторной 3 · PostgreSQL · материал 05
+# Сервиске арналған PostgreSQL — орындалу дәлелдері
 
-22 октября 2026 года. Части 1 и 2, разделы 1–5. Запуски выполнены на настоящей PostgreSQL 18.6 в Linux-контейнере; API проверен с Windows и из отдельного контейнера.
+Д. Серікбаев атындағы Шығыс Қазақстан техникалық университеті · Есімханова Аружан Түсіпханқызы · 25-ИСТК-2о.
 
-[Общая сводка: 15 успешных проверок](checks.json) · [Отчет PDF](../../reports/lab03-postgres-report.pdf) · [Инструкция и ответы](../../docs/lab03-postgres.md).
+2026 жылғы 22 қазан, 05-материал, 3-зертханалық жұмыстың 1–2-бөлімдері. Нақты PostgreSQL 18.6, postgres:18-alpine. Алғашқы seed: 2 жоба/4 тапсырма; бесінші тапсырма қосылған соң сол атаулы томмен контейнерді қайта жасағанда 5 тапсырма сақталған. Жаңа анонимді томда notes кестесі жоқ; бұрынғы анонимді том автоматты қосылмайды. PostgreSQL 18 томы /var/lib/postgresql жолына жалғанған.
 
-## База и сохранение данных
+Windows API: 8091; контейнер API: 8092; БД: localhost:15432. Windows жобасы id=3, контейнер жобасы id=4 қайта іске қосылғанда сақталған. Жеке demo_tests базасында міндетті 24/24 (7+17), толық 28/28 (7+21). Сүзгі төрт қосымша DueDate жағдайын бөледі; тест саны өзгертіліп көрсетілмеген. HTTP: 26 сұрау; Postman: 24/73/0.
 
-| Эксперимент | Фактический результат | Доказательство |
-|---|---|---|
-| Подготовка kit.zip | Распакован локально, .env.example найден | [Сводка](kit-check.json) |
-| Образ и версия PostgreSQL | postgres:18-alpine; PostgreSQL 18.6 | [Pull](postgres-pull.txt), [образ/digest](database-image.json), [SQL-версия и PGDATA](database-version.json) |
-| Без именованного тома | Новый контейнер получил другой анонимный том, таблицы notes нет | [ID, тома, SQL и ошибка](without-named-volume.json) |
-| Первая инициализация | seed.sql создал 2 проекта и 4 задачи | [Журнал](database-first-start.txt), [SELECT](seed-data.json) |
-| Добавление задачи | Через SQL добавлена «Задача из лабы 3» | [INSERT](volume-insert.json) |
-| Пересоздание с тем же томом | Сохранились все 5 задач | [Новые ID контейнеров и SELECT](volume-after-recreate.json) |
-| Повторный старт БД | Skipping initialization, seed.sql не повторялся | [Журнал](database-recreated.txt) |
+Алғашқы контейнерде ConnectionStrings__Db жоқ; келесісінде Host=localhost API контейнерінің өзіне бағытталған. DNS атауы бар ортақ желіде ready=200. Стандартты пул таусылғандықтан тексерілген 10.254.53.0/24 желісі қолданылған. Соңында API/БД тоқтатылған, атаулы том сақталған. Windows процесі dotnet арқылы іске қосылған; F5 және Visual Studio/Test Explorer суреттері расталмаған. CP866 журналы мазмұны сақталып UTF-8 пішіміне ауыстырылған; жеке жолдар жасырылған.
 
-Анонимные тома одноразового эксперимента удалены после проверки. Именованный том `devops-labs-lab03-pgdata` с основной базой сохранен. Старый анонимный том сам по себе не подключается к новому контейнеру — именно это проверяет первый эксперимент.
+## Дәлел файлдары
 
-## Сервис Windows, SQL и тесты
+Төмендегі файл атаулары — өзгертілмеген техникалық идентификаторлар. JSON/TXT/JSONL ішіндегі нақты сұраулар, жауаптар, уақыттар, қателер және хэштер аударылмайды. Бұл каталогқа сілтемелерді қазақшалау бұрынғы тәжірибені қайта орындау немесе жетіспейтін суретті толықтыру болып саналмайды.
 
-| Проверка | Фактический результат | Доказательство |
-|---|---|---|
-| Сборка Windows | Release, успешна | [Журнал](host-build.txt) |
-| Выбор хранилища | «Хранилище: PostgreSQL» | [Первый процесс](host-first-start.txt), [новый процесс](host-second-start.txt) |
-| Учебные проекты | Видны в API Windows | [GET](host-seed-projects.json) |
-| Перезапуск процесса Windows | Проект id=3 сохранился | [До](host-before-restart.json), [после](host-after-restart.json) |
-| Swagger после перезапуска | 200, учебные проекты, проекты Windows и контейнера | [Настоящий скриншот](screenshots/swagger-postgres-projects.jpg) |
-| Обязательные случаи | 24/24: 7 юнит + 17 интеграционных | [Сводка](required-24/summary.json), [консоль](required-24-console.txt) |
-| Полный текущий набор | 28/28: 7 юнит + 21 интеграционный | [Сводка](full-28/summary.json), [консоль](full-28-console.txt) |
-| Реальная тестовая БД | demo_tests содержит данные тестовых фикстур | [SQL-подтверждение](tests-database-proof.txt) |
-| Статистика SQL | Проверки пройдены; учебный проект: 4/2/1/1/0 | [Ответ stats](sql-stats.json), [тесты](full-28/summary.json) |
+- Каталог: [20261022T005458521Z-all-3eba0a05](20261022T005458521Z-all-3eba0a05/)
 
-24 обязательных случая выбраны из текущей версии фильтром, исключающим четыре дополнительных случая DueDate. Полный запуск содержит все 28. Оба выполнены с `Storage=Postgres` на отдельной базе `demo_tests`; исходный код приложения и тестов не менялся. Оригинальные TRX с локальными метаданными исключены из Git; сводки сохраняют реальные имена и результаты тестов.
+- Бастапқы журнал: [api-build.txt](api-build.txt)
 
-Windows-процесс запущен через dotnet, с Development и конфигурацией из окружения. Ручной F5 в Visual Studio не подтвержден. Журнал перенаправленного Windows-процесса получен в CP866 и переведен в UTF-8 с сохранением содержания; локальные пути заменены на `[REPO]`/`[WORK]`.
+- Құрылымдық дерек: [api-health.json](api-health.json)
 
-## Контейнеры и подключение
+- Бастапқы журнал: [api-postgres-logs.txt](api-postgres-logs.txt)
 
-| Попытка / проверка | Результат | Доказательство |
-|---|---|---|
-| Образ API | Собран с APP_VERSION=lab03-postgres | [Вывод сборки](api-build.txt) |
-| Только Storage=Postgres | Ожидаемое падение: строка подключения не задана | [Ошибка](attempt-missing.json), [журнал](attempt-missing.txt) |
-| Host=localhost | Ожидаемое падение: 127.0.0.1:5432, Connection refused | [Ошибка](attempt-localhost.json), [журнал](attempt-localhost.txt) |
-| Пользовательская сеть | Выбрана свободная явная подсеть при исчерпании стандартного пула | [Выбор подсети](network-selection.json), [DNS](docker-dns.txt) |
-| Общая сеть и имя БД | API healthy, ready 200 | [Health](api-health.json), [ready](api-ready.json), [журнал](api-postgres-logs.txt) |
-| Общие данные | Контейнер видит проект Windows id=3 | [GET](container-before-restart.json) |
-| Перезапуск API-контейнера | Его проект id=4 сохранился | [После stop/start](container-after-restart.json) |
-| HTTP-сценарии | 26 запросов: 23 сценария и 3 удаления тестовых проектов | [Запросы/ответы](20261022T005458521Z-all-3eba0a05/http-evidence.json) |
-| Postman CLI | 24 запроса, 73 проверки, 0 ошибок | [Журнал](postman-console.txt), [exit code 0](postman-exit-code.txt) |
-| Завершение работы | API Windows, API-контейнер и БД остановлены; том сохранен | [Контейнеры](final-containers.jsonl), [том](retained-volume.json), [финальный журнал БД](database-final-logs.txt) |
+- Құрылымдық дерек: [api-ready.json](api-ready.json)
 
-Первый сбой вызван отсутствием ConnectionStrings__Db в Production. Второй — тем, что localhost относится к самому API-контейнеру. Успешный запуск использует DNS-имя БД и внутренний порт 5432 общей сети. Windows подключался через опубликованный localhost:15432. Пароль в материалах не публикуется; локальный `.env` игнорируется Git.
+- Құрылымдық дерек: [attempt-localhost.json](attempt-localhost.json)
 
-Postman запускался локально с `--no-report-events`. Сообщение CLI об авторизации относится к облачной публикации и не означает сбой коллекции; код завершения 0 и 73 успешных assertions сохранены.
+- Бастапқы журнал: [attempt-localhost.txt](attempt-localhost.txt)
 
-## Открытые пункты сдачи
+- Құрылымдық дерек: [attempt-missing.json](attempt-missing.json)
 
-Остаются скриншот консоли Visual Studio со строкой «Хранилище: PostgreSQL» и скриншот Test Explorer с 24 зелеными случаями. Настоящий Swagger-снимок, текст журналов и сводки TRX подтверждают свои проверки; они не объявляются выполнением недоступных UI-пунктов. Compose выполнен отдельно в [материале 06](../lab03-compose/README.md).
+- Бастапқы журнал: [attempt-missing.txt](attempt-missing.txt)
 
-[Инструкция](../../docs/lab03-postgres.md) · [Все отчеты](../../reports/README.md) · [На главную](../../README.md)
+- Құрылымдық дерек: [checks.json](checks.json)
+
+- Құрылымдық дерек: [container-after-restart.json](container-after-restart.json)
+
+- Құрылымдық дерек: [container-before-restart.json](container-before-restart.json)
+
+- Бастапқы журнал: [database-final-logs.txt](database-final-logs.txt)
+
+- Бастапқы журнал: [database-first-start.txt](database-first-start.txt)
+
+- Құрылымдық дерек: [database-image.json](database-image.json)
+
+- Бастапқы журнал: [database-recreated.txt](database-recreated.txt)
+
+- Құрылымдық дерек: [database-version.json](database-version.json)
+
+- Құрылымдық дерек: [deliverables.json](deliverables.json)
+
+- Бастапқы журнал: [docker-dns.txt](docker-dns.txt)
+
+- Оқиғалар тізбегі: [final-containers.jsonl](final-containers.jsonl)
+
+- Каталог: [full-28](full-28/)
+
+- Бастапқы журнал: [full-28-console.txt](full-28-console.txt)
+
+- Құрылымдық дерек: [host-after-restart.json](host-after-restart.json)
+
+- Құрылымдық дерек: [host-before-restart.json](host-before-restart.json)
+
+- Бастапқы журнал: [host-build.txt](host-build.txt)
+
+- Бастапқы журнал: [host-first-start.txt](host-first-start.txt)
+
+- Бастапқы журнал: [host-second-start.txt](host-second-start.txt)
+
+- Құрылымдық дерек: [host-seed-projects.json](host-seed-projects.json)
+
+- Бастапқы журнал: [http-console.txt](http-console.txt)
+
+- Құрылымдық дерек: [kit-check.json](kit-check.json)
+
+- Құрылымдық дерек: [network-selection.json](network-selection.json)
+
+- Бастапқы журнал: [postgres-pull.txt](postgres-pull.txt)
+
+- Бастапқы журнал: [postman-console.txt](postman-console.txt)
+
+- Бастапқы журнал: [postman-exit-code.txt](postman-exit-code.txt)
+
+- Каталог: [required-24](required-24/)
+
+- Бастапқы журнал: [required-24-console.txt](required-24-console.txt)
+
+- Құрылымдық дерек: [retained-volume.json](retained-volume.json)
+
+- Каталог: [screenshots](screenshots/)
+
+- Құрылымдық дерек: [seed-data.json](seed-data.json)
+
+- Құрылымдық дерек: [sql-stats.json](sql-stats.json)
+
+- Бастапқы журнал: [tests-database-proof.txt](tests-database-proof.txt)
+
+- Құрылымдық дерек: [volume-after-recreate.json](volume-after-recreate.json)
+
+- Құрылымдық дерек: [volume-insert.json](volume-insert.json)
+
+- Құрылымдық дерек: [without-named-volume.json](without-named-volume.json)
+
+## Нақты нәтижелерге бұрын берілген сілтемелер
+
+- [Дәлел 1](checks.json)
+- [Дәлел 2](../../reports/lab03-postgres-report.pdf)
+- [Дәлел 3](../../docs/lab03-postgres.md)
+- [Дәлел 4](kit-check.json)
+- [Дәлел 5](postgres-pull.txt)
+- [Дәлел 6](database-image.json)
+- [Дәлел 7](database-version.json)
+- [Дәлел 8](without-named-volume.json)
+- [Дәлел 9](database-first-start.txt)
+- [Дәлел 10](seed-data.json)
+- [Дәлел 11](volume-insert.json)
+- [Дәлел 12](volume-after-recreate.json)
+- [Дәлел 13](database-recreated.txt)
+- [Дәлел 14](host-build.txt)
+- [Дәлел 15](host-first-start.txt)
+- [Дәлел 16](host-second-start.txt)
+- [Дәлел 17](host-seed-projects.json)
+- [Дәлел 18](host-before-restart.json)
+- [Дәлел 19](host-after-restart.json)
+- [Дәлел 20](screenshots/swagger-postgres-projects.jpg)
+- [Дәлел 21](required-24/summary.json)
+- [Дәлел 22](required-24-console.txt)
+- [Дәлел 23](full-28/summary.json)
+- [Дәлел 24](full-28-console.txt)
+- [Дәлел 25](tests-database-proof.txt)
+- [Дәлел 26](sql-stats.json)
+- [Дәлел 27](api-build.txt)
+- [Дәлел 28](attempt-missing.json)
+- [Дәлел 29](attempt-missing.txt)
+- [Дәлел 30](attempt-localhost.json)
+- [Дәлел 31](attempt-localhost.txt)
+- [Дәлел 32](network-selection.json)
+- [Дәлел 33](docker-dns.txt)
+- [Дәлел 34](api-health.json)
+- [Дәлел 35](api-ready.json)
+- [Дәлел 36](api-postgres-logs.txt)
+- [Дәлел 37](container-before-restart.json)
+- [Дәлел 38](container-after-restart.json)
+- [Дәлел 39](20261022T005458521Z-all-3eba0a05/http-evidence.json)
+- [Дәлел 40](postman-console.txt)
+- [Дәлел 41](postman-exit-code.txt)
+- [Дәлел 42](final-containers.jsonl)
+- [Дәлел 43](retained-volume.json)
+- [Дәлел 44](database-final-logs.txt)
+- [Дәлел 45](../lab03-compose/README.md)
+- [Дәлел 46](../../reports/README.md)
+- [Дәлел 47](../../README.md)
+
+## Есеп және қабылдау шектері
+
+[Есеп 3.1-3.2](../../reports/lab03-postgres-report.pdf)
+
+[Нұсқаулық](../../docs/lab03-postgres.md) · [Тапсырудың ашық тармақтары](../../docs/REPORT_COMPLETENESS.md) · [Барлық есептер](../../reports/README.md).
+
+Postman нәтижелері жергілікті тексеруден алынған; оларды бұл аударма бұлтқа жарияламайды. Екі ревью аккаунты бір иеге тиесілі. Кейінгі PDF рәсімдеуі бұрынғы checks/deliverables файлдарындағы тарихи бет саны мен хэшті алмастырмайды; түпнұсқа PDF Git тарихында сақталған.
