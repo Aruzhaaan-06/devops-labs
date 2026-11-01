@@ -199,6 +199,20 @@
           [
             {
               "type": "paragraph",
+              "text": "2.2 · Docker контейнерін іске қосу және тексеру"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Контейнердің healthy күйі, GET / және health маршруттарының 200 жауабы расталды. UID 1654, SDK жоқ. Swagger Production ортасында 404, Development ортасында 200 қайтарды. InMemory жобалар саны stop/start кезінде 1-ден 0-ге өзгерді. Postman: 24 сұрау және 73 тексеру; .NET: 28/28."
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
               "text": "3.1-3.2 · Сервиске арналған PostgreSQL"
             }
           ],

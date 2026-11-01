@@ -7,6 +7,7 @@
 | 1.1 | Тапсырмалар сервисінің API интерфейсі | [Нұсқаулық](lab01.md) | [PDF](../reports/lab01-part1-report.pdf) |
 | 1.2 | Сұрауды талдау және жоба статистикасы | [Нұсқаулық](lab01.md) | [PDF](../reports/lab01-part2-report.pdf) |
 | 2.1 | Dockerfile және құрастыру кэші | [Нұсқаулық](lab02.md) | [PDF](../reports/lab02-part1-report.pdf) |
+| 2.2 | Docker контейнерін іске қосу және тексеру | [Нұсқаулық](lab02-part2.md) | [PDF](../reports/lab02-part2-report.pdf) |
 | 3.1-3.2 | Сервиске арналған PostgreSQL | [Нұсқаулық](lab03-postgres.md) | [PDF](../reports/lab03-postgres-report.pdf) |
 | 3.3 | Docker Compose және деректердің өмірлік циклі | [Нұсқаулық](lab03-compose.md) | [PDF](../reports/lab03-compose-report.pdf) |
 | 4.1 | Git және GitHub-та бірлескен жұмыс | [Нұсқаулық](lab04-git.md) | [PDF](../reports/lab04-git-report.pdf) |

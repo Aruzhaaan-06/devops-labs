@@ -4,7 +4,7 @@
 
 Оқу жылы: 2025-2026.
 
-**14 зертханалық есеп — 212 бет. Қорытынды есеп — 8 бет. Барлығы 15 PDF, 220 бет.**
+**15 зертханалық есеп - 224 бет. Қорытынды есеп - 8 бет. Барлығы 16 PDF, 232 бет.**
 
 [Барлық есепті архивпен жүктеу](devops-reports-kk.zip) · [Бастапқы файлдар](source/README.md) · [Техникалық тексеру](quality-check.json).
 
@@ -16,6 +16,8 @@
 | 1.2 | Сұрауды талдау және жоба статистикасы | [PDF · 19 бет](lab01-part2-report.pdf) | [JSON](source/lab01-part2-report.json) |
 
 | 2.1 | Dockerfile және құрастыру кэші | [PDF · 12 бет](lab02-part1-report.pdf) | [JSON](source/lab02-part1-report.json) |
+
+| 2.2 | Docker контейнерін іске қосу және тексеру | [PDF · 12 бет](lab02-part2-report.pdf) | [JSON](source/lab02-part2-report.json) |
 
 | 3.1-3.2 | Сервиске арналған PostgreSQL | [PDF · 15 бет](lab03-postgres-report.pdf) | [JSON](source/lab03-postgres-report.json) |
 

@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-25",
-  "baseline": "bcb235783b8e332ceb86a4cc5b82d88cedc4a24b",
+  "date": "2026-11-01",
+  "baseline": "065a222e2f384df496ad8294cd843325ec20b963",
   "reports": [
     {
       "file": "lab01-part1-report.pdf",
@@ -22,6 +22,11 @@
       "sha256": "b41470e4fa92d5c7aaf9d69528d82682b9738cdc5cae26e73150f9b4554c9005",
       "codeBlocksUnchanged": 6,
       "imagesUnchanged": 0
+    },
+    {
+      "file": "lab02-part2-report.pdf",
+      "pages": 12,
+      "sha256": "4c2cb0fc616e60dc6815678ea197e69b4454fa5961c7b88179f18d2974fcda5e"
     },
     {
       "file": "lab03-postgres-report.pdf",
@@ -103,13 +108,13 @@
     {
       "file": "submission-summary-kk.pdf",
       "pages": 8,
-      "sha256": "8979be25eca4cd2d866a12559f39bf1a2e1a701133269063f4e1f16d6f578690",
+      "sha256": "6ec90d400baea8a6ff22e9a4a1c5cba09614d2fe78d6074edca7cb13aa308a57",
       "codeBlocksUnchanged": 0,
       "imagesUnchanged": 0
     }
   ],
-  "totalPages": 220,
+  "totalPages": 232,
   "codeAndImageBlocksUnchanged": true,
-  "automatedPdfPassed": 15,
+  "automatedPdfPassed": 16,
   "automatedPdfFailed": 0
 }

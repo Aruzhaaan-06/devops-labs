@@ -30,13 +30,14 @@ DemoApi - ASP.NET Core негізіндегі жобалар мен тапсыр
 
 ## Зертханалық жұмыстар
 
-**14 зертханалық есеп, 8 негізгі зертханалық жұмыс және қорытынды есеп.** 04-материалдың шарты жоқ; ол орындалған жұмыс ретінде қосылмаған. Бастапқы 1.1/1.3 файлдары дәрістерді, 1.2/1.4 файлдары практиканы қамтиды; олардың нәтижесі бірінші жұмыстың екі есебінде жинақталған.
+**15 зертханалық есеп, 8 негізгі зертханалық жұмыс және қорытынды есеп.** №04 тапсырмасына екінші бөлімнің жеке есебі қосылған. Бастапқы 1.1/1.3 файлдары дәрістерді, 1.2/1.4 файлдары практиканы қамтиды; олардың нәтижесі бірінші жұмыстың екі есебінде жинақталған.
 
 | № / бөлім | Зертханалық жұмыстың тақырыбы | Есеп | Бастапқы код |
 |---|---|---|---|
 | 1.1 | Тапсырмалар сервисінің API интерфейсі | [PDF · 13 бет](reports/lab01-part1-report.pdf) | [Есеп JSON](reports/source/lab01-part1-report.json) · [Код және кезең](docs/lab01.md) |
 | 1.2 | Сұрауды талдау және жоба статистикасы | [PDF · 19 бет](reports/lab01-part2-report.pdf) | [Есеп JSON](reports/source/lab01-part2-report.json) · [Код және кезең](docs/lab01.md) |
 | 2.1 | Dockerfile және құрастыру кэші | [PDF · 12 бет](reports/lab02-part1-report.pdf) | [Есеп JSON](reports/source/lab02-part1-report.json) · [Код және кезең](docs/lab02.md) |
+| 2.2 | Docker контейнерін іске қосу және тексеру | [PDF · 12 бет](reports/lab02-part2-report.pdf) | [Есеп JSON](reports/source/lab02-part2-report.json) · [Код және кезең](docs/lab02-part2.md) |
 | 3.1-3.2 | Сервиске арналған PostgreSQL | [PDF · 15 бет](reports/lab03-postgres-report.pdf) | [Есеп JSON](reports/source/lab03-postgres-report.json) · [Код және кезең](docs/lab03-postgres.md) |
 | 3.3 | Docker Compose және деректердің өмірлік циклі | [PDF · 14 бет](reports/lab03-compose-report.pdf) | [Есеп JSON](reports/source/lab03-compose-report.json) · [Код және кезең](docs/lab03-compose.md) |
 | 4.1 | Git және GitHub-та бірлескен жұмыс | [PDF · 15 бет](reports/lab04-git-report.pdf) | [Есеп JSON](reports/source/lab04-git-report.json) · [Код және кезең](docs/lab04-git.md) |
