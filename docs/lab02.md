@@ -257,3 +257,5 @@ docker stop devops-labs-lab02-api devops-labs-lab02-swagger
 <a id="устройство-образа"></a>
 <a id="проверка-контейнера"></a>
 <a id="ответы-на-вопросы-лекции"></a>
+
+[2-бөлім: контейнерді іске қосу және тексеру](lab02-part2.md) · [№04 PDF есебі](../reports/lab02-part2-report.pdf).

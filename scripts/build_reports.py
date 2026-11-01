@@ -189,8 +189,9 @@ def build(meta,output):
     section(str(7+offset)+' Пайдаланылған әдебиеттер тізімі',True)
     refs=[(PUBLIC+meta['evidence']+'/README.md','DemoApi оқу репозиторийі. Нақты тексерулер мен сақталған дәлелдер'),(PUBLIC+meta['doc'],'DemoApi оқу репозиторийі. Жұмыстың орындалу тәртібі')]+external_sources(data)
     for i,(url,label) in enumerate(refs,1):
-        story.append(p(f'[{i}] {escape(label)}. Электрондық ресурс. <link href="{escape(url,quote=True)}" color="#000000">{escape(url)}</link>. Қаралған күні: 25.10.2026.',REF))
-    story.append(p('DevOps пәнінің оқу материалдары: Devops (1).zip мұрағаты, зертханалық тапсырмалар және бақылау нүктелерінің шарттары.',REF))
+        accessed_on=meta.get('accessedOn','25.10.2026')
+        story.append(p(f'[{i}] {escape(label)}. Электрондық ресурс. <link href="{escape(url,quote=True)}" color="#000000">{escape(url)}</link>. Қаралған күні: {accessed_on}.',REF))
+    story.append(p(meta.get('courseMaterials','DevOps пәнінің оқу материалдары: Devops (1).zip мұрағаты, зертханалық тапсырмалар және бақылау нүктелерінің шарттары.'),REF))
     story.append(p('ГОСТ 7.32-2017. Ғылыми-зерттеу жұмысы туралы есеп. Құрылымы және рәсімдеу ережелері. 6-бөлім.',REF))
     output.mkdir(parents=True,exist_ok=True)
     path=output/meta['file'];ReportDoc(path,meta).multiBuild(story)

@@ -1,9 +1,9 @@
 {
   "scope": "PDF пішімі, мәтін және суреттер",
-  "pdfCount": 15,
-  "labReportCount": 14,
-  "totalPages": 220,
-  "passed": 15,
+  "pdfCount": 16,
+  "labReportCount": 15,
+  "totalPages": 232,
+  "passed": 16,
   "failed": 0,
   "reports": [
     {
@@ -87,6 +87,36 @@
         14.0
       ],
       "body14Characters": 7139,
+      "boundsViolations": [],
+      "pageNumberErrors": [],
+      "blankPages": [],
+      "sourceTextMissing": [],
+      "problems": [],
+      "warnings": [],
+      "automaticPass": true,
+      "humanChecks": [
+        "Қазақ тілінің толық филологиялық сараптамасы",
+        "Әдістеменің оқытушы тарапынан қабылдануы",
+        "Суреттердің оқу ыңғайлылығы және жалпы композиция"
+      ]
+    },
+    {
+      "file": "lab02-part2-report.pdf",
+      "pages": 12,
+      "sha256": "4c2cb0fc616e60dc6815678ea197e69b4454fa5961c7b88179f18d2974fcda5e",
+      "a4": true,
+      "fontResources": [
+        "/AAAAAA+Consolas",
+        "/AAAAAA+TimesNewRomanPS-BoldMT",
+        "/AAAAAA+TimesNewRomanPSMT",
+        "/Helvetica"
+      ],
+      "fontSizes": [
+        10.0,
+        12.0,
+        14.0
+      ],
+      "body14Characters": 5931,
       "boundsViolations": [],
       "pageNumberErrors": [],
       "blankPages": [],
@@ -451,7 +481,7 @@
     {
       "file": "submission-summary-kk.pdf",
       "pages": 8,
-      "sha256": "8979be25eca4cd2d866a12559f39bf1a2e1a701133269063f4e1f16d6f578690",
+      "sha256": "6ec90d400baea8a6ff22e9a4a1c5cba09614d2fe78d6074edca7cb13aa308a57",
       "a4": true,
       "fontResources": [
         "/AAAAAA+TimesNewRomanPS-BoldMT",

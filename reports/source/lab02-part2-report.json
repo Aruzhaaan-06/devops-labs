@@ -1,0 +1,698 @@
+{
+  "schemaVersion": 1,
+  "file": "lab02-part2-report.pdf",
+  "contentLanguage": "kk",
+  "evidenceDate": "2026-10-22",
+  "preparedOn": "2026-11-01",
+  "evidenceCommit": "065a222e2f384df496ad8294cd843325ec20b963",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "<b>Тапсырма:</b> №04, 4-апта, 2-зертханалық жұмыстың 2-бөлімі.<br/><b>Тәжірибе күні:</b> 22.10.2026.<br/><b>Есеп күні:</b> 01.11.2026."
+    },
+    {
+      "type": "heading",
+      "text": "Жұмыс ортасы"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Параметр"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мәні"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қолданба"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "DemoApi, ASP.NET Core / .NET 10"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Docker Engine"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "29.8.0; Linux/amd64"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Бейне"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "devops-labs-demo-api:lab02-1.1"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Production контейнері"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "devops-labs-lab02-api; 127.0.0.1:8089 → 8080"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Development контейнері"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "devops-labs-lab02-swagger; 127.0.0.1:8090 → 8080"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қойма"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "InMemory"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Нұсқа"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "lab02-1.1"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Есепте 22 қазанда сақталған контейнер, HTTP және тест нәтижелері қолданылды. Тәжірибеге сәйкес код <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/runtime-checks.json\">runtime-checks.json</link> файлымен және <link href=\"https://github.com/Aruzhaaan-06/devops-labs/tree/lab02-docker\">lab02-docker</link> тегімен байланысты."
+    },
+    {
+      "type": "heading",
+      "text": "Соңғы Dockerfile"
+    },
+    {
+      "type": "code",
+      "text": "# syntax=docker/dockerfile:1\n\nFROM mcr.microsoft.com/dotnet/sdk:10.0 AS build\nWORKDIR /src\nCOPY src/DemoApi/DemoApi.csproj src/DemoApi/\nRUN dotnet restore src/DemoApi/DemoApi.csproj\nCOPY src/ src/\nRUN dotnet publish src/DemoApi/DemoApi.csproj -c Release -o /app --no-restore\n\nFROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime\nRUN apt-get update \\\n    && apt-get install -y --no-install-recommends curl \\\n    && rm -rf /var/lib/apt/lists/*\nWORKDIR /app\nCOPY --from=build /app .\nARG APP_VERSION=dev\nENV APP_VERSION=$APP_VERSION\nUSER $APP_UID\nEXPOSE 8080\nHEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=3 \\\n    CMD curl -fsS http://localhost:8080/health/live || exit 1\nENTRYPOINT [\"dotnet\", \"DemoApi.dll\"]"
+    },
+    {
+      "type": "paragraph",
+      "text": "build кезеңінде SDK арқылы тәуелділіктер қалпына келтіріліп, Release жинағы жарияланды. runtime кезеңіне /app ішіндегі жарияланған файлдар көшірілді. curl құралы healthcheck сұрауын орындайды. USER $APP_UID қолданбаны root құқықтарынсыз іске қосады."
+    },
+    {
+      "type": "heading",
+      "text": ".dockerignore"
+    },
+    {
+      "type": "code",
+      "text": "**/bin/\n**/obj/\n**/TestResults/\n.git\n.github\n.vs\n.vscode\n.idea\ntests/\nmonitoring/\nscripts/\ndb/\ndocs/\nreports/\nevidence/\npostman/\n*.md\nDockerfile\ncompose*.yaml\ncompose*.yml\n.env\n.env.*\n**/.env\n**/.env.*\n**/*.pfx\n**/*.p12"
+    },
+    {
+      "type": "paragraph",
+      "text": "bin, obj және TestResults каталогтары, Git тарихы, редактор параметрлері, тесттер, есептер және жергілікті құпия файлдар құрастыру контекстіне кірмейді. Dockerfile мен .dockerignore мазмұны lab02-docker нұсқасымен салыстырылды."
+    },
+    {
+      "type": "heading",
+      "text": "Контейнерді іске қосу және күйін тексеру"
+    },
+    {
+      "type": "code",
+      "text": "docker run -d --name devops-labs-lab02-api -p 127.0.0.1:8089:8080 -e Storage=InMemory devops-labs-demo-api:lab02-1.1\ndocker ps --filter name=devops-labs-lab02-api\ndocker inspect --format \"{{.State.Health.Status}}\" devops-labs-lab02-api"
+    },
+    {
+      "type": "paragraph",
+      "text": "Контейнер іске қосылғаннан кейін healthcheck /health/live мекенжайын тексерді. Docker inspect нәтижесі бойынша процесс жұмыс істеп тұрды, Health.Status мәні healthy болды. Нақты күй <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/health-production.json\">health-production.json</link> файлында сақталған."
+    },
+    {
+      "type": "code",
+      "text": "{\n  \"Status\": \"running\",\n  \"Running\": true,\n  \"Health\": {\n    \"Status\": \"healthy\",\n    \"FailingStreak\": 0,\n    \"Log\": [\n      {\n        \"ExitCode\": 0,\n        \"Output\": \"Healthy\"\n      }\n    ]\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Healthcheck аралығы - 10 секунд, timeout - 3 секунд, бастапқы күту кезеңі - 15 секунд, қайталау саны - 3. Хосттағы 8089 порты контейнердің 8080 портына бағытталған."
+    },
+    {
+      "type": "heading",
+      "text": "GET / және health маршруттары"
+    },
+    {
+      "type": "code",
+      "text": "curl.exe -i http://localhost:8089/\ncurl.exe -i http://localhost:8089/health/live\ncurl.exe -i http://localhost:8089/health/ready"
+    },
+    {
+      "type": "code",
+      "text": "GET / → HTTP 200\n{\n  \"service\": \"DemoApi\",\n  \"version\": \"lab02-1.1\",\n  \"host\": \"e7ee83006c4d\"\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "version өрісі құрастыру кезінде берілген lab02-1.1 мәнін көрсетті. host өрісіндегі e7ee83006c4d - контейнердің hostname мәні; ол Windows компьютерінің атауы емес."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Сұрау"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP коды"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жауап"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "service=DemoApi; version=lab02-1.1"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /health/live"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Healthy"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "GET /health/ready"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Healthy"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Logs: қолданба журналы"
+    },
+    {
+      "type": "code",
+      "text": "docker logs devops-labs-lab02-api"
+    },
+    {
+      "type": "paragraph",
+      "text": "Журналдан InMemory қоймасы, контейнер ішіндегі 8080 порты, Production ортасы және /app жұмыс каталогы анықталды. Төменде <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/api-logs.txt\">api-logs.txt</link> файлындағы алғашқы бес JSON жазбасының Message өрістері берілген."
+    },
+    {
+      "type": "code",
+      "text": "Хранилище: в памяти\nNow listening on: http://[::]:8080\nApplication started. Press Ctrl+C to shut down.\nHosting environment: Production\nContent root path: /app"
+    },
+    {
+      "type": "paragraph",
+      "text": "Контейнердегі стандартты шығыс Docker журналына жиналады. Docker Desktop ішіндегі Logs вкладкасы осы ағынды көрсетуге арналған. Бұл есепте сақталған docker logs шығысы пайдаланылды."
+    },
+    {
+      "type": "heading",
+      "text": "Exec: контейнер ішіндегі тексерулер"
+    },
+    {
+      "type": "code",
+      "text": "docker exec devops-labs-lab02-api id\ndocker exec devops-labs-lab02-api dotnet --list-sdks\ndocker exec devops-labs-lab02-api find /app -type f"
+    },
+    {
+      "type": "code",
+      "text": "uid=1654(app) gid=1654(app) groups=1654(app)"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тексеру"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нақты нәтиже"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "id"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "uid=1654(app); процесс root емес"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "dotnet --list-sdks"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Бос шығыс: соңғы бейнеде SDK жоқ"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "find /app -type f"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жарияланған файлдар бар; .cs, .csproj және .slnx жоқ"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Кіру нүктесі"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "dotnet DemoApi.dll"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        2,
+        3
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Exec тексерулері контейнердің орындалу ортасын көрсетті. SDK тек build кезеңінде қалды. /app ішіндегі файлдардың толық тізімі <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/runtime-files.txt\">runtime-files.txt</link> файлында, UID мен SDK тексерулері <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/runtime-checks.json\">runtime-checks.json</link> файлында сақталған."
+    },
+    {
+      "type": "heading",
+      "text": "Контейнер қайта іске қосылғанда деректердің өзгеруі"
+    },
+    {
+      "type": "paragraph",
+      "text": "InMemory қоймасында «Lab02 restart evidence» жобасы құрылды. Одан кейін сол контейнер docker stop және docker start арқылы қайта іске қосылды. Контейнердің өзі сақталғанымен, қолданба процесінің жедел жады қайта құрылды."
+    },
+    {
+      "type": "code",
+      "text": "docker stop devops-labs-lab02-api\ndocker start devops-labs-lab02-api\ncurl.exe http://localhost:8089/api/projects"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Кезең"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP коды"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Жобалар саны"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қайта іске қосуға дейін"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "1"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Қайта іске қосқаннан кейін"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "0"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Нақты жауаптар <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/restart-before.json\">restart-before.json</link> және <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/restart-after.json\">restart-after.json</link> файлдарында сақталған. InMemory деректері контейнердің файлдық жүйесінде емес, процесс жадында болғандықтан жоғалды. Тұрақты сақтау үшін дерекқор мен оның деректер томы қажет."
+    },
+    {
+      "type": "heading",
+      "text": "Swagger: Production ортасындағы 404 және Development ортасындағы 200"
+    },
+    {
+      "type": "paragraph",
+      "text": "Алғашқы контейнерде ASPNETCORE_ENVIRONMENT айнымалысы берілмегендіктен, Production ортасы қолданылды. Program.cs ішінде OpenAPI және Swagger тек app.Environment.IsDevelopment() шарты орындалғанда тіркеледі. Сондықтан Production контейнеріндегі Swagger сұрауы 404 қайтарды."
+    },
+    {
+      "type": "code",
+      "text": "GET http://localhost:8089/swagger/index.html\nHTTP 404\nBody: \"\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Сол devops-labs-demo-api:lab02-1.1 бейнесінен Development ортасымен екінші контейнер іске қосылды. Chaos__Enabled=false параметрі оқу ақауларын өшірді. Бейне қайта құрастырылған жоқ."
+    },
+    {
+      "type": "code",
+      "text": "docker run -d --name devops-labs-lab02-swagger -p 127.0.0.1:8090:8080 -e Storage=InMemory -e ASPNETCORE_ENVIRONMENT=Development -e Chaos__Enabled=false devops-labs-demo-api:lab02-1.1\ncurl.exe -i http://localhost:8090/swagger/index.html"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Орта"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Мекенжай"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP коды"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Production"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "localhost:8089/swagger/index.html"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "404"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Development"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "localhost:8090/swagger/index.html"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Development"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "localhost:8090/openapi/v1.json"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "200"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        1,
+        3,
+        1
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "404 жауабы бұл жағдайда сервистің тоқтағанын білдірмейді: GET / және health маршруттары 200 қайтарды. Айырмашылық - Swagger маршрутының ортаға байланысты тіркелуі. Екі жауап <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/swagger-production.json\">swagger-production.json</link> және <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/swagger-development.json\">swagger-development.json</link> файлдарында берілген."
+    },
+    {
+      "type": "heading",
+      "text": "Сақталған тест нәтижелері"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Тексеру"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "Нәтиже"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Контейнер мен API бойынша тексерулер"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "14/14 сәтті"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "HTTP сценарийлері"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "26 сұрау: 23 сценарий және 3 тазалау сұрауы"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": "Postman CLI"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "24 сұрау; 73 тексеру; қате 0"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "paragraph",
+              "text": ".NET Release / InMemory"
+            }
+          ],
+          [
+            {
+              "type": "paragraph",
+              "text": "28/28; failed 0; skipped 0"
+            }
+          ]
+        ]
+      ],
+      "widths": [
+        2,
+        3
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Бұл нәтижелер 22.10.2026 күнгі lab02-1.1 нұсқасына жатады. Postman шығысы <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/postman-console.txt\">postman-console.txt</link> файлында, .NET тест нәтижелері <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/tests/lab02-regression.trx\">lab02-regression.trx</link> файлында сақталған."
+    },
+    {
+      "type": "heading",
+      "text": "Жұмыс материалдары"
+    },
+    {
+      "type": "paragraph",
+      "text": "<link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/Dockerfile\">Dockerfile</link>; <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/.dockerignore\">.dockerignore</link>; <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/src/DemoApi/Program.cs\">Program.cs</link>; <link href=\"https://github.com/Aruzhaaan-06/devops-labs/blob/065a222e2f384df496ad8294cd843325ec20b963/evidence/lab02/README.md\">контейнер тәжірибесінің журналдары</link>."
+    }
+  ]
+}
